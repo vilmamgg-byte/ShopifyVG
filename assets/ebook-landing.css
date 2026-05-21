@@ -139,8 +139,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: el-shimmer 3.2s linear infinite;
-  animation-delay: -1.6s;
+  animation: el-shimmer 7s linear infinite;
+  animation-delay: -3.5s;
   letter-spacing: 2px;
 }
 
@@ -167,12 +167,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: el-shimmer 3.2s linear infinite;
+  animation: el-shimmer 7s linear infinite;
   letter-spacing: -0.5px;
 }
 
 .el-logo:hover .el-logo-i {
-  animation-duration: 1.4s;
+  animation-duration: 3.5s;
 }
 
 @keyframes el-shimmer {
