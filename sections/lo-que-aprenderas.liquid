@@ -1,4 +1,5 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+{{ 'ebook-landing.js' | asset_url | script_tag }}
 
 <style>
   #shopify-section-group-header-group,
@@ -8,6 +9,19 @@
 </style>
 
 <div class="el-page">
+
+  <!-- Mobile nav -->
+  <div class="el-mobile-nav" aria-hidden="true">
+    <a href="/">Inicio</a>
+    <a href="/pages/vision-general">Método Imparable</a>
+    <a href="/pages/vision-general" class="el-mobile-sub">↳ Visión General</a>
+    <a href="/pages/lo-que-aprenderas" class="el-mobile-sub">↳ Lo Que Aprenderás</a>
+    <a href="/#el-beneficios">Beneficios</a>
+    <a href="/#el-resultados">Resultados</a>
+    <a href="/#el-testimonios">Testimonios</a>
+    <a href="/#el-faq">FAQ</a>
+    <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+  </div>
 
   <!-- Header -->
   <header class="el-header" id="el-header">
@@ -43,12 +57,46 @@
       </div>
       <span class="el-logo-d">DISCIPLINA</span><span class="el-logo-sep">·</span><span class="el-logo-i">IMPARABLE</span>
     </a>
-    <nav class="el-nav">
+    <nav class="el-nav" aria-label="Navegación principal">
       <a href="/">Inicio</a>
-      <a href="/pages/vision-general">Visión General</a>
-      <a href="/pages/lo-que-aprenderas" style="color:#c9a84c">Lo Que Aprenderás</a>
-      <a href="/pages/shopifyvg" class="el-btn-gold" style="font-size:13px;padding:10px 22px">Obtener Ahora</a>
+
+      <div class="el-dropdown" role="navigation">
+        <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          Método Imparable
+          <svg class="el-dropdown-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="el-dropdown-panel" role="menu">
+          <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </span>
+            <span>
+              <strong>Visión General</strong>
+              <small>Qué es y cómo funciona</small>
+            </span>
+          </a>
+          <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem" style="color:#c9a84c">
+            <span class="el-dropdown-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
+            </span>
+            <span>
+              <strong>Lo Que Aprenderás</strong>
+              <small>Contenido y resultados</small>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <a href="/#el-beneficios">Beneficios</a>
+      <a href="/#el-resultados">Resultados</a>
+      <a href="/#el-testimonios">Testimonios</a>
+      <a href="/#el-faq">FAQ</a>
+      <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
     </nav>
+
+    <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
   <!-- Hero de página -->
@@ -155,17 +203,6 @@
   </footer>
 
 </div>
-
-<script>
-(function(){
-  var h = document.getElementById('el-header');
-  if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.el-anim').forEach(function(el){ obs.observe(el); });
-})();
-</script>
 
 {% schema %}
 {
