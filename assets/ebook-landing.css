@@ -75,7 +75,7 @@
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 3px solid red;
   transition:
     background 0.45s var(--el-ease-out),
     padding    0.35s ease,
