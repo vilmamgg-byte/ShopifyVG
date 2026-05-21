@@ -797,6 +797,30 @@
 }
 
 /* ════════════════════════════════════════════
+   CAMBIO IMAGE
+   ════════════════════════════════════════════ */
+.el-cambio-wrap {
+  background: var(--el-deep);
+  display: flex;
+  justify-content: center;
+  padding: 0 48px 56px;
+}
+
+.el-cambio-img {
+  width: 100%;
+  max-width: var(--el-max);
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .el-cambio-wrap { padding: 0 24px 40px; }
+  .el-cambio-img  { border-radius: 10px; }
+}
+
+/* ════════════════════════════════════════════
    TRUST STRIP (between sections)
    ════════════════════════════════════════════ */
 .el-trust-strip {
