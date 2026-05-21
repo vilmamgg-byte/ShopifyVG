@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "ebook_landing": {
+      "type": "ebook-landing",
+      "settings": {
+        "ebook_title": "DISCIPLINA TOTAL",
+        "author_name": "Vilma García",
+        "price": "17",
+        "price_old": "47"
+      }
+    }
+  },
+  "order": ["ebook_landing"]
+}
