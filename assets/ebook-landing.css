@@ -472,6 +472,25 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  position: relative;
+}
+
+.el-hero-container::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  height: 84%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(201,168,76,0.32) 18%,
+    rgba(201,168,76,0.32) 82%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .el-hero-content { position: relative; z-index: 2; }
