@@ -603,8 +603,8 @@
 }
 
 .el-book {
-  width: 260px;
-  height: 360px;
+  width: 338px;
+  height: 468px;
   border-radius: 3px 14px 14px 3px;
   border: 1px solid rgba(201,168,76,0.28);
   box-shadow:
@@ -1432,7 +1432,7 @@
   .el-hero-container { grid-template-columns: 1fr; gap: 52px; }
   .el-hero-visual    { order: -1; }
 
-  .el-book { width: 200px; height: 280px; }
+  .el-book { width: 240px; height: 330px; }
 
   .el-section        { padding: 72px 24px; }
   .el-trust-strip    { padding: 18px 24px; }
