@@ -506,7 +506,7 @@
 /* Title */
 .el-hero-title {
   font-family: var(--el-font-alt);
-  font-size: clamp(38px, 4.8vw, 66px);
+  font-size: clamp(36px, 4.4vw, 62px);
   font-weight: 800;
   line-height: 1.07;
   letter-spacing: -2px;
