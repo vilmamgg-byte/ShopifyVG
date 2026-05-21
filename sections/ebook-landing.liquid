@@ -913,29 +913,51 @@
     var nextSrc = toPage2 ? book.getAttribute('data-page-2') : book.getAttribute('data-page-1');
 
     if (isMobile()) {
-      /* ── Mobile: deslizar hacia la izquierda ── */
-      img.style.transition = 'transform 0.34s ease-in, opacity 0.28s ease-in';
-      img.style.transform  = 'translateX(-115%)';
+      /* ── Mobile: slide derecha→izquierda + recuadro horizontal ── */
+      var outDir = toPage2 ? '-115%' : '115%';
+      var inDir  = toPage2 ? '115%'  : '-115%';
+
+      /* 1. Sale la imagen actual en la dirección correcta */
+      img.style.transition = 'transform 0.36s ease-in, opacity 0.28s ease-in';
+      img.style.transform  = 'translateX(' + outDir + ')';
       img.style.opacity    = '0';
 
       setTimeout(function(){
+        /* 2. Cambia imagen y redimensiona el recuadro a horizontal */
         img.src = nextSrc;
+
+        if (toPage2 && natW > 0 && natH > 0 && natW > natH) {
+          /* imagen horizontal: ajusta el recuadro al ancho disponible */
+          var maxW = Math.min(window.innerWidth - 48, 360);
+          var tH   = Math.round(maxW / (natW / natH));
+          book.style.width        = maxW + 'px';
+          book.style.height       = tH   + 'px';
+          book.style.borderRadius = '8px';
+        } else if (!toPage2) {
+          /* vuelve al recuadro vertical original */
+          book.style.width        = pW + 'px';
+          book.style.height       = pH + 'px';
+          book.style.borderRadius = '';
+        }
+
+        /* 3. Posiciona la nueva imagen fuera de pantalla al lado contrario */
         img.style.transition = 'none';
-        img.style.transform  = 'translateX(115%)';
+        img.style.transform  = 'translateX(' + inDir + ')';
         img.style.opacity    = '0';
 
         requestAnimationFrame(function(){
           requestAnimationFrame(function(){
-            img.style.transition = 'transform 0.34s ease-out, opacity 0.28s ease-out';
+            /* 4. Desliza hacia el centro */
+            img.style.transition = 'transform 0.36s ease-out, opacity 0.28s ease-out';
             img.style.transform  = '';
             img.style.opacity    = '';
             flipped = toPage2;
             book.classList.toggle('flipped', flipped);
             if (hint) hint.style.opacity = flipped ? '0' : '';
-            setTimeout(function(){ busy = false; }, 360);
+            setTimeout(function(){ busy = false; }, 380);
           });
         });
-      }, 360);
+      }, 370);
 
     } else {
       /* ── Desktop: comprimir y expandir (page-flip) + redimensionar ── */
