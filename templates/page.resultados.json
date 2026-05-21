@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "resultados": {
+      "type": "resultados",
+      "settings": {}
+    }
+  },
+  "order": ["resultados"]
+}
