@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "vision_general": {
+      "type": "vision-general",
+      "settings": {}
+    }
+  },
+  "order": ["vision_general"]
+}

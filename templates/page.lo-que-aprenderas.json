@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "lo_que_aprenderas": {
+      "type": "lo-que-aprenderas",
+      "settings": {}
+    }
+  },
+  "order": ["lo_que_aprenderas"]
+}
