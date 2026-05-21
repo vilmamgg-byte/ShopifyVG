@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "beneficios": {
+      "type": "beneficios",
+      "settings": {}
+    }
+  },
+  "order": ["beneficios"]
+}
