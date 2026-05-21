@@ -437,7 +437,7 @@
   background: var(--el-deep);
   position: relative;
   overflow: hidden;
-  padding: 92px 48px 60px;
+  padding: 122px 48px 60px;
 }
 
 .el-hero::before {
