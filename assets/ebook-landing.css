@@ -806,18 +806,26 @@
   padding: 0 48px 56px;
 }
 
-.el-cambio-img {
+.el-cambio-clip {
   width: 100%;
   max-width: var(--el-max);
-  height: auto;
-  display: block;
+  overflow: hidden;
   border-radius: 16px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
 }
 
+.el-cambio-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* recorte: 1.5 cm superior ≈ 57px, 1 cm inferior ≈ 38px */
+  margin-top: -57px;
+  margin-bottom: -38px;
+}
+
 @media (max-width: 768px) {
   .el-cambio-wrap { padding: 0 24px 40px; }
-  .el-cambio-img  { border-radius: 10px; }
+  .el-cambio-clip { border-radius: 10px; }
 }
 
 /* ════════════════════════════════════════════
