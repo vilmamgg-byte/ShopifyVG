@@ -803,7 +803,7 @@
   background: var(--el-deep);
   display: flex;
   justify-content: center;
-  padding: 0 48px 56px;
+  padding: 0 48px 19px;
 }
 
 .el-cambio-clip {
