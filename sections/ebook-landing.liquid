@@ -262,7 +262,12 @@
         <div class="el-book-scene">
           <div class="el-book-glow" aria-hidden="true"></div>
           <div class="el-book-wrap">
-            <div class="el-book" role="img" aria-label="Ebook de disciplina y crecimiento personal">
+            <div class="el-book"
+                 role="button"
+                 tabindex="0"
+                 aria-label="Ver siguiente página del ebook"
+                 data-page-1="{{ 'PRODUCTO 4.png' | asset_url }}"
+                 data-page-2="{{ 'PAGINA_SIGUIENTE.png' | asset_url }}">
               <div class="el-book-spine" aria-hidden="true"></div>
               <img
                 src="{{ 'PRODUCTO 4.png' | asset_url }}"
@@ -271,6 +276,10 @@
                 loading="eager"
               >
               <div class="el-book-reflection" aria-hidden="true"></div>
+              <div class="el-book-flip-hint" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                Ver interior
+              </div>
             </div><!-- /el-book -->
           </div><!-- /book-wrap -->
         </div>

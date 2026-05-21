@@ -740,6 +740,53 @@
   opacity: 0.5;
 }
 
+/* ── Page flip interaction ── */
+.el-book[data-page-1] {
+  cursor: pointer;
+}
+
+.el-book-img {
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.38s ease;
+  transform-origin: center center;
+}
+
+.el-book.flipping .el-book-img {
+  transform: scaleX(0);
+  opacity: 0.3;
+}
+
+.el-book-flip-hint {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.68);
+  color: var(--el-gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+  animation: el-hint-pulse 2.8s ease-in-out infinite;
+}
+
+.el-book.flipped .el-book-flip-hint {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes el-hint-pulse {
+  0%, 100% { opacity: 0.55; transform: translateX(0); }
+  50%       { opacity: 1;    transform: translateX(2px); }
+}
+
 /* ════════════════════════════════════════════
    TRUST STRIP (between sections)
    ════════════════════════════════════════════ */

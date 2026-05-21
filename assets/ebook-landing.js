@@ -186,4 +186,27 @@
     sections.forEach(s => sectionObserver.observe(s));
   }
 
+  /* ── Book page flip ── */
+  document.querySelectorAll('.el-book[data-page-1]').forEach(book => {
+    const img = book.querySelector('.el-book-img');
+    if (!img) return;
+    let flipped = false;
+
+    const flip = () => {
+      if (book.classList.contains('flipping')) return;
+      book.classList.add('flipping');
+      setTimeout(() => {
+        flipped = !flipped;
+        img.src = flipped ? book.dataset.page2 : book.dataset.page1;
+        book.classList.remove('flipping');
+        book.classList.toggle('flipped', flipped);
+      }, 380);
+    };
+
+    book.addEventListener('click', flip);
+    book.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+    });
+  });
+
 })();
