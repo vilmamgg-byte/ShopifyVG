@@ -104,10 +104,10 @@
   <!-- Hero de página -->
   <section style="background:var(--el-deep);padding:122px 48px 28px;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
-    <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+    <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;">
 
       <!-- Izquierda: título + párrafo -->
-      <div style="padding-right:24px;">
+      <div style="padding-right:40px;">
         <h1 class="el-anim" style="font-size:clamp(42px,5.7vw,79px);font-weight:800;letter-spacing:-0.02em;line-height:0.95;margin-bottom:18px;background:linear-gradient(90deg,#c9a84c 0%,#f5e090 40%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
           Visión<br>General
         </h1>
@@ -119,7 +119,7 @@
       </div>
 
       <!-- Derecha: cita destacada -->
-      <div class="el-anim el-anim-d1" style="border-left:3px solid rgba(201,168,76,0.55);padding-left:28px;">
+      <div class="el-anim el-anim-d1" style="border-left:3px solid rgba(201,168,76,0.55);padding-left:40px;">
         <p style="font-family:var(--el-font-serif);font-style:italic;font-size:clamp(19px,2.1vw,26px);color:#e8d5a8;line-height:1.52;margin:0 0 12px;">
           "La disciplina deja de ser<br>
           motivación temporal<br>
@@ -132,8 +132,8 @@
 
     <!-- Tarjetas de visión con íconos -->
     <div class="el-container el-anim el-anim-d2" style="margin-top:28px;">
-      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:13px;">La visión del libro</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:13px;max-width:840px;margin-left:auto;margin-right:auto;">La visión del libro</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:840px;margin:0 auto;">
 
         {% assign vcard = "background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.22);border-radius:11px;padding:11px 15px;display:flex;flex-direction:row;align-items:center;gap:13px;" %}
 
