@@ -1,8 +1,20 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
 <style>
-  /* Ocultar el header del tema Dawn en esta página */
-  #shopify-section-group-header-group { display: none !important; }
+  /* Ocultar el header y announcement bar del tema Dawn en esta landing page */
+  #shopify-section-group-header-group,
+  .shopify-section-group--header,
+  #shopify-section-header,
+  #shopify-section-announcement-bar,
+  .section-header,
+  sticky-header,
+  header-drawer {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 
 <div class="el-page">
