@@ -885,6 +885,41 @@
 
 {{ 'ebook-landing.js' | asset_url | script_tag }}
 
+<script>
+(function(){
+  var book = document.querySelector('.el-book[data-page-1]');
+  if (!book) return;
+  var img = book.querySelector('.el-book-img');
+  if (!img) return;
+  var flipped = false, busy = false;
+  var preload = new Image();
+  preload.src = book.getAttribute('data-page-2');
+  book.style.cursor = 'pointer';
+  book.addEventListener('click', function(){
+    if (busy) return;
+    busy = true;
+    var nextSrc = flipped ? book.getAttribute('data-page-1') : book.getAttribute('data-page-2');
+    img.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
+    img.style.transform = 'scaleX(0)';
+    img.style.opacity = '0.3';
+    setTimeout(function(){
+      img.src = nextSrc;
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          img.style.transform = '';
+          img.style.opacity = '';
+          flipped = !flipped;
+          book.classList.toggle('flipped', flipped);
+          var hint = book.querySelector('.el-book-flip-hint');
+          if (hint) hint.style.opacity = flipped ? '0' : '';
+          setTimeout(function(){ busy = false; }, 380);
+        });
+      });
+    }, 350);
+  });
+})();
+</script>
+
 {% schema %}
 {
   "name": "Ebook Landing Page",

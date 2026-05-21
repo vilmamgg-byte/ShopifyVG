@@ -85,6 +85,7 @@
 
   dropdowns.forEach(dropdown => {
     const trigger = dropdown.querySelector('.el-dropdown-trigger');
+    if (!trigger) return;
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
