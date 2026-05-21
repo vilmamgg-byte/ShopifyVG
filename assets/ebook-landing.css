@@ -87,7 +87,7 @@
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   padding: 14px 48px;
-  border-bottom-color: var(--el-border);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Logo */
