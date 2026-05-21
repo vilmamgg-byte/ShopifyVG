@@ -547,14 +547,14 @@
 .el-btn-gold {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: var(--el-gold);
   color: var(--el-black);
   font-family: var(--el-font);
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.2px;
-  padding: 16px 32px;
+  padding: 13px 27px;
   border-radius: var(--el-r-full);
   text-decoration: none;
   border: none;
@@ -584,13 +584,13 @@
 .el-btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: transparent;
   color: var(--el-white);
   font-family: var(--el-font);
   font-size: 15px;
   font-weight: 500;
-  padding: 16px 28px;
+  padding: 13px 24px;
   border-radius: var(--el-r-full);
   text-decoration: none;
   border: 1px solid var(--el-border);
