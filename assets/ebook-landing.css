@@ -125,10 +125,22 @@
 
 /* ── Logo texto — efecto neuroventas ── */
 .el-logo-d {
-  color: var(--el-white);
-  text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.18),
-    0 0 40px rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    90deg,
+    #ffffff  0%,
+    #ffffff  20%,
+    #fff9ee  38%,
+    #fffef8  50%,
+    #fff9ee  62%,
+    #ffffff  80%,
+    #ffffff  100%
+  );
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: el-shimmer 3.2s linear infinite;
+  animation-delay: -1.6s;
   letter-spacing: 2px;
 }
 
