@@ -189,17 +189,35 @@
   /* ── Book page flip ── */
   document.querySelectorAll('.el-book[data-page-1]').forEach(book => {
     const img = book.querySelector('.el-book-img');
-    if (!img) return;
+    if (!img || !book.dataset.page2) return;
     let flipped = false;
+    let busy = false;
+
+    // Preload page 2 so it is cached before the first click
+    const preload = new Image();
+    preload.src = book.dataset.page2;
 
     const flip = () => {
-      if (book.classList.contains('flipping')) return;
+      if (busy) return;
+      busy = true;
+      const nextSrc = flipped ? book.dataset.page1 : book.dataset.page2;
+
+      // Phase 1 — compress to centre
       book.classList.add('flipping');
+
       setTimeout(() => {
-        flipped = !flipped;
-        img.src = flipped ? book.dataset.page2 : book.dataset.page1;
-        book.classList.remove('flipping');
-        book.classList.toggle('flipped', flipped);
+        // Phase 2 — swap while at scaleX(0)
+        img.src = nextSrc;
+        // Wait one paint frame so the browser starts rendering the new src
+        // before the expand animation begins — prevents black flash
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            flipped = !flipped;
+            book.classList.remove('flipping');
+            book.classList.toggle('flipped', flipped);
+            setTimeout(() => { busy = false; }, 420);
+          });
+        });
       }, 380);
     };
 
