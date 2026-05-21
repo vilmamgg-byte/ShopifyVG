@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "testimonios": {
+      "type": "testimonios",
+      "settings": {}
+    }
+  },
+  "order": ["testimonios"]
+}

@@ -1,0 +1,257 @@
+{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-group-header-group,
+  .shopify-section-group--header-group,
+  sticky-header { display: none !important; }
+  body { padding-top: 0 !important; margin-top: 0 !important; }
+</style>
+
+<div class="el-page">
+
+  <!-- Mobile nav -->
+  <div class="el-mobile-nav" aria-hidden="true">
+    <a href="/">Inicio</a>
+    <a href="/pages/vision-general">Método Imparable</a>
+    <a href="/pages/vision-general" class="el-mobile-sub">↳ Visión General</a>
+    <a href="/pages/lo-que-aprenderas" class="el-mobile-sub">↳ Lo Que Aprenderás</a>
+    <a href="/pages/beneficios">Beneficios</a>
+    <a href="/pages/testimonios" class="el-mobile-sub">↳ Testimonios</a>
+    <a href="/#el-faq">FAQ</a>
+    <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+  </div>
+
+  <!-- Header -->
+  <header class="el-header" id="el-header">
+    <a href="/" class="el-logo">
+      <div class="el-logo-mark">
+        <svg width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="tm-goldH" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c9a84c"/><stop offset="50%" stop-color="#f0d878"/><stop offset="100%" stop-color="#c9a84c"/></linearGradient>
+            <linearGradient id="tm-goldV" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5e090"/><stop offset="45%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6820"/></linearGradient>
+            <linearGradient id="tm-pageL" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.20"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.05"/></linearGradient>
+            <linearGradient id="tm-pageR" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.11"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.03"/></linearGradient>
+            <radialGradient id="tm-aura" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.10"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/></radialGradient>
+            <filter id="tm-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="tm-glowS" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="28" cy="33" rx="22" ry="19" fill="url(#tm-aura)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="rgba(0,0,0,0.25)" transform="translate(1,1.5)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="url(#tm-pageL)" stroke="#c9a84c" stroke-width="1.05" stroke-linejoin="round"/>
+          <path d="M25.5 13 L9.5 17 L9.5 42 L25.5 38 Z" fill="rgba(255,255,255,0.022)"/>
+          <path d="M29 11 L49 15.5 L49 44 L29 39.5 Z" fill="url(#tm-pageR)" stroke="#c9a84c" stroke-width="0.8" stroke-linejoin="round"/>
+          <path d="M7 44 L9.5 45.8 L27 41.5 L27 39.5 Z" fill="rgba(201,168,76,0.14)"/>
+          <path d="M49 44 L46.5 45.8 L29 41.5 L29 39.5 Z" fill="rgba(201,168,76,0.08)"/>
+          <line x1="28" y1="11" x2="28" y2="39.5" stroke="url(#tm-goldV)" stroke-width="2.8" stroke-linecap="round" filter="url(#tm-glow)"/>
+          <path d="M28 4 L31 9.5 L28 12.5 L25 9.5 Z" fill="url(#tm-goldV)" filter="url(#tm-glowS)"/>
+          <path d="M28 5.5 L30 9.5 L28 11.5 L26 9.5 Z" fill="#f5e090" opacity="0.55"/>
+          <line x1="11" y1="19.5" x2="25" y2="18" stroke="url(#tm-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.78"/>
+          <line x1="11" y1="23.2" x2="25" y2="21.7" stroke="url(#tm-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.72"/>
+          <line x1="11" y1="26.9" x2="25" y2="25.4" stroke="url(#tm-goldH)" stroke-width="1.05" stroke-linecap="round" opacity="0.60"/>
+          <line x1="31" y1="18" x2="45.5" y2="19.5" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.44"/>
+          <line x1="31" y1="21.7" x2="45.5" y2="23.2" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.38"/>
+          <circle cx="7" cy="15.5" r="1.6" fill="#c9a84c" opacity="0.80" filter="url(#tm-glow)"/>
+          <circle cx="7" cy="15.5" r="0.8" fill="#f5e090" opacity="0.70"/>
+          <circle cx="28" cy="11" r="1.6" fill="#f5e090" opacity="0.65"/>
+          <circle cx="28" cy="11" r="0.7" fill="white" opacity="0.60"/>
+        </svg>
+      </div>
+      <span class="el-logo-d">DISCIPLINA</span><span class="el-logo-sep">·</span><span class="el-logo-i">IMPARABLE</span>
+    </a>
+
+    <nav class="el-nav" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+
+      <div class="el-dropdown" role="navigation">
+        <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          Método Imparable
+          <svg class="el-dropdown-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="el-dropdown-panel" role="menu">
+          <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </span>
+            <span>
+              <strong>Visión General</strong>
+              <small>Qué es y cómo funciona</small>
+            </span>
+          </a>
+          <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
+            </span>
+            <span>
+              <strong>Lo Que Aprenderás</strong>
+              <small>Contenido y resultados</small>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <a href="/pages/beneficios">Beneficios</a>
+      <a href="/pages/testimonios" style="color:#c9a84c">Testimonios</a>
+      <a href="/#el-faq">FAQ</a>
+      <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+    </nav>
+
+    <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Hero de página -->
+  <section style="min-height:38vh;display:flex;align-items:center;background:var(--el-deep);padding:140px 48px 72px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+    <div class="el-container" style="position:relative;z-index:2;">
+      <span class="el-label el-anim" style="margin-bottom:20px;display:inline-flex;">Resultados Reales</span>
+      <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(34px,4vw,58px);max-width:700px;margin-bottom:20px;">
+        Lo que dicen<br>
+        <span class="el-gold-text">quienes ya cambiaron</span>
+      </h1>
+      <p class="el-hero-sub el-anim el-anim-d2" style="max-width:580px;margin-bottom:0;">
+        Personas reales, resultados reales. Más de 5,000 lectores han aplicado
+        el método y transformado su disciplina en resultados medibles.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="background:var(--el-surface);border-top:1px solid var(--el-border);border-bottom:1px solid var(--el-border);padding:52px 48px;">
+    <div class="el-container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;" class="el-anim">
+        <div>
+          <div class="el-stat-val" data-count="5000" data-suffix="+" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">5000+</div>
+          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Lectores activos</div>
+        </div>
+        <div>
+          <div class="el-stat-val" data-count="21" data-suffix="" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">21</div>
+          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Días de resultado</div>
+        </div>
+        <div>
+          <div class="el-stat-val" data-count="98" data-suffix="%" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">98%</div>
+          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Satisfacción</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="el-section el-section-alt">
+    <div class="el-container">
+
+      <div class="el-testi-grid">
+
+        <article class="el-testi-card el-testi-card--wide el-anim">
+          <div class="el-stars" aria-label="5 estrellas">
+            {% for i in (1..5) %}
+              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+          </div>
+          <blockquote class="el-testi-quote">
+            "Llevo años procrastinando mi negocio. En tres semanas con este método
+            <strong>lancé mi primera oferta y generé mis primeros $800 dólares.</strong>
+            No es motivación, es el sistema. Este ebook no te da ganas, te da estructura.
+            Y la estructura es lo que faltaba."
+          </blockquote>
+          <div class="el-testi-footer">
+            <div class="el-avatar" aria-hidden="true">C</div>
+            <div>
+              <div class="el-testi-name">Carlos Mendoza</div>
+              <div class="el-testi-result">→ Emprendedor · México</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="el-testi-card el-anim el-anim-d1">
+          <div class="el-stars" aria-label="5 estrellas">
+            {% for i in (1..5) %}
+              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+          </div>
+          <blockquote class="el-testi-quote">
+            "Por fin entendí que la disciplina no es castigo.
+            <strong>Es la forma más alta de respeto hacia uno mismo.</strong>
+            Este ebook me cambió la perspectiva en las primeras 20 páginas."
+          </blockquote>
+          <div class="el-testi-footer">
+            <div class="el-avatar" aria-hidden="true">A</div>
+            <div>
+              <div class="el-testi-name">Andrea Ruiz</div>
+              <div class="el-testi-result">→ Diseñadora · Colombia</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="el-testi-card el-anim el-anim-d2">
+          <div class="el-stars" aria-label="5 estrellas">
+            {% for i in (1..5) %}
+              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+          </div>
+          <blockquote class="el-testi-quote">
+            "El plan de 21 días es increíble. Simple, directo, sin excusas.
+            <strong>En el día 14 ya había dejado de revisar el teléfono</strong>
+            compulsivamente. Eso solo vale 10 veces el precio."
+          </blockquote>
+          <div class="el-testi-footer">
+            <div class="el-avatar" aria-hidden="true">R</div>
+            <div>
+              <div class="el-testi-name">Roberto Díaz</div>
+              <div class="el-testi-result">→ Estudiante universitario · Argentina</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="el-testi-card el-anim el-anim-d3">
+          <div class="el-stars" aria-label="5 estrellas">
+            {% for i in (1..5) %}
+              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            {% endfor %}
+          </div>
+          <blockquote class="el-testi-quote">
+            "Madre de dos niños, trabajando desde casa.
+            Creía que el tiempo era el problema.
+            <strong>Ahora sé que era la prioridad.</strong>
+            Este ebook me dio claridad."
+          </blockquote>
+          <div class="el-testi-footer">
+            <div class="el-avatar" aria-hidden="true">M</div>
+            <div>
+              <div class="el-testi-name">María Fernández</div>
+              <div class="el-testi-result">→ Freelancer · España</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="text-align:center;margin-top:52px;" class="el-anim">
+        <a href="/pages/shopifyvg" class="el-btn-gold">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
+          Quiero el Ebook
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer mínimo -->
+  <footer style="background:var(--el-deep);border-top:1px solid var(--el-border);padding:32px 48px;text-align:center;">
+    <a href="/" class="el-logo" style="justify-content:center;margin-bottom:12px;">
+      <span class="el-logo-d">DISCIPLINA</span><span class="el-logo-sep">·</span><span class="el-logo-i">IMPARABLE</span>
+    </a>
+    <p style="font-size:13px;color:var(--el-gray);margin:0;">© 2026 Disciplina Imparable. Todos los derechos reservados.</p>
+  </footer>
+
+</div>
+
+{{ 'ebook-landing.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Testimonios",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}
