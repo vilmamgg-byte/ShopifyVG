@@ -123,6 +123,52 @@
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* ── Logo texto — efecto neuroventas ── */
+.el-logo-d {
+  color: var(--el-white);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.18),
+    0 0 40px rgba(255, 255, 255, 0.06);
+  letter-spacing: 2px;
+}
+
+.el-logo-sep {
+  color: var(--el-gold);
+  opacity: 0.45;
+  font-weight: 300;
+  letter-spacing: 0;
+  margin: 0 3px;
+}
+
+.el-logo-i {
+  background: linear-gradient(
+    90deg,
+    #c9a84c  0%,
+    #c9a84c  20%,
+    #fff8d0  42%,
+    #f5e090  50%,
+    #fff8d0  58%,
+    #c9a84c  80%,
+    #c9a84c  100%
+  );
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: el-shimmer 3.2s linear infinite;
+  letter-spacing: -0.5px;
+}
+
+.el-logo:hover .el-logo-i {
+  animation-duration: 1.4s;
+}
+
+@keyframes el-shimmer {
+  0%   { background-position: 260% center; }
+  100% { background-position: -260% center; }
+}
+
+/* ── ── */
 .el-logo:hover .el-logo-mark {
   background: linear-gradient(145deg, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.08) 100%);
   border-color: rgba(201,168,76,0.55);
