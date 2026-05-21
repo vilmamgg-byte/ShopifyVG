@@ -2,7 +2,7 @@
    EBOOK LANDING — PREMIUM DESIGN SYSTEM
    ============================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 /* ── Variables ── */
 :root {
@@ -23,6 +23,7 @@
 
   --el-font:        'Inter', 'Helvetica Neue', Arial, sans-serif;
   --el-font-alt:    'Poppins', 'Inter', sans-serif;
+  --el-font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
 
   --el-max:         1240px;
 
@@ -521,12 +522,17 @@
 }
 
 .el-hero-sub {
-  font-size: 17px;
+  font-family: var(--el-font-serif);
+  font-style: italic;
+  font-size: 19px;
   font-weight: 400;
-  color: var(--el-gray);
-  line-height: 1.75;
+  color: #dfd0b4;
+  line-height: 1.88;
+  letter-spacing: 0.014em;
   max-width: 480px;
   margin-bottom: 40px;
+  padding-left: 18px;
+  border-left: 2px solid rgba(201, 168, 76, 0.5);
 }
 
 /* Actions */
