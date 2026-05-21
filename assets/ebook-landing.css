@@ -124,7 +124,14 @@
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ── Logo texto — efecto neuroventas ── */
+/* ── Logo texto — dos líneas alineadas al ícono ── */
+.el-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.18;
+  gap: 2px;
+}
+
 .el-logo-d {
   background: linear-gradient(
     90deg,
@@ -146,11 +153,7 @@
 }
 
 .el-logo-sep {
-  color: var(--el-gold);
-  opacity: 0.45;
-  font-weight: 300;
-  letter-spacing: 0;
-  margin: 0 3px;
+  display: none;
 }
 
 .el-logo-i {
