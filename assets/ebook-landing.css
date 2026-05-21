@@ -685,7 +685,10 @@
   position: relative;
   overflow: hidden;
   cursor: default;
-  transition: transform 0.7s var(--el-ease);
+  transition: transform 0.7s var(--el-ease),
+              width  0.42s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.42s ease;
 }
 
 /* imagen de portada */

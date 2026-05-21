@@ -891,31 +891,68 @@
   if (!book) return;
   var img = book.querySelector('.el-book-img');
   if (!img) return;
+  var hint = book.querySelector('.el-book-flip-hint');
   var flipped = false, busy = false;
+
+  /* capture portrait dimensions once layout is stable */
+  var pW = book.offsetWidth;
+  var pH = book.offsetHeight;
+
+  /* preload page 2 and read its natural size */
+  var natW = 0, natH = 0;
   var preload = new Image();
+  preload.onload = function(){ natW = this.naturalWidth; natH = this.naturalHeight; };
   preload.src = book.getAttribute('data-page-2');
+
   book.style.cursor = 'pointer';
+
   book.addEventListener('click', function(){
     if (busy) return;
     busy = true;
-    var nextSrc = flipped ? book.getAttribute('data-page-1') : book.getAttribute('data-page-2');
-    img.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
-    img.style.transform = 'scaleX(0)';
-    img.style.opacity = '0.3';
+    var toPage2 = !flipped;
+    var nextSrc = toPage2 ? book.getAttribute('data-page-2') : book.getAttribute('data-page-1');
+
+    /* compress */
+    img.style.transition = 'transform 0.32s ease, opacity 0.32s ease';
+    img.style.transform  = 'scaleX(0)';
+    img.style.opacity    = '0.15';
+
     setTimeout(function(){
+      /* swap image at midpoint */
       img.src = nextSrc;
+
+      if (toPage2 && natW > 0 && natH > 0) {
+        var ratio = natW / natH;
+        var tW, tH;
+        if (ratio > 1.1) {
+          /* landscape image — fit width, compute height */
+          tW = Math.min(Math.round(pH * ratio), 560);
+          tH = Math.round(tW / ratio);
+        } else {
+          tW = pW; tH = pH;
+        }
+        book.style.width        = tW + 'px';
+        book.style.height       = tH + 'px';
+        book.style.borderRadius = ratio > 1.1 ? '8px' : '';
+      } else if (!toPage2) {
+        /* restore portrait */
+        book.style.width        = pW + 'px';
+        book.style.height       = pH + 'px';
+        book.style.borderRadius = '';
+      }
+
       requestAnimationFrame(function(){
         requestAnimationFrame(function(){
+          /* expand */
           img.style.transform = '';
-          img.style.opacity = '';
-          flipped = !flipped;
+          img.style.opacity   = '';
+          flipped = toPage2;
           book.classList.toggle('flipped', flipped);
-          var hint = book.querySelector('.el-book-flip-hint');
           if (hint) hint.style.opacity = flipped ? '0' : '';
-          setTimeout(function(){ busy = false; }, 380);
+          setTimeout(function(){ busy = false; }, 420);
         });
       });
-    }, 350);
+    }, 320);
   });
 })();
 </script>
