@@ -1,9 +1,9 @@
 {
   "sections": {
-    "home_premium": {
-      "type": "home-premium",
+    "ebook_landing": {
+      "type": "ebook-landing",
       "settings": {}
     }
   },
-  "order": ["home_premium"]
+  "order": ["ebook_landing"]
 }
