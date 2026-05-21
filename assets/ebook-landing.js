@@ -80,6 +80,40 @@
     });
   });
 
+  /* ── Dropdown nav ── */
+  const dropdowns = document.querySelectorAll('.el-dropdown');
+
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.el-dropdown-trigger');
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains('open');
+      // Close all other dropdowns
+      dropdowns.forEach(d => d.classList.remove('open'));
+      dropdown.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener('click', () => {
+    dropdowns.forEach(d => {
+      d.classList.remove('open');
+      d.querySelector('.el-dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close dropdown on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdowns.forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.el-dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   /* ── Book 3D parallax on mouse move ── */
   const bookEl    = document.querySelector('.el-book');
   const heroVisual = document.querySelector('.el-hero-visual');
