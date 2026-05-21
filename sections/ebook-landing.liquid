@@ -894,11 +894,9 @@
   var hint = book.querySelector('.el-book-flip-hint');
   var flipped = false, busy = false;
 
-  /* capture portrait dimensions once layout is stable */
   var pW = book.offsetWidth;
   var pH = book.offsetHeight;
 
-  /* preload page 2 and read its natural size */
   var natW = 0, natH = 0;
   var preload = new Image();
   preload.onload = function(){ natW = this.naturalWidth; natH = this.naturalHeight; };
@@ -906,53 +904,101 @@
 
   book.style.cursor = 'pointer';
 
-  book.addEventListener('click', function(){
+  function isMobile(){ return window.innerWidth <= 768; }
+
+  function doFlip(){
     if (busy) return;
     busy = true;
     var toPage2 = !flipped;
     var nextSrc = toPage2 ? book.getAttribute('data-page-2') : book.getAttribute('data-page-1');
 
-    /* compress */
-    img.style.transition = 'transform 0.32s ease, opacity 0.32s ease';
-    img.style.transform  = 'scaleX(0)';
-    img.style.opacity    = '0.15';
+    if (isMobile()) {
+      /* ── Mobile: deslizar hacia la izquierda ── */
+      img.style.transition = 'transform 0.34s ease-in, opacity 0.28s ease-in';
+      img.style.transform  = 'translateX(-115%)';
+      img.style.opacity    = '0';
 
-    setTimeout(function(){
-      /* swap image at midpoint */
-      img.src = nextSrc;
+      setTimeout(function(){
+        img.src = nextSrc;
+        img.style.transition = 'none';
+        img.style.transform  = 'translateX(115%)';
+        img.style.opacity    = '0';
 
-      if (toPage2 && natW > 0 && natH > 0) {
-        var ratio = natW / natH;
-        var tW, tH;
-        if (ratio > 1.1) {
-          /* landscape image — fit width, compute height */
-          tW = Math.min(Math.round(pH * ratio), 560);
-          tH = Math.round(tW / ratio);
-        } else {
-          tW = pW; tH = pH;
-        }
-        book.style.width        = tW + 'px';
-        book.style.height       = tH + 'px';
-        book.style.borderRadius = ratio > 1.1 ? '8px' : '';
-      } else if (!toPage2) {
-        /* restore portrait */
-        book.style.width        = pW + 'px';
-        book.style.height       = pH + 'px';
-        book.style.borderRadius = '';
-      }
-
-      requestAnimationFrame(function(){
         requestAnimationFrame(function(){
-          /* expand */
-          img.style.transform = '';
-          img.style.opacity   = '';
-          flipped = toPage2;
-          book.classList.toggle('flipped', flipped);
-          if (hint) hint.style.opacity = flipped ? '0' : '';
-          setTimeout(function(){ busy = false; }, 420);
+          requestAnimationFrame(function(){
+            img.style.transition = 'transform 0.34s ease-out, opacity 0.28s ease-out';
+            img.style.transform  = '';
+            img.style.opacity    = '';
+            flipped = toPage2;
+            book.classList.toggle('flipped', flipped);
+            if (hint) hint.style.opacity = flipped ? '0' : '';
+            setTimeout(function(){ busy = false; }, 360);
+          });
         });
-      });
-    }, 320);
+      }, 360);
+
+    } else {
+      /* ── Desktop: comprimir y expandir (page-flip) + redimensionar ── */
+      img.style.transition = 'transform 0.32s ease, opacity 0.32s ease';
+      img.style.transform  = 'scaleX(0)';
+      img.style.opacity    = '0.15';
+
+      setTimeout(function(){
+        img.src = nextSrc;
+
+        if (toPage2 && natW > 0 && natH > 0) {
+          var ratio = natW / natH;
+          var tW, tH;
+          if (ratio > 1.1) {
+            tW = Math.min(Math.round(pH * ratio), 560);
+            tH = Math.round(tW / ratio);
+          } else {
+            tW = pW; tH = pH;
+          }
+          book.style.width        = tW + 'px';
+          book.style.height       = tH + 'px';
+          book.style.borderRadius = ratio > 1.1 ? '8px' : '';
+        } else if (!toPage2) {
+          book.style.width        = pW + 'px';
+          book.style.height       = pH + 'px';
+          book.style.borderRadius = '';
+        }
+
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            img.style.transform = '';
+            img.style.opacity   = '';
+            flipped = toPage2;
+            book.classList.toggle('flipped', flipped);
+            if (hint) hint.style.opacity = flipped ? '0' : '';
+            setTimeout(function(){ busy = false; }, 420);
+          });
+        });
+      }, 320);
+    }
+  }
+
+  /* Swipe táctil en mobile */
+  var txStart = 0, swiped = false;
+  book.addEventListener('touchstart', function(e){
+    txStart = e.touches[0].clientX;
+    swiped  = false;
+  }, { passive: true });
+
+  book.addEventListener('touchend', function(e){
+    var delta = txStart - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) {
+      swiped = true;
+      if (delta > 0 && !flipped) doFlip();     /* swipe izquierda → siguiente */
+      else if (delta < 0 && flipped) doFlip(); /* swipe derecha   → anterior  */
+      e.preventDefault(); /* evita que dispare también el click */
+    }
+  }, { passive: false });
+
+  /* Clic / tap — omite si ya fue swipe */
+  book.addEventListener('click', function(){
+    if (swiped){ swiped = false; return; }
+    doFlip();
   });
 })();
 </script>
