@@ -102,36 +102,49 @@
   </header>
 
   <!-- Hero de página -->
-  <section style="min-height:38vh;display:flex;align-items:center;background:var(--el-deep);padding:130px 48px 28px;position:relative;overflow:hidden;">
+  <section style="background:var(--el-deep);padding:130px 48px 36px;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
-    <div class="el-container" style="position:relative;z-index:2;">
-      <h1 class="el-anim" style="font-size:clamp(52px,7vw,96px);font-weight:800;letter-spacing:-0.02em;line-height:0.95;margin-bottom:20px;background:linear-gradient(90deg,#c9a84c 0%,#f5e090 40%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-        Visión<br>General
-      </h1>
-      <p class="el-anim el-anim-d1" style="max-width:520px;margin-bottom:0;font-family:'Poppins',sans-serif;font-size:16px;font-weight:300;color:rgba(220,208,185,0.85);line-height:1.75;letter-spacing:0.02em;">
-        Un sistema de transformación real para quienes ya saben lo que quieren
-        y están listos para construir la disciplina que lo hace posible.
-      </p>
-    </div>
-  </section>
+    <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
 
-  <!-- ─── Bloque compacto: principios + diferenciador + para quién ─── -->
-  <section class="el-section" style="padding-top:36px;">
-    <div class="el-container">
-
-      <!-- Frase + pills -->
-      <div class="el-anim" style="text-align:center;margin-bottom:36px;">
-        <p style="font-family:var(--el-font-serif);font-style:italic;font-size:clamp(16px,1.6vw,20px);color:#dfd0b4;line-height:1.65;margin-bottom:24px;">
-          "La disciplina deja de ser motivación temporal y se convierte en una forma de vivir."
+      <!-- Izquierda: título + párrafo -->
+      <div>
+        <h1 class="el-anim" style="font-size:clamp(44px,5.95vw,82px);font-weight:800;letter-spacing:-0.02em;line-height:0.95;margin-bottom:24px;background:linear-gradient(90deg,#c9a84c 0%,#f5e090 40%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+          Visión<br>General
+        </h1>
+        <p class="el-anim el-anim-d1" style="font-family:'Poppins',sans-serif;font-size:19px;font-weight:300;color:rgba(228,215,190,0.92);line-height:1.75;letter-spacing:0.01em;margin:0;">
+          Un sistema de transformación real para quienes ya saben lo que quieren
+          y están listos para construir la disciplina que lo hace posible.
         </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-          {% assign principios = "Disciplina mental,Enfoque profundo,Hábitos,Control emocional,Ejecución constante,Desarrollo estratégico" | split: "," %}
-          {% for p in principios %}
-            <span style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);color:#dfc97a;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;">{{ p }}</span>
-          {% endfor %}
-        </div>
       </div>
 
+      <!-- Derecha: cita destacada -->
+      <div class="el-anim el-anim-d1" style="border-left:3px solid rgba(201,168,76,0.55);padding-left:32px;">
+        <p style="font-family:var(--el-font-serif);font-style:italic;font-size:clamp(20px,2.2vw,28px);color:#e8d5a8;line-height:1.55;margin:0 0 16px;">
+          "La disciplina deja de ser motivación temporal y se convierte en una forma de vivir."
+        </p>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.65);">— Disciplina Imparable</span>
+      </div>
+
+    </div>
+
+    <!-- Pills de visión — prominentes -->
+    <div class="el-container el-anim el-anim-d2" style="margin-top:40px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:14px;">La visión del libro</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        {% assign principios = "Disciplina mental,Enfoque profundo,Hábitos,Control emocional,Ejecución constante,Desarrollo estratégico" | split: "," %}
+        {% for p in principios %}
+          <span style="background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.35);color:#e8c96a;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;border-radius:100px;">{{ p }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── Bloque compacto: diferenciador + para quién ─── -->
+  <section class="el-section" style="padding-top:40px;">
+    <div class="el-container">
+
+      <!-- separador visual eliminado — flujo directo -->
       <!-- Diferenciador + Para quién: dos columnas -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="el-anim el-anim-d1">
 
