@@ -219,18 +219,22 @@
           </div>
         </div>
 
-        <!-- Centro: estrella 4 puntas luxury animada -->
-        <div class="el-arrow-down" style="display:flex;flex-direction:column;align-items:center;width:52px;">
-          <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Centro: estrella 4 puntas luxury — mitad dorada izq., mitad blanca der. -->
+        <div class="el-arrow-down" style="display:flex;flex-direction:column;align-items:center;width:44px;">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <radialGradient id="star-lx" cx="50%" cy="50%" r="55%" gradientUnits="objectBoundingBox">
-                <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.85"/>
-                <stop offset="100%" stop-color="#c9a84c" stop-opacity="0.22"/>
-              </radialGradient>
+              <linearGradient id="star-hw" x1="0" y1="0" x2="44" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="50%" stop-color="#c9a84c" stop-opacity="0.88"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.68"/>
+              </linearGradient>
+              <linearGradient id="star-hw-f" x1="0" y1="0" x2="44" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="50%" stop-color="#c9a84c" stop-opacity="0.07"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05"/>
+              </linearGradient>
             </defs>
-            <path d="M26 2 C23.8 14 14 23.8 2 26 C14 28.2 23.8 38 26 50 C28.2 38 38 28.2 50 26 C38 23.8 28.2 14 26 2 Z" fill="rgba(201,168,76,0.06)" stroke="url(#star-lx)" stroke-width="1.1" stroke-linejoin="round"/>
-            <circle cx="26" cy="26" r="2.8" fill="rgba(201,168,76,0.18)" stroke="#c9a84c" stroke-opacity="0.52" stroke-width="0.9"/>
-            <circle cx="26" cy="26" r="1" fill="#c9a84c" opacity="0.55"/>
+            <path d="M22 2 C20 12 12 20 2 22 C12 24 20 32 22 42 C24 32 32 24 42 22 C32 20 24 12 22 2 Z" fill="url(#star-hw-f)" stroke="url(#star-hw)" stroke-width="1.1" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="2.4" fill="rgba(201,168,76,0.15)" stroke="url(#star-hw)" stroke-width="0.9"/>
+            <circle cx="22" cy="22" r="0.9" fill="url(#star-hw)" opacity="0.60"/>
           </svg>
         </div>
 
