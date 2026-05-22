@@ -6,6 +6,8 @@
   sticky-header { display: none !important; }
   body { padding-top: 0 !important; margin-top: 0 !important; }
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap');
+  @keyframes el-nudge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+  .el-arrow-down { animation: el-nudge 2.2s ease-in-out infinite; display:flex; align-items:center; }
   .el-quote-premium {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
@@ -132,7 +134,7 @@
 
       <!-- DERECHA: línea + La visión del libro -->
       <div class="el-anim el-anim-d1" style="border-left:2px solid rgba(201,168,76,0.40);padding-left:52px;">
-        <p style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin:0 0 16px;">La visión del libro</p>
+        <p style="font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.82);margin:0 0 16px;">La visión del libro</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
 
           {% assign vitem = "display:flex;align-items:center;gap:12px;padding:8px 0;" %}
@@ -207,6 +209,9 @@
           <div style="background:var(--el-deep);clip-path:polygon(14px 0%,calc(100% - 14px) 0%,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0% calc(100% - 14px),0% 14px);padding:14px 22px;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(201,168,76,0.03) 100%);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" style="flex-shrink:0"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             <h3 style="margin:0;font-size:16px;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#c9a84c;">Qué hace diferente a este método</h3>
+            <span class="el-arrow-down" style="margin-left:auto;padding-left:12px;flex-shrink:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </span>
           </div>
         </div>
 
@@ -215,6 +220,9 @@
           <div style="background:var(--el-deep);clip-path:polygon(14px 0%,calc(100% - 14px) 0%,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0% calc(100% - 14px),0% 14px);padding:14px 22px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.025);">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(228,215,190,0.60)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             <h3 style="margin:0;font-size:16px;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(228,215,190,0.75);">Este ebook es para personas que:</h3>
+            <span class="el-arrow-down" style="margin-left:auto;padding-left:12px;flex-shrink:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(228,215,190,0.45)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </span>
           </div>
         </div>
 
