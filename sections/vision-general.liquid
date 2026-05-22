@@ -188,12 +188,23 @@
     <div class="el-container">
 
       <!-- separador visual eliminado — flujo directo -->
-      <!-- Diferenciador + Para quién: dos columnas -->
+      <!-- Títulos sobre los recuadros — misma altura, fuera del box -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:14px;" class="el-anim el-anim-d1">
+        <div style="display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,0.28);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" style="flex-shrink:0"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          <h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:#c9a84c;">Qué hace diferente a este método</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.12);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(228,215,190,0.60)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:rgba(228,215,190,0.75);">Este ebook es para personas que:</h3>
+        </div>
+      </div>
+
+      <!-- Recuadros sin título propio -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="el-anim el-anim-d1">
 
         <!-- Columna A: Qué hace diferente -->
-        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:28px 26px;">
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--el-gold);margin-bottom:18px;">Qué hace diferente a este método</p>
+        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:24px 26px;">
           <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
             {% assign checks = "Eliminar excusas,Crear acción constante,Fortalecer la mente,Recuperar el enfoque,Construir hábitos sólidos,Disciplina sin depender de motivación" | split: "," %}
             {% for item in checks %}
@@ -206,8 +217,7 @@
         </div>
 
         <!-- Columna B: Para quién es -->
-        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px 26px;">
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--el-gray);margin-bottom:18px;">Este ebook es para personas que:</p>
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px 26px;">
           <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
             {% assign para_quien = "Sientes que puedes dar mucho más,Quieres recuperar el control de tu vida,Cansado de empezar y abandonar,Buscas claridad mental y enfoque,Quieres resultados reales" | split: "," %}
             {% for item in para_quien %}
