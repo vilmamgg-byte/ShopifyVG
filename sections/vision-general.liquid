@@ -107,22 +107,24 @@
 
     <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;">
 
-      <!-- IZQUIERDA: título + párrafo + 6 items -->
+      <!-- IZQUIERDA: título + párrafo -->
       <div style="padding-right:52px;">
         <h1 class="el-anim" style="font-size:clamp(44px,5.99vw,83px);font-weight:800;letter-spacing:-0.02em;line-height:0.95;margin-bottom:18px;background:linear-gradient(90deg,#c9a84c 0%,#f5e090 40%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
           Visión<br>General
         </h1>
-        <p class="el-anim el-anim-d1" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:300;color:rgba(228,215,190,0.92);line-height:1.7;letter-spacing:0.01em;margin:0 0 28px;">
+        <p class="el-anim el-anim-d1" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:300;color:rgba(228,215,190,0.92);line-height:1.7;letter-spacing:0.01em;margin:0;">
           Un sistema de transformación real para quienes<br>
           saben lo que quieren y están listos<br>
           para construirlo.
         </p>
+      </div>
 
-        <!-- La visión del libro — lista con iconos -->
-        <p class="el-anim el-anim-d1" style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin:0 0 14px;">La visión del libro</p>
-        <div class="el-anim el-anim-d2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <!-- DERECHA: línea + La visión del libro -->
+      <div class="el-anim el-anim-d1" style="border-left:2px solid rgba(201,168,76,0.40);padding-left:52px;">
+        <p style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin:0 0 16px;">La visión del libro</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
 
-          {% assign vitem = "display:flex;align-items:center;gap:12px;padding:10px 0;" %}
+          {% assign vitem = "display:flex;align-items:center;gap:12px;padding:8px 0;" %}
 
           <div style="{{ vitem }}">
             <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -168,9 +170,6 @@
 
         </div>
       </div>
-
-      <!-- DERECHA: línea dorada decorativa -->
-      <div style="border-left:2px solid rgba(201,168,76,0.40);align-self:stretch;min-height:300px;"></div>
 
     </div>
 
