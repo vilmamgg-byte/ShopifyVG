@@ -441,6 +441,8 @@
   position: relative;
   overflow: hidden;
   padding: 122px 48px 20px;
+  z-index: 2;
+  isolation: isolate;
 }
 
 .el-hero::before {
@@ -1051,6 +1053,8 @@
 .el-section {
   padding: 100px 48px;
   position: relative;
+  background: var(--el-deep);
+  isolation: isolate;
 }
 
 .el-section-alt { background: var(--el-dark); }
