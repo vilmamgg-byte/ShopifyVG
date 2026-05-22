@@ -232,12 +232,14 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="el-anim el-anim-repeat">
 
         <!-- Columna A: Qué hace diferente -->
-        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:43px 45px;">
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:36px 40px;">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
             {% assign checks = "Eliminar excusas,Crear acción constante,Fortalecer la mente,Recuperar el enfoque,Construir hábitos sólidos,Disciplina sin depender de motivación" | split: "," %}
             {% for item in checks %}
-            <li style="display:flex;align-items:center;gap:9px;color:var(--el-light);font-size:14px;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2.5" style="flex-shrink:0"><path d="M20 6L9 17l-5-5"/></svg>
+            <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:rgba(245,235,210,0.95);letter-spacing:0.01em;line-height:1.4;">
+              <span style="width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.40);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </span>
               {{ item }}
             </li>
             {% endfor %}
@@ -245,12 +247,14 @@
         </div>
 
         <!-- Columna B: Para quién es -->
-        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:43px 45px;">
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:36px 40px;">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
             {% assign para_quien = "Sientes que puedes dar mucho más,Quieres recuperar el control de tu vida,Cansado de empezar y abandonar,Buscas claridad mental y enfoque,Quieres resultados reales" | split: "," %}
             {% for item in para_quien %}
-            <li style="display:flex;align-items:center;gap:9px;color:var(--el-light);font-size:14px;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.55)" stroke-width="2" style="flex-shrink:0"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
+            <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:16px;font-weight:500;color:rgba(245,235,210,0.95);letter-spacing:0.01em;line-height:1.4;">
+              <span style="width:28px;height:28px;border-radius:50%;background:rgba(228,215,190,0.08);border:1px solid rgba(228,215,190,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(228,215,190,0.85)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              </span>
               {{ item }}
             </li>
             {% endfor %}
