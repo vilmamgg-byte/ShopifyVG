@@ -102,93 +102,84 @@
   </header>
 
   <!-- Hero de página -->
-  <section style="background:var(--el-deep);padding:122px 48px 28px;position:relative;overflow:hidden;">
+  <section style="background:var(--el-deep);padding:122px 48px 36px;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
-    <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;">
 
-      <!-- Izquierda: título + párrafo -->
+    <div class="el-container" style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;">
+
+      <!-- IZQUIERDA: título + párrafo + 6 items -->
       <div style="padding-right:52px;">
         <h1 class="el-anim" style="font-size:clamp(44px,5.99vw,83px);font-weight:800;letter-spacing:-0.02em;line-height:0.95;margin-bottom:18px;background:linear-gradient(90deg,#c9a84c 0%,#f5e090 40%,#c9a84c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
           Visión<br>General
         </h1>
-        <p class="el-anim el-anim-d1" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:300;color:rgba(228,215,190,0.92);line-height:1.7;letter-spacing:0.01em;margin:0;">
+        <p class="el-anim el-anim-d1" style="font-family:'Poppins',sans-serif;font-size:18px;font-weight:300;color:rgba(228,215,190,0.92);line-height:1.7;letter-spacing:0.01em;margin:0 0 28px;">
           Un sistema de transformación real para quienes<br>
           saben lo que quieren y están listos<br>
           para construirlo.
         </p>
+
+        <!-- La visión del libro — lista con iconos -->
+        <p class="el-anim el-anim-d1" style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin:0 0 14px;">La visión del libro</p>
+        <div class="el-anim el-anim-d2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+          {% assign vitem = "display:flex;align-items:center;gap:12px;padding:10px 0;" %}
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 01-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Disciplina Mental</span>
+          </div>
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Enfoque Profundo</span>
+          </div>
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 019-9 9.75 9.75 0 016.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-9 9 9.75 9.75 0 01-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Hábitos Duraderos</span>
+          </div>
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Control Emocional</span>
+          </div>
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Ejecución Constante</span>
+          </div>
+
+          <div style="{{ vitem }}">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#e8c96a;">Desarrollo Estratégico</span>
+          </div>
+
+        </div>
       </div>
 
-      <!-- Derecha: cita destacada -->
-      <div class="el-anim el-anim-d1" style="border-left:2px solid rgba(201,168,76,0.45);padding-left:128px;">
-        <p style="font-family:var(--el-font-serif);font-style:italic;font-size:clamp(19px,2.1vw,26px);color:#e8d5a8;line-height:1.52;margin:0 0 12px;">"La disciplina deja de ser<br>motivación temporal<br>y se convierte en una forma de vivir."</p>
-        <span style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.65);">— Disciplina Imparable</span>
-      </div>
+      <!-- DERECHA: línea dorada decorativa -->
+      <div style="border-left:2px solid rgba(201,168,76,0.40);align-self:stretch;min-height:300px;"></div>
 
     </div>
 
-    <!-- Tarjetas de visión con íconos -->
-    <div class="el-container el-anim el-anim-d2" style="margin-top:28px;">
-      <p style="font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:13px;max-width:840px;margin-left:auto;margin-right:auto;text-align:center;">La visión del libro</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:840px;margin:0 auto;">
-
-        {% assign vcard = "background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.22);border-radius:11px;padding:11px 15px;display:flex;flex-direction:row;align-items:center;gap:13px;" %}
-
-        <!-- Disciplina mental -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 01-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Disciplina Mental</span>
-        </div>
-
-        <!-- Enfoque profundo -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
-            <line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/>
-            <line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Enfoque Profundo</span>
-        </div>
-
-        <!-- Hábitos -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <path d="M3 12a9 9 0 019-9 9.75 9.75 0 016.74 2.74L21 8"/>
-            <path d="M21 3v5h-5"/>
-            <path d="M21 12a9 9 0 01-9 9 9.75 9.75 0 01-6.74-2.74L3 16"/>
-            <path d="M3 21v-5h5"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Hábitos Duraderos</span>
-        </div>
-
-        <!-- Control emocional -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M9 12l2 2 4-4"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Control Emocional</span>
-        </div>
-
-        <!-- Ejecución constante -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Ejecución Constante</span>
-        </div>
-
-        <!-- Desarrollo estratégico -->
-        <div style="{{ vcard }}">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-            <polyline points="16 7 22 7 22 13"/>
-          </svg>
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#e8c96a;white-space:nowrap;">Desarrollo Estratégico</span>
-        </div>
-
-      </div>
+    <!-- CITA: una sola línea al fondo -->
+    <div class="el-container el-anim" style="position:relative;z-index:2;margin-top:32px;padding-top:24px;text-align:center;border-top:1px solid rgba(201,168,76,0.15);">
+      <p style="font-family:var(--el-font-serif);font-style:italic;font-size:clamp(14px,1.35vw,18px);color:#dfd0b4;margin:0;">
+        "La disciplina deja de ser motivación temporal y se convierte en una forma de vivir."
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(201,168,76,0.60);margin-left:12px;">— Disciplina Imparable</span>
+      </p>
     </div>
 
   </section>
