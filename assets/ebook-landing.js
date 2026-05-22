@@ -59,6 +59,21 @@
 
   document.querySelectorAll('.el-anim').forEach(el => revealObserver.observe(el));
 
+  /* ── Scroll-reveal reversible (oculta al subir scroll) ── */
+  const repeatObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    },
+    { threshold: 0.05 }
+  );
+  document.querySelectorAll('.el-anim-repeat').forEach(el => repeatObserver.observe(el));
+
   /* ── FAQ accordion ── */
   document.querySelectorAll('.el-faq-btn').forEach(btn => {
     btn.addEventListener('click', function () {
