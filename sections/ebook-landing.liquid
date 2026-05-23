@@ -813,7 +813,6 @@
 <script>
 (function(){
   var html   = document.documentElement;
-  var body   = document.body;
   var hero   = document.querySelector('.el-hero');
   var cambio = document.querySelector('.el-cambio-wrap');
   if (!hero || !cambio) return;
@@ -821,52 +820,80 @@
   var sliding  = false;
   var DURATION = 700;
 
-  /* Slide to target element using CSS transform — no scroll-position change during animation */
-  function goTo(target, fromTop) {
+  function fixCambio(transform) {
+    cambio.style.position   = 'fixed';
+    cambio.style.top        = '0';
+    cambio.style.left       = '0';
+    cambio.style.width      = '100vw';
+    cambio.style.height     = '100vh';
+    cambio.style.zIndex     = '999';
+    cambio.style.transform  = transform;
+    cambio.style.transition = 'none';
+    void cambio.offsetWidth; /* force reflow */
+  }
+
+  function restoreCambio() {
+    cambio.style.position   = '';
+    cambio.style.top        = '';
+    cambio.style.left       = '';
+    cambio.style.width      = '';
+    cambio.style.height     = '';
+    cambio.style.zIndex     = '';
+    cambio.style.transform  = '';
+    cambio.style.transition = '';
+  }
+
+  /* hero → cambio: cambio slides UP from below, scroll jumps AFTER animation */
+  function goToCambio() {
     if (sliding) return;
     sliding = true;
 
-    var cambioDocTop = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
-    var destScroll   = target === hero ? 0 : cambioDocTop;
+    var cambioTop = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
 
-    /* Lock page scroll */
+    /* Lock user scroll during animation */
     html.style.overflow = 'hidden';
-    body.style.overflow = 'hidden';
 
-    /* Place target fixed, off-screen */
-    target.style.position   = 'fixed';
-    target.style.top        = '0';
-    target.style.left       = '0';
-    target.style.width      = '100vw';
-    target.style.height     = '100vh';
-    target.style.zIndex     = '999';
-    target.style.transform  = fromTop ? 'translateY(-100vh)' : 'translateY(100vh)';
-    target.style.transition = 'none';
-
-    void target.offsetWidth; /* force reflow so transition is registered */
-
-    target.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
-    target.style.transform  = 'translateY(0)';
+    fixCambio('translateY(100vh)');
+    cambio.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
+    cambio.style.transform  = 'translateY(0)';
 
     setTimeout(function() {
-      /* Restore layout: remove overflow lock, jump scroll, restore target to normal flow */
-      html.style.overflow         = '';
-      body.style.overflow         = '';
-      html.style.scrollBehavior   = 'auto';
-      window.scrollTo(0, destScroll);
-      html.style.scrollBehavior   = '';
-
-      target.style.position   = '';
-      target.style.top        = '';
-      target.style.left       = '';
-      target.style.width      = '';
-      target.style.height     = '';
-      target.style.zIndex     = '';
-      target.style.transform  = '';
-      target.style.transition = '';
-
+      /* Remove overflow lock, force style flush, THEN scroll */
+      html.style.overflow = '';
+      void html.offsetHeight;
+      html.style.scrollBehavior = 'auto';
+      window.scrollTo(0, cambioTop);
+      html.style.scrollBehavior = '';
+      restoreCambio();
       sliding = false;
     }, DURATION + 30);
+  }
+
+  /* cambio → hero: scroll jumps to 0 FIRST, then cambio slides DOWN revealing hero */
+  function goToHero() {
+    if (sliding) return;
+    sliding = true;
+
+    /* Fix cambio visible in viewport */
+    fixCambio('translateY(0)');
+
+    /* Jump scroll to top BEFORE animation — no overflow:hidden blocking it */
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = '';
+
+    /* Animate cambio exiting downward, hero revealed behind it */
+    cambio.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
+    cambio.style.transform  = 'translateY(100vh)';
+
+    setTimeout(function() {
+      restoreCambio();
+      sliding = false;
+    }, DURATION + 30);
+  }
+
+  function cambioDocTop() {
+    return Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
   }
 
   window.addEventListener('wheel', function(e) {
@@ -874,19 +901,16 @@
 
     var scrollY = window.pageYOffset;
     var heroH   = hero.offsetHeight;
-    var cambioY = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
+    var cy      = cambioDocTop();
 
-    /* In top half of hero, scroll down → go to cambio */
     if (scrollY < heroH * 0.5 && e.deltaY > 0) {
       e.preventDefault();
-      goTo(cambio, false);
+      goToCambio();
       return;
     }
-
-    /* At cambio, scroll up → go back to hero */
-    if (scrollY >= cambioY - 50 && scrollY <= cambioY + window.innerHeight * 0.5 && e.deltaY < 0) {
+    if (scrollY >= cy - 50 && scrollY <= cy + window.innerHeight * 0.5 && e.deltaY < 0) {
       e.preventDefault();
-      goTo(hero, true);
+      goToHero();
       return;
     }
   }, { passive: false });
@@ -897,16 +921,13 @@
   }, { passive: true });
   window.addEventListener('touchend', function(e) {
     if (sliding) return;
-    var dy      = ty0 - e.changedTouches[0].clientY;
-    var scrollY = window.pageYOffset;
-    var heroH   = hero.offsetHeight;
-    var cambioY = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
+    var dy  = ty0 - e.changedTouches[0].clientY;
+    var sy  = window.pageYOffset;
+    var heroH = hero.offsetHeight;
+    var cy  = cambioDocTop();
 
-    if (scrollY < heroH * 0.5 && dy > 40) {
-      goTo(cambio, false);
-    } else if (scrollY >= cambioY - 50 && dy < -40) {
-      goTo(hero, true);
-    }
+    if (sy < heroH * 0.5 && dy > 40)       goToCambio();
+    else if (sy >= cy - 50 && dy < -40)     goToHero();
   }, { passive: true });
 })();
 </script>
