@@ -788,27 +788,38 @@
 
   var snapping = false;
 
-  function snapToCambio() {
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+  }
+
+  function slideTo(target) {
     if (snapping) return;
     snapping = true;
-    cambio.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(function(){ snapping = false; }, 1000);
+    var start     = window.pageYOffset;
+    var end       = target.getBoundingClientRect().top + window.pageYOffset;
+    var duration  = 700;
+    var startTime = null;
+
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      window.scrollTo(0, start + (end - start) * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+      else snapping = false;
+    }
+    requestAnimationFrame(step);
   }
 
   hero.addEventListener('wheel', function(e) {
-    if (e.deltaY > 0) {
-      e.preventDefault();
-      snapToCambio();
-    }
+    if (e.deltaY > 0) { e.preventDefault(); slideTo(cambio); }
   }, { passive: false });
 
   hero.addEventListener('touchstart', function(e) {
-    hero._touchY = e.touches[0].clientY;
+    hero._ty = e.touches[0].clientY;
   }, { passive: true });
 
   hero.addEventListener('touchend', function(e) {
-    var diff = hero._touchY - e.changedTouches[0].clientY;
-    if (diff > 40) snapToCambio();
+    if (hero._ty - e.changedTouches[0].clientY > 40) slideTo(cambio);
   }, { passive: true });
 })();
 </script>
