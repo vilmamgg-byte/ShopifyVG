@@ -44,8 +44,6 @@
   border-top: solid 0.1rem rgba(var(--color-foreground), 0.08);
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
-  display: flex;
-  justify-content: center;
 }
 
 .footer__content-bottom:only-child {
@@ -55,10 +53,6 @@
 .footer__content-bottom-wrapper {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 @media screen and (max-width: 749px) {
