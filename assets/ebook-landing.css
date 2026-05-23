@@ -440,7 +440,7 @@
   background: var(--el-deep);
   position: relative;
   overflow: hidden;
-  padding: 122px 48px 20px;
+  padding: 90px 48px 20px;
   z-index: 2;
   isolation: isolate;
 }
@@ -511,7 +511,7 @@
   text-transform: uppercase;
   padding: 8px 16px;
   border-radius: var(--el-r-full);
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .el-badge-dot {
@@ -530,12 +530,12 @@
 /* Title */
 .el-hero-title {
   font-family: var(--el-font-alt);
-  font-size: clamp(36px, 4.4vw, 62px);
+  font-size: clamp(30px, 3.8vw, 52px);
   font-weight: 800;
-  line-height: 1.07;
+  line-height: 1.05;
   letter-spacing: -2px;
   color: var(--el-white);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .el-gold-text {
@@ -548,13 +548,13 @@
 .el-hero-sub {
   font-family: var(--el-font-serif);
   font-style: italic;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 400;
   color: #dfd0b4;
-  line-height: 1.88;
+  line-height: 1.7;
   letter-spacing: 0.014em;
   max-width: 480px;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   padding-left: 18px;
   border-left: 2px solid rgba(201, 168, 76, 0.5);
 }
@@ -565,7 +565,7 @@
   align-items: center;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 44px;
+  margin-bottom: 20px;
 }
 
 .el-btn-gold {
@@ -701,8 +701,8 @@
 }
 
 .el-book {
-  width: 338px;
-  height: 468px;
+  width: 290px;
+  height: 402px;
   border-radius: 3px 14px 14px 3px;
   border: 1px solid rgba(201,168,76,0.28);
   box-shadow:
