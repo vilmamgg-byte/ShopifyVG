@@ -808,7 +808,7 @@
     if (sliding) return;
     sliding = true;
 
-    var destScroll = target === hero ? 0 : hero.offsetHeight;
+    var destScroll = target === hero ? 0 : cambio.offsetTop;
 
     /* Lock page scroll */
     html.style.overflow = 'hidden';
@@ -855,7 +855,7 @@
 
     var scrollY = window.pageYOffset;
     var heroH   = hero.offsetHeight;
-    var cambioY = heroH;
+    var cambioY = cambio.offsetTop;
 
     /* In top half of hero, scroll down → go to cambio */
     if (scrollY < heroH * 0.5 && e.deltaY > 0) {
@@ -881,7 +881,7 @@
     var dy      = ty0 - e.changedTouches[0].clientY;
     var scrollY = window.pageYOffset;
     var heroH   = hero.offsetHeight;
-    var cambioY = heroH;
+    var cambioY = cambio.offsetTop;
 
     if (scrollY < heroH * 0.5 && dy > 40) {
       goTo(cambio, false);
