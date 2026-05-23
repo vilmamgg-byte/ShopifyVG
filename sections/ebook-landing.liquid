@@ -12,9 +12,17 @@
     padding-top: 11px !important;
     align-self: flex-start !important;
   }
+  html {
+    scroll-snap-type: y mandatory;
+  }
   .el-hero {
     height: 100vh !important;
     overflow: hidden !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .el-trust-strip {
+    scroll-snap-align: start;
   }
   .el-cambio-wrap {
     height: 100vh !important;
@@ -24,6 +32,8 @@
     overflow: hidden !important;
     padding: 0 !important;
     box-sizing: border-box !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
   .el-cambio-clip {
     display: flex !important;
@@ -810,127 +820,6 @@
 })();
 </script>
 
-<script>
-(function(){
-  var html   = document.documentElement;
-  var hero   = document.querySelector('.el-hero');
-  var cambio = document.querySelector('.el-cambio-wrap');
-  if (!hero || !cambio) return;
-
-  var sliding  = false;
-  var DURATION = 700;
-
-  function fixCambio(transform) {
-    cambio.style.position   = 'fixed';
-    cambio.style.top        = '0';
-    cambio.style.left       = '0';
-    cambio.style.width      = '100vw';
-    cambio.style.height     = '100vh';
-    cambio.style.zIndex     = '999';
-    cambio.style.transform  = transform;
-    cambio.style.transition = 'none';
-    void cambio.offsetWidth; /* force reflow */
-  }
-
-  function restoreCambio() {
-    cambio.style.position   = '';
-    cambio.style.top        = '';
-    cambio.style.left       = '';
-    cambio.style.width      = '';
-    cambio.style.height     = '';
-    cambio.style.zIndex     = '';
-    cambio.style.transform  = '';
-    cambio.style.transition = '';
-  }
-
-  /* hero → cambio: cambio slides UP from below, scroll jumps AFTER animation */
-  function goToCambio() {
-    if (sliding) return;
-    sliding = true;
-
-    var cambioTop = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
-
-    /* Lock user scroll during animation */
-    html.style.overflow = 'hidden';
-
-    fixCambio('translateY(100vh)');
-    cambio.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
-    cambio.style.transform  = 'translateY(0)';
-
-    setTimeout(function() {
-      /* Remove overflow lock, force style flush, THEN scroll */
-      html.style.overflow = '';
-      void html.offsetHeight;
-      html.style.scrollBehavior = 'auto';
-      window.scrollTo(0, cambioTop);
-      html.style.scrollBehavior = '';
-      restoreCambio();
-      sliding = false;
-    }, DURATION + 30);
-  }
-
-  /* cambio → hero: scroll jumps to 0 FIRST, then cambio slides DOWN revealing hero */
-  function goToHero() {
-    if (sliding) return;
-    sliding = true;
-
-    /* Fix cambio visible in viewport */
-    fixCambio('translateY(0)');
-
-    /* Jump scroll to top BEFORE animation — no overflow:hidden blocking it */
-    html.style.scrollBehavior = 'auto';
-    window.scrollTo(0, 0);
-    html.style.scrollBehavior = '';
-
-    /* Animate cambio exiting downward, hero revealed behind it */
-    cambio.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
-    cambio.style.transform  = 'translateY(100vh)';
-
-    setTimeout(function() {
-      restoreCambio();
-      sliding = false;
-    }, DURATION + 30);
-  }
-
-  function cambioDocTop() {
-    return Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
-  }
-
-  window.addEventListener('wheel', function(e) {
-    if (sliding) { e.preventDefault(); return; }
-
-    var scrollY = window.pageYOffset;
-    var heroH   = hero.offsetHeight;
-    var cy      = cambioDocTop();
-
-    if (scrollY < heroH * 0.5 && e.deltaY > 0) {
-      e.preventDefault();
-      goToCambio();
-      return;
-    }
-    if (scrollY >= cy - 50 && scrollY <= cy + window.innerHeight * 0.5 && e.deltaY < 0) {
-      e.preventDefault();
-      goToHero();
-      return;
-    }
-  }, { passive: false });
-
-  var ty0 = 0;
-  window.addEventListener('touchstart', function(e) {
-    ty0 = e.touches[0].clientY;
-  }, { passive: true });
-  window.addEventListener('touchend', function(e) {
-    if (sliding) return;
-    var dy  = ty0 - e.changedTouches[0].clientY;
-    var sy  = window.pageYOffset;
-    var heroH = hero.offsetHeight;
-    var cy  = cambioDocTop();
-
-    if (sy < heroH * 0.5 && dy > 40)       goToCambio();
-    else if (sy >= cy - 50 && dy < -40)     goToHero();
-  }, { passive: true });
-})();
-</script>
 
 {% schema %}
 {
