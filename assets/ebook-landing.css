@@ -514,8 +514,9 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 8px 16px;
+  padding: 8px 10px;
   border-radius: var(--el-r-full);
+  margin-top: -13px;
   margin-bottom: 10px;
 }
 
