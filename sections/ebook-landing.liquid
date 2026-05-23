@@ -12,6 +12,17 @@
     padding-top: 11px !important;
     align-self: flex-start !important;
   }
+  .el-hero {
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+  .el-cambio-wrap {
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
 
   .el-hero-actions .el-btn-gold {
     background: transparent !important;
@@ -786,40 +797,51 @@
   var cambio = document.querySelector('.el-cambio-wrap');
   if (!hero || !cambio) return;
 
-  var snapping = false;
+  var sliding = false;
 
   function easeInOutCubic(t) {
-    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
   }
 
   function slideTo(target) {
-    if (snapping) return;
-    snapping = true;
-    var start     = window.pageYOffset;
-    var end       = target.getBoundingClientRect().top + window.pageYOffset;
-    var duration  = 700;
-    var startTime = null;
+    if (sliding) return;
+    sliding = true;
+    document.body.style.overflow = 'hidden';
+
+    var start    = window.pageYOffset;
+    var end      = target.getBoundingClientRect().top + window.pageYOffset;
+    var duration = 750;
+    var t0       = null;
 
     function step(ts) {
-      if (!startTime) startTime = ts;
-      var progress = Math.min((ts - startTime) / duration, 1);
-      window.scrollTo(0, start + (end - start) * easeInOutCubic(progress));
-      if (progress < 1) requestAnimationFrame(step);
-      else snapping = false;
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / duration, 1);
+      window.scrollTo(0, start + (end - start) * easeInOutCubic(p));
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        document.body.style.overflow = '';
+        sliding = false;
+      }
     }
     requestAnimationFrame(step);
   }
 
-  hero.addEventListener('wheel', function(e) {
-    if (e.deltaY > 0) { e.preventDefault(); slideTo(cambio); }
+  /* Bloquear scroll parcial en el hero */
+  window.addEventListener('wheel', function(e) {
+    var inHero = window.pageYOffset < hero.offsetHeight * 0.9;
+    if (!inHero) return;
+    e.preventDefault();
+    if (e.deltaY > 0) slideTo(cambio);
   }, { passive: false });
 
-  hero.addEventListener('touchstart', function(e) {
-    hero._ty = e.touches[0].clientY;
-  }, { passive: true });
-
-  hero.addEventListener('touchend', function(e) {
-    if (hero._ty - e.changedTouches[0].clientY > 40) slideTo(cambio);
+  /* Touch */
+  var ty0 = 0;
+  window.addEventListener('touchstart', function(e) { ty0 = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend', function(e) {
+    var inHero = window.pageYOffset < hero.offsetHeight * 0.9;
+    if (!inHero) return;
+    if (ty0 - e.changedTouches[0].clientY > 40) slideTo(cambio);
   }, { passive: true });
 })();
 </script>
