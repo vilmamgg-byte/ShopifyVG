@@ -92,6 +92,97 @@
     overflow: hidden !important;
     pointer-events: none !important;
   }
+
+  /* ── FULLSCREEN CINEMATIC SLIDE SYSTEM ─────────────────────── */
+  html, body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+  .el-page {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+  .el-trust-strip,
+  .el-section.el-section-alt,
+  .el-section#el-faq,
+  .el-cta-section {
+    height: 100vh !important;
+    box-sizing: border-box !important;
+  }
+  .el-trust-strip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .el-section.el-section-alt .el-container,
+  .el-section#el-faq .el-container {
+    overflow-y: auto !important;
+    max-height: calc(100vh - 80px) !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(201,168,76,0.3) transparent !important;
+  }
+  .el-section.el-section-alt,
+  .el-section#el-faq {
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+  }
+  .el-cta-section {
+    overflow: hidden !important;
+  }
+  .el-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    pointer-events: auto !important;
+  }
+  .el-mobile-nav {
+    z-index: 1100 !important;
+  }
+  .el-footer {
+    display: none !important;
+  }
+
+  /* ── NAVIGATION DOTS ────────────────────────────────────────── */
+  .fp-nav {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .fp-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+    padding: 0;
+    display: block;
+  }
+  .fp-dot:hover {
+    background: rgba(255,255,255,0.4);
+  }
+  .fp-dot--active {
+    background: rgba(201,168,76,0.9) !important;
+    border-color: rgba(201,168,76,0.7) !important;
+    transform: scale(1.6) !important;
+  }
+  @media (max-width: 768px) {
+    .fp-nav { right: 14px; gap: 10px; }
+    .fp-dot  { width: 6px; height: 6px; }
+  }
 {%- endstyle -%}
 
 <div class="el-page">
@@ -812,135 +903,135 @@
 
 <script>
 (function(){
-  var hero   = document.querySelector('.el-hero');
-  var cambio = document.querySelector('.el-cambio-wrap');
-  if (!hero || !cambio) return;
+  var SELECTORS = [
+    '.el-hero',
+    '.el-cambio-wrap',
+    '.el-trust-strip',
+    '.el-section.el-section-alt',
+    '#el-faq',
+    '#el-comprar'
+  ];
+  var DUR  = 1000;
+  var EASE = 'cubic-bezier(0.77,0,0.175,1)';
 
-  var busy = false;
-  var DUR  = 900;                                /* ms — duración de la transición */
-  var EASE = 'cubic-bezier(0.77,0,0.175,1)';    /* easeInOutQuart — feel premium */
+  var slides = [];
+  SELECTORS.forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (el) slides.push(el);
+  });
+  if (slides.length < 2) return;
 
-  /* ── helpers ────────────────────────────────────────────── */
+  var current = 0;
+  var busy    = false;
 
-  /* fija el elemento como capa fullscreen con transform inicial */
-  function pin(el, tfm, zi) {
-    el.style.position   = 'fixed';
-    el.style.top        = '0';
-    el.style.left       = '0';
-    el.style.width      = '100vw';
-    el.style.height     = '100vh';
-    el.style.zIndex     = zi;
-    el.style.transform  = tfm;
-    el.style.transition = 'none';
+  function initSlides(){
+    slides.forEach(function(el, i){
+      el.style.position   = 'fixed';
+      el.style.top        = '0';
+      el.style.left       = '0';
+      el.style.width      = '100vw';
+      el.style.height     = '100vh';
+      el.style.transition = 'none';
+      el.style.transform  = i === 0 ? 'translateY(0)' : 'translateY(100vh)';
+      el.style.zIndex     = i === 0 ? '10' : '5';
+    });
+    activateAnims(slides[0]);
   }
 
-  /* arranca la transición hacia un transform destino */
-  function tween(el, tfm) {
-    el.style.transition = 'transform ' + DUR + 'ms ' + EASE;
-    el.style.transform  = tfm;
+  function activateAnims(slide){
+    slide.querySelectorAll('.el-anim').forEach(function(el){
+      el.classList.add('visible');
+    });
   }
 
-  /* devuelve el elemento a su flujo normal eliminando todos los estilos inline */
-  function unpin(el) {
-    ['position','top','left','width','height','z-index','transform','transition']
-      .forEach(function(p){ el.style.removeProperty(p); });
-  }
-
-  /* scroll instantáneo ignorando scroll-behavior del tema */
-  function scrollNow(y) {
-    var d = document.documentElement;
-    var b = document.body;
-    d.style.scrollBehavior = 'auto';
-    b.style.scrollBehavior = 'auto';
-    window.scrollTo(0, y);
-    d.scrollTop = y;
-    b.scrollTop = y;
-    d.style.scrollBehavior = '';
-    b.style.scrollBehavior = '';
-  }
-
-  /* ── transiciones ───────────────────────────────────────── */
-
-  /* hero → cambio: hero sale hacia arriba, cambio entra desde abajo */
-  function goDown() {
-    if (busy) return;
+  function goTo(next){
+    if (busy || next === current || next < 0 || next >= slides.length) return;
     busy = true;
 
-    /* posición real de cambio en el documento (captada antes de mover nada) */
-    var cy = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
+    var dir = next > current ? 1 : -1;
+    var cur = slides[current];
+    var nxt = slides[next];
 
-    /* apila ambas secciones como capas fijas */
-    pin(hero,   'translateY(0)',     10);
-    pin(cambio, 'translateY(100vh)', 11);
-    void hero.offsetWidth;              /* fuerza reflow para que la transición se registre */
+    nxt.style.transition = 'none';
+    nxt.style.transform  = 'translateY(' + (dir * 100) + 'vh)';
+    nxt.style.zIndex     = '11';
+    cur.style.zIndex     = '10';
 
-    /* ambas se mueven simultáneamente */
-    tween(hero,   'translateY(-100vh)');
-    tween(cambio, 'translateY(0)');
+    void nxt.offsetWidth;
 
-    setTimeout(function() {
-      /* vuelven al flujo → forzar recálculo de layout → scroll al destino */
-      unpin(hero);
-      unpin(cambio);
-      void hero.offsetHeight;           /* fuerza layout para que el documento tenga altura */
-      scrollNow(cy);
+    var trans = 'transform ' + DUR + 'ms ' + EASE;
+    nxt.style.transition = trans;
+    cur.style.transition = trans;
+    nxt.style.transform  = 'translateY(0)';
+    cur.style.transform  = 'translateY(' + (-dir * 100) + 'vh)';
+
+    setTimeout(function(){
+      slides.forEach(function(el, i){
+        el.style.transition = 'none';
+        el.style.zIndex     = i === next ? '10' : '5';
+        if (i === next)     el.style.transform = 'translateY(0)';
+        else if (i < next)  el.style.transform = 'translateY(-100vh)';
+        else                el.style.transform = 'translateY(100vh)';
+      });
+      current = next;
+      updateDots();
+      activateAnims(slides[current]);
       busy = false;
     }, DUR + 50);
   }
 
-  /* cambio → hero: cambio sale hacia abajo, hero entra desde arriba */
-  function goUp() {
-    if (busy) return;
-    busy = true;
+  var nav = document.createElement('nav');
+  nav.className = 'fp-nav';
+  nav.setAttribute('aria-label', 'Navegación');
+  slides.forEach(function(_, i){
+    var btn = document.createElement('button');
+    btn.className = 'fp-dot' + (i === 0 ? ' fp-dot--active' : '');
+    btn.setAttribute('aria-label', 'Sección ' + (i + 1));
+    btn.addEventListener('click', function(){ goTo(i); });
+    nav.appendChild(btn);
+  });
+  document.body.appendChild(nav);
 
-    pin(cambio, 'translateY(0)',      10);
-    pin(hero,   'translateY(-100vh)', 11);
-    void cambio.offsetWidth;
-
-    /* scroll a 0 AHORA mientras ambas están fijas — sin cambio visual */
-    scrollNow(0);
-
-    tween(cambio, 'translateY(100vh)');
-    tween(hero,   'translateY(0)');
-
-    setTimeout(function() {
-      unpin(cambio);
-      unpin(hero);
-      busy = false;
-    }, DUR + 50);
+  function updateDots(){
+    nav.querySelectorAll('.fp-dot').forEach(function(btn, i){
+      btn.classList.toggle('fp-dot--active', i === current);
+    });
   }
 
-  /* ── eventos ────────────────────────────────────────────── */
+  window.addEventListener('wheel', function(e){
+    if (busy){ e.preventDefault(); return; }
 
-  window.addEventListener('wheel', function(e) {
-    if (busy) { e.preventDefault(); return; }
-
-    var sy = window.pageYOffset;
-    var cy = Math.round(cambio.getBoundingClientRect().top + sy);
-
-    if (sy < window.innerHeight * 0.9 && e.deltaY > 0) {
-      e.preventDefault();
-      goDown();
-      return;
+    var inner = slides[current].querySelector('.el-container');
+    if (inner && inner.scrollHeight > inner.clientHeight + 4){
+      var atTop    = inner.scrollTop <= 0;
+      var atBottom = inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 2;
+      if (e.deltaY > 3 && !atBottom) return;
+      if (e.deltaY < -3 && !atTop)   return;
     }
-    if (Math.abs(sy - cy) < 60 && e.deltaY < 0) {
-      e.preventDefault();
-      goUp();
-    }
+
+    e.preventDefault();
+    if (e.deltaY > 3)  goTo(current + 1);
+    if (e.deltaY < -3) goTo(current - 1);
   }, { passive: false });
 
   var ty = 0;
-  window.addEventListener('touchstart', function(e) {
+  window.addEventListener('touchstart', function(e){
     ty = e.touches[0].clientY;
   }, { passive: true });
-  window.addEventListener('touchend', function(e) {
+  window.addEventListener('touchend', function(e){
     if (busy) return;
     var dy = ty - e.changedTouches[0].clientY;
-    var sy = window.pageYOffset;
-    var cy = Math.round(cambio.getBoundingClientRect().top + sy);
-    if (sy < window.innerHeight * 0.9 && dy > 40)        goDown();
-    else if (Math.abs(sy - cy) < 60 && dy < -40)         goUp();
+    if (dy > 40)  goTo(current + 1);
+    if (dy < -40) goTo(current - 1);
   }, { passive: true });
+
+  window.addEventListener('keydown', function(e){
+    if (busy) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown'){ e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp'   || e.key === 'PageUp')  { e.preventDefault(); goTo(current - 1); }
+  });
+
+  initSlides();
 })();
 </script>
 
