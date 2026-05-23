@@ -22,6 +22,25 @@
     align-items: center !important;
     justify-content: center !important;
     overflow: hidden !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .el-cambio-clip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  .el-cambio-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+    margin: 0 !important;
+    transform: scale(0.9) !important;
   }
 
   .el-hero-actions .el-btn-gold {
@@ -347,8 +366,7 @@
     <div class="el-cambio-clip">
       <img src="{{ 'CAMBIO.png' | asset_url }}"
            alt="El cambio comienza aquí"
-           class="el-cambio-img el-anim"
-           style="transform:scale(0.9);">
+           class="el-cambio-img el-anim">
     </div>
   </div>
 
@@ -808,7 +826,8 @@
     if (sliding) return;
     sliding = true;
 
-    var destScroll = target === hero ? 0 : cambio.offsetTop;
+    var cambioDocTop = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
+    var destScroll   = target === hero ? 0 : cambioDocTop;
 
     /* Lock page scroll */
     html.style.overflow = 'hidden';
@@ -855,7 +874,7 @@
 
     var scrollY = window.pageYOffset;
     var heroH   = hero.offsetHeight;
-    var cambioY = cambio.offsetTop;
+    var cambioY = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
 
     /* In top half of hero, scroll down → go to cambio */
     if (scrollY < heroH * 0.5 && e.deltaY > 0) {
@@ -881,7 +900,7 @@
     var dy      = ty0 - e.changedTouches[0].clientY;
     var scrollY = window.pageYOffset;
     var heroH   = hero.offsetHeight;
-    var cambioY = cambio.offsetTop;
+    var cambioY = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
 
     if (scrollY < heroH * 0.5 && dy > 40) {
       goTo(cambio, false);
