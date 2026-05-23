@@ -780,6 +780,39 @@
 })();
 </script>
 
+<script>
+(function(){
+  var hero   = document.querySelector('.el-hero');
+  var cambio = document.querySelector('.el-cambio-wrap');
+  if (!hero || !cambio) return;
+
+  var snapping = false;
+
+  function snapToCambio() {
+    if (snapping) return;
+    snapping = true;
+    cambio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function(){ snapping = false; }, 1000);
+  }
+
+  hero.addEventListener('wheel', function(e) {
+    if (e.deltaY > 0) {
+      e.preventDefault();
+      snapToCambio();
+    }
+  }, { passive: false });
+
+  hero.addEventListener('touchstart', function(e) {
+    hero._touchY = e.touches[0].clientY;
+  }, { passive: true });
+
+  hero.addEventListener('touchend', function(e) {
+    var diff = hero._touchY - e.changedTouches[0].clientY;
+    if (diff > 40) snapToCambio();
+  }, { passive: true });
+})();
+</script>
+
 {% schema %}
 {
   "name": "Ebook Landing Page",
