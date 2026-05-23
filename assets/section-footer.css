@@ -294,6 +294,13 @@
 .footer__copyright {
   text-align: center;
   margin-top: 0.4rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.footer__copyright .copyright__content,
+.footer__copyright .copyright__content a,
+.footer__copyright .policies a {
+  color: rgba(0, 0, 0, 0.65);
 }
 
 @media screen and (min-width: 750px) {
