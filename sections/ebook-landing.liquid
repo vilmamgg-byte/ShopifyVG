@@ -698,6 +698,8 @@
           } else {
             tW = pW; tH = pH;
           }
+          tW = Math.round(tW * 0.95);
+          tH = Math.round(tH * 0.95);
           book.style.width        = tW + 'px';
           book.style.height       = tH + 'px';
           book.style.borderRadius = ratio > 1.1 ? '8px' : '';
