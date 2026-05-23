@@ -817,50 +817,129 @@
   if (!hero || !cambio) return;
 
   var busy = false;
+  var DUR  = 900;                                /* ms — duración de la transición */
+  var EASE = 'cubic-bezier(0.77,0,0.175,1)';    /* easeInOutQuart — feel premium */
 
-  function jumpTo(y) {
-    busy = true;
-    /* fuerza scroll instantáneo aunque el tema tenga scroll-behavior:smooth */
-    document.documentElement.style.scrollBehavior = 'auto';
-    document.body.style.scrollBehavior            = 'auto';
-    window.scrollTo(0, y);
-    document.documentElement.style.scrollBehavior = '';
-    document.body.style.scrollBehavior            = '';
-    setTimeout(function(){ busy = false; }, 700);
+  /* ── helpers ────────────────────────────────────────────── */
+
+  /* fija el elemento como capa fullscreen con transform inicial */
+  function pin(el, tfm, zi) {
+    el.style.position   = 'fixed';
+    el.style.top        = '0';
+    el.style.left       = '0';
+    el.style.width      = '100vw';
+    el.style.height     = '100vh';
+    el.style.zIndex     = zi;
+    el.style.transform  = tfm;
+    el.style.transition = 'none';
   }
 
-  window.addEventListener('wheel', function(e){
-    if (busy){ e.preventDefault(); return; }
+  /* arranca la transición hacia un transform destino */
+  function tween(el, tfm) {
+    el.style.transition = 'transform ' + DUR + 'ms ' + EASE;
+    el.style.transform  = tfm;
+  }
 
-    var sy      = window.pageYOffset;
-    var heroH   = hero.offsetHeight;                              /* ≈ 100vh */
-    var cambioY = cambio.getBoundingClientRect().top + sy;        /* posición real en documento */
+  /* devuelve el elemento a su flujo normal eliminando todos los estilos inline */
+  function unpin(el) {
+    ['position','top','left','width','height','z-index','transform','transition']
+      .forEach(function(p){ el.style.removeProperty(p); });
+  }
 
-    /* en hero, scroll abajo → salta a CAMBIO */
-    if (sy < heroH * 0.9 && e.deltaY > 0){
+  /* scroll instantáneo ignorando scroll-behavior del tema */
+  function scrollNow(y) {
+    var d = document.documentElement;
+    var b = document.body;
+    d.style.scrollBehavior = 'auto';
+    b.style.scrollBehavior = 'auto';
+    window.scrollTo(0, y);
+    d.scrollTop = y;
+    b.scrollTop = y;
+    d.style.scrollBehavior = '';
+    b.style.scrollBehavior = '';
+  }
+
+  /* ── transiciones ───────────────────────────────────────── */
+
+  /* hero → cambio: hero sale hacia arriba, cambio entra desde abajo */
+  function goDown() {
+    if (busy) return;
+    busy = true;
+
+    /* posición real de cambio en el documento (captada antes de mover nada) */
+    var cy = Math.round(cambio.getBoundingClientRect().top + window.pageYOffset);
+
+    /* apila ambas secciones como capas fijas */
+    pin(hero,   'translateY(0)',     10);
+    pin(cambio, 'translateY(100vh)', 11);
+    void hero.offsetWidth;              /* fuerza reflow para que la transición se registre */
+
+    /* ambas se mueven simultáneamente */
+    tween(hero,   'translateY(-100vh)');
+    tween(cambio, 'translateY(0)');
+
+    setTimeout(function() {
+      /* vuelven al flujo → forzar recálculo de layout → scroll al destino */
+      unpin(hero);
+      unpin(cambio);
+      void hero.offsetHeight;           /* fuerza layout para que el documento tenga altura */
+      scrollNow(cy);
+      busy = false;
+    }, DUR + 50);
+  }
+
+  /* cambio → hero: cambio sale hacia abajo, hero entra desde arriba */
+  function goUp() {
+    if (busy) return;
+    busy = true;
+
+    pin(cambio, 'translateY(0)',      10);
+    pin(hero,   'translateY(-100vh)', 11);
+    void cambio.offsetWidth;
+
+    /* scroll a 0 AHORA mientras ambas están fijas — sin cambio visual */
+    scrollNow(0);
+
+    tween(cambio, 'translateY(100vh)');
+    tween(hero,   'translateY(0)');
+
+    setTimeout(function() {
+      unpin(cambio);
+      unpin(hero);
+      busy = false;
+    }, DUR + 50);
+  }
+
+  /* ── eventos ────────────────────────────────────────────── */
+
+  window.addEventListener('wheel', function(e) {
+    if (busy) { e.preventDefault(); return; }
+
+    var sy = window.pageYOffset;
+    var cy = Math.round(cambio.getBoundingClientRect().top + sy);
+
+    if (sy < window.innerHeight * 0.9 && e.deltaY > 0) {
       e.preventDefault();
-      jumpTo(cambioY);
+      goDown();
       return;
     }
-    /* en CAMBIO, scroll arriba → regresa al hero */
-    if (Math.abs(sy - cambioY) < 50 && e.deltaY < 0){
+    if (Math.abs(sy - cy) < 60 && e.deltaY < 0) {
       e.preventDefault();
-      jumpTo(0);
+      goUp();
     }
   }, { passive: false });
 
-  /* touch */
   var ty = 0;
-  window.addEventListener('touchstart', function(e){ ty = e.touches[0].clientY; }, { passive: true });
-  window.addEventListener('touchend', function(e){
+  window.addEventListener('touchstart', function(e) {
+    ty = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchend', function(e) {
     if (busy) return;
-    var dy      = ty - e.changedTouches[0].clientY;
-    var sy      = window.pageYOffset;
-    var heroH   = hero.offsetHeight;
-    var cambioY = cambio.getBoundingClientRect().top + sy;
-
-    if (sy < heroH * 0.9 && dy > 40)              jumpTo(cambioY);
-    else if (Math.abs(sy - cambioY) < 50 && dy < -40) jumpTo(0);
+    var dy = ty - e.changedTouches[0].clientY;
+    var sy = window.pageYOffset;
+    var cy = Math.round(cambio.getBoundingClientRect().top + sy);
+    if (sy < window.innerHeight * 0.9 && dy > 40)        goDown();
+    else if (Math.abs(sy - cy) < 60 && dy < -40)         goUp();
   }, { passive: true });
 })();
 </script>
