@@ -1802,25 +1802,25 @@
 }
 
 /* ════════════════════════════════════════════
-   SHOPIFY GLOBAL FOOTER — FRANJA REDUCIDA -40%
+   SHOPIFY GLOBAL FOOTER — FRANJA COMPACTA ~2cm
    ════════════════════════════════════════════ */
 #shopify-section-group-footer-group .footer {
-  padding-top: 13px !important;
-  padding-bottom: 13px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 #shopify-section-group-footer-group .footer__content-top {
-  padding-bottom: 1.8rem !important;
+  padding-bottom: 0.6rem !important;
 }
 
 #shopify-section-group-footer-group .footer__content-bottom {
-  padding-top: 1.2rem !important;
-  padding-bottom: 0.8rem !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 @media screen and (min-width: 750px) {
   #shopify-section-group-footer-group .footer {
-    padding-top: 13px !important;
-    padding-bottom: 13px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
