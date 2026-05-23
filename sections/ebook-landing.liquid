@@ -793,55 +793,100 @@
 
 <script>
 (function(){
+  var html   = document.documentElement;
+  var body   = document.body;
   var hero   = document.querySelector('.el-hero');
   var cambio = document.querySelector('.el-cambio-wrap');
   if (!hero || !cambio) return;
 
-  var sliding = false;
+  var sliding  = false;
+  var DURATION = 700;
 
-  function easeInOutCubic(t) {
-    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
-  }
-
-  function slideTo(target) {
+  /* Slide to target element using CSS transform — no scroll-position change during animation */
+  function goTo(target, fromTop) {
     if (sliding) return;
     sliding = true;
-    document.body.style.overflow = 'hidden';
 
-    var start    = window.pageYOffset;
-    var end      = target.getBoundingClientRect().top + window.pageYOffset;
-    var duration = 750;
-    var t0       = null;
+    var destScroll = target === hero ? 0 : hero.offsetHeight;
 
-    function step(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts - t0) / duration, 1);
-      window.scrollTo(0, start + (end - start) * easeInOutCubic(p));
-      if (p < 1) {
-        requestAnimationFrame(step);
-      } else {
-        document.body.style.overflow = '';
-        sliding = false;
-      }
-    }
-    requestAnimationFrame(step);
+    /* Lock page scroll */
+    html.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+
+    /* Place target fixed, off-screen */
+    target.style.position   = 'fixed';
+    target.style.top        = '0';
+    target.style.left       = '0';
+    target.style.width      = '100vw';
+    target.style.height     = '100vh';
+    target.style.zIndex     = '999';
+    target.style.transform  = fromTop ? 'translateY(-100vh)' : 'translateY(100vh)';
+    target.style.transition = 'none';
+
+    void target.offsetWidth; /* force reflow so transition is registered */
+
+    target.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.76,0,0.24,1)';
+    target.style.transform  = 'translateY(0)';
+
+    setTimeout(function() {
+      /* Restore layout: remove overflow lock, jump scroll, restore target to normal flow */
+      html.style.overflow         = '';
+      body.style.overflow         = '';
+      html.style.scrollBehavior   = 'auto';
+      window.scrollTo(0, destScroll);
+      html.style.scrollBehavior   = '';
+
+      target.style.position   = '';
+      target.style.top        = '';
+      target.style.left       = '';
+      target.style.width      = '';
+      target.style.height     = '';
+      target.style.zIndex     = '';
+      target.style.transform  = '';
+      target.style.transition = '';
+
+      sliding = false;
+    }, DURATION + 30);
   }
 
-  /* Bloquear scroll parcial en el hero */
   window.addEventListener('wheel', function(e) {
-    var inHero = window.pageYOffset < hero.offsetHeight * 0.9;
-    if (!inHero) return;
-    e.preventDefault();
-    if (e.deltaY > 0) slideTo(cambio);
+    if (sliding) { e.preventDefault(); return; }
+
+    var scrollY = window.pageYOffset;
+    var heroH   = hero.offsetHeight;
+    var cambioY = heroH;
+
+    /* In top half of hero, scroll down → go to cambio */
+    if (scrollY < heroH * 0.5 && e.deltaY > 0) {
+      e.preventDefault();
+      goTo(cambio, false);
+      return;
+    }
+
+    /* At cambio, scroll up → go back to hero */
+    if (scrollY >= cambioY - 50 && scrollY <= cambioY + window.innerHeight * 0.5 && e.deltaY < 0) {
+      e.preventDefault();
+      goTo(hero, true);
+      return;
+    }
   }, { passive: false });
 
-  /* Touch */
   var ty0 = 0;
-  window.addEventListener('touchstart', function(e) { ty0 = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchstart', function(e) {
+    ty0 = e.touches[0].clientY;
+  }, { passive: true });
   window.addEventListener('touchend', function(e) {
-    var inHero = window.pageYOffset < hero.offsetHeight * 0.9;
-    if (!inHero) return;
-    if (ty0 - e.changedTouches[0].clientY > 40) slideTo(cambio);
+    if (sliding) return;
+    var dy      = ty0 - e.changedTouches[0].clientY;
+    var scrollY = window.pageYOffset;
+    var heroH   = hero.offsetHeight;
+    var cambioY = heroH;
+
+    if (scrollY < heroH * 0.5 && dy > 40) {
+      goTo(cambio, false);
+    } else if (scrollY >= cambioY - 50 && dy < -40) {
+      goTo(hero, true);
+    }
   }, { passive: true });
 })();
 </script>
