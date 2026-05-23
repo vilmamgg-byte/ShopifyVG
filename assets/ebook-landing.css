@@ -562,7 +562,7 @@
 /* Actions */
 .el-hero-actions {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 14px;
   flex-wrap: wrap;
   margin-bottom: 20px;
