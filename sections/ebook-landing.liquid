@@ -1,8 +1,12 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .el-badge {
-    align-self: flex-start !important;
+  .el-hero-content {
+    display: block !important;
+  }
+  .el-hero-actions {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .el-hero-actions .el-btn-gold {
@@ -218,23 +222,27 @@
       <!-- LEFT: Copy -->
       <div class="el-hero-content">
 
-        <div class="el-badge" style="margin-top:-77px; align-self:flex-start; width:fit-content;">
+        <!-- BLOQUE 1: Badge -->
+        <div class="el-badge" style="margin-top:0; width:fit-content;">
           <span class="el-badge-dot"></span>
           Edición Limitada 2026
         </div>
 
+        <!-- BLOQUE 2: Título -->
         <h1 class="el-hero-title el-anim el-anim-d1" style="font-family:'Inter','Helvetica Neue',Arial,sans-serif; margin-top:18px;">
           La <em class="el-gold-text">disciplina</em><br>
           que cambia tu vida<br>
           comienza hoy.
         </h1>
 
-        <p class="el-hero-sub el-anim el-anim-d2">
+        <!-- BLOQUE 3: Subtítulo -->
+        <p class="el-hero-sub el-anim el-anim-d2" style="margin-top:16px;">
           Aprende a eliminar la procrastinación, desarrollar hábitos sólidos
           y construir una mentalidad enfocada en resultados reales.
         </p>
 
-        <div class="el-hero-actions">
+        <!-- BLOQUE 4: Botones -->
+        <div class="el-hero-actions" style="margin-top:24px;">
           <a href="#el-comprar" class="el-btn-gold">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
             Descargar Ahora
