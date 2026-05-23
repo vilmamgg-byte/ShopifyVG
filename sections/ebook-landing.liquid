@@ -911,8 +911,17 @@
     '#el-faq',
     '#el-comprar'
   ];
-  var DUR  = 1000;
-  var EASE = 'cubic-bezier(0.77,0,0.175,1)';
+
+  /* ── timing ─────────────────────────────────────────────────── */
+  var DUR = 850;
+  /* opacity: suave y lineal — fade cinematográfico sin aceleración brusca */
+  /* transform: easeOutExpo — entra rápido y frena con elegancia al centro */
+  var TRANS = 'opacity ' + DUR + 'ms ease, transform ' + (DUR + 80) + 'ms cubic-bezier(0.22,1,0.36,1)';
+
+  /* distancias de desplazamiento (pequeñas = sutil, no slide agresivo) */
+  var IN_OFFSET  = 26;  /* px — la sección entrante viene desde aquí       */
+  var OUT_OFFSET = 18;  /* px — la sección saliente se aleja hasta aquí    */
+  var SCALE_OFF  = 0.97; /* escala de secciones inactivas — sensación 3D leve */
 
   var slides = [];
   SELECTORS.forEach(function(sel){
@@ -924,16 +933,31 @@
   var current = 0;
   var busy    = false;
 
+  /* ── estado de cada slide ────────────────────────────────────── */
+  function applyState(el, active, above){
+    el.style.transition    = 'none';
+    el.style.position      = 'fixed';
+    el.style.top           = '0';
+    el.style.left          = '0';
+    el.style.width         = '100vw';
+    el.style.height        = '100vh';
+    if (active) {
+      el.style.opacity       = '1';
+      el.style.transform     = 'translateY(0) scale(1)';
+      el.style.zIndex        = '10';
+      el.style.pointerEvents = 'auto';
+    } else {
+      var ty = above ? (-IN_OFFSET) : IN_OFFSET;
+      el.style.opacity       = '0';
+      el.style.transform     = 'translateY(' + ty + 'px) scale(' + SCALE_OFF + ')';
+      el.style.zIndex        = '5';
+      el.style.pointerEvents = 'none';
+    }
+  }
+
   function initSlides(){
     slides.forEach(function(el, i){
-      el.style.position   = 'fixed';
-      el.style.top        = '0';
-      el.style.left       = '0';
-      el.style.width      = '100vw';
-      el.style.height     = '100vh';
-      el.style.transition = 'none';
-      el.style.transform  = i === 0 ? 'translateY(0)' : 'translateY(100vh)';
-      el.style.zIndex     = i === 0 ? '10' : '5';
+      applyState(el, i === 0, false);
     });
     activateAnims(slides[0]);
   }
@@ -944,42 +968,47 @@
     });
   }
 
+  /* ── navegación ──────────────────────────────────────────────── */
   function goTo(next){
     if (busy || next === current || next < 0 || next >= slides.length) return;
     busy = true;
 
-    var dir = next > current ? 1 : -1;
+    var dir = next > current ? 1 : -1;   /* 1 = hacia abajo, -1 = hacia arriba */
     var cur = slides[current];
     var nxt = slides[next];
 
-    nxt.style.transition = 'none';
-    nxt.style.transform  = 'translateY(' + (dir * 100) + 'vh)';
-    nxt.style.zIndex     = '11';
-    cur.style.zIndex     = '10';
+    /* posición de partida de la sección entrante */
+    nxt.style.transition    = 'none';
+    nxt.style.opacity       = '0';
+    nxt.style.transform     = 'translateY(' + (dir * IN_OFFSET) + 'px) scale(' + SCALE_OFF + ')';
+    nxt.style.zIndex        = '11';      /* encima durante la transición */
+    nxt.style.pointerEvents = 'none';
+    cur.style.zIndex        = '10';
 
-    void nxt.offsetWidth;
+    void nxt.offsetWidth;               /* fuerza reflow antes de animar */
 
-    var trans = 'transform ' + DUR + 'ms ' + EASE;
-    nxt.style.transition = trans;
-    cur.style.transition = trans;
-    nxt.style.transform  = 'translateY(0)';
-    cur.style.transform  = 'translateY(' + (-dir * 100) + 'vh)';
+    /* entrante: aparece y sube al centro */
+    nxt.style.transition    = TRANS;
+    nxt.style.opacity       = '1';
+    nxt.style.transform     = 'translateY(0) scale(1)';
+
+    /* saliente: se desvanece y retrocede levemente */
+    cur.style.transition    = TRANS;
+    cur.style.opacity       = '0';
+    cur.style.transform     = 'translateY(' + (-dir * OUT_OFFSET) + 'px) scale(' + SCALE_OFF + ')';
 
     setTimeout(function(){
       slides.forEach(function(el, i){
-        el.style.transition = 'none';
-        el.style.zIndex     = i === next ? '10' : '5';
-        if (i === next)     el.style.transform = 'translateY(0)';
-        else if (i < next)  el.style.transform = 'translateY(-100vh)';
-        else                el.style.transform = 'translateY(100vh)';
+        applyState(el, i === next, i < next);
       });
       current = next;
       updateDots();
       activateAnims(slides[current]);
       busy = false;
-    }, DUR + 50);
+    }, DUR + 120);
   }
 
+  /* ── navigation dots ─────────────────────────────────────────── */
   var nav = document.createElement('nav');
   nav.className = 'fp-nav';
   nav.setAttribute('aria-label', 'Navegación');
@@ -998,6 +1027,7 @@
     });
   }
 
+  /* ── wheel — respeta scroll interno ─────────────────────────── */
   window.addEventListener('wheel', function(e){
     if (busy){ e.preventDefault(); return; }
 
@@ -1014,6 +1044,7 @@
     if (e.deltaY < -3) goTo(current - 1);
   }, { passive: false });
 
+  /* ── touch ───────────────────────────────────────────────────── */
   var ty = 0;
   window.addEventListener('touchstart', function(e){
     ty = e.touches[0].clientY;
@@ -1025,6 +1056,7 @@
     if (dy < -40) goTo(current - 1);
   }, { passive: true });
 
+  /* ── keyboard ────────────────────────────────────────────────── */
   window.addEventListener('keydown', function(e){
     if (busy) return;
     if (e.key === 'ArrowDown' || e.key === 'PageDown'){ e.preventDefault(); goTo(current + 1); }
