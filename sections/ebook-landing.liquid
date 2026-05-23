@@ -1,7 +1,6 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
-<style>
-  /* Badge position */
+{%- style -%}
   .el-badge {
     margin-top: -13px !important;
     padding: 5px 8px !important;
@@ -11,7 +10,6 @@
     padding: 13px 18px !important;
   }
 
-  /* Ocultar el header y announcement bar del tema Dawn en esta landing page */
   #shopify-section-group-header-group,
   .shopify-section-group--header,
   #shopify-section-header,
@@ -25,7 +23,7 @@
     overflow: hidden !important;
     pointer-events: none !important;
   }
-</style>
+{%- endstyle -%}
 
 <div class="el-page">
 
