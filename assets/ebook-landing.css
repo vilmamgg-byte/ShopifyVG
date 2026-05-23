@@ -1800,3 +1800,27 @@
   .el-author-stats   { gap: 24px; }
   .el-trust-row      { justify-content: flex-start; }
 }
+
+/* ════════════════════════════════════════════
+   SHOPIFY GLOBAL FOOTER — FRANJA REDUCIDA -40%
+   ════════════════════════════════════════════ */
+#shopify-section-group-footer-group .footer {
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+}
+
+#shopify-section-group-footer-group .footer__content-top {
+  padding-bottom: 1.8rem !important;
+}
+
+#shopify-section-group-footer-group .footer__content-bottom {
+  padding-top: 1.2rem !important;
+  padding-bottom: 0.8rem !important;
+}
+
+@media screen and (min-width: 750px) {
+  #shopify-section-group-footer-group .footer {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+  }
+}
