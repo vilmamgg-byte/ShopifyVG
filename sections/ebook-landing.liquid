@@ -12,17 +12,9 @@
     padding-top: 11px !important;
     align-self: flex-start !important;
   }
-  html {
-    scroll-snap-type: y mandatory;
-  }
   .el-hero {
     height: 100vh !important;
     overflow: hidden !important;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-  .el-trust-strip {
-    scroll-snap-align: start;
   }
   .el-cambio-wrap {
     height: 100vh !important;
@@ -32,8 +24,6 @@
     overflow: hidden !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
   .el-cambio-clip {
     display: flex !important;
@@ -820,6 +810,60 @@
 })();
 </script>
 
+<script>
+(function(){
+  var hero   = document.querySelector('.el-hero');
+  var cambio = document.querySelector('.el-cambio-wrap');
+  if (!hero || !cambio) return;
+
+  var busy = false;
+
+  function jumpTo(y) {
+    busy = true;
+    /* fuerza scroll instantáneo aunque el tema tenga scroll-behavior:smooth */
+    document.documentElement.style.scrollBehavior = 'auto';
+    document.body.style.scrollBehavior            = 'auto';
+    window.scrollTo(0, y);
+    document.documentElement.style.scrollBehavior = '';
+    document.body.style.scrollBehavior            = '';
+    setTimeout(function(){ busy = false; }, 700);
+  }
+
+  window.addEventListener('wheel', function(e){
+    if (busy){ e.preventDefault(); return; }
+
+    var sy      = window.pageYOffset;
+    var heroH   = hero.offsetHeight;                              /* ≈ 100vh */
+    var cambioY = cambio.getBoundingClientRect().top + sy;        /* posición real en documento */
+
+    /* en hero, scroll abajo → salta a CAMBIO */
+    if (sy < heroH * 0.9 && e.deltaY > 0){
+      e.preventDefault();
+      jumpTo(cambioY);
+      return;
+    }
+    /* en CAMBIO, scroll arriba → regresa al hero */
+    if (Math.abs(sy - cambioY) < 50 && e.deltaY < 0){
+      e.preventDefault();
+      jumpTo(0);
+    }
+  }, { passive: false });
+
+  /* touch */
+  var ty = 0;
+  window.addEventListener('touchstart', function(e){ ty = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend', function(e){
+    if (busy) return;
+    var dy      = ty - e.changedTouches[0].clientY;
+    var sy      = window.pageYOffset;
+    var heroH   = hero.offsetHeight;
+    var cambioY = cambio.getBoundingClientRect().top + sy;
+
+    if (sy < heroH * 0.9 && dy > 40)              jumpTo(cambioY);
+    else if (Math.abs(sy - cambioY) < 50 && dy < -40) jumpTo(0);
+  }, { passive: true });
+})();
+</script>
 
 {% schema %}
 {
