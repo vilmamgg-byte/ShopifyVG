@@ -143,7 +143,7 @@
     display: none !important;
   }
 
-  /* ── FOUNDER STORY — editorial luxury ──────────────────────── */
+  /* ── FOUNDER STORY — cinematic editorial ───────────────────── */
   .el-section.el-section-alt {
     padding: 0 !important;
     justify-content: flex-start !important;
@@ -153,123 +153,170 @@
     max-height: none !important;
     margin-left: 5vw !important;
     margin-right: 0 !important;
-    padding-right: 12vw !important;
-    max-width: 960px !important;
+    padding-right: 10vw !important;
+    max-width: 880px !important;
     margin-top: 1.5cm !important;
   }
   .el-author-grid {
-    gap: 52px !important;
-    grid-template-columns: 0.72fr 1.28fr !important;
+    gap: 56px !important;
+    grid-template-columns: 0.78fr 1.22fr !important;
     align-items: center !important;
   }
 
-  /* Founder visual card */
+  /* ── Visual card — cinematic depth ── */
   .el-founder-card {
     width: 100%;
-    aspect-ratio: 4 / 5;
-    max-height: 300px;
-    background: linear-gradient(150deg, #0d0d0d 0%, #111 55%, #0a0a0a 100%);
-    border: 1px solid rgba(201,168,76,0.11);
-    border-left: 2px solid rgba(201,168,76,0.42);
-    border-radius: 3px;
+    aspect-ratio: 3 / 4.2;
+    max-height: 320px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 65%),
+      linear-gradient(170deg, #121009 0%, #0e0c0a 45%, #080706 100%);
+    border: 1px solid rgba(201,168,76,0.13);
+    border-left: 2px solid rgba(201,168,76,0.55);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 40px 100px rgba(0,0,0,0.8),
+      0 8px 28px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(201,168,76,0.07),
+      inset 0 -1px 0 rgba(0,0,0,0.6);
+  }
+  /* Film grain */
+  .el-fc-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.09;
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* Soft vignette — darkens corners */
+  .el-fc-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 35%, rgba(0,0,0,0.65) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* Ambient gold glow — top */
+  .el-fc-glow {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 55%;
+    background: radial-gradient(ellipse 65% 55% at 50% 20%, rgba(201,168,76,0.09) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  /* Top gold accent line */
+  .el-fc-top-accent {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,168,76,0.5), rgba(201,168,76,0.15), transparent);
+    z-index: 4;
+  }
+  /* Bottom cinematic fade */
+  .el-fc-bottom-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+    z-index: 3;
+  }
+  /* Card content */
+  .el-fc-content {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .el-founder-bg-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 70% 55% at 50% 38%, rgba(201,168,76,0.055) 0%, transparent 70%);
-    pointer-events: none;
+    z-index: 5;
   }
   .el-founder-monogram {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 96px;
+    font-size: 108px;
     font-weight: 300;
     font-style: italic;
-    color: rgba(201,168,76,0.17);
+    color: rgba(201,168,76,0.16);
     line-height: 1;
-    letter-spacing: -3px;
+    letter-spacing: -4px;
     user-select: none;
-    position: relative;
-    z-index: 1;
+    text-shadow: 0 0 60px rgba(201,168,76,0.12);
   }
   .el-founder-divider {
-    width: 30px;
+    width: 28px;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,0.45), transparent);
-    margin: 13px 0 9px;
-    position: relative;
-    z-index: 1;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.55), transparent);
+    margin: 12px 0 9px;
   }
   .el-founder-sig {
     font-family: 'Manrope', sans-serif;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 400;
-    letter-spacing: 0.26em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: rgba(201,168,76,0.38);
-    position: relative;
-    z-index: 1;
+    color: rgba(201,168,76,0.32);
   }
 
-  /* Author name — Cormorant Garamond italic */
+  /* ── Typography — name, label, bio ── */
   .el-author-name {
     font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-size: clamp(36px, 3.6vw, 52px) !important;
+    font-size: clamp(38px, 3.8vw, 54px) !important;
     font-weight: 300 !important;
     font-style: italic !important;
     letter-spacing: -0.5px !important;
-    line-height: 1.05 !important;
-    margin-bottom: 20px !important;
+    line-height: 1.04 !important;
+    margin-bottom: 18px !important;
     color: var(--el-white) !important;
   }
   .el-section.el-section-alt .el-label {
     font-family: 'Manrope', sans-serif !important;
-    font-size: 10px !important;
-    letter-spacing: 0.24em !important;
-    margin-bottom: 14px !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.26em !important;
+    margin-bottom: 12px !important;
   }
   .el-author-bio {
     font-family: 'Manrope', sans-serif !important;
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     font-weight: 300 !important;
-    line-height: 1.95 !important;
-    color: rgba(255,255,255,0.56) !important;
-    margin-bottom: 13px !important;
+    line-height: 2 !important;
+    color: rgba(255,255,255,0.52) !important;
+    margin-bottom: 14px !important;
+    max-width: 400px !important;
   }
 
-  /* Minimal concepts (replaces stats) */
-  .el-founder-concepts {
+  /* ── Editorial manifesto (replaces metrics) ── */
+  .el-founder-manifesto {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    margin-top: 22px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255,255,255,0.07);
+    gap: 11px;
   }
-  .el-founder-concept {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-  }
-  .el-concept-num {
+  .el-manifesto-line {
     font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15.5px;
     font-style: italic;
-    font-size: 17px;
-    color: rgba(201,168,76,0.68);
-    min-width: 82px;
-    line-height: 1;
-  }
-  .el-concept-desc {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.30);
-    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.33);
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.01em;
+    transition: color 0.4s ease;
+  }
+  .el-founder-manifesto:hover .el-manifesto-line {
+    color: rgba(255,255,255,0.22);
+  }
+  .el-founder-manifesto:hover .el-manifesto-line:hover {
+    color: rgba(255,255,255,0.60);
   }
 
   /* ── NAVIGATION DOTS ────────────────────────────────────────── */
@@ -597,10 +644,16 @@
         <!-- Visual editorial card -->
         <div class="el-author-visual el-anim">
           <div class="el-founder-card">
-            <div class="el-founder-bg-glow" aria-hidden="true"></div>
-            <div class="el-founder-monogram" aria-hidden="true">M</div>
-            <div class="el-founder-divider" aria-hidden="true"></div>
-            <span class="el-founder-sig">Mireya Guevara</span>
+            <div class="el-fc-grain"       aria-hidden="true"></div>
+            <div class="el-fc-vignette"    aria-hidden="true"></div>
+            <div class="el-fc-glow"        aria-hidden="true"></div>
+            <div class="el-fc-top-accent"  aria-hidden="true"></div>
+            <div class="el-fc-bottom-line" aria-hidden="true"></div>
+            <div class="el-fc-content">
+              <div class="el-founder-monogram" aria-hidden="true">M</div>
+              <div class="el-founder-divider"  aria-hidden="true"></div>
+              <span class="el-founder-sig">Mireya Guevara</span>
+            </div>
           </div>
         </div>
 
@@ -620,19 +673,10 @@
             a tu propia vida, a tu ritmo.
           </p>
 
-          <div class="el-founder-concepts">
-            <div class="el-founder-concept">
-              <span class="el-concept-num">5+</span>
-              <span class="el-concept-desc">años de experiencia personal</span>
-            </div>
-            <div class="el-founder-concept">
-              <span class="el-concept-num">Enfoque</span>
-              <span class="el-concept-desc">claridad sin ruido mental</span>
-            </div>
-            <div class="el-founder-concept">
-              <span class="el-concept-num">Disciplina</span>
-              <span class="el-concept-desc">hábitos que permanecen</span>
-            </div>
+          <div class="el-founder-manifesto">
+            <p class="el-manifesto-line">"La disciplina no restringe. Libera."</p>
+            <p class="el-manifesto-line">"Claridad antes que velocidad."</p>
+            <p class="el-manifesto-line">"Un hábito honesto vale más que mil intenciones."</p>
           </div>
         </div>
 
