@@ -207,6 +207,47 @@
     align-items: center !important;
   }
 
+  /* Card — desplazada 6cm a la izquierda sin afectar el texto */
+  .el-author-visual {
+    transform: translateX(-6cm) !important;
+  }
+
+  /* ── Divisor vertical dorado luxury ── */
+  .el-author-grid > div:last-child {
+    position: relative !important;
+  }
+  .el-author-grid > div:last-child::before {
+    content: '' !important;
+    position: absolute !important;
+    left: -28px !important;
+    top: 6% !important;
+    bottom: 6% !important;
+    width: 1px !important;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(201,168,76,0.25) 12%,
+      rgba(201,168,76,0.80) 38%,
+      rgba(201,168,76,1.00) 50%,
+      rgba(201,168,76,0.80) 62%,
+      rgba(201,168,76,0.25) 88%,
+      transparent 100%
+    ) !important;
+    pointer-events: none !important;
+  }
+  /* Ornamento central — diamante dorado */
+  .el-author-grid > div:last-child::after {
+    content: '◆' !important;
+    position: absolute !important;
+    left: -33px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 7px !important;
+    color: rgba(201,168,76,0.85) !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+  }
+
   /* ── Visual card — cinematic depth ── */
   .el-founder-card {
     width: 100%;
