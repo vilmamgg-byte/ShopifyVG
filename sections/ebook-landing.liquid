@@ -194,6 +194,7 @@
   }
   .el-section.el-section-alt .el-container {
     overflow-y: visible !important;
+    overflow-x: visible !important;
     max-height: none !important;
     margin-left: calc(5vw + 8cm) !important;
     margin-right: 0 !important;
@@ -414,9 +415,20 @@
     gap: 0 24px !important;
     margin-top: calc(28px + 1cm - 5mm) !important;
     padding-top: 22px !important;
+    position: relative !important;
     border-top: none !important;
-    background: linear-gradient(to right, transparent 2cm, rgba(201,168,76,0.45) 2cm) no-repeat top / 100% 1px !important;
+    background: none !important;
     width: 100% !important;
+  }
+  .el-manifesto-row::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: calc(-5vw - 6cm) !important;
+    right: 0 !important;
+    height: 1px !important;
+    background: rgba(201,168,76,0.45) !important;
+    pointer-events: none !important;
   }
   .el-manifesto-row .el-manifesto-line {
     padding: 0 !important;
