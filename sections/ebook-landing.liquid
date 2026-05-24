@@ -333,11 +333,21 @@
     font-size: 92px;
     font-weight: 300;
     font-style: italic;
-    color: rgba(201,168,76,0.16);
+    background: linear-gradient(
+      160deg,
+      rgba(175,140,50,0.80) 0%,
+      rgba(201,168,76,1.00) 28%,
+      rgba(245,215,125,1.00) 50%,
+      rgba(201,168,76,0.95) 72%,
+      rgba(158,126,44,0.75) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
     letter-spacing: -4px;
     user-select: none;
-    text-shadow: 0 0 60px rgba(201,168,76,0.12);
+    filter: drop-shadow(0 0 18px rgba(201,168,76,0.28)) drop-shadow(0 2px 6px rgba(201,168,76,0.15));
   }
   .el-founder-divider {
     width: 28px;
@@ -347,7 +357,7 @@
   }
   .el-founder-sig {
     font-family: 'Manrope', sans-serif;
-    font-size: 7px;
+    font-size: 7.7px;
     font-weight: 400;
     letter-spacing: 0.32em;
     text-transform: uppercase;
