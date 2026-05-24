@@ -52,6 +52,7 @@
     height: 100vh !important;
     overflow: hidden !important;
     position: relative !important;
+    background: #000 !important;
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
@@ -64,12 +65,14 @@
     height: 100% !important;
   }
   .el-emocion-img {
-    max-height: 90vh !important;
-    max-width: 100% !important;
-    width: auto !important;
+    /* imagen 3:2 → para que ocupe 95vh de alto: ancho = 95vh × 1.5 = 142.5vh
+       para que ocupe 95vw de ancho: ancho = 95vw
+       min() toma el valor más pequeño = imagen cabe completa en ambas dimensiones */
+    width: min(95vw, 142.5vh) !important;
     height: auto !important;
-    object-position: center center !important;
+    max-width: none !important;
     display: block !important;
+    object-position: center center !important;
   }
 
   .el-hero-actions .el-btn-gold {
