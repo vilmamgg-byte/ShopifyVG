@@ -404,6 +404,27 @@
     color: rgba(255,255,255,0.60);
   }
 
+  /* ── Manifesto row — 3 frases en línea ── */
+  .el-manifesto-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 0 24px !important;
+    margin-top: 28px !important;
+    padding-top: 22px !important;
+    border-top: 1px solid rgba(201,168,76,0.18) !important;
+    width: 100% !important;
+  }
+  .el-manifesto-row .el-manifesto-line {
+    padding: 0 !important;
+    border: none !important;
+    font-size: 12px !important;
+    color: rgba(255,255,255,0.28) !important;
+    transition: color 0.45s ease !important;
+  }
+  .el-manifesto-row .el-manifesto-line:hover {
+    color: rgba(201,168,76,0.60) !important;
+  }
+
   /* ── NAVIGATION DOTS ────────────────────────────────────────── */
   .fp-nav {
     position: fixed;
@@ -769,14 +790,17 @@
             a tu propia vida, a tu ritmo.
           </p>
 
-          <div class="el-founder-manifesto">
-            <p class="el-manifesto-line">"La disciplina no restringe. Libera."</p>
-            <p class="el-manifesto-line">"Claridad antes que velocidad."</p>
-            <p class="el-manifesto-line">"Un hábito honesto vale más que mil intenciones."</p>
-          </div>
         </div>
 
       </div>
+
+      <!-- Manifesto — 3 frases en una fila: izquierda / centro / derecha -->
+      <div class="el-manifesto-row">
+        <p class="el-manifesto-line" style="text-align:left">"La disciplina no restringe. Libera."</p>
+        <p class="el-manifesto-line" style="text-align:center">"Claridad antes que velocidad."</p>
+        <p class="el-manifesto-line" style="text-align:right">"Un hábito honesto vale más que mil intenciones."</p>
+      </div>
+
     </div>
   </section>
 
