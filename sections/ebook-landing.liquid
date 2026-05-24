@@ -427,7 +427,17 @@
     left: calc(-5vw - 6cm) !important;
     right: 0 !important;
     height: 1px !important;
-    background: rgba(201,168,76,0.45) !important;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(201,168,76,0.15) 4%,
+      rgba(201,168,76,0.60) 12%,
+      rgba(201,168,76,1.00) 28%,
+      rgba(201,168,76,0.95) 52%,
+      rgba(201,168,76,0.65) 74%,
+      rgba(201,168,76,0.20) 90%,
+      transparent 100%
+    ) !important;
     pointer-events: none !important;
   }
   .el-manifesto-row .el-manifesto-line {
@@ -811,7 +821,7 @@
 
       <!-- Manifesto — 3 frases en una fila: izquierda / centro / derecha -->
       <div class="el-manifesto-row">
-        <p class="el-manifesto-line" style="text-align:left">"La disciplina no restringe. Libera."</p>
+        <p class="el-manifesto-line" style="text-align:left;margin-left:0;padding-left:0">"La disciplina no restringe. Libera."</p>
         <p class="el-manifesto-line" style="text-align:center">"Claridad antes que velocidad."</p>
         <p class="el-manifesto-line" style="text-align:right">"Un hábito honesto vale más que mil intenciones."</p>
       </div>
