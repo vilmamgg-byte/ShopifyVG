@@ -150,8 +150,7 @@
     height: 100vh !important;
   }
 
-  .el-section.el-section-alt,
-  .el-cta-section {
+  .el-section.el-section-alt {
     height: 100vh !important;
     box-sizing: border-box !important;
   }
@@ -164,9 +163,6 @@
   .el-section.el-section-alt {
     display: flex !important;
     align-items: center !important;
-    overflow: hidden !important;
-  }
-  .el-cta-section {
     overflow: hidden !important;
   }
   .el-header {
@@ -512,7 +508,6 @@
     <a href="/pages/beneficios">Beneficios</a>
     <a href="/pages/resultados">Resultados</a>
     <a href="/pages/testimonios">Testimonios</a>
-    <a href="#el-comprar" class="el-nav-cta">Obtener Ahora</a>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -672,8 +667,7 @@
       <a href="/pages/beneficios">Beneficios</a>
       <a href="/pages/resultados">Resultados</a>
       <a href="/pages/testimonios">Testimonios</a>
-        <a href="#el-comprar" class="el-nav-cta">Obtener Ahora</a>
-    </nav>
+        </nav>
 
     <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -712,7 +706,7 @@
 
         <!-- BLOQUE 4: Botones -->
         <div class="el-hero-actions" style="margin-top:16px;">
-          <a href="#el-comprar" class="el-btn-gold">
+          <a href="/cart/add" class="el-btn-gold">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
             Descargar Ahora
           </a>
@@ -829,45 +823,6 @@
       <!-- Manifesto — 3 frases en una fila: izquierda / centro / derecha -->
       <div class="el-manifesto-row">
 <p class="el-manifesto-line" style="text-align:right">"Un hábito honesto vale más que mil intenciones."</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       CTA FINAL
-  ══════════════════════════════════════ -->
-  <section class="el-cta-section" id="el-comprar">
-    <div class="el-cta-inner">
-
-      <span class="el-label el-anim">Empieza hoy</span>
-
-      <h2 class="el-cta-title el-anim el-anim-d1">
-        Tu nueva versión<br>
-        <em class="el-gold-text">empieza hoy.</em>
-      </h2>
-
-      <p class="el-cta-sub el-anim el-anim-d2">
-        No estás comprando un ebook.<br>
-        Estás invirtiendo en la persona que decides ser.
-      </p>
-
-      <div class="el-price-block el-anim el-anim-d3">
-        <span class="el-price-old">$47</span>
-        <span class="el-price-currency">$</span>
-        <span class="el-price-amount">17</span>
-      </div>
-
-      <div class="el-anim el-anim-d4">
-        <a href="/cart/add" class="el-btn-gold" style="font-size:17px; padding:20px 48px;">
-          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
-          Obtener el Ebook Ahora
-        </a>
-      </div>
-
-      <div class="el-cta-guarantee el-anim el-anim-d5">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Garantía de satisfacción 30 días · Pago seguro · Descarga inmediata
       </div>
 
     </div>
@@ -1097,8 +1052,7 @@
     '.el-hero',
     '.el-cambio-wrap',
     '.el-emocion-wrap',
-    '.el-section.el-section-alt',
-    '#el-comprar'
+    '.el-section.el-section-alt'
   ];
 
   /* ── timing ─────────────────────────────────────────────────── */
