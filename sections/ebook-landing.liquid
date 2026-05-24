@@ -45,30 +45,31 @@
     transform: scale(0.9) translateY(8mm) !important;
   }
   .el-emocion-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100vw !important;
     height: 100vh !important;
     overflow: hidden !important;
     position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
   }
   .el-emocion-clip {
-    position: absolute !important;
-    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100% !important;
     height: 100% !important;
   }
   .el-emocion-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    max-height: 90vh !important;
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
     object-position: center center !important;
     display: block !important;
-    transform: none !important;
   }
 
   .el-hero-actions .el-btn-gold {
