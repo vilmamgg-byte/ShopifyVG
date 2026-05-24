@@ -143,7 +143,7 @@
     display: none !important;
   }
 
-  /* ── FOUNDER STORY — cinematic editorial ───────────────────── */
+  /* ── FOUNDER STORY — luxury editorial ──────────────────────── */
   .el-section.el-section-alt {
     padding: 0 !important;
     justify-content: flex-start !important;
@@ -151,172 +151,181 @@
   .el-section.el-section-alt .el-container {
     overflow-y: visible !important;
     max-height: none !important;
-    margin-left: 5vw !important;
+    margin-left: 6vw !important;
     margin-right: 0 !important;
-    padding-right: 10vw !important;
-    max-width: 880px !important;
+    padding-right: 18vw !important;
+    max-width: 800px !important;
     margin-top: 1.5cm !important;
   }
   .el-author-grid {
-    gap: 56px !important;
-    grid-template-columns: 0.78fr 1.22fr !important;
+    gap: 0 !important;
+    grid-template-columns: 0.76fr 1.24fr !important;
     align-items: center !important;
   }
 
-  /* ── Visual card — cinematic depth ── */
+  /* ── Visual card — physical object luxury ── */
   .el-founder-card {
     width: 100%;
-    aspect-ratio: 3 / 4.2;
-    max-height: 320px;
+    aspect-ratio: 3 / 4.4;
+    max-height: 340px;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 65%),
-      linear-gradient(170deg, #121009 0%, #0e0c0a 45%, #080706 100%);
-    border: 1px solid rgba(201,168,76,0.13);
-    border-left: 2px solid rgba(201,168,76,0.55);
-    border-radius: 2px;
+      radial-gradient(ellipse 90% 65% at 50% 18%, rgba(201,168,76,0.10) 0%, transparent 58%),
+      radial-gradient(ellipse 50% 35% at 20% 85%, rgba(201,168,76,0.04) 0%, transparent 60%),
+      linear-gradient(175deg, #141109 0%, #0f0d0b 40%, #090806 100%);
+    border: 1px solid rgba(201,168,76,0.14);
+    border-top: 1px solid rgba(201,168,76,0.22);
+    border-left: 2px solid rgba(201,168,76,0.65);
+    border-radius: 1px;
     position: relative;
     overflow: hidden;
     box-shadow:
-      0 40px 100px rgba(0,0,0,0.8),
-      0 8px 28px rgba(0,0,0,0.55),
-      inset 0 1px 0 rgba(201,168,76,0.07),
-      inset 0 -1px 0 rgba(0,0,0,0.6);
+      0 56px 120px rgba(0,0,0,0.88),
+      0 16px 40px rgba(0,0,0,0.65),
+      0 4px 12px rgba(201,168,76,0.04),
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      inset 0 -1px 0 rgba(0,0,0,0.9),
+      inset 2px 0 12px rgba(0,0,0,0.3);
   }
-  /* Film grain */
+  /* Film grain texture */
   .el-fc-grain {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     background-size: 200px 200px;
     mix-blend-mode: overlay;
-    opacity: 0.09;
-    pointer-events: none;
-    z-index: 1;
+    opacity: 0.10;
+    pointer-events: none; z-index: 1;
   }
-  /* Soft vignette — darkens corners */
+  /* Soft corner vignette */
   .el-fc-vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 35%, rgba(0,0,0,0.65) 100%);
-    pointer-events: none;
-    z-index: 2;
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 85% 72% at 50% 48%, transparent 28%, rgba(0,0,0,0.72) 100%);
+    pointer-events: none; z-index: 2;
   }
-  /* Ambient gold glow — top */
+  /* Gold ambient glow */
   .el-fc-glow {
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 55%;
-    background: radial-gradient(ellipse 65% 55% at 50% 20%, rgba(201,168,76,0.09) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 2;
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 10%, rgba(201,168,76,0.13) 0%, transparent 62%),
+      radial-gradient(ellipse 40% 25% at 15% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none; z-index: 2;
   }
-  /* Top gold accent line */
-  .el-fc-top-accent {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, rgba(201,168,76,0.5), rgba(201,168,76,0.15), transparent);
-    z-index: 4;
+  /* Glossy diagonal light — physical object feel */
+  .el-fc-gloss {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      128deg,
+      rgba(255,255,255,0.032) 0%,
+      rgba(255,255,255,0.018) 30%,
+      transparent 52%
+    );
+    pointer-events: none; z-index: 3;
   }
   /* Bottom cinematic fade */
   .el-fc-bottom-line {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 40%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
-    z-index: 3;
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 48%;
+    background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 100%);
+    pointer-events: none; z-index: 3;
+  }
+  /* Top gold hairline */
+  .el-fc-top-accent {
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, rgba(201,168,76,0.65) 0%, rgba(201,168,76,0.2) 60%, transparent 100%);
+    z-index: 4;
+  }
+  /* Corner brackets — luxury detail */
+  .el-fc-corner-tl, .el-fc-corner-br {
+    position: absolute; width: 13px; height: 13px; z-index: 5;
+  }
+  .el-fc-corner-tl {
+    top: 11px; left: 11px;
+    border-top: 1px solid rgba(201,168,76,0.35);
+    border-left: 1px solid rgba(201,168,76,0.35);
+  }
+  .el-fc-corner-br {
+    bottom: 11px; right: 11px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    border-right: 1px solid rgba(201,168,76,0.25);
   }
   /* Card content */
   .el-fc-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 6;
   }
   .el-founder-monogram {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 108px;
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(201,168,76,0.16);
-    line-height: 1;
-    letter-spacing: -4px;
+    font-size: 118px; font-weight: 300; font-style: italic;
+    color: rgba(201,168,76,0.15);
+    line-height: 1; letter-spacing: -5px;
     user-select: none;
-    text-shadow: 0 0 60px rgba(201,168,76,0.12);
+    text-shadow: 0 0 80px rgba(201,168,76,0.16), 0 0 24px rgba(201,168,76,0.07);
   }
   .el-founder-divider {
-    width: 28px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,0.55), transparent);
-    margin: 12px 0 9px;
+    width: 26px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.65), transparent);
+    margin: 14px 0 10px;
   }
   .el-founder-sig {
     font-family: 'Manrope', sans-serif;
-    font-size: 8px;
-    font-weight: 400;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: rgba(201,168,76,0.32);
+    font-size: 7.5px; font-weight: 400;
+    letter-spacing: 0.36em; text-transform: uppercase;
+    color: rgba(201,168,76,0.30);
   }
 
-  /* ── Typography — name, label, bio ── */
+  /* ── Vertical editorial separator ── */
+  .el-founder-content {
+    padding-left: 52px !important;
+    border-left: 1px solid rgba(255,255,255,0.055) !important;
+    background: linear-gradient(to right, rgba(201,168,76,0.015) 0%, transparent 48px) !important;
+  }
+
+  /* ── Typography ── */
   .el-author-name {
     font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-size: clamp(38px, 3.8vw, 54px) !important;
-    font-weight: 300 !important;
-    font-style: italic !important;
-    letter-spacing: -0.5px !important;
-    line-height: 1.04 !important;
-    margin-bottom: 18px !important;
-    color: var(--el-white) !important;
+    font-size: clamp(40px, 4vw, 58px) !important;
+    font-weight: 300 !important; font-style: italic !important;
+    letter-spacing: 0px !important; line-height: 1.1 !important;
+    margin-bottom: 28px !important;
+    color: rgba(255,255,255,0.96) !important;
   }
   .el-section.el-section-alt .el-label {
     font-family: 'Manrope', sans-serif !important;
-    font-size: 9.5px !important;
-    letter-spacing: 0.26em !important;
-    margin-bottom: 12px !important;
+    font-size: 9px !important; font-weight: 400 !important;
+    letter-spacing: 0.32em !important;
+    margin-bottom: 18px !important;
+    opacity: 0.45 !important;
   }
   .el-author-bio {
     font-family: 'Manrope', sans-serif !important;
-    font-size: 13px !important;
-    font-weight: 300 !important;
-    line-height: 2 !important;
-    color: rgba(255,255,255,0.52) !important;
-    margin-bottom: 14px !important;
-    max-width: 400px !important;
+    font-size: 13px !important; font-weight: 300 !important;
+    line-height: 2.15 !important;
+    color: rgba(255,255,255,0.46) !important;
+    margin-bottom: 20px !important;
+    max-width: 360px !important;
   }
 
-  /* ── Editorial manifesto (replaces metrics) ── */
+  /* ── Editorial manifesto ── */
   .el-founder-manifesto {
-    margin-top: 26px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
+    margin-top: 36px;
+    display: flex; flex-direction: column; gap: 0;
   }
   .el-manifesto-line {
+    padding: 17px 0;
+    border-top: 1px solid rgba(255,255,255,0.048);
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15.5px;
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(255,255,255,0.33);
-    line-height: 1.5;
-    margin: 0;
-    letter-spacing: 0.01em;
-    transition: color 0.4s ease;
-  }
-  .el-founder-manifesto:hover .el-manifesto-line {
+    font-size: 16px; font-style: italic; font-weight: 300;
     color: rgba(255,255,255,0.22);
+    line-height: 1.55; margin: 0; letter-spacing: 0.015em;
+    transition: color 0.55s ease;
+    cursor: default;
   }
-  .el-founder-manifesto:hover .el-manifesto-line:hover {
-    color: rgba(255,255,255,0.60);
+  .el-manifesto-line:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.048);
+  }
+  .el-manifesto-line:hover {
+    color: rgba(201,168,76,0.52);
   }
 
   /* ── NAVIGATION DOTS ────────────────────────────────────────── */
@@ -647,8 +656,11 @@
             <div class="el-fc-grain"       aria-hidden="true"></div>
             <div class="el-fc-vignette"    aria-hidden="true"></div>
             <div class="el-fc-glow"        aria-hidden="true"></div>
+            <div class="el-fc-gloss"       aria-hidden="true"></div>
             <div class="el-fc-top-accent"  aria-hidden="true"></div>
             <div class="el-fc-bottom-line" aria-hidden="true"></div>
+            <div class="el-fc-corner-tl"   aria-hidden="true"></div>
+            <div class="el-fc-corner-br"   aria-hidden="true"></div>
             <div class="el-fc-content">
               <div class="el-founder-monogram" aria-hidden="true">M</div>
               <div class="el-founder-divider"  aria-hidden="true"></div>
@@ -658,7 +670,7 @@
         </div>
 
         <!-- Contenido -->
-        <div class="el-anim el-anim-d1">
+        <div class="el-founder-content el-anim el-anim-d1">
           <span class="el-label">La voz detrás del método</span>
           <h2 class="el-author-name">Mireya<br>Guevara</h2>
 
