@@ -57,23 +57,36 @@
     margin: 0 !important;
     box-sizing: border-box !important;
   }
+  /* Extensión lateral — misma imagen difuminada cubre los lados */
+  .el-emocion-wrap::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: -40px !important;
+    background-image: url("{{ 'EMOCION.png' | asset_url }}") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    filter: blur(28px) brightness(0.55) saturate(0.85) !important;
+    transform: scale(1.08) !important;
+    z-index: 0 !important;
+  }
   .el-emocion-clip {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
     height: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
   .el-emocion-img {
-    /* imagen 3:2 → para que ocupe 95vh de alto: ancho = 95vh × 1.5 = 142.5vh
-       para que ocupe 95vw de ancho: ancho = 95vw
-       min() toma el valor más pequeño = imagen cabe completa en ambas dimensiones */
     width: min(95vw, 142.5vh) !important;
     height: auto !important;
     max-width: none !important;
     display: block !important;
     object-position: center center !important;
     transform: scale(1.1) translateY(1.5cm) !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .el-hero-actions .el-btn-gold {
