@@ -151,20 +151,17 @@
   }
 
   .el-section.el-section-alt,
-  .el-section#el-faq,
   .el-cta-section {
     height: 100vh !important;
     box-sizing: border-box !important;
   }
-  .el-section.el-section-alt .el-container,
-  .el-section#el-faq .el-container {
+  .el-section.el-section-alt .el-container {
     overflow-y: auto !important;
     max-height: calc(100vh - 80px) !important;
     scrollbar-width: thin !important;
     scrollbar-color: rgba(201,168,76,0.3) transparent !important;
   }
-  .el-section.el-section-alt,
-  .el-section#el-faq {
+  .el-section.el-section-alt {
     display: flex !important;
     align-items: center !important;
     overflow: hidden !important;
@@ -515,7 +512,6 @@
     <a href="/pages/beneficios">Beneficios</a>
     <a href="/pages/resultados">Resultados</a>
     <a href="/pages/testimonios">Testimonios</a>
-    <a href="#el-faq">FAQ</a>
     <a href="#el-comprar" class="el-nav-cta">Obtener Ahora</a>
   </div>
 
@@ -676,8 +672,7 @@
       <a href="/pages/beneficios">Beneficios</a>
       <a href="/pages/resultados">Resultados</a>
       <a href="/pages/testimonios">Testimonios</a>
-      <a href="#el-faq">FAQ</a>
-      <a href="#el-comprar" class="el-nav-cta">Obtener Ahora</a>
+        <a href="#el-comprar" class="el-nav-cta">Obtener Ahora</a>
     </nav>
 
     <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -840,100 +835,6 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       FAQ
-  ══════════════════════════════════════ -->
-  <section class="el-section" id="el-faq">
-    <div class="el-container">
-
-      <div class="el-section-hd">
-        <span class="el-label el-anim">Preguntas frecuentes</span>
-        <h2 class="el-section-title el-anim el-anim-d1">
-          Todo lo que<br>
-          <span class="el-gold-text">necesitas saber</span>
-        </h2>
-      </div>
-
-      <div class="el-faq-wrap">
-
-        <div class="el-faq-item el-anim">
-          <button class="el-faq-btn" aria-expanded="false">
-            ¿Cómo recibo el ebook después de comprarlo?
-            <div class="el-faq-icon" aria-hidden="true"></div>
-          </button>
-          <div class="el-faq-body" role="region">
-            <div class="el-faq-body-inner">
-              Una vez completado el pago, recibirás un correo electrónico automático con el
-              enlace de descarga directa. El proceso es inmediato — en menos de 2 minutos
-              tendrás el ebook en tu dispositivo. También puedes descargarlo desde tu cuenta
-              en nuestra tienda en cualquier momento.
-            </div>
-          </div>
-        </div>
-
-        <div class="el-faq-item el-anim el-anim-d1">
-          <button class="el-faq-btn" aria-expanded="false">
-            ¿La descarga es realmente inmediata?
-            <div class="el-faq-icon" aria-hidden="true"></div>
-          </button>
-          <div class="el-faq-body" role="region">
-            <div class="el-faq-body-inner">
-              Sí, completamente inmediata. No hay esperas, no hay procesos de activación.
-              Pagas → recibes el correo → descargas → comienzas a leer. En menos de 3 minutos
-              desde que haces clic en "Comprar" ya tienes el ebook en tus manos.
-            </div>
-          </div>
-        </div>
-
-        <div class="el-faq-item el-anim el-anim-d2">
-          <button class="el-faq-btn" aria-expanded="false">
-            ¿Puedo leerlo en mi celular o tablet?
-            <div class="el-faq-icon" aria-hidden="true"></div>
-          </button>
-          <div class="el-faq-body" role="region">
-            <div class="el-faq-body-inner">
-              Absolutamente. El ebook está disponible en formato PDF y EPUB, ambos optimizados
-              para lectura móvil. Funciona perfectamente en iPhone, Android, iPad, Kindle,
-              Mac y PC. Lo diseñamos específicamente para que la experiencia de lectura en
-              celular sea fluida y cómoda.
-            </div>
-          </div>
-        </div>
-
-        <div class="el-faq-item el-anim el-anim-d3">
-          <button class="el-faq-btn" aria-expanded="false">
-            ¿Tiene garantía de devolución?
-            <div class="el-faq-icon" aria-hidden="true"></div>
-          </button>
-          <div class="el-faq-body" role="region">
-            <div class="el-faq-body-inner">
-              Sí. Ofrecemos garantía total de 30 días sin preguntas. Si aplicas el método
-              durante 21 días y sientes que no hubo ningún cambio en tu enfoque, disciplina
-              o claridad, te devolvemos el 100% de tu inversión. Confiamos completamente
-              en los resultados de este sistema.
-            </div>
-          </div>
-        </div>
-
-        <div class="el-faq-item el-anim el-anim-d4">
-          <button class="el-faq-btn" aria-expanded="false">
-            ¿Qué formatos de archivo incluye?
-            <div class="el-faq-icon" aria-hidden="true"></div>
-          </button>
-          <div class="el-faq-body" role="region">
-            <div class="el-faq-body-inner">
-              Recibirás el ebook en <strong>PDF</strong> (ideal para PC, Mac e impresión) y
-              <strong>EPUB</strong> (ideal para e-readers, celulares y tablets). Adicionalmente,
-              las plantillas descargables vienen en formato PDF interactivo y en versión
-              compatible con Notion. Todo en un solo archivo ZIP que se descarga en segundos.
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /faq-wrap -->
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
        CTA FINAL
   ══════════════════════════════════════ -->
   <section class="el-cta-section" id="el-comprar">
@@ -998,7 +899,6 @@
           <li><a href="#el-vision">Método Imparable</a></li>
           <li><a href="/pages/beneficios">Beneficios</a></li>
           <li><a href="/pages/testimonios">Testimonios</a></li>
-          <li><a href="#el-faq">FAQ</a></li>
         </ul>
       </div>
 
@@ -1198,7 +1098,6 @@
     '.el-cambio-wrap',
     '.el-emocion-wrap',
     '.el-section.el-section-alt',
-    '#el-faq',
     '#el-comprar'
   ];
 
