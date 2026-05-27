@@ -561,6 +561,10 @@
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
     background:
       radial-gradient(ellipse 90% 70% at 50% 38%, rgba(18,14,8,1) 0%, rgba(5,4,3,1) 100%) !important;
     overflow: hidden !important;
@@ -593,7 +597,7 @@
     letter-spacing: 0.42em;
     text-transform: uppercase;
     color: rgba(201,168,76,0.38);
-    margin: 0 0 3cm;
+    margin: 0 0 1.5cm;
   }
   .el-cierre-headline {
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -614,9 +618,9 @@
     font-size: 11.5px;
     font-weight: 300;
     line-height: 2.1;
-    color: rgba(255,255,255,0.32);
+    color: rgba(255,255,255,0.52);
     letter-spacing: 0.04em;
-    margin: 0 0 2.4cm;
+    margin: 0 0 1.6cm;
   }
   .el-cierre-btn {
     font-family: 'Manrope', sans-serif;
@@ -1339,7 +1343,8 @@
     if (busy){ e.preventDefault(); return; }
 
     var inner = slides[current].querySelector('.el-container');
-    if (inner && inner.scrollHeight > inner.clientHeight + 4){
+    var oy = inner ? window.getComputedStyle(inner).overflowY : '';
+    if (inner && (oy === 'auto' || oy === 'scroll') && inner.scrollHeight > inner.clientHeight + 4){
       var atTop    = inner.scrollTop <= 0;
       var atBottom = inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 2;
       if (e.deltaY > 3 && !atBottom) return;
