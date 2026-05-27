@@ -193,7 +193,7 @@
     margin-right: 0 !important;
     padding-right: calc(3vw + 1cm) !important;
     max-width: 980px !important;
-    margin-top: 1.5cm !important;
+    margin-top: 2cm !important;
   }
   .el-author-grid {
     gap: 56px !important;
@@ -223,13 +223,14 @@
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(201,168,76,0.25) 12%,
-      rgba(201,168,76,0.80) 38%,
-      rgba(201,168,76,1.00) 50%,
-      rgba(201,168,76,0.80) 62%,
-      rgba(201,168,76,0.25) 88%,
+      rgba(201,168,76,0.08) 14%,
+      rgba(201,168,76,0.30) 38%,
+      rgba(201,168,76,0.42) 50%,
+      rgba(201,168,76,0.30) 62%,
+      rgba(201,168,76,0.08) 86%,
       transparent 100%
     ) !important;
+    box-shadow: 0 0 8px 1px rgba(201,168,76,0.08) !important;
     pointer-events: none !important;
   }
   /* Ornamento central — diamante dorado */
@@ -289,11 +290,12 @@
     top: -10%;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    height: 55%;
-    background: radial-gradient(ellipse 65% 55% at 50% 20%, rgba(201,168,76,0.09) 0%, transparent 70%);
+    width: 110%;
+    height: 60%;
+    background: radial-gradient(ellipse 70% 60% at 50% 22%, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 50%, transparent 75%);
     pointer-events: none;
     z-index: 2;
+    animation: el-glow-breathe 5s ease-in-out infinite;
   }
   /* Top gold accent line */
   .el-fc-top-accent {
@@ -323,14 +325,29 @@
   }
   .el-founder-monogram {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 92px;
+    font-size: 108px;
     font-weight: 300;
     font-style: italic;
-    color: rgba(201,168,76,0.16);
+    background: linear-gradient(
+      158deg,
+      rgba(155,122,38,0.85)  0%,
+      rgba(201,168,76,1.00)  22%,
+      rgba(252,222,138,1.00) 44%,
+      rgba(215,182,92,1.00)  58%,
+      rgba(190,156,62,0.95)  74%,
+      rgba(148,116,32,0.78)  100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
     letter-spacing: -4px;
     user-select: none;
-    text-shadow: 0 0 60px rgba(201,168,76,0.12);
+    animation: el-monogram-breathe 5s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 28px rgba(201,168,76,0.22))
+      drop-shadow(0 6px 16px rgba(0,0,0,0.65))
+      drop-shadow(0 1px 3px rgba(201,168,76,0.20));
   }
   .el-founder-divider {
     width: 28px;
@@ -370,10 +387,10 @@
     font-family: 'Manrope', sans-serif !important;
     font-size: 11.8px !important;
     font-weight: 300 !important;
-    line-height: 2 !important;
-    color: rgba(255,255,255,0.52) !important;
-    margin-bottom: 14px !important;
-    max-width: calc(400px + 16cm) !important;
+    line-height: 2.2 !important;
+    color: rgba(255,255,255,0.48) !important;
+    margin-bottom: 22px !important;
+    max-width: calc(400px + 14cm) !important;
     text-align: justify !important;
     transform: translateY(-5mm) !important;
   }
@@ -453,7 +470,49 @@
     transform: translateX(-50%) !important;
     top: calc(22px - 3mm) !important;
     text-align: center !important;
-    color: rgba(255,255,255,1.00) !important;
+    color: rgba(255,255,255,0.92) !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 23px !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.02em !important;
+    text-shadow: 0 2px 28px rgba(0,0,0,0.55) !important;
+    transition: color 0.6s ease !important;
+    white-space: nowrap !important;
+  }
+  .el-manifesto-row .el-manifesto-line:first-child:hover {
+    color: rgba(201,168,76,0.85) !important;
+  }
+
+  @keyframes el-glow-breathe {
+    0%, 100% { opacity: 0.75; transform: translateX(-50%) scale(1); }
+    50%       { opacity: 1;    transform: translateX(-50%) scale(1.14); }
+  }
+  @keyframes el-monogram-breathe {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 28px rgba(201,168,76,0.22))
+        drop-shadow(0 6px 16px rgba(0,0,0,0.65))
+        drop-shadow(0 1px 3px rgba(201,168,76,0.20));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 46px rgba(201,168,76,0.38))
+        drop-shadow(0 8px 22px rgba(0,0,0,0.70))
+        drop-shadow(0 1px 5px rgba(201,168,76,0.32));
+    }
+  }
+  .el-author-visual .el-founder-card {
+    transition: box-shadow 0.9s ease, transform 0.9s ease;
+  }
+  .el-author-visual:hover .el-founder-card {
+    box-shadow:
+      0 55px 130px rgba(0,0,0,0.88),
+      0 14px 40px rgba(0,0,0,0.62),
+      0 0 50px rgba(201,168,76,0.10),
+      inset 0 1px 0 rgba(201,168,76,0.12),
+      inset 0 -1px 0 rgba(0,0,0,0.65);
+    transform: translateY(-5px);
   }
 
   /* ── NAVIGATION DOTS ────────────────────────────────────────── */
@@ -822,7 +881,7 @@
 
       <!-- Manifesto — 3 frases en una fila: izquierda / centro / derecha -->
       <div class="el-manifesto-row">
-<p class="el-manifesto-line" style="text-align:right">"Un hábito honesto vale más que mil intenciones."</p>
+<p class="el-manifesto-line" style="text-align:right">"Todo cambia cuando aprendes a dominarte a ti mismo."</p>
       </div>
 
     </div>
