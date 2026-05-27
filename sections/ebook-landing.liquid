@@ -555,6 +555,146 @@
     .fp-nav { right: 14px; gap: 10px; }
     .fp-dot  { width: 6px; height: 6px; }
   }
+  /* ── CLOSING SECTION — cierre editorial luxury ── */
+  .el-cierre {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 38%, rgba(18,14,8,1) 0%, rgba(5,4,3,1) 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .el-cierre-ambient {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 55%;
+    background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(201,168,76,0.055) 0%, transparent 70%);
+    pointer-events: none;
+    animation: el-glow-breathe 7s ease-in-out infinite;
+  }
+  .el-cierre-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8vw;
+    max-width: 780px;
+    position: relative;
+    z-index: 2;
+  }
+  .el-cierre-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8.5px;
+    font-weight: 400;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.38);
+    margin: 0 0 3cm;
+  }
+  .el-cierre-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(26px, 2.95vw, 44px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.60;
+    color: rgba(255,255,255,0.88);
+    letter-spacing: -0.2px;
+    margin: 0 0 1.8cm;
+  }
+  .el-cierre-headline em {
+    font-style: italic;
+    color: rgba(255,255,255,0.60);
+  }
+  .el-cierre-tagline {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11.5px;
+    font-weight: 300;
+    line-height: 2.1;
+    color: rgba(255,255,255,0.32);
+    letter-spacing: 0.04em;
+    margin: 0 0 2.4cm;
+  }
+  .el-cierre-btn {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.75);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 15px 46px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 1px;
+    transition: color 0.65s ease, border-color 0.65s ease, background 0.65s ease;
+  }
+  .el-cierre-btn:hover {
+    color: rgba(201,168,76,1.0);
+    border-color: rgba(201,168,76,0.55);
+    background: rgba(201,168,76,0.04);
+  }
+  /* Footer minimal dentro del cierre */
+  .el-cierre-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 8vw 1.8cm;
+    z-index: 2;
+    border-top: 1px solid rgba(201,168,76,0.07);
+  }
+  .el-cierre-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 1.2cm auto 0;
+    gap: 24px;
+  }
+  .el-cierre-brand {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    text-decoration: none;
+  }
+  .el-cierre-brand em {
+    font-style: normal;
+    color: rgba(201,168,76,0.55);
+  }
+  .el-cierre-nav {
+    display: flex;
+    gap: 2.2cm;
+    align-items: center;
+  }
+  .el-cierre-nav a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+    text-decoration: none;
+    transition: color 0.45s ease;
+  }
+  .el-cierre-nav a:hover {
+    color: rgba(201,168,76,0.55);
+  }
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.14);
+    margin: 0;
+  }
+
 {%- endstyle -%}
 
 <div class="el-page">
@@ -891,76 +1031,38 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       FOOTER
+       CIERRE — editorial luxury closing
   ══════════════════════════════════════ -->
-  <footer class="el-footer">
-    <div class="el-footer-grid">
+  <section class="el-section el-cierre" id="el-cierre">
 
-      <!-- Brand -->
-      <div class="el-footer-brand">
-        <a href="/" class="el-logo">
-          <div class="el-logo-mark">D</div>
-          Disciplina<span style="color:var(--el-gold)">VG</span>
-        </a>
-        <p>
-          Transformación personal a través de la disciplina, el enfoque
-          y la mentalidad correcta. Sin atajos. Con método.
-        </p>
-      </div>
+    <div class="el-cierre-ambient" aria-hidden="true"></div>
 
-      <!-- Navegación -->
-      <div>
-        <div class="el-footer-col-title">Navegación</div>
-        <ul class="el-footer-links">
-          <li><a href="#el-inicio">Inicio</a></li>
-          <li><a href="#el-vision">Método Imparable</a></li>
-          <li><a href="/pages/beneficios">Beneficios</a></li>
-          <li><a href="/pages/testimonios">Testimonios</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal -->
-      <div>
-        <div class="el-footer-col-title">Legal</div>
-        <ul class="el-footer-links">
-          <li><a href="/policies/privacy-policy">Privacidad</a></li>
-          <li><a href="/policies/terms-of-service">Términos de uso</a></li>
-          <li><a href="/policies/refund-policy">Devoluciones</a></li>
-          <li><a href="/pages/contacto">Contacto</a></li>
-        </ul>
-      </div>
-
-      <!-- Social -->
-      <div>
-        <div class="el-footer-col-title">Comunidad</div>
-        <div class="el-social-row">
-          <a href="#" class="el-social-btn" aria-label="Instagram" rel="noopener">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zM17.5 6.5h.01"/></svg>
-          </a>
-          <a href="#" class="el-social-btn" aria-label="TikTok" rel="noopener">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.87a8.18 8.18 0 004.78 1.52V6.94a4.85 4.85 0 01-1.01-.25z"/></svg>
-          </a>
-          <a href="#" class="el-social-btn" aria-label="YouTube" rel="noopener">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-          </a>
-        </div>
-        <p style="font-size:13px;color:var(--el-muted);margin-top:20px;line-height:1.6;">
-          Únete a más de 5,000 personas construyendo la mejor versión de sí mismas.
-        </p>
-      </div>
-
-    </div><!-- /footer-grid -->
-
-    <div class="el-footer-bottom">
-      <p class="el-footer-copy">© 2025 DisciplinaVG · Todos los derechos reservados.</p>
-      <div class="el-footer-legal">
-        <a href="/policies/privacy-policy">Privacidad</a>
-        <a href="/policies/terms-of-service">Términos</a>
-        <a href="/policies/refund-policy">Reembolso</a>
-      </div>
+    <div class="el-cierre-content">
+      <p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
+      <h2 class="el-cierre-headline el-anim el-anim-d1">
+        La disciplina no transforma<br>tu vida en un instante.<br>
+        <em>La transforma en silencio,<br>todos los días.</em>
+      </h2>
+      <p class="el-cierre-tagline el-anim el-anim-d2">
+        Empieza cuando estés listo.<br>Pero no vuelvas a detenerte.
+      </p>
+      <a href="/cart/add" class="el-cierre-btn el-anim el-anim-d3">Obtener el método</a>
     </div>
 
-  </footer>
+    <footer class="el-cierre-footer">
+      <div class="el-cierre-footer-inner">
+        <span class="el-cierre-brand">Disciplina<em>VG</em></span>
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="#" rel="noopener">Instagram</a>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <a href="/policies/terms-of-service">Términos</a>
+          <a href="/pages/contacto">Contacto</a>
+        </nav>
+        <p class="el-cierre-copy">© 2025 DisciplinaVG</p>
+      </div>
+    </footer>
+
+  </section>
 
 </div><!-- /el-page -->
 
@@ -1114,7 +1216,8 @@
     '.el-hero',
     '.el-cambio-wrap',
     '.el-emocion-wrap',
-    '.el-section.el-section-alt'
+    '.el-section.el-section-alt',
+    '#el-cierre'
   ];
 
   /* ── timing ─────────────────────────────────────────────────── */
