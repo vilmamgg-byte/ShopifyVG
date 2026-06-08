@@ -1,7 +1,7 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 {%- comment -%}v2{%- endcomment -%}
 {%- style -%}
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&family=Playfair+Display:ital,wght@1,400&display=swap');
 
   .el-badge {
     align-self: flex-start !important;
@@ -649,13 +649,14 @@
     margin: 0 auto 48px;
   }
   .el-cierre-tagline {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
     font-size: 19px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.85;
     color: rgba(255,255,255,0.85);
-    letter-spacing: 0.05em;
-    margin: 0 0 24px;
+    letter-spacing: 0.02em;
+    margin: -0.5cm 0 24px;
   }
   /* Editorial CTA — refined, not aggressive */
   .el-cierre-btn {
@@ -1083,7 +1084,7 @@
       </h2>
       <span class="el-cierre-divider el-anim el-anim-d3" aria-hidden="true"></span>
       <p class="el-cierre-tagline el-anim el-anim-d4">
-        Empieza cuando estés listo.<br>Pero no vuelvas a detenerte.
+        Empieza cuando estés listo. Pero no vuelvas a detenerte.
       </p>
       <a href="/cart/add" class="el-cierre-btn el-anim el-anim-d5">Obtener el método</a>
     </div>
