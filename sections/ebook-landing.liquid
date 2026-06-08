@@ -577,14 +577,7 @@
     pointer-events: none; z-index: 2;
     animation: el-glow-breathe 9s ease-in-out infinite;
   }
-  /* Isotipo corona geométrica premium */
-  .el-cierre-crown {
-    position: relative; z-index: 3;
-    margin-bottom: 17px; opacity: 0.72;
-    transition: opacity 0.7s ease;
-  }
-  .el-cierre-crown:hover { opacity: 1; }
-  .el-cierre-content {
+.el-cierre-content {
     flex: 1; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center;
     padding: 28px min(5vw, 60px) 0;
@@ -691,8 +684,7 @@
   .el-cierre-sep { font-size: 9px; color: rgba(255,255,255,0.07); margin: 0 10px; letter-spacing: 0; font-weight: 300; }
   .el-cierre-copy { font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.14em; color: rgba(255,255,255,0.08); margin: 0; }
   @media (max-width: 768px) {
-    .el-cierre-crown { margin-bottom: 12px; }
-    .el-cierre-content { padding: 22px 18px 0; max-width: 100%; }
+.el-cierre-content { padding: 22px 18px 0; max-width: 100%; }
     .el-cierre-eyebrow { margin: 0 0 17px; font-size: 5px; }
     .el-cierre-headline { font-size: clamp(12px, 3.9vw, 20px); line-height: 1.12; margin: 0 0 12px; }
     .el-cierre-divider { margin: 0 auto 17px; }
@@ -1038,7 +1030,7 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       CIERRE — High-End luxury redesign — BUILD 2026-06-08-D
+       CIERRE — High-End luxury redesign — BUILD 2026-06-08-E
   ══════════════════════════════════════ -->
   <section class="el-section el-cierre" id="el-cierre">
 
@@ -1046,22 +1038,7 @@
 
     <div class="el-cierre-content">
 
-      <!-- Corona geométrica premium — isotipo superior -->
-      <div class="el-cierre-crown" aria-hidden="true">
-        <svg width="29" height="25" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 40 L3 20 L17 30 L24 4 L31 30 L45 20 L45 40" fill="none" stroke="rgba(212,175,55,0.50)" stroke-width="0.9" stroke-linejoin="round" stroke-linecap="round"/>
-          <line x1="3" y1="40" x2="45" y2="40" stroke="rgba(212,175,55,0.30)" stroke-width="0.85"/>
-          <path d="M24 4 L27.5 10.5 L24 17 L20.5 10.5 Z" fill="none" stroke="rgba(212,175,55,0.36)" stroke-width="0.75"/>
-          <circle cx="24" cy="4" r="2.1" fill="rgba(212,175,55,0.88)"/>
-          <circle cx="24" cy="4" r="1" fill="rgba(255,242,180,0.65)"/>
-          <circle cx="3" cy="20" r="1.4" fill="rgba(212,175,55,0.46)"/>
-          <circle cx="45" cy="20" r="1.4" fill="rgba(212,175,55,0.46)"/>
-          <circle cx="17" cy="30" r="1.1" fill="rgba(212,175,55,0.26)"/>
-          <circle cx="31" cy="30" r="1.1" fill="rgba(212,175,55,0.26)"/>
-        </svg>
-      </div>
-
-      <p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
+<p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
       <h2 class="el-cierre-headline el-anim el-anim-d2">
         La disciplina no transforma tu vida en un instante.<br>
         <em>La transforma en silencio, todos los días.</em>
