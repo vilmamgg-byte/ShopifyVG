@@ -562,7 +562,7 @@
     align-items: center !important;
     justify-content: center !important;
     justify-content: safe center !important;
-    padding: 0 0 110px 0 !important;
+    padding: 0 0 96px 0 !important;
     height: 100vh !important;
     width: 100vw !important;
     box-sizing: border-box !important;
@@ -579,114 +579,128 @@
     pointer-events: none !important;
     z-index: 1 !important;
   }
-  /* Ambient gold glow — breathing light above content */
+  /* Ambient gold glow — breathing cinematic light */
   .el-cierre-ambient {
     position: absolute;
-    top: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 55%;
-    height: 60%;
-    background: radial-gradient(ellipse 65% 55% at 50% 40%, rgba(201,168,76,0.036) 0%, transparent 68%);
-    pointer-events: none;
-    z-index: 2;
+    top: 10%; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 65%;
+    background: radial-gradient(ellipse 60% 50% at 50% 38%, rgba(212,175,55,0.042) 0%, transparent 65%);
+    pointer-events: none; z-index: 2;
     animation: el-glow-breathe 9s ease-in-out infinite;
   }
+  /* ── Content block — Apple-style negative space ── */
   .el-cierre-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0 min(10vw, 120px);
-    max-width: 900px;
+    padding: 0 min(8vw, 100px);
+    max-width: 860px;
     width: 100%;
     position: relative;
     z-index: 3;
   }
-  /* Diamond ornament above eyebrow label */
+  /* Diamond ornament + eyebrow label */
   .el-cierre-eyebrow {
     font-family: 'Manrope', sans-serif;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 400;
-    letter-spacing: 0.52em;
+    letter-spacing: 0.58em;
     text-transform: uppercase;
-    color: rgba(201,168,76,0.28);
-    margin: 3cm 0 42px;
+    color: rgba(212,175,55,0.30);
+    margin: 0 0 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 23px;
+    gap: 18px;
   }
   .el-cierre-eyebrow::before {
     content: '';
     display: block;
-    width: 5px;
-    height: 5px;
-    background: rgba(201,168,76,0.42);
+    width: 4px; height: 4px;
+    background: rgba(212,175,55,0.45);
     transform: rotate(45deg);
     flex-shrink: 0;
   }
+  /* Headline — reflexión editorial serif */
   .el-cierre-headline {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(18px, 2.1vw, 35px);
+    font-size: clamp(20px, 2.2vw, 38px);
     font-weight: 300;
     font-style: normal;
-    line-height: 1.52;
-    color: rgba(255,255,255,0.62);
-    letter-spacing: -0.3px;
-    margin: -1cm 0 22px;
+    line-height: 1.62;
+    color: rgba(255,255,255,0.68);
+    letter-spacing: 0.01em;
+    margin: 0 0 30px;
   }
+  /* Liquid gold italic — second line of headline */
   .el-cierre-headline em {
     font-style: italic;
-    color: rgba(210,176,85,0.62);
+    color: rgba(212,175,55,0.80);
   }
-  /* Thin gold divider between headline and tagline */
+  /* Thin gold divider — visual pause */
   .el-cierre-divider {
     display: block;
-    width: 38px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(201,168,76,0.38), transparent);
-    margin: 0 auto 48px;
+    width: 44px; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212,175,55,0.44), transparent);
+    margin: 0 auto 44px;
   }
+  /* Tagline — cierre emocional Playfair italic */
   .el-cierre-tagline {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    font-size: 19px;
+    font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 400;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.85);
+    line-height: 1.70;
+    color: rgba(255,255,255,0.78);
     letter-spacing: 0.02em;
-    margin: -0.5cm 0 24px;
+    margin: 0 0 44px;
   }
-  /* Editorial CTA — refined, not aggressive */
+  /* CTA — rey visual de la sección */
   .el-cierre-btn {
     font-family: 'Manrope', sans-serif;
-    font-size: 10.5px;
+    font-size: 11px;
     font-weight: 400;
-    letter-spacing: 0.38em;
+    letter-spacing: 0.42em;
     text-transform: uppercase;
-    color: rgba(201,168,76,0.62);
-    border: 1px solid rgba(201,168,76,0.16);
-    padding: 18px 68px 18px 72px;
+    color: rgba(212,175,55,0.88);
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.38);
+    padding: 20px 72px 20px 76px;
     text-decoration: none;
     display: inline-block;
     border-radius: 0;
-    margin-top: 0.5cm !important;
-    transition: color 0.85s ease, border-color 0.85s ease, background 0.85s ease, box-shadow 0.85s ease;
-    box-shadow: 0 0 0 rgba(201,168,76,0);
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 32px rgba(212,175,55,0.05),
+                inset 0 0 0 rgba(212,175,55,0);
+  }
+  /* Radial ambient glow detrás del botón */
+  .el-cierre-btn::after {
+    content: '';
+    position: absolute;
+    inset: -20px -40px;
+    background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 1;
   }
   .el-cierre-btn:hover {
-    color: rgba(201,168,76,0.95);
-    border-color: rgba(201,168,76,0.40);
-    background: rgba(201,168,76,0.03);
-    box-shadow: 0 0 24px rgba(201,168,76,0.055);
+    color: rgba(212,175,55,1);
+    border-color: rgba(212,175,55,0.62);
+    background: rgba(212,175,55,0.04);
+    box-shadow: 0 0 28px rgba(212,175,55,0.14),
+                0 0 64px rgba(212,175,55,0.06),
+                inset 0 0 16px rgba(212,175,55,0.03);
   }
-  /* Footer — near-invisible, lets message breathe */
+  .el-cierre-btn:hover::after {
+    opacity: 1.8;
+  }
+  /* ── Footer — base de la página, no compite con el CTA ── */
   .el-cierre-footer {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     padding: 0 min(8vw, 80px) 22px;
     z-index: 3;
     border-top: 1px solid rgba(255,255,255,0.04);
@@ -709,30 +723,52 @@
   }
   .el-cierre-nav a {
     font-family: 'Manrope', sans-serif;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 400;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.13);
     text-decoration: none;
-    transition: color 0.55s ease;
+    transition: color 0.4s ease;
   }
   .el-cierre-nav a:hover {
-    color: rgba(201,168,76,0.42);
+    color: rgba(212,175,55,0.40);
   }
   .el-cierre-sep {
-    font-size: 9.5px;
-    color: rgba(255,255,255,0.08);
+    font-size: 9px;
+    color: rgba(255,255,255,0.07);
     margin: 0 10px;
     letter-spacing: 0;
     font-weight: 300;
   }
   .el-cierre-copy {
     font-family: 'Manrope', sans-serif;
-    font-size: 9.5px;
+    font-size: 9px;
     letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.09);
+    color: rgba(255,255,255,0.08);
     margin: 0;
+  }
+  /* ── Mobile responsive ── */
+  @media (max-width: 768px) {
+    .el-cierre { padding: 0 0 88px 0 !important; }
+    .el-cierre-content { padding: 0 28px; max-width: 100%; }
+    .el-cierre-eyebrow { margin: 0 0 36px; font-size: 8.5px; }
+    .el-cierre-headline {
+      font-size: clamp(18px, 5.5vw, 28px);
+      line-height: 1.55; margin: 0 0 22px;
+    }
+    .el-cierre-divider { margin: 0 auto 32px; }
+    .el-cierre-tagline {
+      font-size: clamp(15px, 4.2vw, 18px);
+      margin: 0 0 32px;
+    }
+    .el-cierre-btn {
+      font-size: 10px;
+      padding: 18px 44px 18px 48px;
+      letter-spacing: 0.34em;
+    }
+    .el-cierre-footer { padding: 0 20px 16px; }
+    .el-cierre-sep { margin: 0 7px; }
   }
 
 {%- endstyle -%}
@@ -1071,7 +1107,7 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       CIERRE — editorial luxury closing — BUILD 2026-06-07-D
+       CIERRE — editorial luxury closing — BUILD 2026-06-07-E
   ══════════════════════════════════════ -->
   <section class="el-section el-cierre" id="el-cierre">
 
