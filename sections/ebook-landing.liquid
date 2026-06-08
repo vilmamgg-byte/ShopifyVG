@@ -685,35 +685,25 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0 min(8vw, 80px) 38px;
+    padding: 0 min(8vw, 80px) 22px;
     z-index: 3;
     border-top: 1px solid rgba(255,255,255,0.04);
   }
   .el-cierre-footer-inner {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: 28px auto 0;
-    gap: 24px;
-  }
-  .el-cierre-brand {
-    font-family: 'Manrope', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.20);
-    text-decoration: none;
-  }
-  .el-cierre-brand em {
-    font-style: normal;
-    color: rgba(201,168,76,0.38);
+    text-align: center;
+    max-width: 900px;
+    margin: 10px auto 0;
+    gap: 8px;
   }
   .el-cierre-nav {
     display: flex;
-    gap: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    gap: 0;
   }
   .el-cierre-nav a {
     font-family: 'Manrope', sans-serif;
@@ -727,6 +717,13 @@
   }
   .el-cierre-nav a:hover {
     color: rgba(201,168,76,0.42);
+  }
+  .el-cierre-sep {
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.08);
+    margin: 0 10px;
+    letter-spacing: 0;
+    font-weight: 300;
   }
   .el-cierre-copy {
     font-family: 'Manrope', sans-serif;
@@ -1093,14 +1090,18 @@
 
     <footer class="el-cierre-footer">
       <div class="el-cierre-footer-inner">
-        <span class="el-cierre-brand">Disciplina<em>VG</em></span>
         <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
           <a href="#" rel="noopener">Instagram</a>
-          <a href="/policies/privacy-policy">Privacidad</a>
-          <a href="/policies/terms-of-service">Términos</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
           <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
         </nav>
-        <p class="el-cierre-copy">© 2025 DisciplinaVG</p>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
       </div>
     </footer>
 
