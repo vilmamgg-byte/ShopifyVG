@@ -1,7 +1,7 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 {%- comment -%}v2{%- endcomment -%}
 {%- style -%}
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&family=Montserrat:ital,wght@0,800;1,800&family=Playfair+Display:ital,wght@1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&family=Playfair+Display:ital,wght@1,400&display=swap');
 
   .el-badge {
     align-self: flex-start !important;
@@ -555,143 +555,219 @@
     .fp-nav { right: 14px; gap: 10px; }
     .fp-dot  { width: 6px; height: 6px; }
   }
-  /* ── CLOSING SECTION — cierre High-End luxury redesign ── */
+  /* ── CLOSING SECTION — cierre editorial luxury ── */
   .el-cierre {
-    display: flex !important; flex-direction: column !important;
-    align-items: stretch !important;
-    padding: 0 !important;
-    height: 100vh !important; width: 100vw !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-content: safe center !important;
+    padding: 0 0 96px 0 !important;
+    height: 100vh !important;
+    width: 100vw !important;
     box-sizing: border-box !important;
-    background: radial-gradient(ellipse 95% 80% at 50% 44%, rgba(20,16,10,1) 0%, rgba(4,3,2,1) 100%) !important;
+    background:
+      radial-gradient(ellipse 95% 80% at 50% 44%, rgba(20,16,10,1) 0%, rgba(4,3,2,1) 100%) !important;
     overflow: hidden !important;
   }
+  /* Soft edge vignette — cinematic depth */
   .el-cierre::before {
-    content: '' !important; position: absolute !important; inset: 0 !important;
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
     background: radial-gradient(ellipse 110% 90% at 50% 50%, transparent 42%, rgba(0,0,0,0.45) 100%) !important;
-    pointer-events: none !important; z-index: 1 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
   }
+  /* Ambient gold glow — breathing cinematic light */
   .el-cierre-ambient {
-    position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+    position: absolute;
+    top: 10%; left: 50%; transform: translateX(-50%);
     width: 60%; height: 65%;
     background: radial-gradient(ellipse 60% 50% at 50% 38%, rgba(212,175,55,0.042) 0%, transparent 65%);
     pointer-events: none; z-index: 2;
     animation: el-glow-breathe 9s ease-in-out infinite;
   }
-  .el-cierre-hero {
-    flex: 1; min-height: 80vh;
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; text-align: center;
-    padding: 28px min(5vw, 60px) 60px;
-    width: 100%; position: relative; z-index: 3;
+  /* ── Content block — Apple-style negative space ── */
+  .el-cierre-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 72px min(8vw, 100px) 0;
+    max-width: 860px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
   }
+  /* Diamond ornament + eyebrow label */
   .el-cierre-eyebrow {
-    font-family: 'Manrope', sans-serif !important; font-size: 10.5px !important; font-weight: 400 !important;
-    letter-spacing: 0.55em !important; text-transform: uppercase !important;
-    color: rgba(212,175,55,0.58) !important; margin: 0 0 30px !important;
-    display: flex !important; flex-direction: column !important; align-items: center !important; gap: 13px !important;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.58em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.58);
+    margin: 0 0 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
   }
   .el-cierre-eyebrow::before {
-    content: '' !important; display: block !important; width: 5px !important; height: 5px !important;
-    background: rgba(212,175,55,0.85) !important; transform: rotate(45deg) !important; flex-shrink: 0 !important;
-    margin-top: 0.5cm !important;
+    content: '';
+    display: block;
+    width: 6px; height: 6px;
+    background: rgba(212,175,55,0.85);
+    transform: rotate(45deg);
+    flex-shrink: 0;
   }
-  /* Headline — Montserrat 800, impacto visual editorial */
+  /* Headline — reflexión editorial serif */
   .el-cierre-headline {
-    font-family: 'Montserrat', 'Manrope', sans-serif !important;
-    font-size: clamp(50px, 7.0vw, 102px) !important; font-weight: 800 !important;
-    line-height: 1.10 !important; letter-spacing: -0.025em !important;
-    color: rgba(255,255,255,0.90) !important; margin: 0 0 22px !important;
-    text-transform: none !important;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(20px, 2.2vw, 38px);
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.62;
+    color: rgba(255,255,255,0.68);
+    letter-spacing: 0.01em;
+    margin: 0 0 30px;
   }
-  /* Liquid gold italic — segunda línea del headline */
+  /* Liquid gold italic — second line of headline */
   .el-cierre-headline em {
-    font-style: italic !important; font-weight: 800 !important;
-    color: #d4af37 !important; display: block !important; margin-top: 0.12em !important;
+    font-style: italic;
+    color: rgba(212,175,55,0.80);
   }
+  /* Thin gold divider — visual pause */
   .el-cierre-divider {
-    display: block; width: 40px; height: 1px;
+    display: block;
+    width: 44px; height: 1px;
     background: linear-gradient(to right, transparent, rgba(212,175,55,0.44), transparent);
-    margin: 0 auto 28px;
+    margin: 0 auto 44px;
   }
-  /* Tagline — puente emocional suavizado hacia el CTA */
+  /* Tagline — cierre emocional Playfair italic */
   .el-cierre-tagline {
-    font-family: 'Playfair Display', Georgia, serif; font-style: italic;
-    font-size: clamp(15px, 1.6vw, 22px); font-weight: 400; line-height: 1.70;
-    color: rgba(255,255,255,0.50); letter-spacing: 0.02em; margin: 0 0 36px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.70;
+    color: rgba(255,255,255,0.78);
+    letter-spacing: 0.02em;
+    margin: 0 0 44px;
   }
-  /* CTA premium — fondo negro sólido, borde dorado fino, floating motion */
+  /* CTA — rey visual de la sección */
   .el-cierre-btn {
-    font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 400;
-    letter-spacing: 0.42em; text-transform: uppercase;
-    color: rgba(212,175,55,0.92);
-    background: rgba(0,0,0,0.90);
-    border: 1px solid rgba(212,175,55,0.48);
-    padding: 14px 52px 14px 55px;
-    text-decoration: none; display: inline-block; border-radius: 0; position: relative;
-    transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-    box-shadow:
-      0 0 42px rgba(212,175,55,0.07),
-      0 8px 28px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(212,175,55,0.10);
-    animation: el-btn-float 4.5s ease-in-out infinite;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.88);
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.38);
+    padding: 20px 72px 20px 76px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 32px rgba(212,175,55,0.05),
+                inset 0 0 0 rgba(212,175,55,0);
   }
-  /* Glow radial trasero */
-  .el-cierre-btn::before {
-    content: ''; position: absolute; inset: -28px -52px;
-    background: radial-gradient(ellipse 75% 90% at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 68%);
-    pointer-events: none; z-index: -1; transition: opacity 0.4s ease; opacity: 1;
-  }
-  /* Línea dorada sutil en parte superior del botón */
+  /* Radial ambient glow detrás del botón */
   .el-cierre-btn::after {
-    content: ''; position: absolute;
-    top: 0; left: 14%; right: 14%; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(212,175,55,0.36), transparent);
+    content: '';
+    position: absolute;
+    inset: -20px -40px;
+    background: radial-gradient(ellipse 80% 100% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%);
     pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 1;
   }
   .el-cierre-btn:hover {
-    color: #d4af37; border-color: rgba(212,175,55,0.75);
-    background: rgba(0,0,0,0.97);
-    box-shadow:
-      0 0 55px rgba(212,175,55,0.20),
-      0 0 110px rgba(212,175,55,0.09),
-      0 12px 36px rgba(0,0,0,0.55),
-      inset 0 1px 0 rgba(212,175,55,0.18);
-    animation-play-state: paused;
+    color: rgba(212,175,55,1);
+    border-color: rgba(212,175,55,0.62);
+    background: rgba(212,175,55,0.04);
+    box-shadow: 0 0 28px rgba(212,175,55,0.14),
+                0 0 64px rgba(212,175,55,0.06),
+                inset 0 0 16px rgba(212,175,55,0.03);
   }
-  .el-cierre-btn:hover::before { opacity: 3; }
-  @keyframes el-btn-float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-5px); }
+  .el-cierre-btn:hover::after {
+    opacity: 1.8;
   }
-  /* Footer — segundo plano visual, no compite con el CTA */
+  /* ── Footer — base de la página, no compite con el CTA ── */
   .el-cierre-footer {
-    width: 100%; margin-top: auto;
-    padding: 0 min(8vw, 80px) 22px; z-index: 3;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 min(8vw, 80px) 22px;
+    z-index: 3;
     border-top: 1px solid rgba(255,255,255,0.04);
-    opacity: 1; transition: opacity 0.5s ease;
   }
-  .el-cierre-footer:hover { opacity: 1; }
   .el-cierre-footer-inner {
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-    max-width: 900px; margin: 10px auto 0; gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 10px auto 0;
+    gap: 8px;
   }
-  .el-cierre-nav { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0; }
+  .el-cierre-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
   .el-cierre-nav a {
-    font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 400;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: #ffffff !important; text-decoration: none; transition: color 0.4s ease;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.13);
+    text-decoration: none;
+    transition: color 0.4s ease;
   }
-  .el-cierre-nav a:hover { color: rgba(212,175,55,0.40); }
-  .el-cierre-sep { font-size: 9px; color: #ffffff !important; margin: 0 10px; letter-spacing: 0; font-weight: 300; }
-  .el-cierre-copy { font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.14em; color: rgba(255,255,255,0.08); margin: 0; }
+  .el-cierre-nav a:hover {
+    color: rgba(212,175,55,0.40);
+  }
+  .el-cierre-sep {
+    font-size: 9px;
+    color: rgba(255,255,255,0.07);
+    margin: 0 10px;
+    letter-spacing: 0;
+    font-weight: 300;
+  }
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.08);
+    margin: 0;
+  }
+  /* ── Mobile responsive ── */
   @media (max-width: 768px) {
-    .el-cierre-hero { padding: 28px 22px 50px; }
-    .el-cierre-eyebrow { margin: 0 0 22px; font-size: 10px; }
-    .el-cierre-headline { font-size: clamp(22px, 6vw, 36px) !important; line-height: 1.12 !important; margin: 0 0 18px !important; }
-    .el-cierre-divider { margin: 0 auto 22px; }
-    .el-cierre-tagline { font-size: clamp(14px, 4vw, 18px); margin: 0 0 28px; }
-    .el-cierre-btn { font-size: 9px; padding: 13px 36px 13px 38px; letter-spacing: 0.34em; }
-    .el-cierre-footer { padding: 0 20px 18px; }
+    .el-cierre { padding: 0 0 88px 0 !important; }
+    .el-cierre-content { padding: 48px 28px 0; max-width: 100%; }
+    .el-cierre-eyebrow { margin: 0 0 36px; font-size: 8.5px; }
+    .el-cierre-headline {
+      font-size: clamp(18px, 5.5vw, 28px);
+      line-height: 1.55; margin: 0 0 22px;
+    }
+    .el-cierre-divider { margin: 0 auto 32px; }
+    .el-cierre-tagline {
+      font-size: clamp(15px, 4.2vw, 18px);
+      margin: 0 0 32px;
+    }
+    .el-cierre-btn {
+      font-size: 10px;
+      padding: 18px 44px 18px 48px;
+      letter-spacing: 0.34em;
+    }
+    .el-cierre-footer { padding: 0 20px 16px; }
     .el-cierre-sep { margin: 0 7px; }
   }
 
@@ -1031,29 +1107,20 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       CIERRE — High-End luxury redesign — BUILD 2026-06-08-R
+       CIERRE — editorial luxury closing — BUILD 2026-06-07-E
   ══════════════════════════════════════ -->
-  <style>
-    #el-cierre .el-cierre-eyebrow { font-size: 10.5px !important; }
-    #el-cierre .el-cierre-eyebrow::before { margin-top: 0.5cm !important; }
-    #el-cierre .el-cierre-headline { font-size: clamp(50px, 7.0vw, 102px) !important; }
-    @media (max-width: 768px) {
-      #el-cierre .el-cierre-headline { font-size: clamp(34px, 8.4vw, 50px) !important; }
-    }
-  </style>
   <section class="el-section el-cierre" id="el-cierre">
 
     <div class="el-cierre-ambient" aria-hidden="true"></div>
 
-    <div class="el-cierre-hero">
-
-<p class="el-cierre-eyebrow el-anim" style="font-size: 10.5px !important;">Disciplina Imparable</p>
-      <h2 class="el-cierre-headline el-anim el-anim-d2" style="font-size: clamp(50px, 7.0vw, 102px) !important;">
+    <div class="el-cierre-content">
+      <p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
+      <h2 class="el-cierre-headline el-anim el-anim-d2">
         La disciplina no transforma tu vida en un instante.<br>
-        <em style="font-size: inherit !important;">La transforma en silencio, todos los días.</em>
+        <em>La transforma en silencio, todos los días.</em>
       </h2>
       <span class="el-cierre-divider el-anim el-anim-d3" aria-hidden="true"></span>
-      <p class="el-cierre-tagline el-anim el-anim-d4" style="font-size: clamp(21px, 1.85vw, 23px) !important;">
+      <p class="el-cierre-tagline el-anim el-anim-d4">
         Empieza cuando estés listo. Pero no vuelvas a detenerte.
       </p>
       <a href="/cart/add" class="el-cierre-btn el-anim el-anim-d5">Obtener el método</a>
@@ -1384,23 +1451,6 @@
     if (busy) return;
     if (e.key === 'ArrowDown' || e.key === 'PageDown'){ e.preventDefault(); goTo(current + 1); }
     if (e.key === 'ArrowUp'   || e.key === 'PageUp')  { e.preventDefault(); goTo(current - 1); }
-  });
-
-  /* ── anchor nav links → goTo() ─────────────────────────────── */
-  var anchorMap = {};
-  SELECTORS.forEach(function(sel, i){
-    var el = document.querySelector(sel);
-    if (el && el.id) anchorMap['#' + el.id] = i;
-  });
-  document.querySelectorAll('a[href^="#"]').forEach(function(link){
-    var href = link.getAttribute('href');
-    if (href in anchorMap) {
-      link.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        goTo(anchorMap[href]);
-      });
-    }
   });
 
   initSlides();
