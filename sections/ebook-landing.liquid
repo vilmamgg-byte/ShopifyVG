@@ -594,8 +594,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 72px min(8vw, 100px) 0;
-    max-width: 860px;
+    padding: 60px min(6vw, 80px) 60px !important;
+    max-width: 900px !important;
     width: 100%;
     position: relative;
     z-index: 3;
@@ -623,21 +623,32 @@
     flex-shrink: 0 !important;
     margin-top: 1cm !important;
   }
-  /* Headline — reflexión editorial serif */
+  /* Headline — titular de impacto editorial */
   .el-cierre-headline {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-size: clamp(18px, 1.8vw, 26px) !important;
-    font-weight: 300 !important;
+    font-family: 'Montserrat', 'Arial Black', sans-serif !important;
+    font-size: clamp(28px, 3.2vw, 48px) !important;
+    font-weight: 800 !important;
     font-style: normal !important;
-    line-height: 1.62 !important;
-    color: rgba(255,255,255,1) !important;
-    letter-spacing: 0.01em !important;
-    margin: 0 0 30px !important;
+    line-height: 1.10 !important;
+    color: rgba(255,255,255,0.96) !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 36px !important;
   }
-  /* Liquid gold italic — second line of headline */
+  /* Ocultar el <br> — el em display:block maneja la separación */
+  .el-cierre-headline br {
+    display: none !important;
+  }
+  /* Subtítulo — cursiva dorado líquido refinado */
   .el-cierre-headline em {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
     font-style: italic !important;
-    color: rgba(255,255,255,0.80) !important;
+    font-weight: 300 !important;
+    font-size: 0.52em !important;
+    color: #d4af37 !important;
+    letter-spacing: 0.03em !important;
+    display: block !important;
+    margin-top: 14px !important;
+    line-height: 1.45 !important;
   }
   /* Thin gold divider — visual pause */
   .el-cierre-divider {
@@ -653,9 +664,10 @@
     font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 400;
     line-height: 1.70;
-    color: rgba(255,255,255,0.78);
+    color: rgba(255,255,255,0.44) !important;
     letter-spacing: 0.02em;
-    margin: -2cm 0 44px !important;
+    font-size: clamp(13px, 1.1vw, 16px) !important;
+    margin: 0 0 48px !important;
   }
   /* CTA — rey visual de la sección */
   .el-cierre-btn {
@@ -705,6 +717,8 @@
     padding: 0 min(8vw, 80px) 22px;
     z-index: 3;
     border-top: 1px solid rgba(255,255,255,0.04);
+    opacity: 0.4 !important;
+    transition: opacity 0.4s ease;
   }
   .el-cierre-footer-inner {
     display: flex;
@@ -752,16 +766,16 @@
   /* ── Mobile responsive ── */
   @media (max-width: 768px) {
     .el-cierre { padding: 0 0 88px 0 !important; }
-    .el-cierre-content { padding: 48px 28px 0; max-width: 100%; }
+    .el-cierre-content { padding: 48px 24px 48px !important; max-width: 100%; }
     .el-cierre-eyebrow { margin: 0 0 36px !important; font-size: 9.29px !important; }
     .el-cierre-headline {
-      font-size: clamp(14px, 4.5vw, 20px) !important;
-      line-height: 1.55 !important; margin: 0 0 22px !important;
+      font-size: clamp(24px, 6.5vw, 40px) !important;
+      line-height: 1.10 !important; letter-spacing: -0.01em !important; margin: 0 0 24px !important;
     }
     .el-cierre-divider { margin: 0 auto 32px; }
     .el-cierre-tagline {
-      font-size: clamp(15px, 4.2vw, 18px);
-      margin: 0 0 32px;
+      font-size: clamp(12px, 3.5vw, 15px) !important;
+      margin: 0 0 32px !important;
     }
     .el-cierre-btn {
       font-size: 10px;
@@ -773,6 +787,10 @@
   }
 
 {%- endstyle -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 
 <div class="el-page">
 
