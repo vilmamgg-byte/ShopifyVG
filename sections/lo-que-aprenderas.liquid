@@ -4,7 +4,74 @@
   #shopify-section-group-header-group,
   .shopify-section-group--header-group,
   sticky-header { display: none !important; }
+  #shopify-section-group-footer-group,
+  .shopify-section-group--footer-group,
+  #shopify-section-footer,
+  footer.footer,
+  .footer__content-bottom,
+  .footer__copyright { display: none !important; }
   body { padding-top: 0 !important; margin-top: 0 !important; }
+  .el-quote-premium {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(14px, 1.66vw, 21px);
+    color: #f0dab8;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+    margin: 0;
+    text-shadow: 0 0 60px rgba(201,168,76,0.28), 0 1px 0 rgba(0,0,0,0.18);
+  }
+  .el-cierre-footer {
+    background: var(--el-deep);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 0 min(8vw, 80px) 18px;
+  }
+  .el-cierre-footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 10px auto 0;
+    gap: 8px;
+  }
+  .el-cierre-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  .el-cierre-nav a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.72);
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
+  .el-cierre-sep {
+    font-size: 9px;
+    color: rgba(212,175,55,0.35);
+    margin: 0 10px;
+    letter-spacing: 0;
+    font-weight: 300;
+  }
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    .el-cierre-footer { padding: 0 20px 16px; }
+    .el-cierre-sep { margin: 0 7px; }
+  }
 </style>
 
 <div class="el-page">
@@ -187,19 +254,22 @@
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
           Obtener Acceso Completo
         </a>
-        <p class="el-learn-cta-note">Acceso inmediato · PDF + Bonus · Garantía 30 días</p>
       </div>
 
     </div>
   </section>
 
-  <!-- Footer mínimo -->
-  <footer style="background:var(--el-deep);border-top:1px solid var(--el-border);padding:32px 48px;text-align:center;">
-    <a href="/" class="el-logo" style="justify-content:center;margin-bottom:12px;">
-      <span class="el-logo-text"><span class="el-logo-d">DISCIPLINA</span><span class="el-logo-i">IMPARABLE</span></span>
-    </a>
-    <p style="font-size:13px;color:var(--el-gray);margin:0;">© 2026 Disciplina Imparable. Todos los derechos reservados.</p>
-  </footer>
+  <!-- Cierre motivacional -->
+  <section style="background:var(--el-deep);padding:60px 48px 52px;text-align:center;border-top:1px solid rgba(201,168,76,0.12);position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="el-container" style="position:relative;z-index:2;max-width:740px;">
+      <p class="el-quote-premium" style="font-size:clamp(17px,2.1vw,26px);">
+        "La transformación no ocurre cuando aprendes algo nuevo.<br>
+        Ocurre cuando comienzas a actuar de forma diferente cada día."
+      </p>
+      <span style="display:inline-block;margin-top:14px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.65);">— Disciplina Imparable</span>
+    </div>
+  </section>
 
 </div>
 
