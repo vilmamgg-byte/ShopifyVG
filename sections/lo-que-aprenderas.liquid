@@ -80,7 +80,7 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     box-sizing: border-box;
   }
 
@@ -90,13 +90,14 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 80px;
-    padding-bottom: 58px;
+    padding-bottom: 72px;
     box-sizing: border-box;
     width: 100%;
     max-width: 1180px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    min-height: 0;
   }
 
   .lq-layout {
@@ -160,9 +161,10 @@
   .lq-footer-abs {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    background: transparent;
+    background: var(--el-deep);
     border-top: 1px solid rgba(255,255,255,0.06);
     padding: 0 min(8vw, 80px) 16px;
+    z-index: 10;
   }
 
   @media (max-width: 900px) {
