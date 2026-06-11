@@ -138,6 +138,8 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .lq-quote-text {
@@ -152,7 +154,7 @@
     margin-bottom: 22px;
   }
 
-  .lq-accordion { width: 100%; }
+  .lq-accordion { width: 100%; min-height: 0; overflow: hidden; }
 
   /* Footer pegado al fondo de la sección */
   .lq-footer-abs {
@@ -187,7 +189,7 @@
     width: 100%;
     background: none;
     border: none;
-    padding: 22px 3px;
+    padding: 13px 3px;
     cursor: pointer;
     gap: 24px;
     text-align: left;
@@ -236,16 +238,22 @@
     opacity: 0;
   }
   .lq-item--open .lq-body {
-    max-height: 221px;
+    max-height: 88px;
+    overflow-y: auto;
     opacity: 1;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212,175,55,0.22) transparent;
   }
+  .lq-item--open .lq-body::-webkit-scrollbar { width: 3px; }
+  .lq-item--open .lq-body::-webkit-scrollbar-track { background: transparent; }
+  .lq-item--open .lq-body::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.22); border-radius: 2px; }
   .lq-list {
     list-style: none;
-    padding: 0 3px 24px 48px;
+    padding: 0 3px 12px 48px;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 9px;
   }
   .lq-list li {
     font-family: 'Poppins', sans-serif;
