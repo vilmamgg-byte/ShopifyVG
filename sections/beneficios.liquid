@@ -255,53 +255,55 @@
 
   .bn-item.is-open .bn-desc { opacity: 1; transform: translateY(0); }
 
-  /* ── Footer fijo al fondo de la sección ── */
-  .bn-footer {
+  /* ── Footer — mismo estilo que las demás páginas ── */
+  .el-cierre-footer {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 0 48px 12px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 0 min(8vw, 80px) 18px;
     z-index: 3;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    opacity: 0.70;
+    transition: opacity 0.4s ease;
   }
-
-  .bn-footer-inner {
+  .el-cierre-footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 10px auto 0;
+    gap: 8px;
+  }
+  .el-cierre-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 0;
-    max-width: 900px;
-    margin: 10px auto 0;
   }
-
-  .bn-footer-inner a {
+  .el-cierre-nav a {
     font-family: 'Manrope', sans-serif;
     font-size: 9px;
     font-weight: 400;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(212,175,55,0.55);
+    color: rgba(212,175,55,0.72);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.4s ease;
   }
-
-  .bn-footer-inner a:hover { color: rgba(212,175,55,0.90); }
-
-  .bn-footer-sep {
+  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
+  .el-cierre-sep {
     font-size: 9px;
-    color: rgba(212,175,55,0.25);
+    color: rgba(212,175,55,0.35);
     margin: 0 10px;
     font-weight: 300;
   }
-
-  .bn-footer-copy {
-    width: 100%;
-    text-align: center;
+  .el-cierre-copy {
     font-family: 'Manrope', sans-serif;
     font-size: 9px;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.22);
-    margin: 4px 0 0;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
   }
 
   /* ── Responsive ── */
@@ -326,7 +328,7 @@
     .bn-anchor { overflow: visible; padding-right: 0; }
     .bn-accordion { overflow-y: visible; justify-content: flex-start; }
     .bn-anchor-ctas { flex-direction: row; flex-wrap: wrap; }
-    .bn-footer { position: static; padding: 24px 0 0; margin-top: 48px; }
+    .el-cierre-footer { position: static; padding: 24px 0 0; margin-top: 48px; }
     .bn-section::after { display: none; }
   }
 
@@ -336,7 +338,7 @@
     .bn-body-inner { padding-left: 42px; }
     .bn-title { font-size: 14.5px; }
     .bn-anchor-title { font-size: clamp(24px, 7vw, 34px); }
-    .bn-footer { padding: 0 20px 14px; }
+    .el-cierre-footer { padding: 0 20px 16px; }
   }
 </style>
 
@@ -511,20 +513,22 @@
       </div><!-- /bn-layout -->
     </div><!-- /el-container -->
 
-    <!-- Footer anclado al fondo de la sección -->
-    <footer class="bn-footer" aria-label="Footer">
-      <div class="bn-footer-inner">
-        <a href="/pages/sobre-la-autora">Sobre la Autora</a>
-        <span class="bn-footer-sep" aria-hidden="true">·</span>
-        <a href="#" rel="noopener">Instagram</a>
-        <span class="bn-footer-sep" aria-hidden="true">·</span>
-        <a href="/pages/contacto">Contacto</a>
-        <span class="bn-footer-sep" aria-hidden="true">·</span>
-        <a href="/policies/privacy-policy">Privacidad</a>
-        <span class="bn-footer-sep" aria-hidden="true">·</span>
-        <a href="/policies/terms-of-service">Términos</a>
+    <!-- Footer anclado al fondo — mismo estilo que las demás páginas -->
+    <footer class="el-cierre-footer">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
       </div>
-      <p class="bn-footer-copy">© 2026 Disciplina Imparable</p>
     </footer>
 
   </section>
