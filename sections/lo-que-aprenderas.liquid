@@ -72,37 +72,92 @@
     .el-cierre-footer { padding: 0 20px 16px; }
     .el-cierre-sep { margin: 0 7px; }
   }
-  .lq-layout {
-    display: grid;
-    grid-template-columns: 40fr 60fr;
-    align-items: start;
+  /* ── Viewport fijo: todo en una pantalla ── */
+  .lq-section {
+    height: 100vh;
+    padding: 0 72px;
+    background: var(--el-deep);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .lq-wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+    padding-bottom: 58px;
+    box-sizing: border-box;
+    width: 100%;
     max-width: 1180px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
   }
+
+  .lq-layout {
+    display: grid;
+    grid-template-columns: 40fr 60fr;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+  }
+
   .lq-col-left {
-    padding-right: 60px;
+    padding-right: 56px;
     border-right: 1px solid rgba(201,168,76,0.14);
-    position: sticky;
-    top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
   }
+
   .lq-col-right {
-    padding-left: 60px;
+    padding-left: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
   }
-  .lq-accordion {
-    width: 100%;
+
+  .lq-quote-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(240,218,184,0.45);
+    line-height: 1.65;
+    border-left: 1px solid rgba(201,168,76,0.22);
+    padding-left: 14px;
+    margin-bottom: 22px;
   }
+
+  .lq-accordion { width: 100%; }
+
+  /* Footer pegado al fondo de la sección */
+  .lq-footer-abs {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 0 min(8vw, 80px) 16px;
+  }
+
   @media (max-width: 900px) {
-    .lq-layout { grid-template-columns: 1fr; }
+    .lq-section { height: auto; padding: 80px 24px 70px; }
+    .lq-wrap { padding-top: 0; padding-bottom: 0; height: auto; }
+    .lq-layout { grid-template-columns: 1fr; height: auto; }
     .lq-col-left {
       padding-right: 0; padding-bottom: 32px;
-      border-right: none;
-      border-bottom: 1px solid rgba(201,168,76,0.14);
-      position: static;
-      margin-bottom: 8px;
+      border-right: none; border-bottom: 1px solid rgba(201,168,76,0.14);
+      height: auto;
     }
-    .lq-col-right { padding-left: 0; }
+    .lq-col-right { padding-left: 0; height: auto; }
+    .lq-footer-abs { position: static; border-top: 1px solid rgba(255,255,255,0.06); }
   }
   .lq-item {
     border-top: 1px solid rgba(201,168,76,0.14);
@@ -292,149 +347,144 @@
     </button>
   </header>
 
-  <!-- Composición editorial dos columnas -->
-  <section style="background:var(--el-deep);padding:90px 72px 28px;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <!-- Todo en una sola pantalla -->
+  <section class="lq-section">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;z-index:1;"></div>
 
-    <div class="lq-layout">
+    <div class="lq-wrap">
+      <div class="lq-layout">
 
-      <!-- Columna izquierda: encabezado editorial -->
-      <div class="lq-col-left">
-        <span class="el-label el-anim" style="margin-bottom:18px;display:block;">6 Módulos del Método</span>
-        <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(22px,2.2vw,34px);line-height:1.15;margin-bottom:18px;">
-          La disciplina,<br>
-          <span class="el-gold-text">construida paso a paso</span>
-        </h1>
-        <p class="el-hero-sub el-anim el-anim-d2" style="font-size:15px;line-height:1.72;margin-bottom:0;">
-          Cada módulo revela una pieza fundamental del proceso. Explóralos y descubre cómo encajan para construir una disciplina duradera.
-        </p>
+        <!-- Columna izquierda -->
+        <div class="lq-col-left">
+          <span class="el-label el-anim" style="margin-bottom:16px;display:block;">6 Módulos del Método</span>
+          <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(20px,2.0vw,32px);line-height:1.15;margin-bottom:14px;">
+            La disciplina,<br>
+            <span class="el-gold-text">construida paso a paso</span>
+          </h1>
+          <p class="el-hero-sub el-anim el-anim-d2" style="font-size:14px;line-height:1.70;margin-bottom:22px;">
+            Cada módulo revela una pieza fundamental del proceso. Explóralos y descubre cómo encajan para construir una disciplina duradera.
+          </p>
+          <p class="lq-quote-text el-anim el-anim-d3">
+            "La transformación no ocurre en un día.<br>Ocurre cuando decides no detenerte."
+          </p>
+          <a href="/pages/shopifyvg" class="el-btn-gold el-anim el-anim-d4" style="font-size:10px;letter-spacing:0.22em;padding:10px 32px;">
+            OBTENER EL MÉTODO
+          </a>
+        </div>
+
+        <!-- Columna derecha: acordeón -->
+        <div class="lq-col-right">
+          <div class="lq-accordion" role="list">
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-1">
+                <span class="lq-num">01</span>
+                <span class="lq-name">La Raíz de la Disciplina</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-1" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>Por qué la motivación falla y la disciplina no — la diferencia que cambia todo</li>
+                  <li>Cómo reprogramar tu identidad para actuar de forma consistente</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-2">
+                <span class="lq-num">02</span>
+                <span class="lq-name">Destruye la Procrastinación</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-2" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>La causa real del aplazamiento — y cómo corregirla de raíz</li>
+                  <li>Actúa en los primeros 2 minutos y elimina la resistencia mental</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-3">
+                <span class="lq-num">03</span>
+                <span class="lq-name">Hábitos que Duran para Siempre</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-3" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>El ciclo del hábito: señal, rutina, recompensa — domínalo por completo</li>
+                  <li>Diseño ambiental: haz que tu entorno trabaje a tu favor</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-4">
+                <span class="lq-num">04</span>
+                <span class="lq-name">Mentalidad Imparable</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-4" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>El marco mental de atletas de élite y líderes de alto rendimiento</li>
+                  <li>Resiliencia: convierte cada fracaso en combustible de crecimiento</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-5">
+                <span class="lq-num">05</span>
+                <span class="lq-name">Productividad de Alto Impacto</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-5" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>El principio 80/20 aplicado a tu vida personal y profesional</li>
+                  <li>Bloques de trabajo profundo: triplica resultados en la mitad del tiempo</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lq-item" role="listitem">
+              <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-6">
+                <span class="lq-num">06</span>
+                <span class="lq-name">Tu Plan de 21 Días</span>
+                <span class="lq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="lq-body" id="lq-body-6" aria-hidden="true">
+                <ul class="lq-list">
+                  <li>Hoja de ruta día a día para implementar el sistema completo</li>
+                  <li>El protocolo de mantenimiento para que los cambios sean permanentes</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <!-- Columna derecha: acordeón -->
-      <div class="lq-col-right">
-      <div class="lq-accordion" role="list">
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-1">
-            <span class="lq-num">01</span>
-            <span class="lq-name">La Raíz de la Disciplina</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-1" aria-hidden="true">
-            <ul class="lq-list">
-              <li>Por qué la motivación falla y la disciplina no — la diferencia que cambia todo</li>
-              <li>Cómo reprogramar tu identidad para actuar de forma consistente</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-2">
-            <span class="lq-num">02</span>
-            <span class="lq-name">Destruye la Procrastinación</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-2" aria-hidden="true">
-            <ul class="lq-list">
-              <li>La causa real del aplazamiento — y cómo corregirla de raíz</li>
-              <li>Actúa en los primeros 2 minutos y elimina la resistencia mental</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-3">
-            <span class="lq-num">03</span>
-            <span class="lq-name">Hábitos que Duran para Siempre</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-3" aria-hidden="true">
-            <ul class="lq-list">
-              <li>El ciclo del hábito: señal, rutina, recompensa — domínalo por completo</li>
-              <li>Diseño ambiental: haz que tu entorno trabaje a tu favor</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-4">
-            <span class="lq-num">04</span>
-            <span class="lq-name">Mentalidad Imparable</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-4" aria-hidden="true">
-            <ul class="lq-list">
-              <li>El marco mental de atletas de élite y líderes de alto rendimiento</li>
-              <li>Resiliencia: convierte cada fracaso en combustible de crecimiento</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-5">
-            <span class="lq-num">05</span>
-            <span class="lq-name">Productividad de Alto Impacto</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-5" aria-hidden="true">
-            <ul class="lq-list">
-              <li>El principio 80/20 aplicado a tu vida personal y profesional</li>
-              <li>Bloques de trabajo profundo: triplica resultados en la mitad del tiempo</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="lq-item" role="listitem">
-          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-6">
-            <span class="lq-num">06</span>
-            <span class="lq-name">Tu Plan de 21 Días</span>
-            <span class="lq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="lq-body" id="lq-body-6" aria-hidden="true">
-            <ul class="lq-list">
-              <li>Hoja de ruta día a día para implementar el sistema completo</li>
-              <li>El protocolo de mantenimiento para que los cambios sean permanentes</li>
-            </ul>
-          </div>
-        </div>
-
+    <!-- Footer pegado al fondo -->
+    <footer class="lq-footer-abs">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
       </div>
+    </footer>
 
-      </div><!-- /lq-col-right -->
-
-    </div><!-- /lq-layout -->
   </section>
-
-  <!-- Cierre editorial -->
-  <section style="background:var(--el-deep);padding:8px 48px 72px;text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 75% at 50% 50%,rgba(201,168,76,0.04) 0%,transparent 68%);pointer-events:none;"></div>
-    <div class="el-container" style="position:relative;z-index:2;max-width:960px;">
-      <p class="el-quote-premium" style="font-size:clamp(13px,1.4vw,19px);margin-bottom:40px;white-space:nowrap;">
-        "La transformación no ocurre en un día. Ocurre cuando decides no detenerte."
-      </p>
-      <a href="/pages/shopifyvg" class="el-btn-gold" style="font-size:11px;letter-spacing:0.22em;padding:14px 48px;">
-        OBTENER EL MÉTODO
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="el-cierre-footer">
-    <div class="el-cierre-footer-inner">
-      <nav class="el-cierre-nav" aria-label="Footer">
-        <a href="/pages/sobre-la-autora">Sobre la Autora</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="#" rel="noopener">Instagram</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/pages/contacto">Contacto</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/policies/privacy-policy">Privacidad</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/policies/terms-of-service">Términos</a>
-      </nav>
-      <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
-    </div>
-  </footer>
 
 </div>
 
