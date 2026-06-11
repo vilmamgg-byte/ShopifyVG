@@ -1,6 +1,8 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&display=swap');
+
   #shopify-section-group-header-group,
   .shopify-section-group--header-group,
   sticky-header { display: none !important; }
@@ -12,93 +14,155 @@
   .footer__copyright { display: none !important; }
   body { padding-top: 0 !important; margin-top: 0 !important; }
 
-  /* ── Sección principal ── */
+  /* ══ Viewport fijo — todo visible en una pantalla ══ */
   .bn-section {
-    padding: 102px 41px 82px;
+    height: 100vh;
+    padding: 0 48px;
     background: var(--el-deep);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
   }
 
-  /* ── Layout dos columnas 35 / 65 ── */
+  /* Grain overlay */
+  .bn-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Container: ocupa el alto completo, deja espacio al footer pegado abajo */
+  .bn-section .el-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 82px;
+    padding-bottom: 64px; /* reserva espacio para el footer absoluto */
+    box-sizing: border-box;
+  }
+
+  /* Layout: ambas columnas se estiran al alto disponible */
   .bn-layout {
     display: grid;
     grid-template-columns: 1fr 1.85fr;
-    gap: 68px;
-    align-items: start;
+    gap: 64px;
+    align-items: stretch;
+    height: 100%;
+    min-height: 0;
   }
 
-  /* ── Columna izquierda: ancla editorial ── */
+  /* ── Columna izquierda ── */
   .bn-anchor {
-    position: sticky;
-    top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    padding-right: 8px;
   }
 
   .bn-anchor .el-label {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 8.5px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.38em !important;
+    margin-bottom: 16px;
     display: inline-flex;
-    margin-bottom: 19px;
+    color: rgba(201,168,76,0.70) !important;
   }
 
   .bn-anchor-title {
-    font-family: var(--el-font-alt);
-    font-size: clamp(20px, 1.87vw, 31px);
-    font-weight: 700;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(26px, 2.6vw, 42px);
+    font-weight: 300;
+    font-style: italic;
     line-height: 1.18;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.02em;
     color: var(--el-white);
-    margin-bottom: 15px;
+    margin-bottom: 14px;
   }
 
   .bn-anchor-sub {
     font-family: var(--el-font-serif);
     font-style: italic;
     font-size: 13px;
-    color: var(--el-gray);
-    line-height: 1.75;
-    margin-bottom: 31px;
+    color: rgba(255,255,255,0.36);
+    line-height: 1.80;
+    margin-bottom: 22px;
+    max-width: 300px;
   }
 
   .bn-anchor-ctas {
     display: flex;
     flex-direction: column;
-    gap: 9px;
     align-items: flex-start;
   }
 
-  /* ── Accordion editorial ── */
+  /* Botón compacto — 15% reducido, subido 2mm */
+  .bn-anchor .el-btn-gold {
+    font-size: 8.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    padding: 7px 17px !important;
+    border-radius: 2px !important;
+    background: transparent !important;
+    border: 1px solid rgba(201,168,76,0.80) !important;
+    color: var(--el-gold) !important;
+    box-shadow: none !important;
+    transform: translateY(-2mm) !important;
+  }
+
+  .bn-anchor .el-btn-gold:hover {
+    background: rgba(201,168,76,0.07) !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ── Acordeón — columna derecha, apilado desde arriba ── */
   .bn-accordion {
-    border-top: 1px solid var(--el-border);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    overflow-y: auto;
+    min-height: 0;
+    scrollbar-width: none; /* sin scrollbar interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center; /* centra el bloque verticalmente en la columna */
   }
 
   .bn-item {
-    border-bottom: 1px solid var(--el-border);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
     position: relative;
     transition: background 0.3s ease;
   }
 
-  /* Línea dorada izquierda al activar */
   .bn-item::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--el-gold);
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--el-gold), transparent);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
   }
 
-  .bn-item.is-open::before {
-    opacity: 1;
-  }
+  .bn-item.is-open::before { opacity: 1; }
 
   .bn-trigger {
     display: grid;
-    grid-template-columns: 31px 1fr 17px;
+    grid-template-columns: 28px 1fr 18px;
     align-items: center;
-    gap: 20px;
-    padding: 22px 0 22px 17px;
+    gap: 22px;
+    padding: 16px 0 16px 20px;
     cursor: pointer;
     width: 100%;
     background: none;
@@ -106,184 +170,173 @@
     color: inherit;
     text-align: left;
     font-family: inherit;
-    transition: background 0.2s ease;
+    transition: background 0.25s ease;
   }
 
-  .bn-trigger:hover { background: rgba(255,255,255,0.015); }
+  .bn-trigger:hover { background: rgba(255,255,255,0.025); }
+  .bn-trigger:hover .bn-num { color: rgba(201,168,76,0.55); }
+  .bn-trigger:hover .bn-title { color: var(--el-white); }
 
   .bn-num {
-    font-family: var(--el-font-alt);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--el-muted);
-    transition: color 0.25s ease;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.10em;
+    color: rgba(255,255,255,0.22);
+    transition: color 0.3s ease;
     line-height: 1;
+    align-self: start;
+    padding-top: 2px;
   }
 
-  .bn-item.is-open .bn-num {
-    color: var(--el-gold);
-  }
+  .bn-item.is-open .bn-num { color: var(--el-gold); }
 
   .bn-title {
     font-family: var(--el-font-alt);
-    font-size: 14.5px;
-    font-weight: 600;
-    color: var(--el-white);
-    letter-spacing: -0.15px;
-    line-height: 1.3;
+    font-size: 15.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.58);
+    letter-spacing: -0.1px;
+    line-height: 1.35;
     transition: color 0.25s ease;
   }
 
-  .bn-item.is-open .bn-title {
-    color: var(--el-white);
-  }
+  .bn-item.is-open .bn-title { color: var(--el-white); }
 
-  /* ── Icono plus/minus ── */
   .bn-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px; height: 16px;
     position: relative;
     flex-shrink: 0;
-    margin-right: 4px;
+    margin-right: 2px;
+    align-self: start;
+    margin-top: 4px;
   }
 
   .bn-icon span {
     display: block;
     position: absolute;
-    background: var(--el-muted);
+    background: rgba(255,255,255,0.25);
     border-radius: 1px;
-    transition: transform 0.28s var(--el-ease), opacity 0.28s ease, background 0.25s ease;
+    transition: transform 0.3s var(--el-ease), opacity 0.3s ease, background 0.25s ease;
   }
 
-  .bn-icon .bn-h {
-    width: 14px;
-    height: 1.5px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .bn-icon .bn-v {
-    width: 1.5px;
-    height: 14px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  .bn-icon .bn-h { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .bn-icon .bn-v { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
   .bn-item.is-open .bn-icon span { background: var(--el-gold); }
-  .bn-item.is-open .bn-icon .bn-v {
-    transform: translate(-50%, -50%) scaleY(0);
-    opacity: 0;
-  }
+  .bn-item.is-open .bn-icon .bn-v { transform: translate(-50%, -50%) scaleY(0); opacity: 0; }
 
-  /* ── Cuerpo expandible ── */
   .bn-body {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: grid-template-rows 0.38s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .bn-item.is-open .bn-body {
-    grid-template-rows: 1fr;
-  }
+  .bn-item.is-open .bn-body { grid-template-rows: 1fr; }
 
   .bn-body-inner {
     overflow: hidden;
-    padding: 0 0 0 68px;
+    padding: 0 0 0 72px;
   }
 
   .bn-desc {
-    font-size: 12px;
-    color: var(--el-light);
-    line-height: 1.75;
-    padding-bottom: 24px;
-    max-width: 520px;
+    font-family: var(--el-font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.80;
+    padding-bottom: 16px;
+    max-width: 480px;
     opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.28s ease 0.05s, transform 0.28s ease 0.05s;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease 0.06s, transform 0.3s ease 0.06s;
   }
 
-  .bn-item.is-open .bn-desc {
-    opacity: 1;
-    transform: translateY(0);
+  .bn-item.is-open .bn-desc { opacity: 1; transform: translateY(0); }
+
+  /* ── Footer fijo al fondo de la sección ── */
+  .bn-footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 48px 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    z-index: 3;
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 1024px) {
-    .bn-layout {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-    .bn-anchor {
-      position: static;
-    }
-    .bn-anchor-ctas {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .bn-section { padding: 68px 20px 61px; }
-    .bn-trigger { padding: 19px 0 19px 14px; gap: 14px; }
-    .bn-body-inner { padding-left: 44px; }
-    .bn-title { font-size: 14px; }
-  }
-
-  /* ── Footer ── */
-  .el-cierre-footer {
-    background: var(--el-deep);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 0 min(8vw, 80px) 18px;
-  }
-  .el-cierre-footer-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 900px;
-    margin: 10px auto 0;
-    gap: 8px;
-  }
-  .el-cierre-nav {
+  .bn-footer-inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 0;
+    max-width: 900px;
+    margin: 10px auto 0;
   }
-  .el-cierre-nav a {
+
+  .bn-footer-inner a {
     font-family: 'Manrope', sans-serif;
     font-size: 9px;
     font-weight: 400;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(212,175,55,0.72);
+    color: rgba(212,175,55,0.55);
     text-decoration: none;
-    transition: color 0.4s ease;
+    transition: color 0.3s ease;
   }
-  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
-  .el-cierre-sep {
+
+  .bn-footer-inner a:hover { color: rgba(212,175,55,0.90); }
+
+  .bn-footer-sep {
     font-size: 9px;
-    color: rgba(212,175,55,0.35);
+    color: rgba(212,175,55,0.25);
     margin: 0 10px;
-    letter-spacing: 0;
     font-weight: 300;
   }
-  .el-cierre-copy {
+
+  .bn-footer-copy {
+    width: 100%;
+    text-align: center;
     font-family: 'Manrope', sans-serif;
     font-size: 9px;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.55);
-    margin: 0;
-    padding-bottom: 18px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.22);
+    margin: 4px 0 0;
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .bn-section {
+      height: auto;
+      overflow: visible;
+      padding: 80px 32px 80px;
+      display: block;
+    }
+    .bn-section .el-container {
+      height: auto;
+      padding: 0;
+      display: block;
+    }
+    .bn-layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      height: auto;
+      align-items: start;
+    }
+    .bn-anchor { overflow: visible; padding-right: 0; }
+    .bn-accordion { overflow-y: visible; justify-content: flex-start; }
+    .bn-anchor-ctas { flex-direction: row; flex-wrap: wrap; }
+    .bn-footer { position: static; padding: 24px 0 0; margin-top: 48px; }
+    .bn-section::after { display: none; }
+  }
+
   @media (max-width: 768px) {
-    .el-cierre-footer { padding: 0 20px 16px; }
-    .el-cierre-sep { margin: 0 7px; }
+    .bn-section { padding: 68px 20px 56px; }
+    .bn-trigger { padding: 18px 0 18px 14px; gap: 14px; }
+    .bn-body-inner { padding-left: 42px; }
+    .bn-title { font-size: 14.5px; }
+    .bn-anchor-title { font-size: clamp(24px, 7vw, 34px); }
+    .bn-footer { padding: 0 20px 14px; }
   }
 </style>
 
@@ -342,7 +395,6 @@
 
     <nav class="el-nav" aria-label="Navegación principal">
       <a href="/">Inicio</a>
-
       <div class="el-dropdown" role="navigation">
         <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
           Método Imparable
@@ -350,26 +402,15 @@
         </button>
         <div class="el-dropdown-panel" role="menu">
           <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
-            <span class="el-dropdown-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </span>
-            <span>
-              <strong>Visión General</strong>
-              <small>Qué es y cómo funciona</small>
-            </span>
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            <span><strong>Visión General</strong><small>Qué es y cómo funciona</small></span>
           </a>
           <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem">
-            <span class="el-dropdown-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
-            </span>
-            <span>
-              <strong>Lo Que Aprenderás</strong>
-              <small>Contenido y resultados</small>
-            </span>
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg></span>
+            <span><strong>Lo Que Aprenderás</strong><small>Contenido y resultados</small></span>
           </a>
         </div>
       </div>
-
       <a href="/pages/beneficios" style="color:#c9a84c">Beneficios</a>
       <a href="/pages/resultados">Resultados</a>
       <a href="/pages/testimonios">Testimonios</a>
@@ -382,113 +423,110 @@
     </button>
   </header>
 
-  <!-- Beneficios: layout editorial 25 / 75 con accordion premium -->
+  <!-- ════════════════════════════════════
+       BENEFICIOS — 100vh, todo visible
+  ════════════════════════════════════ -->
   <section class="bn-section">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 20% 50%,rgba(201,168,76,0.05) 0%,transparent 60%);pointer-events:none;"></div>
+
+    <!-- Gradientes de ambiente -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 18% 50%,rgba(201,168,76,0.05) 0%,transparent 58%),radial-gradient(ellipse 38% 45% at 88% 65%,rgba(201,168,76,0.03) 0%,transparent 52%);pointer-events:none;z-index:1;"></div>
 
     <div class="el-container" style="position:relative;z-index:2;">
       <div class="bn-layout">
 
-        <!-- Columna izquierda: ancla editorial sticky -->
+        <!-- Columna izquierda -->
         <div class="bn-anchor el-anim">
-          <span class="el-label" style="margin-bottom:22px;display:inline-flex;">POR QUÉ FUNCIONA</span>
+          <span class="el-label">Por qué funciona</span>
           <h1 class="bn-anchor-title el-anim el-anim-d1">
-            Diseñado para crear una
-            <span class="el-gold-text">versión más fuerte de ti</span>
+            Diseñado para crear<br>
+            una <span class="el-gold-text">versión más fuerte</span><br>
+            de ti.
           </h1>
           <p class="bn-anchor-sub el-anim el-anim-d2">
-            No es motivación temporal. Es un sistema estructurado para desarrollar
-            disciplina, enfoque y consistencia que permanecen contigo.
+            No es motivación temporal. Es un sistema estructurado
+            para desarrollar disciplina, enfoque y consistencia
+            que permanecen contigo.
           </p>
+          <div class="bn-anchor-ctas el-anim el-anim-d3">
+            <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
+          </div>
         </div>
 
-        <!-- Columna derecha: accordion editorial -->
+        <!-- Columna derecha: acordeón contenido -->
         <div class="bn-accordion el-anim el-anim-d2" role="list">
 
-          <!-- Item 01 — abierto por defecto -->
           <div class="bn-item is-open" role="listitem">
             <button class="bn-trigger" aria-expanded="true" aria-controls="bn-body-1">
               <span class="bn-num">01</span>
               <span class="bn-title">Disciplina Inquebrantable</span>
-              <span class="bn-icon" aria-hidden="true">
-                <span class="bn-h"></span>
-                <span class="bn-v"></span>
-              </span>
+              <span class="bn-icon" aria-hidden="true"><span class="bn-h"></span><span class="bn-v"></span></span>
             </button>
             <div class="bn-body" id="bn-body-1" role="region">
               <div class="bn-body-inner">
-                <p class="bn-desc">
-                  Aprende a actuar incluso cuando no tienes ganas.
-                  La verdadera ventaja competitiva nace de la consistencia diaria.
-                </p>
+                <p class="bn-desc">Aprende a actuar incluso cuando no tienes ganas. La verdadera ventaja competitiva nace de la consistencia diaria.</p>
               </div>
             </div>
           </div>
 
-          <!-- Item 02 -->
           <div class="bn-item" role="listitem">
             <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-2">
               <span class="bn-num">02</span>
               <span class="bn-title">Claridad Estratégica</span>
-              <span class="bn-icon" aria-hidden="true">
-                <span class="bn-h"></span>
-                <span class="bn-v"></span>
-              </span>
+              <span class="bn-icon" aria-hidden="true"><span class="bn-h"></span><span class="bn-v"></span></span>
             </button>
             <div class="bn-body" id="bn-body-2" role="region">
               <div class="bn-body-inner">
-                <p class="bn-desc">
-                  Elimina el ruido, identifica lo esencial y dirige tu energía
-                  hacia lo que realmente genera progreso.
-                </p>
+                <p class="bn-desc">Elimina el ruido, identifica lo esencial y dirige tu energía hacia lo que realmente genera progreso.</p>
               </div>
             </div>
           </div>
 
-          <!-- Item 03 -->
           <div class="bn-item" role="listitem">
             <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-3">
               <span class="bn-num">03</span>
               <span class="bn-title">Mentalidad de Alto Nivel</span>
-              <span class="bn-icon" aria-hidden="true">
-                <span class="bn-h"></span>
-                <span class="bn-v"></span>
-              </span>
+              <span class="bn-icon" aria-hidden="true"><span class="bn-h"></span><span class="bn-v"></span></span>
             </button>
             <div class="bn-body" id="bn-body-3" role="region">
               <div class="bn-body-inner">
-                <p class="bn-desc">
-                  Fortalece tu carácter, desarrolla resiliencia y toma decisiones
-                  desde la convicción, no desde la emoción.
-                </p>
+                <p class="bn-desc">Fortalece tu carácter, desarrolla resiliencia y toma decisiones desde la convicción, no desde la emoción.</p>
               </div>
             </div>
           </div>
 
-          <!-- Item 04 -->
           <div class="bn-item" role="listitem">
             <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-4">
               <span class="bn-num">04</span>
               <span class="bn-title">Progreso Visible</span>
-              <span class="bn-icon" aria-hidden="true">
-                <span class="bn-h"></span>
-                <span class="bn-v"></span>
-              </span>
+              <span class="bn-icon" aria-hidden="true"><span class="bn-h"></span><span class="bn-v"></span></span>
             </button>
             <div class="bn-body" id="bn-body-4" role="region">
               <div class="bn-body-inner">
-                <p class="bn-desc">
-                  Convierte pequeñas acciones diarias en avances medibles
-                  y construye resultados sostenibles a largo plazo.
-                </p>
+                <p class="bn-desc">Convierte pequeñas acciones diarias en avances medibles y construye resultados sostenibles a largo plazo.</p>
               </div>
             </div>
           </div>
 
-        </div>
+        </div><!-- /bn-accordion -->
+      </div><!-- /bn-layout -->
+    </div><!-- /el-container -->
 
+    <!-- Footer anclado al fondo de la sección -->
+    <footer class="bn-footer" aria-label="Footer">
+      <div class="bn-footer-inner">
+        <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+        <span class="bn-footer-sep" aria-hidden="true">·</span>
+        <a href="#" rel="noopener">Instagram</a>
+        <span class="bn-footer-sep" aria-hidden="true">·</span>
+        <a href="/pages/contacto">Contacto</a>
+        <span class="bn-footer-sep" aria-hidden="true">·</span>
+        <a href="/policies/privacy-policy">Privacidad</a>
+        <span class="bn-footer-sep" aria-hidden="true">·</span>
+        <a href="/policies/terms-of-service">Términos</a>
       </div>
-    </div>
+      <p class="bn-footer-copy">© 2026 Disciplina Imparable</p>
+    </footer>
+
   </section>
 
   <script>
@@ -510,29 +548,6 @@
     });
   })();
   </script>
-
-  <!-- CTA sobre el footer -->
-  <div style="background:var(--el-deep);padding:32px 48px;text-align:center;margin-top:-2cm;">
-    <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
-  </div>
-
-  <!-- Footer -->
-  <footer class="el-cierre-footer">
-    <div class="el-cierre-footer-inner">
-      <nav class="el-cierre-nav" aria-label="Footer">
-        <a href="/pages/sobre-la-autora">Sobre la Autora</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="#" rel="noopener">Instagram</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/pages/contacto">Contacto</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/policies/privacy-policy">Privacidad</a>
-        <span class="el-cierre-sep" aria-hidden="true">·</span>
-        <a href="/policies/terms-of-service">Términos</a>
-      </nav>
-      <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
-    </div>
-  </footer>
 
 </div>
 
