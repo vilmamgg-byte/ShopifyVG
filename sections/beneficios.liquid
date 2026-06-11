@@ -81,7 +81,7 @@
 
   .bn-anchor-title {
     font-family: var(--el-font-alt);
-    font-size: clamp(30px, 3.0vw, 48px);
+    font-size: clamp(27px, 2.7vw, 43px);
     font-weight: 700;
     font-style: normal;
     line-height: 1.08;
@@ -91,6 +91,13 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 16px;
+  }
+
+  .bn-anchor-title .bn-gold {
+    -webkit-text-fill-color: #c9a84c;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
   }
 
   .bn-anchor-sub {
@@ -446,7 +453,7 @@
           <h1 class="bn-anchor-title el-anim el-anim-d1">
             Para quienes<br>
             exigen más<br>
-            de sí mismos.
+            <span class="bn-gold">de sí mismos.</span>
           </h1>
           <p class="bn-anchor-sub el-anim el-anim-d2">
             No es motivación temporal. Es un sistema estructurado
