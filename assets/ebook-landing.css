@@ -1173,7 +1173,7 @@
 
 .el-card-title {
   font-family: var(--el-font-alt);
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--el-white);
   margin-bottom: 10px;
@@ -1182,7 +1182,7 @@
 
 .el-card-desc {
   font-size: 14px;
-  color: var(--el-gray);
+  color: var(--el-light);
   line-height: 1.7;
 }
 

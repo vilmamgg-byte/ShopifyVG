@@ -11,6 +11,227 @@
   .footer__content-bottom,
   .footer__copyright { display: none !important; }
   body { padding-top: 0 !important; margin-top: 0 !important; }
+
+  /* ── Sección principal ── */
+  .bn-section {
+    padding: 120px 48px 96px;
+    background: var(--el-deep);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Layout dos columnas 35 / 65 ── */
+  .bn-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.85fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* ── Columna izquierda: ancla editorial ── */
+  .bn-anchor {
+    position: sticky;
+    top: 100px;
+  }
+
+  .bn-anchor .el-label {
+    display: inline-flex;
+    margin-bottom: 22px;
+  }
+
+  .bn-anchor-title {
+    font-family: var(--el-font-alt);
+    font-size: clamp(24px, 2.2vw, 36px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.5px;
+    color: var(--el-white);
+    margin-bottom: 18px;
+  }
+
+  .bn-anchor-sub {
+    font-family: var(--el-font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--el-gray);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .bn-anchor-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* ── Accordion editorial ── */
+  .bn-accordion {
+    border-top: 1px solid var(--el-border);
+  }
+
+  .bn-item {
+    border-bottom: 1px solid var(--el-border);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  /* Línea dorada izquierda al activar */
+  .bn-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--el-gold);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .bn-item.is-open::before {
+    opacity: 1;
+  }
+
+  .bn-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr 20px;
+    align-items: center;
+    gap: 24px;
+    padding: 26px 0 26px 20px;
+    cursor: pointer;
+    width: 100%;
+    background: none;
+    border: none;
+    color: inherit;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.2s ease;
+  }
+
+  .bn-trigger:hover { background: rgba(255,255,255,0.015); }
+
+  .bn-num {
+    font-family: var(--el-font-alt);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--el-muted);
+    transition: color 0.25s ease;
+    line-height: 1;
+  }
+
+  .bn-item.is-open .bn-num {
+    color: var(--el-gold);
+  }
+
+  .bn-title {
+    font-family: var(--el-font-alt);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--el-white);
+    letter-spacing: -0.15px;
+    line-height: 1.3;
+    transition: color 0.25s ease;
+  }
+
+  .bn-item.is-open .bn-title {
+    color: var(--el-white);
+  }
+
+  /* ── Icono plus/minus ── */
+  .bn-icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+
+  .bn-icon span {
+    display: block;
+    position: absolute;
+    background: var(--el-muted);
+    border-radius: 1px;
+    transition: transform 0.28s var(--el-ease), opacity 0.28s ease, background 0.25s ease;
+  }
+
+  .bn-icon .bn-h {
+    width: 14px;
+    height: 1.5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bn-icon .bn-v {
+    width: 1.5px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bn-item.is-open .bn-icon span { background: var(--el-gold); }
+  .bn-item.is-open .bn-icon .bn-v {
+    transform: translate(-50%, -50%) scaleY(0);
+    opacity: 0;
+  }
+
+  /* ── Cuerpo expandible ── */
+  .bn-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bn-item.is-open .bn-body {
+    grid-template-rows: 1fr;
+  }
+
+  .bn-body-inner {
+    overflow: hidden;
+    padding: 0 0 0 80px;
+  }
+
+  .bn-desc {
+    font-size: 14.5px;
+    color: var(--el-light);
+    line-height: 1.75;
+    padding-bottom: 28px;
+    max-width: 520px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.28s ease 0.05s, transform 0.28s ease 0.05s;
+  }
+
+  .bn-item.is-open .bn-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .bn-layout {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .bn-anchor {
+      position: static;
+    }
+    .bn-anchor-ctas {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bn-section { padding: 80px 24px 72px; }
+    .bn-trigger { padding: 22px 0 22px 16px; gap: 16px; }
+    .bn-body-inner { padding-left: 52px; }
+    .bn-title { font-size: 16px; }
+  }
 </style>
 
 <div class="el-page">
@@ -108,94 +329,138 @@
     </button>
   </header>
 
-  <!-- Hero de página -->
-  <section style="min-height:38vh;display:flex;align-items:center;background:var(--el-deep);padding:140px 48px 72px;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <!-- Beneficios: layout editorial 25 / 75 con accordion premium -->
+  <section class="bn-section">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 20% 50%,rgba(201,168,76,0.05) 0%,transparent 60%);pointer-events:none;"></div>
+
     <div class="el-container" style="position:relative;z-index:2;">
-      <span class="el-label el-anim" style="margin-bottom:20px;display:inline-flex;">Por Qué Funciona</span>
-      <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(34px,4vw,58px);max-width:700px;margin-bottom:20px;">
-        Diseñado para tu<br>
-        <span class="el-gold-text">transformación real</span>
-      </h1>
-      <p class="el-hero-sub el-anim el-anim-d2" style="max-width:580px;margin-bottom:0;">
-        No es teoría. Es un sistema probado que convierte la intención
-        en acción y la acción en resultados medibles.
-      </p>
+      <div class="bn-layout">
+
+        <!-- Columna izquierda: ancla editorial sticky -->
+        <div class="bn-anchor el-anim">
+          <span class="el-label" style="margin-bottom:22px;display:inline-flex;">POR QUÉ FUNCIONA</span>
+          <h1 class="bn-anchor-title el-anim el-anim-d1">
+            Diseñado para crear una
+            <span class="el-gold-text">versión más fuerte de ti</span>
+          </h1>
+          <p class="bn-anchor-sub el-anim el-anim-d2">
+            No es motivación temporal. Es un sistema estructurado para desarrollar
+            disciplina, enfoque y consistencia que permanecen contigo.
+          </p>
+          <div class="bn-anchor-ctas el-anim el-anim-d3">
+            <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
+            <a href="/pages/vision-general" class="el-btn-outline">Ver Visión General →</a>
+          </div>
+        </div>
+
+        <!-- Columna derecha: accordion editorial -->
+        <div class="bn-accordion el-anim el-anim-d2" role="list">
+
+          <!-- Item 01 — abierto por defecto -->
+          <div class="bn-item is-open" role="listitem">
+            <button class="bn-trigger" aria-expanded="true" aria-controls="bn-body-1">
+              <span class="bn-num">01</span>
+              <span class="bn-title">Disciplina Inquebrantable</span>
+              <span class="bn-icon" aria-hidden="true">
+                <span class="bn-h"></span>
+                <span class="bn-v"></span>
+              </span>
+            </button>
+            <div class="bn-body" id="bn-body-1" role="region">
+              <div class="bn-body-inner">
+                <p class="bn-desc">
+                  Aprende a actuar incluso cuando no tienes ganas.
+                  La verdadera ventaja competitiva nace de la consistencia diaria.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 02 -->
+          <div class="bn-item" role="listitem">
+            <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-2">
+              <span class="bn-num">02</span>
+              <span class="bn-title">Claridad Estratégica</span>
+              <span class="bn-icon" aria-hidden="true">
+                <span class="bn-h"></span>
+                <span class="bn-v"></span>
+              </span>
+            </button>
+            <div class="bn-body" id="bn-body-2" role="region">
+              <div class="bn-body-inner">
+                <p class="bn-desc">
+                  Elimina el ruido, identifica lo esencial y dirige tu energía
+                  hacia lo que realmente genera progreso.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 03 -->
+          <div class="bn-item" role="listitem">
+            <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-3">
+              <span class="bn-num">03</span>
+              <span class="bn-title">Mentalidad de Alto Nivel</span>
+              <span class="bn-icon" aria-hidden="true">
+                <span class="bn-h"></span>
+                <span class="bn-v"></span>
+              </span>
+            </button>
+            <div class="bn-body" id="bn-body-3" role="region">
+              <div class="bn-body-inner">
+                <p class="bn-desc">
+                  Fortalece tu carácter, desarrolla resiliencia y toma decisiones
+                  desde la convicción, no desde la emoción.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 04 -->
+          <div class="bn-item" role="listitem">
+            <button class="bn-trigger" aria-expanded="false" aria-controls="bn-body-4">
+              <span class="bn-num">04</span>
+              <span class="bn-title">Progreso Visible</span>
+              <span class="bn-icon" aria-hidden="true">
+                <span class="bn-h"></span>
+                <span class="bn-v"></span>
+              </span>
+            </button>
+            <div class="bn-body" id="bn-body-4" role="region">
+              <div class="bn-body-inner">
+                <p class="bn-desc">
+                  Convierte pequeñas acciones diarias en avances medibles
+                  y construye resultados sostenibles a largo plazo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- Beneficios -->
-  <section class="el-section el-section-alt">
-    <div class="el-container">
-
-      <div class="el-benefits-grid">
-
-        <article class="el-card el-anim el-anim-d1">
-          <div class="el-card-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-            </svg>
-          </div>
-          <div class="el-card-num">01 / Disciplina</div>
-          <h3 class="el-card-title">Disciplina Mental</h3>
-          <p class="el-card-desc">
-            Construye la capacidad de actuar sin depender de la motivación.
-            La disciplina es el músculo que separa a los que hablan de los que logran.
-          </p>
-        </article>
-
-        <article class="el-card el-anim el-anim-d2">
-          <div class="el-card-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-            </svg>
-          </div>
-          <div class="el-card-num">02 / Enfoque</div>
-          <h3 class="el-card-title">Enfoque Diario</h3>
-          <p class="el-card-desc">
-            Sistema de priorización que elimina el ruido y te conecta
-            con las acciones de mayor impacto cada mañana, sin excepción.
-          </p>
-        </article>
-
-        <article class="el-card el-anim el-anim-d3">
-          <div class="el-card-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/>
-            </svg>
-          </div>
-          <div class="el-card-num">03 / Mentalidad</div>
-          <h3 class="el-card-title">Mentalidad Fuerte</h3>
-          <p class="el-card-desc">
-            Reprograma las creencias limitantes. Desarrolla la resiliencia
-            emocional que te permite seguir cuando todo te dice que pares.
-          </p>
-        </article>
-
-        <article class="el-card el-anim el-anim-d4">
-          <div class="el-card-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <div class="el-card-num">04 / Resultados</div>
-          <h3 class="el-card-title">Resultados Reales</h3>
-          <p class="el-card-desc">
-            Métricas claras, seguimiento semanal y una hoja de ruta
-            para ver progreso tangible en las primeras 3 semanas.
-          </p>
-        </article>
-
-      </div>
-
-      <div style="text-align:center;margin-top:52px;" class="el-anim">
-        <a href="/pages/vision-general" class="el-btn-outline" style="margin-right:16px;">Ver Visión General →</a>
-        <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
-      </div>
-
-    </div>
-  </section>
+  <script>
+  (function() {
+    var items = document.querySelectorAll('.bn-item');
+    items.forEach(function(item) {
+      var btn = item.querySelector('.bn-trigger');
+      btn.addEventListener('click', function() {
+        var isOpen = item.classList.contains('is-open');
+        items.forEach(function(i) {
+          i.classList.remove('is-open');
+          i.querySelector('.bn-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+  </script>
 
   <!-- Garantías -->
   <section style="background:var(--el-deep);border-top:1px solid var(--el-border);padding:48px 48px;">
