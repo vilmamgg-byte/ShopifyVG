@@ -72,17 +72,104 @@
     .el-cierre-footer { padding: 0 20px 16px; }
     .el-cierre-sep { margin: 0 7px; }
   }
-  .el-learn-card {
-    padding: 34px 34px 40px !important;
-    transition: border-color 0.45s ease, box-shadow 0.45s ease, transform 0.45s ease !important;
+  .lq-accordion {
+    max-width: 760px;
+    margin: 0 auto;
   }
-  .el-learn-card:hover {
-    border-color: rgba(201,168,76,0.52) !important;
-    box-shadow: 0 0 36px rgba(201,168,76,0.09), 0 6px 28px rgba(0,0,0,0.28) !important;
-    transform: translateY(-1px) !important;
+  .lq-item {
+    border-top: 1px solid rgba(201,168,76,0.14);
   }
-  .el-learn-grid {
-    margin-top: 8px !important;
+  .lq-item:last-child {
+    border-bottom: 1px solid rgba(201,168,76,0.14);
+  }
+  .lq-trigger {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 26px 4px;
+    cursor: pointer;
+    gap: 28px;
+    text-align: left;
+  }
+  .lq-trigger:focus-visible {
+    outline: 1px solid rgba(201,168,76,0.4);
+    outline-offset: 2px;
+  }
+  .lq-num {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.30em;
+    color: rgba(201,168,76,0.60);
+    min-width: 28px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  .lq-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 400;
+    color: rgba(245,235,210,0.90);
+    letter-spacing: 0.04em;
+    flex: 1;
+    transition: color 0.3s ease;
+  }
+  .lq-icon {
+    font-size: 20px;
+    font-weight: 200;
+    color: rgba(201,168,76,0.60);
+    line-height: 1;
+    width: 22px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .lq-item--open .lq-num { color: rgba(201,168,76,0.90); }
+  .lq-item--open .lq-name { color: #c9a84c; }
+  .lq-item--open .lq-icon { color: rgba(201,168,76,1); }
+  .lq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
+    opacity: 0;
+  }
+  .lq-item--open .lq-body {
+    max-height: 260px;
+    opacity: 1;
+  }
+  .lq-list {
+    list-style: none;
+    padding: 0 4px 28px 56px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .lq-list li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(228,215,190,0.68);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    padding-left: 18px;
+    position: relative;
+  }
+  .lq-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 1px;
+    background: rgba(201,168,76,0.50);
+  }
+  @media (max-width: 768px) {
+    .lq-trigger { padding: 22px 4px; gap: 18px; }
+    .lq-list { padding-left: 36px; }
   }
 </style>
 
@@ -193,65 +280,95 @@
     </div>
   </section>
 
-  <!-- Módulos -->
+  <!-- Módulos acordeón -->
   <section class="el-section" style="padding-top:32px;">
     <div class="el-container">
 
-      <div class="el-learn-grid">
+      <div class="lq-accordion" role="list">
 
-        <article class="el-learn-card el-anim el-anim-d1">
-          <div class="el-learn-mod">Módulo 01</div>
-          <h3 class="el-learn-title">La Raíz de la Disciplina</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Por qué la motivación falla y la disciplina no — la diferencia que cambia todo</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cómo reprogramar tu identidad para actuar de forma consistente</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-1">
+            <span class="lq-num">01</span>
+            <span class="lq-name">La Raíz de la Disciplina</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-1" aria-hidden="true">
+            <ul class="lq-list">
+              <li>Por qué la motivación falla y la disciplina no — la diferencia que cambia todo</li>
+              <li>Cómo reprogramar tu identidad para actuar de forma consistente</li>
+            </ul>
+          </div>
+        </div>
 
-        <article class="el-learn-card el-anim el-anim-d2">
-          <div class="el-learn-mod">Módulo 02</div>
-          <h3 class="el-learn-title">Destruye la Procrastinación</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>La causa real del aplazamiento — y cómo corregirla de raíz</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Actúa en los primeros 2 minutos y elimina la resistencia mental</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-2">
+            <span class="lq-num">02</span>
+            <span class="lq-name">Destruye la Procrastinación</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-2" aria-hidden="true">
+            <ul class="lq-list">
+              <li>La causa real del aplazamiento — y cómo corregirla de raíz</li>
+              <li>Actúa en los primeros 2 minutos y elimina la resistencia mental</li>
+            </ul>
+          </div>
+        </div>
 
-        <article class="el-learn-card el-anim el-anim-d1">
-          <div class="el-learn-mod">Módulo 03</div>
-          <h3 class="el-learn-title">Hábitos que Duran para Siempre</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>El ciclo del hábito: señal, rutina, recompensa — domínalo por completo</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Diseño ambiental: haz que tu entorno trabaje a tu favor</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-3">
+            <span class="lq-num">03</span>
+            <span class="lq-name">Hábitos que Duran para Siempre</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-3" aria-hidden="true">
+            <ul class="lq-list">
+              <li>El ciclo del hábito: señal, rutina, recompensa — domínalo por completo</li>
+              <li>Diseño ambiental: haz que tu entorno trabaje a tu favor</li>
+            </ul>
+          </div>
+        </div>
 
-        <article class="el-learn-card el-anim el-anim-d2">
-          <div class="el-learn-mod">Módulo 04</div>
-          <h3 class="el-learn-title">Mentalidad Imparable</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>El marco mental de atletas de élite y líderes de alto rendimiento</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Resiliencia: convierte cada fracaso en combustible de crecimiento</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-4">
+            <span class="lq-num">04</span>
+            <span class="lq-name">Mentalidad Imparable</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-4" aria-hidden="true">
+            <ul class="lq-list">
+              <li>El marco mental de atletas de élite y líderes de alto rendimiento</li>
+              <li>Resiliencia: convierte cada fracaso en combustible de crecimiento</li>
+            </ul>
+          </div>
+        </div>
 
-        <article class="el-learn-card el-anim el-anim-d1">
-          <div class="el-learn-mod">Módulo 05</div>
-          <h3 class="el-learn-title">Productividad de Alto Impacto</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>El principio 80/20 aplicado a tu vida personal y profesional</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bloques de trabajo profundo: triplica resultados en la mitad del tiempo</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-5">
+            <span class="lq-num">05</span>
+            <span class="lq-name">Productividad de Alto Impacto</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-5" aria-hidden="true">
+            <ul class="lq-list">
+              <li>El principio 80/20 aplicado a tu vida personal y profesional</li>
+              <li>Bloques de trabajo profundo: triplica resultados en la mitad del tiempo</li>
+            </ul>
+          </div>
+        </div>
 
-        <article class="el-learn-card el-anim el-anim-d2">
-          <div class="el-learn-mod">Módulo 06</div>
-          <h3 class="el-learn-title">Tu Plan de 21 Días</h3>
-          <ul class="el-learn-list">
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Hoja de ruta día a día para implementar el sistema completo</li>
-            <li><svg class="el-learn-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>El protocolo de mantenimiento para que los cambios sean permanentes</li>
-          </ul>
-        </article>
+        <div class="lq-item" role="listitem">
+          <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-6">
+            <span class="lq-num">06</span>
+            <span class="lq-name">Tu Plan de 21 Días</span>
+            <span class="lq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="lq-body" id="lq-body-6" aria-hidden="true">
+            <ul class="lq-list">
+              <li>Hoja de ruta día a día para implementar el sistema completo</li>
+              <li>El protocolo de mantenimiento para que los cambios sean permanentes</li>
+            </ul>
+          </div>
+        </div>
 
       </div>
 
@@ -293,6 +410,32 @@
 </div>
 
 {{ 'ebook-landing.js' | asset_url | script_tag }}
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.lq-item');
+  items.forEach(function(item){
+    var trigger = item.querySelector('.lq-trigger');
+    var body    = item.querySelector('.lq-body');
+    var icon    = item.querySelector('.lq-icon');
+    trigger.addEventListener('click', function(){
+      var isOpen = item.classList.contains('lq-item--open');
+      items.forEach(function(i){
+        i.classList.remove('lq-item--open');
+        i.querySelector('.lq-trigger').setAttribute('aria-expanded', 'false');
+        i.querySelector('.lq-body').setAttribute('aria-hidden', 'true');
+        i.querySelector('.lq-icon').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('lq-item--open');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.setAttribute('aria-hidden', 'false');
+        icon.textContent = '−';
+      }
+    });
+  });
+})();
+</script>
 
 {% schema %}
 {
