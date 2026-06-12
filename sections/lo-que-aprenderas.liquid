@@ -158,6 +158,33 @@
 
   .lq-accordion { width: 100%; min-height: 0; overflow: hidden; }
 
+  /* CTA flotante sobre la línea del footer */
+  .lq-cta-abs {
+    position: absolute;
+    bottom: 72px;
+    right: min(8vw, 80px);
+    z-index: 5;
+    display: inline-block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.70);
+    text-decoration: none;
+    border: 1px solid rgba(212,175,55,0.28);
+    padding: 8px 22px;
+    background: transparent;
+    transition: color 0.35s ease, border-color 0.35s ease;
+  }
+  .lq-cta-abs:hover {
+    color: #d4af37;
+    border-color: rgba(212,175,55,0.58);
+  }
+  @media (max-width: 900px) {
+    .lq-cta-abs { display: none; }
+  }
+
   /* Footer pegado al fondo de la sección */
   .lq-footer-abs {
     position: absolute;
@@ -391,10 +418,7 @@
           <p class="el-hero-sub el-anim el-anim-d2" style="font-size:14px;line-height:1.70;margin-bottom:22px;">
             Cada módulo revela una pieza fundamental del proceso. Explóralos y descubre cómo encajan para construir una disciplina duradera.
           </p>
-          <a href="/pages/shopifyvg" class="el-btn-gold el-anim el-anim-d3" style="font-size:10px;letter-spacing:0.22em;padding:10px 32px;align-self:flex-start;margin-bottom:24px;">
-            OBTENER EL MÉTODO
-          </a>
-          <p class="lq-quote-text el-anim el-anim-d4">
+          <p class="lq-quote-text el-anim el-anim-d3">
             "La transformación no ocurre en un día.<br>Ocurre cuando decides no detenerte."
           </p>
         </div>
@@ -492,6 +516,9 @@
 
       </div>
     </div>
+
+    <!-- CTA flotante sobre la línea del footer -->
+    <a href="/pages/shopifyvg" class="lq-cta-abs el-anim el-anim-d4">OBTENER EL MÉTODO</a>
 
     <!-- Footer pegado al fondo -->
     <footer class="lq-footer-abs">
