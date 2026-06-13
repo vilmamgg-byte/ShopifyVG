@@ -265,39 +265,35 @@
 
   </section>
 
-  <!-- ─── Bloque compacto: diferenciador + para quién ─── -->
+  <!-- ─── Bloque: ¿Qué encontrarás en este método? ─── -->
   <section id="vg-diferenciador" class="el-section" style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:stretch;padding:86px 16px 70px;background:var(--el-deep);box-sizing:border-box;overflow:hidden;position:relative;">
     <div class="el-container" style="zoom:0.727;">
 
-      <!-- separador visual eliminado — flujo directo -->
-      <!-- Títulos sobre los recuadros — 3 columnas: botón | Y-flecha | botón -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:26px;align-items:center;margin-bottom:28px;margin-top:8px;">
-
-        <!-- Título izquierdo — tipografía elegante dorada -->
-        <div style="text-align:center;padding:0 8px;">
-          <h3 style="margin:0 0 10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:27.6px;color:#c9a84c;letter-spacing:0.04em;line-height:1.3;text-shadow:0 0 48px rgba(201,168,76,0.40);">Lo que este método desarrolla</h3>
-          <div style="width:44px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.75),transparent);margin:0 auto;"></div>
-        </div>
-
-<!-- Título derecho — tipografía elegante crema -->
-        <div style="text-align:center;padding:0 8px;">
-          <h3 style="margin:0 0 10px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:27.6px;color:rgba(240,218,184,0.88);letter-spacing:0.04em;line-height:1.3;text-shadow:0 0 48px rgba(228,215,190,0.25);">Para quienes buscan más de sí mismos</h3>
-          <div style="width:44px;height:1px;background:linear-gradient(to right,transparent,rgba(228,215,190,0.55),transparent);margin:0 auto;"></div>
-        </div>
-
+      <!-- Encabezado único centrado -->
+      <div style="text-align:center;margin-bottom:42px;">
+        <h2 style="margin:0 0 16px;font-family:'Poppins',sans-serif;font-size:clamp(24px,3.2vw,42px);font-weight:800;letter-spacing:0.14em;text-transform:uppercase;background:linear-gradient(90deg,#ffffff 0%,#f5e8c0 35%,#fffcf0 65%,#ffffff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;">
+          ¿QUÉ ENCONTRARÁS EN ESTE MÉTODO?
+        </h2>
+        <div style="width:64px;height:1.5px;background:linear-gradient(to right,transparent,#c9a84c,transparent);margin:0 auto 16px;"></div>
+        <p style="margin:0 auto;font-family:'Poppins',sans-serif;font-size:17px;font-weight:300;color:rgba(228,215,190,0.72);letter-spacing:0.03em;line-height:1.65;max-width:560px;">
+          Un sistema diseñado para desarrollar disciplina, claridad y ejecución sostenibles.
+        </p>
       </div>
 
-      <!-- Recuadros — aparecen al bajar y se ocultan al subir -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 98px;margin-top:0;" class="el-anim el-anim-repeat">
+      <!-- Recuadros con divisor vertical -->
+      <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:28px;align-items:stretch;" class="el-anim el-anim-repeat">
+
+        <!-- Divisor vertical sutil (oculto en móvil via CSS) -->
+        <div class="vg-col-divider" style="position:absolute;left:50%;top:8%;bottom:8%;width:1px;transform:translateX(-50%);background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.30) 22%,rgba(201,168,76,0.30) 78%,transparent);pointer-events:none;z-index:1;"></div>
 
         <!-- Columna A: Qué hace diferente -->
-        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:20px 44px;display:flex;flex-direction:column;justify-content:center;">
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.20);border-radius:16px;padding:30px 52px;display:flex;flex-direction:column;justify-content:center;">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
             {% assign checks = "Superar la autolimitación,Construir acción constante,Fortalecer la disciplina mental,Recuperar claridad y enfoque,Crear hábitos que perduran,Actuar incluso cuando falta motivación" | split: "," %}
             {% for item in checks %}
             <li style="display:flex;align-items:center;gap:16px;font-family:'Poppins',sans-serif;font-size:18px;font-weight:600;color:rgba(245,235,210,0.97);letter-spacing:0.07em;text-transform:uppercase;line-height:1.3;">
-              <span style="width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.22);border:2px solid rgba(201,168,76,0.75);box-shadow:0 0 10px rgba(201,168,76,0.25),inset 0 0 6px rgba(201,168,76,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span style="width:30px;height:30px;border-radius:50%;background:rgba(201,168,76,0.22);border:2px solid rgba(201,168,76,0.75);box-shadow:0 0 10px rgba(201,168,76,0.25),inset 0 0 6px rgba(201,168,76,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
               </span>
               {{ item }}
             </li>
@@ -306,13 +302,13 @@
         </div>
 
         <!-- Columna B: Para quién es -->
-        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:20px 44px;display:flex;flex-direction:column;justify-content:center;">
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 52px;display:flex;flex-direction:column;justify-content:center;">
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
             {% assign para_quien = "Saben que pueden dar más de sí mismos|Desean recuperar el control de su vida|Están cansados de empezar y abandonar|Buscan claridad, enfoque y dirección|Quieren resultados sostenibles" | split: "|" %}
             {% for item in para_quien %}
             <li style="display:flex;align-items:center;gap:16px;font-family:'Poppins',sans-serif;font-size:18px;font-weight:600;color:rgba(245,235,210,0.97);letter-spacing:0.07em;text-transform:uppercase;line-height:1.3;">
-              <span style="width:36px;height:36px;border-radius:50%;background:rgba(228,215,190,0.12);border:2px solid rgba(228,215,190,0.60);box-shadow:0 0 10px rgba(228,215,190,0.15),inset 0 0 6px rgba(228,215,190,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,235,210,0.95)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+              <span style="width:30px;height:30px;border-radius:50%;background:rgba(228,215,190,0.12);border:2px solid rgba(228,215,190,0.60);box-shadow:0 0 10px rgba(228,215,190,0.15),inset 0 0 6px rgba(228,215,190,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(245,235,210,0.95)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
               </span>
               {{ item }}
             </li>
@@ -322,11 +318,16 @@
 
       </div>
 
-      <!-- Cita de cierre + CTA -->
-      <div class="el-anim" style="text-align:center;margin-top:40px;padding-top:0;">
-        <p class="el-quote-premium" style="margin:-4px auto 32px;font-size:29px;">
-          "La disciplina se construye paso a paso. Hasta que cambia todo."
-        </p>
+      <!-- Cita destacada en dos líneas + CTA -->
+      <div class="el-anim" style="text-align:center;margin-top:54px;padding-top:0;">
+        <div style="margin-bottom:46px;">
+          <p style="margin:0 0 8px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:24px;color:#f0dab8;letter-spacing:0.01em;line-height:1.65;text-shadow:0 0 60px rgba(201,168,76,0.22),0 1px 0 rgba(0,0,0,0.18);">
+            "La disciplina se construye paso a paso."
+          </p>
+          <p style="margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:40px;color:#e8c97a;letter-spacing:0.01em;line-height:1.2;text-shadow:0 0 60px rgba(201,168,76,0.55),0 1px 0 rgba(0,0,0,0.18);">
+            "Hasta que cambia todo."
+          </p>
+        </div>
         <a href="/pages/shopifyvg" class="el-btn-gold" style="font-size:17.2px;padding:11.43px 40.8px;">OBTENER EL MÉTODO</a>
       </div>
 
