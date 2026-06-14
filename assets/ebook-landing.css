@@ -835,13 +835,15 @@
   background: var(--el-deep);
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 38px 48px 19px;
+  box-sizing: border-box;
 }
 
 .el-cambio-clip {
   width: 100%;
   max-width: var(--el-max);
-  overflow: hidden;
+  overflow: visible;
   border-radius: 16px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
 }
