@@ -850,9 +850,6 @@
   width: 100%;
   height: auto;
   display: block;
-  /* recorte: 1.5 cm superior ≈ 57px, 1 cm inferior ≈ 38px */
-  margin-top: -57px;
-  margin-bottom: -38px;
 }
 
 @media (max-width: 768px) {
