@@ -157,31 +157,86 @@
 
   .lq-accordion { width: 100%; min-height: 0; overflow: hidden; }
 
-  /* CTA flotante sobre la línea del footer */
-  .lq-cta-abs {
-    position: absolute;
-    bottom: 74px;
-    left: 0;
-    z-index: 5;
+  /* Eyebrow */
+  .lq-eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.60);
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  /* Párrafo intro */
+  .lq-intro {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(228,215,190,0.68);
+    line-height: 1.82;
+    letter-spacing: 0.02em;
+    margin: 0 0 28px;
+  }
+
+  /* Micro-beneficios */
+  .lq-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 28px;
+  }
+  .lq-benefit {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(228,215,190,0.52);
+  }
+  .lq-benefit::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: rgba(201,168,76,0.42);
+    flex-shrink: 0;
+  }
+
+  /* Frase inspiracional */
+  .lq-inspire {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(13px,1.2vw,16px);
+    color: rgba(240,218,184,0.32);
+    line-height: 1.7;
+    border-left: 1px solid rgba(201,168,76,0.18);
+    padding-left: 14px;
+    margin: 0 0 30px;
+  }
+
+  /* CTA dentro de la columna */
+  .lq-cta-inline {
     display: inline-block;
     font-family: 'Manrope', sans-serif;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.20em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: rgba(212,175,55,0.70);
     text-decoration: none;
     border: 1px solid rgba(212,175,55,0.28);
-    padding: 8px 22px;
+    padding: 9px 26px;
     background: transparent;
     transition: color 0.35s ease, border-color 0.35s ease;
   }
-  .lq-cta-abs:hover {
+  .lq-cta-inline:hover {
     color: #d4af37;
     border-color: rgba(212,175,55,0.58);
-  }
-  @media (max-width: 900px) {
-    .lq-cta-abs { display: none; }
   }
 
   /* Footer pegado al fondo de la sección */
@@ -409,17 +464,30 @@
 
         <!-- Columna izquierda -->
         <div class="lq-col-left">
-          <span class="el-label el-anim" style="margin-bottom:16px;display:block;">6 Módulos del Método</span>
-          <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(23px,2.3vw,37px);line-height:1.15;margin-bottom:14px;">
+
+          <span class="lq-eyebrow el-anim">6 Módulos del Método</span>
+
+          <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(23px,2.3vw,37px);line-height:1.15;margin-bottom:22px;">
             La disciplina,<br>
-            <span class="el-gold-text">construida paso a paso</span>
+            <span class="el-gold-text">paso a paso</span>
           </h1>
-          <p class="el-hero-sub el-anim el-anim-d2" style="font-size:16px;line-height:1.70;margin-bottom:22px;">
-            Cada módulo desarrolla una habilidad esencial para ayudarte a vencer la procrastinación, fortalecer tus hábitos y avanzar con más claridad, enfoque y constancia.
+
+          <p class="lq-intro el-anim el-anim-d2">
+            Un método práctico para vencer la procrastinación, fortalecer tus hábitos y avanzar con claridad, enfoque y constancia.
           </p>
-          <p class="lq-quote-text el-anim el-anim-d3">
-            "La transformación no ocurre en un día.<br>Ocurre cuando decides seguir avanzando, incluso cuando la motivación desaparece."
+
+          <div class="lq-benefits el-anim el-anim-d3">
+            <div class="lq-benefit">Claridad mental</div>
+            <div class="lq-benefit">Hábitos sostenibles</div>
+            <div class="lq-benefit">Acción constante</div>
+          </div>
+
+          <p class="lq-inspire el-anim el-anim-d4">
+            "La transformación no ocurre de golpe.<br>Se construye con cada decisión."
           </p>
+
+          <a href="/pages/shopifyvg" class="lq-cta-inline el-anim el-anim-d5">OBTENER EL MÉTODO</a>
+
         </div>
 
         <!-- Columna derecha: acordeón -->
@@ -515,8 +583,6 @@
 
       </div>
 
-      <!-- CTA flotante sobre la línea del footer -->
-      <a href="/pages/shopifyvg" class="lq-cta-abs el-anim el-anim-d4">OBTENER EL MÉTODO</a>
     </div>
 
     <!-- Footer pegado al fondo -->
