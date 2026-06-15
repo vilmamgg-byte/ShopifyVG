@@ -1,0 +1,465 @@
+{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&display=swap');
+
+  #shopify-section-group-header-group,
+  .shopify-section-group--header-group,
+  sticky-header { display: none !important; }
+  #shopify-section-group-footer-group,
+  .shopify-section-group--footer-group,
+  #shopify-section-footer,
+  footer.footer,
+  .footer__content-bottom,
+  .footer__copyright { display: none !important; }
+  body { padding-top: 0 !important; margin-top: 0 !important; }
+
+  /* ══ Página ══ */
+  .faq-page {
+    background: var(--el-deep);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .faq-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ Hero ══ */
+  .faq-hero {
+    position: relative;
+    z-index: 2;
+    padding: 128px 48px 56px;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .faq-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.60);
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  .faq-title {
+    font-family: var(--el-font-alt);
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 700;
+    line-height: 1.13;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 16px;
+  }
+
+  .faq-title .faq-gold { color: var(--el-gold); }
+
+  .faq-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.35vw, 17px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ══ Divisor ══ */
+  .faq-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.40), transparent);
+    margin: 0 auto 52px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ══ Lista de preguntas ══ */
+  .faq-body {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+    box-sizing: border-box;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--el-font-alt);
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  details[open] .faq-question {
+    color: var(--el-gold);
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(201,168,76,0.30);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  details[open] .faq-icon {
+    border-color: rgba(201,168,76,0.70);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .faq-icon svg {
+    color: rgba(201,168,76,0.55);
+    transition: transform 0.35s ease, color 0.3s ease;
+  }
+
+  details[open] .faq-icon svg {
+    transform: rotate(45deg);
+    color: var(--el-gold);
+  }
+
+  .faq-answer {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(13px, 1.1vw, 14.5px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.50);
+    line-height: 1.75;
+    padding: 0 32px 22px 0;
+    margin: 0;
+  }
+
+  /* ══ CTA ══ */
+  .faq-cta {
+    text-align: center;
+    padding: 0 48px 64px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .faq-cta-note {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.28);
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  /* ══ Footer ══ */
+  .el-cierre-footer {
+    position: relative;
+    z-index: 3;
+    padding: 20px min(8vw, 80px) 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    opacity: 0.70;
+    transition: opacity 0.4s ease;
+    box-sizing: border-box;
+  }
+
+  .el-cierre-footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+
+  .el-cierre-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .el-cierre-nav a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.72);
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+
+  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
+
+  .el-cierre-sep {
+    font-size: 9px;
+    color: rgba(212,175,55,0.35);
+    margin: 0 10px;
+    font-weight: 300;
+  }
+
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+  }
+
+  /* ══ Responsive ══ */
+  @media (max-width: 1024px) {
+    .faq-hero { padding: 110px 32px 48px; }
+    .faq-body { padding: 0 32px 52px; }
+    .faq-cta  { padding: 0 32px 52px; }
+    .el-cierre-footer { padding: 18px min(6vw, 40px) 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .faq-hero { padding: 96px 20px 40px; }
+    .faq-body { padding: 0 20px 44px; }
+    .faq-cta  { padding: 0 20px 44px; }
+    .faq-title { font-size: clamp(24px, 7vw, 34px); }
+    .faq-divider { height: 28px; margin-bottom: 36px; }
+    .el-cierre-footer { padding: 16px 0 16px; }
+  }
+</style>
+
+<div class="el-page">
+
+  <!-- Mobile nav -->
+  <div class="el-mobile-nav" aria-hidden="true">
+    <a href="/">Inicio</a>
+    <a href="/pages/vision-general">Método Imparable</a>
+    <a href="/pages/vision-general" class="el-mobile-sub">↳ Visión General</a>
+    <a href="/pages/lo-que-aprenderas" class="el-mobile-sub">↳ Lo Que Aprenderás</a>
+    <a href="/pages/beneficios">Beneficios</a>
+    <a href="/pages/resultados">Resultados</a>
+    <a href="/pages/testimonios">Testimonios</a>
+    <a href="/pages/faq" class="el-nav-active">FAQ</a>
+    <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+  </div>
+
+  <!-- Header -->
+  <header class="el-header" id="el-header">
+    <a href="/" class="el-logo">
+      <div class="el-logo-mark">
+        <svg width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="fq-goldH" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c9a84c"/><stop offset="50%" stop-color="#f0d878"/><stop offset="100%" stop-color="#c9a84c"/></linearGradient>
+            <linearGradient id="fq-goldV" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5e090"/><stop offset="45%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6820"/></linearGradient>
+            <linearGradient id="fq-pageL" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.20"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.05"/></linearGradient>
+            <linearGradient id="fq-pageR" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.11"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.03"/></linearGradient>
+            <radialGradient id="fq-aura" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.10"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/></radialGradient>
+            <filter id="fq-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="fq-glowS" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="28" cy="33" rx="22" ry="19" fill="url(#fq-aura)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="rgba(0,0,0,0.25)" transform="translate(1,1.5)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="url(#fq-pageL)" stroke="#c9a84c" stroke-width="1.05" stroke-linejoin="round"/>
+          <path d="M25.5 13 L9.5 17 L9.5 42 L25.5 38 Z" fill="rgba(255,255,255,0.022)"/>
+          <path d="M29 11 L49 15.5 L49 44 L29 39.5 Z" fill="url(#fq-pageR)" stroke="#c9a84c" stroke-width="0.8" stroke-linejoin="round"/>
+          <path d="M7 44 L9.5 45.8 L27 41.5 L27 39.5 Z" fill="rgba(201,168,76,0.14)"/>
+          <path d="M49 44 L46.5 45.8 L29 41.5 L29 39.5 Z" fill="rgba(201,168,76,0.08)"/>
+          <line x1="28" y1="11" x2="28" y2="39.5" stroke="url(#fq-goldV)" stroke-width="2.8" stroke-linecap="round" filter="url(#fq-glow)"/>
+          <path d="M28 4 L31 9.5 L28 12.5 L25 9.5 Z" fill="url(#fq-goldV)" filter="url(#fq-glowS)"/>
+          <path d="M28 5.5 L30 9.5 L28 11.5 L26 9.5 Z" fill="#f5e090" opacity="0.55"/>
+          <line x1="11" y1="19.5" x2="25" y2="18" stroke="url(#fq-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.78"/>
+          <line x1="11" y1="23.2" x2="25" y2="21.7" stroke="url(#fq-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.72"/>
+          <line x1="11" y1="26.9" x2="25" y2="25.4" stroke="url(#fq-goldH)" stroke-width="1.05" stroke-linecap="round" opacity="0.60"/>
+          <line x1="31" y1="18" x2="45.5" y2="19.5" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.44"/>
+          <line x1="31" y1="21.7" x2="45.5" y2="23.2" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.38"/>
+          <circle cx="7" cy="15.5" r="1.6" fill="#c9a84c" opacity="0.80" filter="url(#fq-glow)"/>
+          <circle cx="7" cy="15.5" r="0.8" fill="#f5e090" opacity="0.70"/>
+          <circle cx="28" cy="11" r="1.6" fill="#f5e090" opacity="0.65"/>
+          <circle cx="28" cy="11" r="0.7" fill="white" opacity="0.60"/>
+        </svg>
+      </div>
+      <span class="el-logo-text"><span class="el-logo-d">DISCIPLINA</span><span class="el-logo-i">IMPARABLE</span></span>
+    </a>
+
+    <nav class="el-nav" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+      <div class="el-dropdown" role="navigation">
+        <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          Método Imparable
+          <svg class="el-dropdown-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="el-dropdown-panel" role="menu">
+          <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            <span><strong>Visión General</strong><small>Qué es y cómo funciona</small></span>
+          </a>
+          <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg></span>
+            <span><strong>Lo Que Aprenderás</strong><small>Contenido y resultados</small></span>
+          </a>
+        </div>
+      </div>
+      <a href="/pages/beneficios">Beneficios</a>
+      <a href="/pages/resultados">Resultados</a>
+      <a href="/pages/testimonios">Testimonios</a>
+      <a href="/pages/faq" style="color:#c9a84c">FAQ</a>
+      <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+    </nav>
+
+    <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="faq-page">
+
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 45% at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 58%);pointer-events:none;z-index:1;"></div>
+
+    <!-- ── Encabezado ── -->
+    <div class="faq-hero">
+      <span class="faq-label el-anim">Preguntas frecuentes</span>
+      <h1 class="faq-title el-anim el-anim-d1">
+        Todo lo que necesitas<br>
+        <span class="faq-gold">saber antes de empezar</span>
+      </h1>
+      <p class="faq-subtitle el-anim el-anim-d2">
+        Respuestas claras y directas sobre el método, el formato y lo que puedes esperar.
+      </p>
+    </div>
+
+    <!-- Divisor -->
+    <div class="faq-divider el-anim el-anim-d3"></div>
+
+    <!-- ── Preguntas ── -->
+    <div class="faq-body">
+
+      <details class="faq-item el-anim el-anim-d1">
+        <summary class="faq-question">
+          ¿Qué es exactamente Disciplina Imparable?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">Es un ebook digital estructurado como un método práctico de 21 días. No es un libro de motivación ni de autoayuda genérica. Está diseñado para ayudarte a construir una forma más constante y consciente de actuar, a través de herramientas concretas de enfoque, priorización y disciplina sostenida.</p>
+      </details>
+
+      <details class="faq-item el-anim el-anim-d2">
+        <summary class="faq-question">
+          ¿En qué formato viene y cómo accedo?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">Es un archivo PDF de alta calidad, optimizado para lectura en pantalla o impresión. Recibes el acceso de forma inmediata tras la compra, directamente en tu correo electrónico. No requieres ninguna app especial: funciona en cualquier dispositivo.</p>
+      </details>
+
+      <details class="faq-item el-anim el-anim-d3">
+        <summary class="faq-question">
+          ¿Para quién está pensado este método?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">Está pensado para personas que ya entienden la importancia de la disciplina pero sienten que les cuesta sostenerla en el tiempo. Profesionales, emprendedores, estudiantes o cualquier persona que quiera pasar de la intención a la acción consistente. No necesitas experiencia previa en productividad ni en ningún sistema específico.</p>
+      </details>
+
+      <details class="faq-item el-anim el-anim-d4">
+        <summary class="faq-question">
+          ¿Cuánto tiempo necesito para aplicarlo?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">El método está estructurado en 21 días, con bloques diarios diseñados para integrarse en una rutina real, no en una ideal. Cada práctica está pensada para requerir entre 15 y 30 minutos diarios. El objetivo es que sea sostenible, no perfecto.</p>
+      </details>
+
+      <details class="faq-item el-anim el-anim-d5">
+        <summary class="faq-question">
+          ¿Qué pasa si ya leí otros libros de disciplina o productividad?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">La diferencia está en el enfoque. La mayoría de los libros te explican el qué y el por qué. Este método te da el cómo, paso a paso, estructurado en un sistema de práctica diaria. Si ya tienes bases teóricas, este ebook te ayuda a convertirlas en hábitos reales y sostenidos.</p>
+      </details>
+
+      <details class="faq-item el-anim el-anim-d6">
+        <summary class="faq-question">
+          ¿Hay garantía de devolución?
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </summary>
+        <p class="faq-answer">Sí. Si aplicaste el método durante los primeros 7 días y sientes que no es lo que esperabas, puedes escribirnos y gestionamos la devolución sin complicaciones. Creemos en el valor del método y no te pedimos que te quedes si no lo ves útil para ti.</p>
+      </details>
+
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="faq-cta el-anim">
+      <a href="/pages/shopifyvg" class="el-btn-gold">Obtener el Método</a>
+      <p class="faq-cta-note">Acceso inmediato · Formato PDF · Un solo pago</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="el-cierre-footer">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
+      </div>
+    </footer>
+
+  </div><!-- /faq-page -->
+
+</div><!-- /el-page -->
+
+{{ 'ebook-landing.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}
