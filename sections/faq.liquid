@@ -470,6 +470,18 @@
 
 </div><!-- /el-page -->
 
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    item.addEventListener('toggle', function() {
+      if (item.open) {
+        document.querySelectorAll('.faq-item').forEach(function(other) {
+          if (other !== item) other.removeAttribute('open');
+        });
+      }
+    });
+  });
+</script>
+
 {{ 'ebook-landing.js' | asset_url | script_tag }}
 
 {% schema %}
