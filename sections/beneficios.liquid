@@ -53,9 +53,9 @@
   /* Layout: ambas columnas se estiran al alto disponible */
   .bn-layout {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.35fr;
     gap: 64px;
-    align-items: stretch;
+    align-items: center;
     height: 100%;
     min-height: 0;
   }
@@ -84,7 +84,7 @@
     font-size: clamp(22px, 2.15vw, 35px);
     font-weight: 700;
     font-style: normal;
-    line-height: 1.08;
+    line-height: 1.13;
     letter-spacing: -0.02em;
     max-width: 320px;
     background: linear-gradient(90deg, #ffffff 0%, #f5e8c0 35%, #fffcf0 65%, #ffffff 100%);
@@ -92,7 +92,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-top: 0.5cm;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .bn-anchor-title .bn-gold {
@@ -105,10 +105,10 @@
   .bn-anchor-sub {
     font-family: var(--el-font-serif);
     font-style: italic;
-    font-size: 15px;
-    color: rgba(255,255,255,0.50);
+    font-size: 16px;
+    color: rgba(255,255,255,0.57);
     line-height: 1.65;
-    margin-bottom: 22px;
+    margin-bottom: 0;
     max-width: 290px;
   }
 
@@ -116,9 +116,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 36px;
   }
 
-  /* Botón compacto — 15% reducido, subido 2mm */
+  /* Botón compacto */
   .bn-anchor .el-btn-gold {
     font-size: 10px !important;
     font-weight: 500 !important;
@@ -130,7 +131,6 @@
     border: 1px solid rgba(201,168,76,0.80) !important;
     color: var(--el-gold) !important;
     box-shadow: none !important;
-    transform: translateY(-2mm) !important;
   }
 
   .bn-anchor .el-btn-gold:hover {
@@ -141,18 +141,18 @@
 
   /* ── Acordeón — columna derecha, apilado desde arriba ── */
   .bn-accordion {
-    border-top: 1px solid rgba(255,255,255,0.07);
+    border-top: 1px solid rgba(255,255,255,0.11);
     overflow-y: auto;
     min-height: 0;
-    scrollbar-width: none; /* sin scrollbar interno */
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-self: center; /* centra el bloque verticalmente en la columna */
+    align-self: center;
   }
 
   .bn-item {
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.11);
     position: relative;
     transition: background 0.3s ease;
   }
@@ -174,7 +174,7 @@
     grid-template-columns: 28px 1fr 18px;
     align-items: center;
     gap: 22px;
-    padding: 18px 0 18px 23px;
+    padding: 22px 0 22px 23px;
     cursor: pointer;
     width: 100%;
     background: none;
@@ -206,9 +206,9 @@
 
   .bn-title {
     font-family: var(--el-font-alt);
-    font-size: 18px;
+    font-size: 19.5px;
     font-weight: 500;
-    color: rgba(255,255,255,0.72);
+    color: rgba(255,255,255,0.80);
     letter-spacing: -0.1px;
     line-height: 1.35;
     transition: color 0.25s ease;
@@ -347,10 +347,11 @@
 
   @media (max-width: 768px) {
     .bn-section { padding: 68px 20px 56px; }
-    .bn-trigger { padding: 18px 0 18px 14px; gap: 14px; }
+    .bn-trigger { padding: 20px 0 20px 14px; gap: 14px; }
     .bn-body-inner { padding-left: 42px; }
-    .bn-title { font-size: 14.5px; }
+    .bn-title { font-size: 15px; }
     .bn-anchor-title { font-size: clamp(22px, 6.5vw, 30px); max-width: 100%; }
+    .bn-anchor-ctas { margin-top: 28px; }
     .el-cierre-footer { padding: 0 20px 16px; }
   }
 </style>
