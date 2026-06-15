@@ -266,65 +266,67 @@
   </section>
 
   <!-- ─── Bloque: Editorial premium — segundo slide ─── -->
-  <section id="vg-diferenciador" class="el-section" style="height:100vh;display:flex;flex-direction:column;padding:80px 0 0;background:var(--el-deep);box-sizing:border-box;overflow:hidden;position:relative;">
-    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0 16px 16px;">
-    <div class="el-container" style="max-width:880px;">
+  <section id="vg-diferenciador" class="el-section" style="height:100vh;position:relative;background:var(--el-deep);overflow:hidden;">
 
-      <!-- Encabezado editorial — refinado, subordinado, no protagonista -->
-      <div class="el-anim" style="text-align:center;margin-bottom:56px;">
-        <h2 style="margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(16px,1.6vw,22px);color:rgba(228,215,190,0.55);letter-spacing:0.05em;line-height:1.4;">
-          Construido para quienes buscan algo más que inspiración
-        </h2>
-      </div>
+    <!-- Zona de contenido: acotada entre header (80px) y footer (68px) -->
+    <div style="position:absolute;top:80px;bottom:68px;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:0 16px;overflow:hidden;">
+      <div class="el-container" style="max-width:880px;width:100%;">
 
-      <!-- Columnas editoriales — sin cajas, espacio abierto -->
-      <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:start;" class="el-anim el-anim-d1 el-anim-repeat">
-
-        <!-- Divisor vertical central -->
-        <div class="vg-col-divider" style="position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);background:linear-gradient(to bottom,transparent 0%,rgba(201,168,76,0.18) 18%,rgba(201,168,76,0.18) 82%,transparent 100%);pointer-events:none;z-index:1;"></div>
-
-        <!-- Columna A: Lo que desarrollarás -->
-        <div style="padding:0 56px 0 8px;">
-          <p style="margin:0 0 24px;font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:rgba(201,168,76,0.48);">Lo que desarrollarás</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
-            {% assign checks = "Superar la autolimitación,Construir acción constante,Fortalecer la disciplina mental,Recuperar claridad y enfoque,Crear hábitos que perduran,Actuar incluso cuando falta motivación" | split: "," %}
-            {% for item in checks %}
-            <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:300;color:rgba(228,215,190,0.68);letter-spacing:0.04em;line-height:1.45;">
-              <span style="width:18px;height:1px;background:rgba(201,168,76,0.42);flex-shrink:0;"></span>
-              {{ item }}
-            </li>
-            {% endfor %}
-          </ul>
+        <!-- Encabezado editorial -->
+        <div class="el-anim" style="text-align:center;margin-bottom:40px;">
+          <h2 style="margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(16px,1.6vw,22px);color:rgba(228,215,190,0.55);letter-spacing:0.05em;line-height:1.4;">
+            Construido para quienes buscan algo más que inspiración
+          </h2>
         </div>
 
-        <!-- Columna B: Diseñado para quienes -->
-        <div style="padding:0 8px 0 56px;">
-          <p style="margin:0 0 24px;font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:rgba(228,215,190,0.28);">Diseñado para quienes</p>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
-            {% assign para_quien = "Saben que pueden dar más de sí mismos|Desean recuperar el control de su vida|Están cansados de empezar y abandonar|Buscan claridad, enfoque y dirección|Quieren resultados sostenibles" | split: "|" %}
-            {% for item in para_quien %}
-            <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:300;color:rgba(228,215,190,0.48);letter-spacing:0.04em;line-height:1.45;">
-              <span style="width:18px;height:1px;background:rgba(228,215,190,0.20);flex-shrink:0;"></span>
-              {{ item }}
-            </li>
-            {% endfor %}
-          </ul>
+        <!-- Columnas editoriales — sin cajas, espacio abierto -->
+        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:start;" class="el-anim el-anim-d1 el-anim-repeat">
+
+          <!-- Divisor vertical central -->
+          <div class="vg-col-divider" style="position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);background:linear-gradient(to bottom,transparent 0%,rgba(201,168,76,0.18) 18%,rgba(201,168,76,0.18) 82%,transparent 100%);pointer-events:none;z-index:1;"></div>
+
+          <!-- Columna A: Lo que desarrollarás -->
+          <div style="padding:0 56px 0 8px;">
+            <p style="margin:0 0 24px;font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:rgba(201,168,76,0.48);">Lo que desarrollarás</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
+              {% assign checks = "Superar la autolimitación,Construir acción constante,Fortalecer la disciplina mental,Recuperar claridad y enfoque,Crear hábitos que perduran,Actuar incluso cuando falta motivación" | split: "," %}
+              {% for item in checks %}
+              <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:300;color:rgba(228,215,190,0.68);letter-spacing:0.04em;line-height:1.45;">
+                <span style="width:18px;height:1px;background:rgba(201,168,76,0.42);flex-shrink:0;"></span>
+                {{ item }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Columna B: Diseñado para quienes -->
+          <div style="padding:0 8px 0 56px;">
+            <p style="margin:0 0 24px;font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:0.32em;text-transform:uppercase;color:rgba(228,215,190,0.28);">Diseñado para quienes</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
+              {% assign para_quien = "Saben que pueden dar más de sí mismos|Desean recuperar el control de su vida|Están cansados de empezar y abandonar|Buscan claridad, enfoque y dirección|Quieren resultados sostenibles" | split: "|" %}
+              {% for item in para_quien %}
+              <li style="display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:300;color:rgba(228,215,190,0.48);letter-spacing:0.04em;line-height:1.45;">
+                <span style="width:18px;height:1px;background:rgba(228,215,190,0.20);flex-shrink:0;"></span>
+                {{ item }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Cita editorial + CTA -->
+        <div class="el-anim el-anim-d2" style="text-align:center;margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.055);">
+          <p style="margin:0 auto 28px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(14px,1.45vw,19px);color:rgba(228,215,190,0.48);letter-spacing:0.03em;line-height:1.75;max-width:500px;">
+            "La disciplina no cambia un día. Cambia la dirección de toda una vida."
+          </p>
+          <a href="/pages/shopifyvg" class="el-btn-gold" style="font-size:9.5px;padding:9px 28px;letter-spacing:0.22em;">OBTENER EL MÉTODO</a>
         </div>
 
       </div>
+    </div><!-- /zona contenido -->
 
-      <!-- Cita editorial + CTA -->
-      <div class="el-anim el-anim-d2" style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.055);">
-        <p style="margin:0 auto 36px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(14px,1.45vw,19px);color:rgba(228,215,190,0.48);letter-spacing:0.03em;line-height:1.75;max-width:500px;">
-          "La disciplina no cambia un día. Cambia la dirección de toda una vida."
-        </p>
-        <a href="/pages/shopifyvg" class="el-btn-gold" style="font-size:9.5px;padding:9px 28px;letter-spacing:0.22em;">OBTENER EL MÉTODO</a>
-      </div>
-
-    </div>
-    </div><!-- /flex:1 wrapper -->
-
-    <footer class="el-cierre-footer" style="position:relative;bottom:auto;left:auto;right:auto;">
+    <footer class="el-cierre-footer">
       <div class="el-cierre-footer-inner">
         <nav class="el-cierre-nav" aria-label="Footer">
           <a href="/pages/sobre-la-autora">Sobre la Autora</a>
