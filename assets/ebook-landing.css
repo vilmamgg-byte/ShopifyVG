@@ -1759,6 +1759,10 @@
 .el-anim-d5 { transition-delay: 0.40s; }
 .el-anim-d6 { transition-delay: 0.48s; }
 
+/* ── Ajustes finos Visión General hero ── */
+#vg-hero h1           { font-size: clamp(33px,4.4vw,63px) !important; }
+#vg-hero p.el-anim    { font-size: 20px !important; }
+
 /* ════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════ */
