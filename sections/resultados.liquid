@@ -16,11 +16,11 @@
 
   /* ══ Sección principal ══ */
   .rs-section {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 48px;
     background: var(--el-deep);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -233,14 +233,14 @@
 
   /* ── CTA ── */
   .rs-cta {
-    margin-bottom: 0;
+    margin-bottom: 28px;
   }
 
   /* ── Footer — idéntico a Inicio y Beneficios ── */
   .el-cierre-footer {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 0 min(8vw, 80px) 14px;
+    position: relative;
+    margin-top: auto;
+    padding: 18px min(8vw, 80px) 20px;
     border-top: 1px solid rgba(255,255,255,0.06);
     opacity: 0.70;
     transition: opacity 0.4s ease;
@@ -296,20 +296,12 @@
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
-    .rs-section {
-      height: auto;
-      overflow: visible;
-      padding: 80px 32px 0;
-    }
+    .rs-section { padding: 80px 32px 0; }
     .rs-container {
       justify-content: flex-start;
-      padding: 68px 0 52px;
+      padding: 68px 0 40px;
     }
-    .el-cierre-footer {
-      position: static;
-      padding: 20px min(8vw, 40px) 18px;
-      margin-top: 40px;
-    }
+    .el-cierre-footer { padding: 18px min(8vw, 40px) 18px; margin-top: 32px; }
   }
 
   @media (max-width: 768px) {
