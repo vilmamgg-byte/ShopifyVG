@@ -1,6 +1,8 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&display=swap');
+
   #shopify-section-group-header-group,
   .shopify-section-group--header-group,
   sticky-header { display: none !important; }
@@ -11,6 +13,269 @@
   .footer__content-bottom,
   .footer__copyright { display: none !important; }
   body { padding-top: 0 !important; margin-top: 0 !important; }
+
+  /* ══ Página ══ */
+  .tm-page {
+    background: var(--el-deep);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .tm-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ Hero ══ */
+  .tm-hero {
+    position: relative;
+    z-index: 2;
+    padding: 128px 48px 60px;
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .tm-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 62%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .tm-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.60);
+    display: inline-block;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tm-title {
+    font-family: var(--el-font-alt);
+    font-size: clamp(26px, 3.2vw, 44px);
+    font-weight: 700;
+    line-height: 1.13;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tm-title .tm-gold {
+    color: var(--el-gold);
+  }
+
+  .tm-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.4vw, 18px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.60);
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ══ Divisor decorativo ══ */
+  .tm-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.40), transparent);
+    margin: 0 auto 52px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ══ Grid de tarjetas ══ */
+  .tm-cards {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 56px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .tm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  /* ══ Tarjeta ══ */
+  .tm-card {
+    background: rgba(255,255,255,0.022);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 28px 26px 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.40s ease, background 0.40s ease;
+    overflow: hidden;
+  }
+
+  .tm-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0), transparent);
+    transition: background 0.45s ease;
+  }
+
+  .tm-card:hover {
+    border-color: rgba(201,168,76,0.16);
+    background: rgba(201,168,76,0.024);
+  }
+
+  .tm-card:hover::before {
+    background: linear-gradient(to right, transparent, rgba(201,168,76,0.42), transparent);
+  }
+
+  .tm-card-mark {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 56px;
+    line-height: 0.75;
+    color: rgba(201,168,76,0.28);
+    margin-bottom: 14px;
+    display: block;
+    font-style: normal;
+    font-weight: 300;
+    user-select: none;
+  }
+
+  .tm-card-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.3vw, 17px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.80);
+    line-height: 1.75;
+    margin: 0 0 22px;
+    border: none;
+    padding: 0;
+    flex: 1;
+  }
+
+  .tm-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tm-card-sep {
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,168,76,0.55), transparent);
+  }
+
+  .tm-card-profile {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.62);
+    margin: 0;
+  }
+
+  /* ══ CTA ══ */
+  .tm-cta {
+    text-align: center;
+  }
+
+  /* ══ Footer — idéntico a Inicio, Beneficios y Resultados ══ */
+  .el-cierre-footer {
+    position: relative;
+    z-index: 3;
+    padding: 20px min(8vw, 80px) 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    opacity: 0.70;
+    transition: opacity 0.4s ease;
+    box-sizing: border-box;
+  }
+
+  .el-cierre-footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+
+  .el-cierre-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .el-cierre-nav a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.72);
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+
+  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
+
+  .el-cierre-sep {
+    font-size: 9px;
+    color: rgba(212,175,55,0.35);
+    margin: 0 10px;
+    font-weight: 300;
+  }
+
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+  }
+
+  /* ══ Responsive ══ */
+  @media (max-width: 1024px) {
+    .tm-hero  { padding: 110px 32px 52px; }
+    .tm-cards { padding: 0 32px 48px; }
+    .el-cierre-footer { padding: 18px min(6vw, 40px) 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .tm-hero  { padding: 100px 20px 44px; }
+    .tm-cards { padding: 0 20px 40px; }
+    .tm-grid  { grid-template-columns: 1fr; gap: 12px; }
+    .tm-title { font-size: clamp(24px, 7vw, 36px); }
+    .tm-divider { height: 28px; margin-bottom: 36px; }
+    .el-cierre-footer { padding: 16px 0 16px; }
+  }
 </style>
 
 <div class="el-page">
@@ -68,7 +333,6 @@
 
     <nav class="el-nav" aria-label="Navegación principal">
       <a href="/">Inicio</a>
-
       <div class="el-dropdown" role="navigation">
         <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
           Método Imparable
@@ -76,26 +340,15 @@
         </button>
         <div class="el-dropdown-panel" role="menu">
           <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
-            <span class="el-dropdown-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </span>
-            <span>
-              <strong>Visión General</strong>
-              <small>Qué es y cómo funciona</small>
-            </span>
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            <span><strong>Visión General</strong><small>Qué es y cómo funciona</small></span>
           </a>
           <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem">
-            <span class="el-dropdown-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
-            </span>
-            <span>
-              <strong>Lo Que Aprenderás</strong>
-              <small>Contenido y resultados</small>
-            </span>
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg></span>
+            <span><strong>Lo Que Aprenderás</strong><small>Contenido y resultados</small></span>
           </a>
         </div>
       </div>
-
       <a href="/pages/beneficios">Beneficios</a>
       <a href="/pages/resultados">Resultados</a>
       <a href="/pages/testimonios" style="color:#c9a84c">Testimonios</a>
@@ -108,143 +361,104 @@
     </button>
   </header>
 
-  <!-- Hero de página -->
-  <section style="min-height:38vh;display:flex;align-items:center;background:var(--el-deep);padding:140px 48px 72px;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;"></div>
-    <div class="el-container" style="position:relative;z-index:2;">
-      <span class="el-label el-anim" style="margin-bottom:20px;display:inline-flex;">Resultados Reales</span>
-      <h1 class="el-hero-title el-anim el-anim-d1" style="font-size:clamp(34px,4vw,58px);max-width:700px;margin-bottom:20px;">
-        Lo que dicen<br>
-        <span class="el-gold-text">quienes ya cambiaron</span>
+  <div class="tm-page">
+
+    <!-- Gradiente de ambiente -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 38% at 50% 0%,rgba(201,168,76,0.05) 0%,transparent 55%),radial-gradient(ellipse 30% 28% at 88% 90%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:1;"></div>
+
+    <!-- ── Encabezado ── -->
+    <div class="tm-hero">
+      <div class="tm-hero-bg"></div>
+      <span class="tm-label el-anim">Voces del Método</span>
+      <h1 class="tm-title el-anim el-anim-d1">
+        Experiencias que reflejan<br>
+        <span class="tm-gold">disciplina en acción</span>
       </h1>
-      <p class="el-hero-sub el-anim el-anim-d2" style="max-width:580px;margin-bottom:0;">
-        Personas reales, resultados reales. Más de 5,000 lectores han aplicado
-        el método y transformado su disciplina en resultados medibles.
+      <p class="tm-subtitle el-anim el-anim-d2">
+        Historias breves de personas que encontraron estructura, enfoque y una forma más constante de avanzar.
       </p>
     </div>
-  </section>
 
-  <!-- Stats -->
-  <section style="background:var(--el-surface);border-top:1px solid var(--el-border);border-bottom:1px solid var(--el-border);padding:52px 48px;">
-    <div class="el-container">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;" class="el-anim">
-        <div>
-          <div class="el-stat-val" data-count="5000" data-suffix="+" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">5000+</div>
-          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Lectores activos</div>
-        </div>
-        <div>
-          <div class="el-stat-val" data-count="21" data-suffix="" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">21</div>
-          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Días de resultado</div>
-        </div>
-        <div>
-          <div class="el-stat-val" data-count="98" data-suffix="%" data-dec="0" style="font-size:clamp(36px,4vw,56px);font-weight:700;color:var(--el-gold);letter-spacing:-0.02em;">98%</div>
-          <div class="el-stat-lbl" style="font-size:13px;color:var(--el-gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.08em;">Satisfacción</div>
-        </div>
+    <!-- Divisor -->
+    <div class="tm-divider el-anim el-anim-d3"></div>
+
+    <!-- ── Tarjetas ── -->
+    <div class="tm-cards">
+      <div class="tm-grid">
+
+        <article class="tm-card el-anim el-anim-d1">
+          <span class="tm-card-mark" aria-hidden="true">"</span>
+          <blockquote class="tm-card-quote">
+            Me ayudó a dejar de depender de la motivación. El valor estuvo en tener una estructura clara para avanzar incluso en días difíciles.
+          </blockquote>
+          <div class="tm-card-footer">
+            <div class="tm-card-sep"></div>
+            <p class="tm-card-profile">Profesional independiente, 38 años</p>
+          </div>
+        </article>
+
+        <article class="tm-card el-anim el-anim-d2">
+          <span class="tm-card-mark" aria-hidden="true">"</span>
+          <blockquote class="tm-card-quote">
+            Encontré una forma más ordenada de priorizar. No se trata de hacer más, sino de decidir mejor y sostenerlo.
+          </blockquote>
+          <div class="tm-card-footer">
+            <div class="tm-card-sep"></div>
+            <p class="tm-card-profile">Madre y emprendedora, 42 años</p>
+          </div>
+        </article>
+
+        <article class="tm-card el-anim el-anim-d3">
+          <span class="tm-card-mark" aria-hidden="true">"</span>
+          <blockquote class="tm-card-quote">
+            Lo más útil fue entender la disciplina como un sistema. Empecé a actuar con más claridad y menos improvisación.
+          </blockquote>
+          <div class="tm-card-footer">
+            <div class="tm-card-sep"></div>
+            <p class="tm-card-profile">Ejecutivo comercial, 35 años</p>
+          </div>
+        </article>
+
+        <article class="tm-card el-anim el-anim-d4">
+          <span class="tm-card-mark" aria-hidden="true">"</span>
+          <blockquote class="tm-card-quote">
+            El método me dio una guía simple para recuperar enfoque y convertir pequeñas acciones en progreso real.
+          </blockquote>
+          <div class="tm-card-footer">
+            <div class="tm-card-sep"></div>
+            <p class="tm-card-profile">Estudiante de posgrado, 31 años</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="tm-cta el-anim el-anim-d5">
+        <a href="/pages/shopifyvg" class="el-btn-gold">Obtener el Método</a>
       </div>
     </div>
-  </section>
 
-  <!-- Testimonios -->
-  <section class="el-section el-section-alt">
-    <div class="el-container">
-
-      <div class="el-testi-grid">
-
-        <article class="el-testi-card el-testi-card--wide el-anim">
-          <div class="el-stars" aria-label="5 estrellas">
-            {% for i in (1..5) %}
-              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            {% endfor %}
-          </div>
-          <blockquote class="el-testi-quote">
-            "Llevo años procrastinando mi negocio. En tres semanas con este método
-            <strong>lancé mi primera oferta y generé mis primeros $800 dólares.</strong>
-            No es motivación, es el sistema. Este ebook no te da ganas, te da estructura.
-            Y la estructura es lo que faltaba."
-          </blockquote>
-          <div class="el-testi-footer">
-            <div class="el-avatar" aria-hidden="true">C</div>
-            <div>
-              <div class="el-testi-name">Carlos Mendoza</div>
-              <div class="el-testi-result">→ Emprendedor · México</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="el-testi-card el-anim el-anim-d1">
-          <div class="el-stars" aria-label="5 estrellas">
-            {% for i in (1..5) %}
-              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            {% endfor %}
-          </div>
-          <blockquote class="el-testi-quote">
-            "Por fin entendí que la disciplina no es castigo.
-            <strong>Es la forma más alta de respeto hacia uno mismo.</strong>
-            Este ebook me cambió la perspectiva en las primeras 20 páginas."
-          </blockquote>
-          <div class="el-testi-footer">
-            <div class="el-avatar" aria-hidden="true">A</div>
-            <div>
-              <div class="el-testi-name">Andrea Ruiz</div>
-              <div class="el-testi-result">→ Diseñadora · Colombia</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="el-testi-card el-anim el-anim-d2">
-          <div class="el-stars" aria-label="5 estrellas">
-            {% for i in (1..5) %}
-              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            {% endfor %}
-          </div>
-          <blockquote class="el-testi-quote">
-            "El plan de 21 días es increíble. Simple, directo, sin excusas.
-            <strong>En el día 14 ya había dejado de revisar el teléfono</strong>
-            compulsivamente. Eso solo vale 10 veces el precio."
-          </blockquote>
-          <div class="el-testi-footer">
-            <div class="el-avatar" aria-hidden="true">R</div>
-            <div>
-              <div class="el-testi-name">Roberto Díaz</div>
-              <div class="el-testi-result">→ Estudiante universitario · Argentina</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="el-testi-card el-anim el-anim-d3">
-          <div class="el-stars" aria-label="5 estrellas">
-            {% for i in (1..5) %}
-              <svg class="el-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            {% endfor %}
-          </div>
-          <blockquote class="el-testi-quote">
-            "Madre de dos niños, trabajando desde casa.
-            Creía que el tiempo era el problema.
-            <strong>Ahora sé que era la prioridad.</strong>
-            Este ebook me dio claridad."
-          </blockquote>
-          <div class="el-testi-footer">
-            <div class="el-avatar" aria-hidden="true">M</div>
-            <div>
-              <div class="el-testi-name">María Fernández</div>
-              <div class="el-testi-result">→ Freelancer · España</div>
-            </div>
-          </div>
-        </article>
-
+    <!-- Footer — idéntico a Inicio, Beneficios y Resultados -->
+    <footer class="el-cierre-footer">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/pages/sobre-la-autora">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
       </div>
+    </footer>
 
-      <div style="text-align:center;margin-top:52px;" class="el-anim">
-        <a href="/pages/shopifyvg" class="el-btn-gold">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg>
-          Quiero el Ebook
-        </a>
-      </div>
+  </div><!-- /tm-page -->
 
-    </div>
-  </section>
-
-</div>
+</div><!-- /el-page -->
 
 {{ 'ebook-landing.js' | asset_url | script_tag }}
 
