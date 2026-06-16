@@ -3784,3 +3784,25 @@ body:has(.shopify-policy__container) {
     padding-top: 32px;
   }
 }
+
+/* ── PRIVACY POLICY SPECIFIC ── */
+.policy--privacy-policy .shopify-policy__title h1 {
+  font-size: clamp(29px, 4vw, 51px);
+}
+
+.policy--privacy-policy .shopify-policy__body {
+  text-align: justify;
+}
+
+.policy--privacy-policy .shopify-policy__body h1,
+.policy--privacy-policy .shopify-policy__body h2,
+.policy--privacy-policy .shopify-policy__body h3,
+.policy--privacy-policy .shopify-policy__body h4 {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .policy--privacy-policy .shopify-policy__title h1 {
+    font-size: 26px;
+  }
+}
