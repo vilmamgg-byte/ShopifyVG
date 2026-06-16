@@ -3790,17 +3790,18 @@ body:has(.shopify-policy__container) {
   font-size: clamp(29px, 4vw, 51px);
 }
 
-.policy--privacy-policy .shopify-policy__body p,
-.policy--privacy-policy .shopify-policy__body li,
-.policy--privacy-policy .shopify-policy__body td {
+.shopify-policy__container .shopify-policy__body,
+.shopify-policy__container .shopify-policy__body p,
+.shopify-policy__container .shopify-policy__body li {
   text-align: justify !important;
+  text-justify: inter-word;
 }
 
-.policy--privacy-policy .shopify-policy__body h1,
-.policy--privacy-policy .shopify-policy__body h2,
-.policy--privacy-policy .shopify-policy__body h3,
-.policy--privacy-policy .shopify-policy__body h4 {
-  text-align: left !important;
+.shopify-policy__container .shopify-policy__body h1,
+.shopify-policy__container .shopify-policy__body h2,
+.shopify-policy__container .shopify-policy__body h3,
+.shopify-policy__container .shopify-policy__body h4 {
+  text-align: left;
 }
 
 @media (max-width: 768px) {
