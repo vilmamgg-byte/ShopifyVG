@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "mensaje": {
+      "type": "mensaje",
+      "settings": {}
+    }
+  },
+  "order": ["mensaje"]
+}
