@@ -1445,11 +1445,17 @@
   });
   document.body.appendChild(nav);
 
-  /* ── anchor nav links (#el-inicio) ──────────────────────────── */
+  /* ── anchor nav links (#el-inicio, #la-voz) ─────────────────── */
   document.querySelectorAll('a[href="#el-inicio"]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
       goTo(0);
+    });
+  });
+  document.querySelectorAll('a[href="#la-voz"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      goTo(3);
     });
   });
 
