@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "pagina-terminos",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
