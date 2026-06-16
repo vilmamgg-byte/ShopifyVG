@@ -792,6 +792,13 @@
     .el-cierre-sep { margin: 0 7px; }
   }
 
+  /* Oculta todos los slides antes de que JS inicialice el correcto */
+  .el-hero,
+  .el-cambio-wrap,
+  .el-emocion-wrap,
+  .el-section.el-section-alt,
+  #el-cierre { opacity: 0; }
+
 {%- endstyle -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
