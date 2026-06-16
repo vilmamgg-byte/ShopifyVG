@@ -37,7 +37,7 @@
   .contacto-hero {
     position: relative;
     z-index: 2;
-    padding: 98px 48px 48px;
+    padding: 78px 48px 22px;
     text-align: center;
     max-width: 680px;
     margin: 0 auto;
@@ -52,26 +52,26 @@
     text-transform: uppercase;
     color: rgba(201,168,76,0.60);
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: 7px;
   }
 
   .contacto-title {
     font-family: var(--el-font-alt);
-    font-size: clamp(17px, 2.1vw, 29px);
+    font-size: clamp(16px, 2.0vw, 27px);
     font-weight: 700;
     line-height: 1.12;
     letter-spacing: -0.03em;
     color: #ffffff;
-    margin: 0 0 14px;
+    margin: 0 0 8px;
   }
 
   .contacto-subtitle {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
-    font-size: clamp(15px, 1.35vw, 17px);
+    font-size: clamp(13px, 1.2vw, 15px);
     font-weight: 300;
     color: rgba(255,255,255,0.52);
-    line-height: 1.70;
+    line-height: 1.55;
     max-width: 500px;
     margin: 0 auto;
   }
@@ -79,9 +79,9 @@
   /* ══ Divisor ══ */
   .contacto-divider {
     width: 1px;
-    height: 32px;
+    height: 20px;
     background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.40), transparent);
-    margin: 0 auto 37px;
+    margin: 0 auto 18px;
     position: relative;
     z-index: 2;
   }
@@ -92,11 +92,11 @@
     z-index: 2;
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 48px 80px;
+    padding: 0 48px 28px;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1.6fr;
-    gap: 64px;
+    gap: 48px;
     align-items: start;
   }
 
@@ -104,7 +104,7 @@
   .contacto-info {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 16px;
     padding-top: 4px;
   }
 
@@ -197,8 +197,8 @@
   .contacto-field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-bottom: 18px;
+    gap: 5px;
+    margin-bottom: 10px;
   }
 
   .contacto-field label {
@@ -217,9 +217,9 @@
     border-radius: 8px;
     color: rgba(255,255,255,0.82);
     font-family: var(--el-font);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
-    padding: 13px 16px;
+    padding: 9px 14px;
     width: 100%;
     box-sizing: border-box;
     outline: none;
@@ -230,7 +230,7 @@
   .contacto-field input::placeholder,
   .contacto-field textarea::placeholder {
     color: rgba(255,255,255,0.20);
-    font-size: 13.5px;
+    font-size: 13px;
   }
 
   .contacto-field input:focus,
@@ -241,8 +241,8 @@
 
   .contacto-field textarea {
     resize: none;
-    height: 136px;
-    line-height: 1.6;
+    height: 92px;
+    line-height: 1.5;
   }
 
   /* Botón */
@@ -252,7 +252,7 @@
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 15px 28px;
+    padding: 11px 28px;
     background: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
     background-size: 200% 100%;
     background-position: 100% 0;
@@ -266,7 +266,7 @@
     text-transform: uppercase;
     cursor: pointer;
     transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .contacto-btn:hover {
@@ -288,7 +288,7 @@
     opacity: 0.70;
     transition: opacity 0.4s ease;
     box-sizing: border-box;
-    margin-top: -76px;
+    margin-top: 0;
   }
 
   .el-cierre-footer-inner {
@@ -339,22 +339,24 @@
 
   /* ══ Responsive ══ */
   @media (max-width: 1024px) {
-    .contacto-hero { padding: 80px 32px 40px; }
-    .contacto-body { padding: 0 32px 64px; gap: 48px; }
-    .el-cierre-footer { padding: 18px min(6vw, 40px) 20px; }
+    .contacto-hero { padding: 72px 32px 20px; }
+    .contacto-body { padding: 0 32px 24px; gap: 36px; }
+    .el-cierre-footer { padding: 16px min(6vw, 40px) 18px; }
   }
 
   @media (max-width: 768px) {
-    .contacto-hero { padding: 66px 20px 36px; }
-    .contacto-title { font-size: clamp(24px, 7vw, 34px); }
+    .contacto-hero { padding: 72px 20px 20px; }
+    .contacto-title { font-size: clamp(20px, 6vw, 28px); }
+    .contacto-subtitle { font-size: clamp(13px, 3.5vw, 15px); line-height: 1.5; }
     .contacto-body {
       grid-template-columns: 1fr;
-      gap: 40px;
-      padding: 0 20px 56px;
+      gap: 28px;
+      padding: 0 20px 40px;
     }
-    .contacto-info { gap: 22px; }
-    .contacto-divider { height: 28px; margin-bottom: 36px; }
-    .el-cierre-footer { padding: 16px 0 16px; }
+    .contacto-info { gap: 16px; }
+    .contacto-divider { height: 18px; margin-bottom: 16px; }
+    .contacto-field textarea { height: 100px; }
+    .el-cierre-footer { padding: 14px 0; }
   }
 </style>
 
