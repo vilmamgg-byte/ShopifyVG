@@ -1,0 +1,425 @@
+{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap');
+
+  /* ── Neutralizar fondo/header del tema en páginas de policy ── */
+  body { background: #080808 !important; }
+
+  /* Ocultar el footer nativo del tema solo en policy pages */
+  .shopify-section--footer,
+  #shopify-section-group-footer-group { display: none !important; }
+
+  /* ════════════════════════════════════
+     PÁGINA DE POLÍTICA — SISTEMA DE DISEÑO
+  ════════════════════════════════════ */
+  .pp-page {
+    background: #080808;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+  }
+
+  /* ── Header premium ── */
+  .pp-header {
+    padding: 100px 48px 64px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    overflow: hidden;
+  }
+
+  .pp-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 80% at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 68%),
+      radial-gradient(ellipse 40% 30% at 50% 100%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .pp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.22);
+    padding: 7px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pp-eyebrow-dot {
+    width: 5px;
+    height: 5px;
+    background: #c9a84c;
+    border-radius: 50%;
+    animation: pp-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pp-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  .pp-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.04;
+    color: #ffffff;
+    margin: 0 0 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pp-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #777777;
+    line-height: 1.78;
+    max-width: 620px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Contenedor principal ── */
+  .pp-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 72px 48px 96px;
+  }
+
+  /* ── Cuerpo de la política ── */
+  .pp-body {
+    color: #999999;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .pp-body h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin: 56px 0 16px;
+    padding-top: 56px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .pp-body h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .pp-body h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
+    color: #e8c97a;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    margin: 44px 0 14px;
+    padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .pp-body h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .pp-body h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #c9a84c;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin: 32px 0 10px;
+  }
+
+  .pp-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #cccccc;
+    margin: 24px 0 8px;
+  }
+
+  .pp-body p {
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.85;
+    margin: 0 0 20px;
+  }
+
+  .pp-body a {
+    color: #c9a84c;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .pp-body a:hover {
+    color: #e8c97a;
+    border-color: rgba(232,201,122,0.55);
+  }
+
+  .pp-body ul,
+  .pp-body ol {
+    color: #999999;
+    font-size: 16px;
+    line-height: 1.85;
+    margin: 0 0 22px;
+    padding-left: 22px;
+  }
+
+  .pp-body li {
+    margin-bottom: 10px;
+  }
+
+  .pp-body ul li::marker {
+    color: #c9a84c;
+  }
+
+  .pp-body ol li::marker {
+    color: #c9a84c;
+    font-weight: 600;
+  }
+
+  .pp-body strong,
+  .pp-body b {
+    color: #dddddd;
+    font-weight: 600;
+  }
+
+  .pp-body em,
+  .pp-body i {
+    color: #bbbbbb;
+    font-style: italic;
+  }
+
+  /* Tablas */
+  .pp-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pp-body th {
+    background: rgba(201,168,76,0.07);
+    color: #c9a84c;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 13px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .pp-body td {
+    padding: 13px 16px;
+    color: #999999;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    font-size: 14px;
+  }
+
+  .pp-body tr:last-child td {
+    border-bottom: none;
+  }
+
+  .pp-body tr:nth-child(even) td {
+    background: rgba(255,255,255,0.015);
+  }
+
+  /* Separador dorado entre secciones */
+  .pp-body hr {
+    border: none;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    margin: 48px 0;
+  }
+
+  /* ── Footer premium consistente ── */
+  .pp-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 44px 48px;
+    text-align: center;
+    background: #060606;
+  }
+
+  .pp-footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin-bottom: 18px;
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .pp-footer-nav a {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #555555;
+    text-decoration: none;
+    padding: 4px 12px;
+    transition: color 0.2s ease;
+  }
+
+  .pp-footer-nav a:hover { color: #c9a84c; }
+
+  /* Enlace activo (la página actual) */
+  .pp-footer-nav a[aria-current="page"] {
+    color: #c9a84c;
+  }
+
+  .pp-footer-sep {
+    color: rgba(201,168,76,0.3);
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .pp-footer-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #3a3a3a;
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .pp-header {
+      padding: 90px 24px 48px;
+    }
+
+    .pp-title {
+      letter-spacing: -1.5px;
+    }
+
+    .pp-subtitle {
+      font-size: 15px;
+    }
+
+    .pp-wrap {
+      padding: 48px 24px 72px;
+    }
+
+    .pp-body h1 {
+      font-size: 20px;
+      margin-top: 40px;
+      padding-top: 40px;
+    }
+
+    .pp-body h2 {
+      font-size: 17px;
+      margin-top: 36px;
+      padding-top: 36px;
+    }
+
+    .pp-body p,
+    .pp-body ul,
+    .pp-body ol {
+      font-size: 15px;
+    }
+
+    .pp-body table {
+      font-size: 13px;
+    }
+
+    .pp-body th,
+    .pp-body td {
+      padding: 10px 12px;
+    }
+
+    .pp-footer {
+      padding: 36px 24px;
+    }
+
+    .pp-footer-nav {
+      gap: 8px 0;
+    }
+
+    .pp-footer-nav a {
+      font-size: 9.5px;
+      padding: 4px 8px;
+    }
+  }
+</style>
+
+<div class="pp-page">
+
+  <!-- ══════════════════════════════════════
+       ENCABEZADO PREMIUM
+  ══════════════════════════════════════ -->
+  <div class="pp-header">
+    <div class="pp-eyebrow">
+      <span class="pp-eyebrow-dot" aria-hidden="true"></span>
+      Política de Privacidad
+    </div>
+    <h1 class="pp-title">Privacidad y confianza</h1>
+    <p class="pp-subtitle">Información clara sobre cómo se recopilan, utilizan y protegen tus datos al utilizar Disciplina Imparable.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CONTENIDO NATIVO DE SHOPIFY
+  ══════════════════════════════════════ -->
+  <div class="pp-wrap">
+    <div class="pp-body">
+      {{
+        policy.body
+          | replace: 'vilmamgg@gmail.com', 'contacto@disciplinaimparable.com'
+      }}
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FOOTER CONSISTENTE
+  ══════════════════════════════════════ -->
+  <footer class="pp-footer" aria-label="Pie de página">
+    <nav class="pp-footer-nav" aria-label="Navegación de pie de página">
+      <a href="#la-voz">Sobre la Autora</a>
+      <span class="pp-footer-sep" aria-hidden="true">·</span>
+      <a href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">Instagram</a>
+      <span class="pp-footer-sep" aria-hidden="true">·</span>
+      <a href="/pages/contacto">Contacto</a>
+      <span class="pp-footer-sep" aria-hidden="true">·</span>
+      <a href="/policies/privacy-policy" aria-current="page">Privacidad</a>
+      <span class="pp-footer-sep" aria-hidden="true">·</span>
+      <a href="/policies/terms-of-service">Términos</a>
+      <span class="pp-footer-sep" aria-hidden="true">·</span>
+      <a href="/policies/refund-policy">Reembolsos</a>
+    </nav>
+    <p class="pp-footer-copy">© 2026 Disciplina Imparable</p>
+  </footer>
+
+</div>
