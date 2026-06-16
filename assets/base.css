@@ -3790,15 +3790,17 @@ body:has(.shopify-policy__container) {
   font-size: clamp(29px, 4vw, 51px);
 }
 
-.policy--privacy-policy .shopify-policy__body {
-  text-align: justify;
+.policy--privacy-policy .shopify-policy__body p,
+.policy--privacy-policy .shopify-policy__body li,
+.policy--privacy-policy .shopify-policy__body td {
+  text-align: justify !important;
 }
 
 .policy--privacy-policy .shopify-policy__body h1,
 .policy--privacy-policy .shopify-policy__body h2,
 .policy--privacy-policy .shopify-policy__body h3,
 .policy--privacy-policy .shopify-policy__body h4 {
-  text-align: left;
+  text-align: left !important;
 }
 
 @media (max-width: 768px) {
