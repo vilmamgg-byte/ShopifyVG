@@ -1,4 +1,4 @@
-{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+﻿{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -377,9 +377,9 @@
     <span class="pp-footer-sep" aria-hidden="true">·</span>
     <a href="/pages/contacto">Contacto</a>
     <span class="pp-footer-sep" aria-hidden="true">·</span>
-    <a href="/policies/privacy-policy"{% if policy_handle == 'privacy-policy' %} aria-current="page"{% endif %}>Privacidad</a>
+    <a href="/pages/privacidad"{% if policy_handle == 'privacy-policy' %} aria-current="page"{% endif %}>Privacidad</a>
     <span class="pp-footer-sep" aria-hidden="true">·</span>
-    <a href="/policies/terms-of-service"{% if policy_handle == 'terms-of-service' %} aria-current="page"{% endif %}>Términos</a>
+    <a href="/pages/terminos"{% if policy_handle == 'terms-of-service' %} aria-current="page"{% endif %}>Términos</a>
   </nav>
   <p class="pp-footer-copy">© 2026 Disciplina Imparable</p>
 </footer>

@@ -337,7 +337,14 @@
       {% sections 'footer-group' %}
     {%- endunless -%}
     {%- if policy -%}
-      {%- assign policy_handle = request.path | remove: '/policies/' -%}
+      {%- assign raw_handle = request.path | remove: '/policies/' -%}
+      {%- if raw_handle == 'privacy-policy' -%}
+        {%- assign policy_handle = 'privacidad' -%}
+      {%- elsif raw_handle == 'terms-of-service' -%}
+        {%- assign policy_handle = 'terminos' -%}
+      {%- else -%}
+        {%- assign policy_handle = raw_handle -%}
+      {%- endif -%}
       {%- render 'premium-footer', policy_handle: policy_handle -%}
       {{ 'ebook-landing.js' | asset_url | script_tag }}
     {%- endif -%}
