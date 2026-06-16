@@ -325,6 +325,9 @@
     {%- unless policy -%}
       {% sections 'header-group' %}
     {%- endunless -%}
+    {%- if policy -%}
+      {%- render 'premium-header' -%}
+    {%- endif -%}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
@@ -333,6 +336,11 @@
     {%- unless policy -%}
       {% sections 'footer-group' %}
     {%- endunless -%}
+    {%- if policy -%}
+      {%- assign policy_handle = request.path | remove: '/policies/' -%}
+      {%- render 'premium-footer', policy_handle: policy_handle -%}
+      {{ 'ebook-landing.js' | asset_url | script_tag }}
+    {%- endif -%}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
