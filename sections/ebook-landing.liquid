@@ -1344,7 +1344,10 @@
   });
   if (slides.length < 2) return;
 
-  var current = 0;
+  var _hashSlide = { '#la-voz': 3 };
+  var current = _hashSlide[window.location.hash] !== undefined
+                ? _hashSlide[window.location.hash]
+                : 0;
   var busy    = false;
 
   /* ── estado de cada slide ────────────────────────────────────── */
@@ -1371,9 +1374,9 @@
 
   function initSlides(){
     slides.forEach(function(el, i){
-      applyState(el, i === 0, false);
+      applyState(el, i === current, i < current);
     });
-    activateAnims(slides[0]);
+    activateAnims(slides[current]);
   }
 
   function activateAnims(slide){
@@ -1428,7 +1431,7 @@
   nav.setAttribute('aria-label', 'Navegación');
   slides.forEach(function(_, i){
     var btn = document.createElement('button');
-    btn.className = 'fp-dot' + (i === 0 ? ' fp-dot--active' : '');
+    btn.className = 'fp-dot' + (i === current ? ' fp-dot--active' : '');
     btn.setAttribute('aria-label', 'Sección ' + (i + 1));
     btn.addEventListener('click', function(){ goTo(i); });
     nav.appendChild(btn);
@@ -1487,13 +1490,6 @@
   });
 
   initSlides();
-
-  /* ── deep-link via URL hash (#la-voz → slide 3) ─────────────── */
-  var hashSlide = { '#la-voz': 3 };
-  var deepIdx = hashSlide[window.location.hash];
-  if (deepIdx !== undefined) {
-    setTimeout(function(){ goTo(deepIdx); }, 120);
-  }
 })();
 </script>
 
