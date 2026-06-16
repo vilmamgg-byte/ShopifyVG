@@ -3620,7 +3620,7 @@ body:has(.shopify-policy__container) {
 
 .shopify-policy__title h1 {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(27px, 3.75vw, 48px);
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 1.04;
@@ -3770,7 +3770,7 @@ body:has(.shopify-policy__container) {
     margin-bottom: 40px;
   }
   .shopify-policy__title h1 {
-    font-size: 32px;
+    font-size: 24px;
     letter-spacing: -1.5px;
   }
   .shopify-policy__body h1 {
@@ -3786,9 +3786,6 @@ body:has(.shopify-policy__container) {
 }
 
 /* ── PRIVACY POLICY SPECIFIC ── */
-.policy--privacy-policy .shopify-policy__title h1 {
-  font-size: clamp(22px, 3vw, 38px);
-}
 
 .shopify-policy__container .shopify-policy__body,
 .shopify-policy__container .shopify-policy__body p,
@@ -3805,7 +3802,4 @@ body:has(.shopify-policy__container) {
 }
 
 @media (max-width: 768px) {
-  .policy--privacy-policy .shopify-policy__title h1 {
-    font-size: 20px;
-  }
 }
