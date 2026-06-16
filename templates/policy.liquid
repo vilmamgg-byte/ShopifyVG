@@ -1,12 +1,7 @@
 {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
 
 <style>
-  /* Ocultar header y footer de Dawn SOLO en páginas de políticas */
-  body.policy-page #shopify-section-group-header-group,
-  body.policy-page #shopify-section-group-footer-group,
-  body.policy-page .skip-to-content-link { display: none !important; }
-
-  /* Reset del body y main */
+  /* Reset: el header/footer de Dawn no se renderizan en /policies/ */
   body.policy-page {
     background: #080808 !important;
     display: block !important;
@@ -20,6 +15,8 @@
     padding: 0 !important;
     margin: 0 !important;
   }
+
+  body.policy-page .skip-to-content-link { display: none !important; }
 
   /* ── ENCABEZADO PREMIUM ── */
   .pp-header {
