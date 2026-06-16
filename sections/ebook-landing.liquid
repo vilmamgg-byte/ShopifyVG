@@ -1487,6 +1487,13 @@
   });
 
   initSlides();
+
+  /* ── deep-link via URL hash (#la-voz → slide 3) ─────────────── */
+  var hashSlide = { '#la-voz': 3 };
+  var deepIdx = hashSlide[window.location.hash];
+  if (deepIdx !== undefined) {
+    setTimeout(function(){ goTo(deepIdx); }, 120);
+  }
 })();
 </script>
 
