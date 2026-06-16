@@ -1,0 +1,583 @@
+{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+{% comment %}v2{% endcomment %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@300;400&display=swap');
+
+  #shopify-section-group-header-group,
+  .shopify-section-group--header-group,
+  sticky-header { display: none !important; }
+  #shopify-section-group-footer-group,
+  .shopify-section-group--footer-group,
+  #shopify-section-footer,
+  footer.footer,
+  .footer__content-bottom,
+  .footer__copyright { display: none !important; }
+  body { padding-top: 0 !important; margin-top: 0 !important; }
+
+  /* ══ Página ══ */
+  .contacto-page {
+    background: var(--el-deep);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .contacto-page::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ Hero ══ */
+  .contacto-hero {
+    position: relative;
+    z-index: 2;
+    padding: 128px 48px 48px;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .contacto-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.60);
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .contacto-title {
+    font-family: var(--el-font-alt);
+    font-size: clamp(24px, 2.8vw, 40px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 14px;
+  }
+
+  .contacto-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(15px, 1.35vw, 17px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.70;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ══ Divisor ══ */
+  .contacto-divider {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.40), transparent);
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ══ Cuerpo: info + form ══ */
+  .contacto-body {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* ── Info lateral ── */
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 4px;
+  }
+
+  .contacto-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contacto-info-label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.55);
+  }
+
+  .contacto-info-value {
+    font-family: var(--el-font);
+    font-size: 13.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.5;
+  }
+
+  .contacto-info-value a {
+    color: rgba(201,168,76,0.85);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contacto-info-value a:hover {
+    color: var(--el-gold-bright);
+  }
+
+  .contacto-info-note {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.32);
+    line-height: 1.6;
+    border-left: 1px solid rgba(201,168,76,0.18);
+    padding-left: 12px;
+    margin-top: 6px;
+  }
+
+  .contacto-info-sep {
+    width: 28px;
+    height: 1px;
+    background: rgba(201,168,76,0.18);
+  }
+
+  /* ── Formulario ── */
+  .contacto-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Mensajes de estado */
+  .contacto-success {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 10px;
+    padding: 20px 22px;
+    font-family: var(--el-font);
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .contacto-success strong {
+    display: block;
+    color: var(--el-gold);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+
+  .contacto-error {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    color: rgba(255, 130, 130, 0.75);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Campos */
+  .contacto-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .contacto-field label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+  }
+
+  .contacto-field input,
+  .contacto-field textarea {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.82);
+    font-family: var(--el-font);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 13px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    -webkit-appearance: none;
+  }
+
+  .contacto-field input::placeholder,
+  .contacto-field textarea::placeholder {
+    color: rgba(255,255,255,0.20);
+    font-size: 13.5px;
+  }
+
+  .contacto-field input:focus,
+  .contacto-field textarea:focus {
+    border-color: rgba(201,168,76,0.38);
+    background: rgba(201,168,76,0.03);
+  }
+
+  .contacto-field textarea {
+    resize: none;
+    height: 136px;
+    line-height: 1.6;
+  }
+
+  /* Botón */
+  .contacto-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 28px;
+    background: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    font-family: var(--el-font-alt);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 6px;
+  }
+
+  .contacto-btn:hover {
+    background-position: 0% 0;
+    box-shadow: 0 4px 28px rgba(201,168,76,0.22);
+    transform: translateY(-1px);
+  }
+
+  .contacto-btn:active {
+    transform: translateY(0);
+  }
+
+  /* ══ Footer ══ */
+  .el-cierre-footer {
+    position: relative;
+    z-index: 3;
+    padding: 20px min(8vw, 80px) 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    opacity: 0.70;
+    transition: opacity 0.4s ease;
+    box-sizing: border-box;
+  }
+
+  .el-cierre-footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+
+  .el-cierre-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .el-cierre-nav a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.72);
+    text-decoration: none;
+    transition: color 0.4s ease;
+  }
+
+  .el-cierre-nav a:hover { color: rgba(212,175,55,1); }
+
+  .el-cierre-sep {
+    font-size: 9px;
+    color: rgba(212,175,55,0.35);
+    margin: 0 10px;
+    font-weight: 300;
+  }
+
+  .el-cierre-copy {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.55);
+    margin: 0;
+  }
+
+  /* ══ Responsive ══ */
+  @media (max-width: 1024px) {
+    .contacto-hero { padding: 110px 32px 40px; }
+    .contacto-body { padding: 0 32px 64px; gap: 48px; }
+    .el-cierre-footer { padding: 18px min(6vw, 40px) 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .contacto-hero { padding: 96px 20px 36px; }
+    .contacto-title { font-size: clamp(24px, 7vw, 34px); }
+    .contacto-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 0 20px 56px;
+    }
+    .contacto-info { gap: 22px; }
+    .contacto-divider { height: 28px; margin-bottom: 36px; }
+    .el-cierre-footer { padding: 16px 0 16px; }
+  }
+</style>
+
+<div class="el-page">
+
+  <!-- Mobile nav -->
+  <div class="el-mobile-nav" aria-hidden="true">
+    <a href="/">Inicio</a>
+    <a href="/pages/vision-general">Método Imparable</a>
+    <a href="/pages/vision-general" class="el-mobile-sub">↳ Visión General</a>
+    <a href="/pages/lo-que-aprenderas" class="el-mobile-sub">↳ Lo Que Aprenderás</a>
+    <a href="/pages/beneficios">Beneficios</a>
+    <a href="/pages/resultados">Resultados</a>
+    <a href="/pages/testimonios">Testimonios</a>
+    <a href="/pages/faq">FAQ</a>
+    <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+  </div>
+
+  <!-- Header -->
+  <header class="el-header" id="el-header">
+    <a href="/" class="el-logo">
+      <div class="el-logo-mark">
+        <svg width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="ct-goldH" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#c9a84c"/><stop offset="50%" stop-color="#f0d878"/><stop offset="100%" stop-color="#c9a84c"/></linearGradient>
+            <linearGradient id="ct-goldV" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5e090"/><stop offset="45%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6820"/></linearGradient>
+            <linearGradient id="ct-pageL" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.20"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.05"/></linearGradient>
+            <linearGradient id="ct-pageR" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.11"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0.03"/></linearGradient>
+            <radialGradient id="ct-aura" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0.10"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/></radialGradient>
+            <filter id="ct-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="ct-glowS" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="28" cy="33" rx="22" ry="19" fill="url(#ct-aura)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="rgba(0,0,0,0.25)" transform="translate(1,1.5)"/>
+          <path d="M27 11 L7 15.5 L7 44 L27 39.5 Z" fill="url(#ct-pageL)" stroke="#c9a84c" stroke-width="1.05" stroke-linejoin="round"/>
+          <path d="M25.5 13 L9.5 17 L9.5 42 L25.5 38 Z" fill="rgba(255,255,255,0.022)"/>
+          <path d="M29 11 L49 15.5 L49 44 L29 39.5 Z" fill="url(#ct-pageR)" stroke="#c9a84c" stroke-width="0.8" stroke-linejoin="round"/>
+          <path d="M7 44 L9.5 45.8 L27 41.5 L27 39.5 Z" fill="rgba(201,168,76,0.14)"/>
+          <path d="M49 44 L46.5 45.8 L29 41.5 L29 39.5 Z" fill="rgba(201,168,76,0.08)"/>
+          <line x1="28" y1="11" x2="28" y2="39.5" stroke="url(#ct-goldV)" stroke-width="2.8" stroke-linecap="round" filter="url(#ct-glow)"/>
+          <path d="M28 4 L31 9.5 L28 12.5 L25 9.5 Z" fill="url(#ct-goldV)" filter="url(#ct-glowS)"/>
+          <path d="M28 5.5 L30 9.5 L28 11.5 L26 9.5 Z" fill="#f5e090" opacity="0.55"/>
+          <line x1="11" y1="19.5" x2="25" y2="18" stroke="url(#ct-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.78"/>
+          <line x1="11" y1="23.2" x2="25" y2="21.7" stroke="url(#ct-goldH)" stroke-width="1.15" stroke-linecap="round" opacity="0.72"/>
+          <line x1="11" y1="26.9" x2="25" y2="25.4" stroke="url(#ct-goldH)" stroke-width="1.05" stroke-linecap="round" opacity="0.60"/>
+          <line x1="31" y1="18" x2="45.5" y2="19.5" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.44"/>
+          <line x1="31" y1="21.7" x2="45.5" y2="23.2" stroke="#c9a84c" stroke-width="1.05" stroke-linecap="round" opacity="0.38"/>
+          <circle cx="7" cy="15.5" r="1.6" fill="#c9a84c" opacity="0.80" filter="url(#ct-glow)"/>
+          <circle cx="7" cy="15.5" r="0.8" fill="#f5e090" opacity="0.70"/>
+          <circle cx="28" cy="11" r="1.6" fill="#f5e090" opacity="0.65"/>
+          <circle cx="28" cy="11" r="0.7" fill="white" opacity="0.60"/>
+        </svg>
+      </div>
+      <span class="el-logo-text"><span class="el-logo-d">DISCIPLINA</span><span class="el-logo-i">IMPARABLE</span></span>
+    </a>
+
+    <nav class="el-nav" aria-label="Navegación principal">
+      <a href="/">Inicio</a>
+      <div class="el-dropdown" role="navigation">
+        <button class="el-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+          Método Imparable
+          <svg class="el-dropdown-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="el-dropdown-panel" role="menu">
+          <a href="/pages/vision-general" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></span>
+            <span><strong>Visión General</strong><small>Qué es y cómo funciona</small></span>
+          </a>
+          <a href="/pages/lo-que-aprenderas" class="el-dropdown-item" role="menuitem">
+            <span class="el-dropdown-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7l2-7z"/></svg></span>
+            <span><strong>Lo Que Aprenderás</strong><small>Contenido y resultados</small></span>
+          </a>
+        </div>
+      </div>
+      <a href="/pages/beneficios">Beneficios</a>
+      <a href="/pages/resultados">Resultados</a>
+      <a href="/pages/testimonios">Testimonios</a>
+      <a href="/pages/faq">FAQ</a>
+      <a href="/pages/shopifyvg" class="el-nav-cta">Obtener Ahora</a>
+    </nav>
+
+    <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="contacto-page">
+
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(201,168,76,0.05) 0%,transparent 55%);pointer-events:none;z-index:1;"></div>
+
+    <!-- ── Encabezado ── -->
+    <div class="contacto-hero">
+      <span class="contacto-label el-anim">Contacto</span>
+      <h1 class="contacto-title el-anim el-anim-d1">Estamos aquí para ayudarte</h1>
+      <p class="contacto-subtitle el-anim el-anim-d2">
+        Si tienes dudas sobre el método, el acceso digital o el proceso de compra, puedes escribirnos. Te responderemos con claridad y atención.
+      </p>
+    </div>
+
+    <!-- Divisor -->
+    <div class="contacto-divider el-anim el-anim-d3"></div>
+
+    <!-- ── Cuerpo ── -->
+    <div class="contacto-body">
+
+      <!-- Información -->
+      <div class="contacto-info el-anim el-anim-d1">
+
+        <div class="contacto-info-item">
+          <span class="contacto-info-label">Correo</span>
+          <span class="contacto-info-value">
+            <a href="mailto:contacto@disciplinaimparable.com">contacto@disciplinaimparable.com</a>
+          </span>
+        </div>
+
+        <div class="contacto-info-sep"></div>
+
+        <div class="contacto-info-item">
+          <span class="contacto-info-label">Tiempo de respuesta</span>
+          <span class="contacto-info-value">24 a 48 horas hábiles</span>
+        </div>
+
+        <div class="contacto-info-sep"></div>
+
+        <p class="contacto-info-note">
+          Para consultas relacionadas con compras, por favor incluye el correo utilizado al realizar el pedido.
+        </p>
+
+      </div>
+
+      <!-- Formulario -->
+      <div class="contacto-form-wrap el-anim el-anim-d2">
+        {%- form 'contact', id: 'ContactFormPremium' -%}
+
+          {%- if form.posted_successfully? -%}
+            <div class="contacto-success" tabindex="-1" autofocus>
+              <strong>Mensaje enviado</strong>
+              Tu mensaje ha llegado. Te responderemos en un plazo de 24 a 48 horas hábiles.
+            </div>
+
+          {%- else -%}
+
+            {%- if form.errors -%}
+              <p class="contacto-error">
+                Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
+              </p>
+            {%- endif -%}
+
+            <div class="contacto-field">
+              <label for="ContactFormPremium-name">Nombre</label>
+              <input
+                type="text"
+                id="ContactFormPremium-name"
+                name="contact[Nombre]"
+                autocomplete="name"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="Tu nombre"
+              >
+            </div>
+
+            <div class="contacto-field">
+              <label for="ContactFormPremium-email">Correo electrónico <span aria-hidden="true" style="color:rgba(201,168,76,0.5)">*</span></label>
+              <input
+                type="email"
+                id="ContactFormPremium-email"
+                name="contact[email]"
+                autocomplete="email"
+                spellcheck="false"
+                autocapitalize="off"
+                aria-required="true"
+                {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                placeholder="tu@correo.com"
+              >
+            </div>
+
+            <div class="contacto-field">
+              <label for="ContactFormPremium-body">Mensaje</label>
+              <textarea
+                id="ContactFormPremium-body"
+                name="contact[Mensaje]"
+                placeholder="Cuéntanos en qué podemos ayudarte..."
+              >{{- form.body -}}</textarea>
+            </div>
+
+            <button type="submit" class="contacto-btn">
+              Enviar mensaje
+            </button>
+
+          {%- endif -%}
+
+        {%- endform -%}
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="el-cierre-footer">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/#la-voz">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto" style="color:rgba(212,175,55,1)">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
+      </div>
+    </footer>
+
+  </div><!-- /contacto-page -->
+
+</div><!-- /el-page -->
+
+{{ 'ebook-landing.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Contacto DI",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}
