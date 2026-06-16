@@ -3597,6 +3597,21 @@ details-disclosure > details {
 }
 
 /* ── POLICY PAGES PREMIUM STYLING ── */
+
+/* Ocultar header y footer Dawn en páginas de policy */
+body.policy-page #shopify-section-group-header-group,
+body:has(.shopify-policy__container) #shopify-section-group-header-group,
+body.policy-page #shopify-section-group-footer-group,
+body:has(.shopify-policy__container) #shopify-section-group-footer-group {
+  display: none !important;
+}
+
+/* Eliminar padding/margin que Dawn añade para compensar el sticky header */
+body.policy-page #MainContent {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
 body.policy-page,
 body:has(.shopify-policy__container) {
   background: #050505 !important;
