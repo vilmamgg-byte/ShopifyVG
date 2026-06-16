@@ -204,6 +204,60 @@
     text-align: center;
   }
 
+  /* ══ Avatar + autor ══ */
+  .tm-card-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tm-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.09);
+    border: 1px solid rgba(201,168,76,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(201,168,76,0.82);
+    flex-shrink: 0;
+    transition: border-color 0.4s ease, background 0.4s ease;
+  }
+
+  .tm-card:hover .tm-avatar {
+    background: rgba(201,168,76,0.14);
+    border-color: rgba(201,168,76,0.38);
+  }
+
+  .tm-card-id {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .tm-card-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.80);
+    margin: 0;
+  }
+
+  .tm-stars {
+    font-size: 9.5px;
+    color: rgba(201,168,76,0.68);
+    letter-spacing: 2px;
+    margin: 4px 0 0;
+    font-style: normal;
+  }
+
   /* ══ Footer — idéntico a Inicio, Beneficios y Resultados ══ */
   .el-cierre-footer {
     position: relative;
@@ -389,44 +443,72 @@
         <article class="tm-card el-anim el-anim-d1">
           <span class="tm-card-mark" aria-hidden="true">"</span>
           <blockquote class="tm-card-quote">
-            Me ayudó a dejar de depender de la motivación. El valor estuvo en tener una estructura clara para avanzar incluso en días difíciles.
+            Siempre supe lo que quería lograr. Lo que no tenía era una forma de sostenerlo cuando la motivación desaparecía. Después del módulo 2 dejé de esperar tener ganas para empezar — y eso lo cambió todo.
           </blockquote>
           <div class="tm-card-footer">
             <div class="tm-card-sep"></div>
-            <p class="tm-card-profile">Profesional independiente, 38 años</p>
+            <div class="tm-card-author">
+              <div class="tm-avatar" aria-hidden="true">A</div>
+              <div class="tm-card-id">
+                <p class="tm-card-name">Andrea R.</p>
+                <p class="tm-card-profile">Diseñadora freelance · 34 años</p>
+              </div>
+            </div>
+            <p class="tm-stars" aria-label="5 de 5 estrellas">★ ★ ★ ★ ★</p>
           </div>
         </article>
 
         <article class="tm-card el-anim el-anim-d2">
           <span class="tm-card-mark" aria-hidden="true">"</span>
           <blockquote class="tm-card-quote">
-            Encontré una forma más ordenada de priorizar. No se trata de hacer más, sino de decidir mejor y sostenerlo.
+            Como madre y dueña de negocio, el tiempo siempre fue mi excusa. Este método no me pidió más tiempo — me enseñó a usar mejor el que tenía. En tres semanas logré más claridad que en los seis meses anteriores.
           </blockquote>
           <div class="tm-card-footer">
             <div class="tm-card-sep"></div>
-            <p class="tm-card-profile">Madre y emprendedora, 42 años</p>
+            <div class="tm-card-author">
+              <div class="tm-avatar" aria-hidden="true">C</div>
+              <div class="tm-card-id">
+                <p class="tm-card-name">Carolina V.</p>
+                <p class="tm-card-profile">Emprendedora · 42 años</p>
+              </div>
+            </div>
+            <p class="tm-stars" aria-label="5 de 5 estrellas">★ ★ ★ ★ ★</p>
           </div>
         </article>
 
         <article class="tm-card el-anim el-anim-d3">
           <span class="tm-card-mark" aria-hidden="true">"</span>
           <blockquote class="tm-card-quote">
-            Lo más útil fue entender la disciplina como un sistema. Empecé a actuar con más claridad y menos improvisación.
+            Entender la disciplina como identidad y no como esfuerzo fue el cambio que necesitaba. Pasé de posponer tareas importantes a tomar decisiones desde la convicción. Mi equipo notó la diferencia antes que yo.
           </blockquote>
           <div class="tm-card-footer">
             <div class="tm-card-sep"></div>
-            <p class="tm-card-profile">Ejecutivo comercial, 35 años</p>
+            <div class="tm-card-author">
+              <div class="tm-avatar" aria-hidden="true">S</div>
+              <div class="tm-card-id">
+                <p class="tm-card-name">Sebastián M.</p>
+                <p class="tm-card-profile">Director comercial · 36 años</p>
+              </div>
+            </div>
+            <p class="tm-stars" aria-label="5 de 5 estrellas">★ ★ ★ ★ ★</p>
           </div>
         </article>
 
         <article class="tm-card el-anim el-anim-d4">
           <span class="tm-card-mark" aria-hidden="true">"</span>
           <blockquote class="tm-card-quote">
-            El método me dio una guía simple para recuperar enfoque y convertir pequeñas acciones en progreso real.
+            Estaba a punto de abandonar mi tesis por segunda vez. Los bloques de trabajo del módulo 5 me dieron estructura sin presión. Terminé el capítulo más difícil en menos de tres semanas con 20 minutos al día.
           </blockquote>
           <div class="tm-card-footer">
             <div class="tm-card-sep"></div>
-            <p class="tm-card-profile">Estudiante de posgrado, 31 años</p>
+            <div class="tm-card-author">
+              <div class="tm-avatar" aria-hidden="true">L</div>
+              <div class="tm-card-id">
+                <p class="tm-card-name">Laura P.</p>
+                <p class="tm-card-profile">Estudiante de posgrado · 29 años</p>
+              </div>
+            </div>
+            <p class="tm-stars" aria-label="5 de 5 estrellas">★ ★ ★ ★ ★</p>
           </div>
         </article>
 
