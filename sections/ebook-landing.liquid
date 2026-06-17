@@ -801,6 +801,8 @@
 
   /* ── MOBILE: scroll normal, fullpage JS desactivado ── */
   @media (max-width: 768px) {
+
+    /* — Scroll nativo — */
     html, body {
       overflow-x: hidden !important;
       overflow-y: auto !important;
@@ -816,7 +818,8 @@
       min-height: auto !important;
       overflow: visible !important;
     }
-    /* Todos los slides visibles y en flujo normal */
+
+    /* — Todos los slides: visibles y en flujo normal — */
     .el-hero,
     .el-cambio-wrap,
     .el-emocion-wrap,
@@ -833,47 +836,90 @@
     .el-footer { display: block !important; }
     .fp-nav    { display: none  !important; }
 
-    /* ── CAMBIO — imagen centrada, pantalla completa ── */
+    /* ══ CAMBIO — pantalla editorial completa ══ */
     .el-cambio-wrap {
       min-height: 100vh !important;
+      min-height: 100svh !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 32px 18px !important;
       margin-top: 0 !important;
-      padding: 40px 20px !important;
+      overflow: visible !important;
     }
     .el-cambio-clip {
       width: 100% !important;
+      max-width: 390px !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: visible !important;
     }
     .el-cambio-img {
-      width: 92% !important;
-      max-width: 380px !important;
+      width: 100% !important;
+      max-width: 390px !important;
+      height: auto !important;
+      display: block !important;
       margin: 0 auto !important;
-    }
-
-    /* ── EMOCION — reset transform que clippea la imagen ── */
-    .el-emocion-img {
-      width: min(92vw, 90vh) !important;
+      object-fit: contain !important;
       transform: none !important;
     }
 
-    /* ── AUTHOR (la-voz) — layout mobile una columna ── */
-    .el-section.el-section-alt {
-      height: auto !important;
+    /* ══ EMOCION — pantalla editorial completa ══ */
+    .el-emocion-wrap {
       min-height: 100vh !important;
-      padding: 80px 24px 48px !important;
+      min-height: 100svh !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 32px 18px !important;
       overflow: visible !important;
-      justify-content: flex-start !important;
-      align-items: flex-start !important;
     }
-    .el-section.el-section-alt .el-container {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      margin-top: 0 !important;
-      padding-right: 0 !important;
-      max-width: 100% !important;
+    .el-emocion-clip {
       width: 100% !important;
+      max-width: 390px !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: visible !important;
+    }
+    .el-emocion-img {
+      width: 100% !important;
+      max-width: 390px !important;
+      height: auto !important;
+      display: block !important;
+      margin: 0 auto !important;
+      object-fit: contain !important;
+      transform: none !important;
+    }
+
+    /* ══ AUTOR / LA VOZ — bloque editorial apilado ══ */
+    .el-section.el-section-alt {
+      min-height: 100vh !important;
+      min-height: 100svh !important;
+      height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 42px 20px !important;
+      overflow: visible !important;
+    }
+    .el-section.el-section-alt > .el-container {
+      width: 100% !important;
+      max-width: 390px !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
     }
     .el-author-grid {
+      display: grid !important;
       grid-template-columns: 1fr !important;
-      gap: 28px !important;
+      gap: 24px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
     }
     .el-author-visual {
       order: -1 !important;
