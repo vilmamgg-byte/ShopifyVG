@@ -3694,10 +3694,15 @@ body:has(.shopify-policy__container) {
   margin: 30px 0 10px;
 }
 
+.shopify-policy__body h4,
+.shopify-policy__body h4 span,
+.shopify-policy__body h4 strong,
+.shopify-policy__body h4 b {
+  color: #d4af37 !important;
+  font-weight: 500 !important;
+}
 .shopify-policy__body h4 {
   font-size: 15px;
-  font-weight: 500;
-  color: #d4af37;
   letter-spacing: 0.02em;
   margin: 36px 0 14px;
 }
