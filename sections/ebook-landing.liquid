@@ -799,6 +799,41 @@
   .el-section.el-section-alt,
   #el-cierre { opacity: 0; }
 
+  /* ── MOBILE: scroll normal, fullpage JS desactivado ── */
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+    .el-page {
+      overflow: visible !important;
+      height: auto !important;
+    }
+    .el-hero {
+      height: auto !important;
+      min-height: auto !important;
+      overflow: visible !important;
+    }
+    /* Todos los slides visibles y en flujo normal */
+    .el-hero,
+    .el-cambio-wrap,
+    .el-emocion-wrap,
+    .el-section.el-section-alt,
+    #el-cierre {
+      opacity: 1 !important;
+      position: relative !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+    }
+    .el-footer { display: block !important; }
+    .fp-nav    { display: none  !important; }
+  }
+
 {%- endstyle -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1325,6 +1360,9 @@
 
 <script>
 (function(){
+  /* Mobile: scroll nativo — fullpage JS no corre en pantallas ≤768px */
+  if (window.innerWidth <= 768) return;
+
   var SELECTORS = [
     '.el-hero',
     '.el-cambio-wrap',
