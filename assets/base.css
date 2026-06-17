@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;
   --alpha-link: 0.85;
@@ -3628,7 +3628,7 @@ body:has(.shopify-policy__container) {
 
 .shopify-policy__title {
   text-align: center;
-  padding: 110px 0 48px;
+  padding: 148px 0 48px;
   border-bottom: 1px solid rgba(201,168,76,0.12);
   margin-bottom: 56px;
 }
