@@ -34,6 +34,11 @@
     border-radius: 0 !important;
     box-shadow: none !important;
   }
+  /* picture is layout-transparent: img behaves as direct child of clip */
+  .el-cambio-clip picture,
+  .el-emocion-clip picture {
+    display: contents;
+  }
   .el-cambio-img {
     width: 82% !important;
     max-width: 82% !important;
@@ -1250,9 +1255,12 @@
   ══════════════════════════════════════ -->
   <div class="el-cambio-wrap">
     <div class="el-cambio-clip">
-      <img src="{{ 'CAMBIOS2.png' | asset_url }}"
-           alt="El cambio comienza aquí"
-           class="el-cambio-img el-anim">
+      <picture>
+        <source media="(max-width: 768px)" srcset="{{ 'CAMBIO_MOBILE.png' | asset_url }}">
+        <img src="{{ 'CAMBIOS2.png' | asset_url }}"
+             alt="El cambio comienza aquí"
+             class="el-cambio-img el-anim">
+      </picture>
     </div>
   </div>
 
@@ -1261,9 +1269,12 @@
   ══════════════════════════════════════ -->
   <div class="el-emocion-wrap">
     <div class="el-emocion-clip">
-      <img src="{{ 'EMOCION.png' | asset_url }}"
-           alt="La emoción que transforma"
-           class="el-emocion-img el-anim">
+      <picture>
+        <source media="(max-width: 768px)" srcset="{{ 'EMOCION_MOBILE.png' | asset_url }}">
+        <img src="{{ 'EMOCION.png' | asset_url }}"
+             alt="La emoción que transforma"
+             class="el-emocion-img el-anim">
+      </picture>
     </div>
   </div>
 
