@@ -802,13 +802,21 @@
   /* ── MOBILE: scroll normal, fullpage JS desactivado ── */
   @media (max-width: 768px) {
 
-    /* — Scroll nativo + scroll-snap proximity — */
-    html, body {
+    /* — Scroll nativo + scroll-snap mandatory — */
+    html {
       overflow-x: hidden !important;
       overflow-y: auto !important;
       height: auto !important;
       max-height: none !important;
-      scroll-snap-type: y proximity !important;
+      scroll-snap-type: y mandatory !important;
+      scroll-padding-top: 62px !important;
+      scroll-behavior: smooth !important;
+    }
+    body {
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      max-height: none !important;
     }
     .el-page {
       overflow: visible !important;
