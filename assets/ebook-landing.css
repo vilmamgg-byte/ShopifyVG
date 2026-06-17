@@ -565,6 +565,10 @@
   border-left: 2px solid rgba(201, 168, 76, 0.5);
 }
 
+/* ── Mobile/Desktop text toggles ── */
+.el-text--mobile,
+.el-hero-scroll-hint { display: none; }
+
 /* Actions */
 .el-hero-actions {
   display: flex;
@@ -1804,6 +1808,27 @@
 
   .el-hero-actions   { flex-direction: column; align-items: stretch; }
   .el-btn-gold, .el-btn-outline { justify-content: center; }
+
+  /* ── Hero mobile: texto compacto y CTA único ── */
+  .el-text--desktop { display: none; }
+  .el-text--mobile  { display: inline; }
+  .el-btn--hide-mobile { display: none !important; }
+
+  .el-hero { padding: 64px 24px 20px; }
+  .el-hero-title { margin-top: 14px !important; margin-bottom: 20px !important; }
+  .el-hero-sub   { margin-top: -8px !important; margin-bottom: 14px !important; }
+  .el-hero-actions { margin-top: 10px !important; }
+
+  .el-hero-scroll-hint {
+    display: block;
+    text-align: center;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.30);
+    margin-top: 18px;
+    font-family: var(--el-font);
+  }
 
   .el-cta-section    { padding: 88px 24px; }
   .el-footer         { padding: 48px 24px 24px; }
