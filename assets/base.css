@@ -3696,9 +3696,10 @@ body:has(.shopify-policy__container) {
 
 .shopify-policy__body h4 {
   font-size: 15px;
-  font-weight: 600;
-  color: #cccccc;
-  margin: 22px 0 8px;
+  font-weight: 500;
+  color: #d4af37;
+  letter-spacing: 0.02em;
+  margin: 36px 0 14px;
 }
 
 .shopify-policy__body p {
