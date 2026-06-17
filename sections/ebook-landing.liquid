@@ -832,6 +832,66 @@
     }
     .el-footer { display: block !important; }
     .fp-nav    { display: none  !important; }
+
+    /* ── CAMBIO — imagen centrada, pantalla completa ── */
+    .el-cambio-wrap {
+      min-height: 100vh !important;
+      margin-top: 0 !important;
+      padding: 40px 20px !important;
+    }
+    .el-cambio-clip {
+      width: 100% !important;
+    }
+    .el-cambio-img {
+      width: 92% !important;
+      max-width: 380px !important;
+      margin: 0 auto !important;
+    }
+
+    /* ── EMOCION — reset transform que clippea la imagen ── */
+    .el-emocion-img {
+      width: min(92vw, 90vh) !important;
+      transform: none !important;
+    }
+
+    /* ── AUTHOR (la-voz) — layout mobile una columna ── */
+    .el-section.el-section-alt {
+      height: auto !important;
+      min-height: 100vh !important;
+      padding: 80px 24px 48px !important;
+      overflow: visible !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+    }
+    .el-section.el-section-alt .el-container {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 0 !important;
+      padding-right: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+    }
+    .el-author-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+    .el-author-visual {
+      order: -1 !important;
+      align-self: auto !important;
+      transform: none !important;
+    }
+    .el-founder-card {
+      max-width: 180px !important;
+      margin: 0 auto !important;
+    }
+    .el-author-grid > div:last-child {
+      transform: none !important;
+      padding-left: 0 !important;
+    }
+    .el-author-grid > div:last-child::before,
+    .el-author-grid > div:last-child::after {
+      display: none !important;
+    }
   }
 
 {%- endstyle -%}
