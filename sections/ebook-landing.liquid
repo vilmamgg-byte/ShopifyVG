@@ -836,39 +836,46 @@
     .el-footer { display: block !important; }
     .fp-nav    { display: none  !important; }
 
-    /* ══ CAMBIO — imagen completa, natural, sin recorte ══ */
+    /* ══ CAMBIO — pantalla única mobile, imagen completa ══ */
     .el-cambio-wrap {
-      display: block !important;
-      height: auto !important;
-      min-height: auto !important;
-      padding: 24px 16px !important;
+      min-height: 100vh !important;
+      min-height: 100svh !important;
+      height: 100vh !important;
+      height: 100svh !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 20px 16px !important;
       margin: 0 !important;
-      overflow: visible !important;
-      background: transparent !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
     }
     .el-cambio-clip {
-      display: block !important;
       width: 100% !important;
       max-width: 100% !important;
-      height: auto !important;
-      min-height: auto !important;
-      margin: 0 auto !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      margin: 0 !important;
       padding: 0 !important;
-      overflow: visible !important;
-      clip-path: none !important;
-      mask: none !important;
-      aspect-ratio: auto !important;
-      transform: none !important;
+      box-sizing: border-box !important;
     }
     .el-cambio-img {
-      display: block !important;
       width: 100% !important;
       max-width: 100% !important;
+      max-height: calc(100vh - 40px) !important;
+      max-height: calc(100svh - 40px) !important;
       height: auto !important;
-      max-height: none !important;
       object-fit: contain !important;
+      display: block !important;
       margin: 0 auto !important;
       transform: none !important;
+    }
+    /* evitar que la siguiente sección asome por debajo */
+    .el-cambio-wrap + * {
+      margin-top: 0 !important;
     }
 
     /* ══ EMOCION — imagen llena el viewport en mobile ══ */
