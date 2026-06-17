@@ -1809,28 +1809,82 @@
   .el-hero-actions   { flex-direction: column; align-items: stretch; }
   .el-btn-gold, .el-btn-outline { justify-content: center; }
 
-  /* ── Hero mobile: texto compacto y CTA único ── */
+  /* ── Hero mobile: grid — credentials en una fila horizontal ── */
   .el-text--desktop { display: none; }
   .el-text--mobile  { display: inline; }
   .el-btn--hide-mobile { display: none !important; }
 
   .el-hero { padding: 64px 24px 20px; }
-  .el-hero-container { gap: 8px; }
-  .el-trust-row  { margin-top: 10px !important; }
-  .el-badge      { margin-top: 8px !important; margin-bottom: 8px !important; }
-  .el-hero-title { margin-top: 8px !important; margin-bottom: 12px !important; }
-  .el-hero-sub   { margin-top: -8px !important; margin-bottom: 10px !important; }
-  .el-hero-actions { margin-top: 10px !important; }
 
+  /* Disolver ambos contenedores: sus hijos pasan a ser items directos del grid */
+  .el-hero-visual  { display: contents !important; }
+  .el-hero-content { display: contents !important; }
+
+  /* Grid 2 columnas para la fila de credenciales */
+  .el-hero-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    row-gap: 0 !important;
+    column-gap: 8px !important;
+  }
+
+  /* Fila 1 — libro: ancho completo, centrado */
+  .el-book-scene {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Fila 2 — ⚡ Acceso inmediato (col 1) | • EDICION 2026 (col 2) */
+  .el-trust-row {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-self: center !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  .el-badge {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    width: fit-content !important;
+  }
+
+  /* Filas 3-6 — contenido: ancho completo */
+  .el-hero-title {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    margin-top: 16px !important;
+    margin-bottom: 12px !important;
+  }
+  .el-hero-sub {
+    grid-column: 1 / -1 !important;
+    grid-row: 4 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+  .el-hero-actions {
+    grid-column: 1 / -1 !important;
+    grid-row: 5 !important;
+    margin-top: 10px !important;
+  }
   .el-hero-scroll-hint {
-    display: block;
-    text-align: center;
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.30);
-    margin-top: 12px;
-    font-family: var(--el-font);
+    grid-column: 1 / -1 !important;
+    grid-row: 6 !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 10.5px !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.30) !important;
+    margin-top: 12px !important;
+    font-family: var(--el-font) !important;
   }
 
   .el-cta-section    { padding: 88px 24px; }
