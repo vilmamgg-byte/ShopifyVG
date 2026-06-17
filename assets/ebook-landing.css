@@ -1812,7 +1812,6 @@
   /* ── Hero mobile: grid — credentials en una fila horizontal ── */
   .el-text--desktop { display: none; }
   .el-text--mobile  { display: inline; }
-  .el-btn--hide-mobile { display: none !important; }
 
   .el-hero { padding: 64px 24px 20px; }
 
@@ -1828,35 +1827,42 @@
     column-gap: 8px !important;
   }
 
-  /* Fila 1 — libro: ancho completo, centrado */
+  /* Fila 1 — libro: ancho completo, centrado + padding para animación float */
   .el-book-scene {
     grid-column: 1 / -1 !important;
     grid-row: 1 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    padding-top: 20px !important;
+  }
+  /* !important necesario para ganar al inline style width/height del libro */
+  .el-book {
+    width: 200px !important;
+    height: 277px !important;
   }
 
-  /* Fila 2 — ⚡ Acceso inmediato (col 1) | • EDICION 2026 (col 2) */
-  .el-trust-row {
+  /* Fila 2 — • EDICION 2026 (col 1, izquierda) | ⚡ Acceso inmediato (col 2, derecha) */
+  .el-badge {
     grid-column: 1 !important;
     grid-row: 2 !important;
-    display: flex !important;
-    justify-content: flex-end !important;
+    justify-self: end !important;
     align-self: center !important;
-    margin-top: 12px !important;
-    margin-bottom: 0 !important;
-  }
-  .el-badge {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
-    align-self: center !important;
-    margin-top: 0 !important;
+    margin-top: 14px !important;
     margin-bottom: 0 !important;
     width: fit-content !important;
   }
+  .el-trust-row {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-self: center !important;
+    margin-top: 14px !important;
+    margin-bottom: 0 !important;
+  }
 
-  /* Filas 3-6 — contenido: ancho completo */
+  /* Filas 3-5 — contenido: ancho completo */
   .el-hero-title {
     grid-column: 1 / -1 !important;
     grid-row: 3 !important;
@@ -1874,18 +1880,8 @@
     grid-row: 5 !important;
     margin-top: 10px !important;
   }
-  .el-hero-scroll-hint {
-    grid-column: 1 / -1 !important;
-    grid-row: 6 !important;
-    display: block !important;
-    text-align: center !important;
-    font-size: 10.5px !important;
-    letter-spacing: 0.14em !important;
-    text-transform: uppercase !important;
-    color: rgba(255,255,255,0.30) !important;
-    margin-top: 12px !important;
-    font-family: var(--el-font) !important;
-  }
+  /* Scroll hint oculto en mobile */
+  .el-hero-scroll-hint { display: none !important; }
 
   .el-cta-section    { padding: 88px 24px; }
   .el-footer         { padding: 48px 24px 24px; }
