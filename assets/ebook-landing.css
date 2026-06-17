@@ -1815,8 +1815,11 @@
   .el-btn--hide-mobile { display: none !important; }
 
   .el-hero { padding: 64px 24px 20px; }
-  .el-hero-title { margin-top: 14px !important; margin-bottom: 20px !important; }
-  .el-hero-sub   { margin-top: -8px !important; margin-bottom: 14px !important; }
+  .el-hero-container { gap: 8px; }
+  .el-trust-row  { margin-top: 10px !important; }
+  .el-badge      { margin-top: 8px !important; margin-bottom: 8px !important; }
+  .el-hero-title { margin-top: 8px !important; margin-bottom: 12px !important; }
+  .el-hero-sub   { margin-top: -8px !important; margin-bottom: 10px !important; }
   .el-hero-actions { margin-top: 10px !important; }
 
   .el-hero-scroll-hint {
@@ -1826,7 +1829,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.30);
-    margin-top: 18px;
+    margin-top: 12px;
     font-family: var(--el-font);
   }
 
