@@ -31,11 +31,10 @@
   .pp-dot{width:5px;height:5px;background:#c9a84c;border-radius:50%;animation:ppDot 2.4s ease-in-out infinite}
   @keyframes ppDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
   .pp-subtitle{font-size:16px;color:#777;line-height:1.78;max-width:620px;margin:12px auto 0}
-  .policy--terms-of-service .pp-eyebrow{margin-top:1cm}
 </style>
 
 <div class="shopify-policy__container policy--{{ policy_handle }}">
-  <div class="shopify-policy__title">
+  <div class="shopify-policy__title"{% if policy_handle == 'terms-of-service' %} style="padding-top:calc(72px + 1cm)"{% endif %}>
     <div class="pp-eyebrow"><span class="pp-dot"></span>{{ pp_eyebrow }}</div>
     <h1>{{ pp_title }}</h1>
     {%- if pp_subtitle != blank -%}<p class="pp-subtitle">{{ pp_subtitle }}</p>{%- endif -%}
