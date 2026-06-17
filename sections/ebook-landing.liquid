@@ -813,7 +813,7 @@
       overflow-y: auto !important;
       height: auto !important;
       max-height: none !important;
-      scroll-snap-type: y mandatory !important;
+      scroll-snap-type: none !important;
       scroll-padding-top: 62px !important;
       scroll-behavior: smooth !important;
     }
@@ -1696,11 +1696,12 @@
 </script>
 
 <script>
-/* ── Mobile section-snap JS: zero inter-section visibility during drag ── */
+/* ── Mobile section-by-section JS navigator (one section per gesture) ── */
 document.addEventListener('DOMContentLoaded', function () {
   if (window.innerWidth > 768) return;
 
-  const sections = [
+  var sections = [
+    document.querySelector('.el-hero'),
     document.querySelector('.el-cambio-wrap'),
     document.querySelector('.el-emocion-wrap'),
     document.querySelector('.el-section.el-section-alt'),
@@ -1709,60 +1710,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (sections.length < 2) return;
 
-  let isAutoScrolling = false;
-  let lastScrollY = window.scrollY;
-  let lastSnapTime = 0;
-  const headerOffset = 62;
+  var isAutoScrolling = false;
+  var currentIndex = 0;
+  var lastSnapTime = 0;
+  var touchStartY = 0;
+  var HEADER_OFFSET = 62;
+  var COOLDOWN = 900;
+  var TOUCH_THRESHOLD = 35;
 
-  function getCurrentSectionIndex() {
-    const viewportCenter = window.innerHeight / 2;
-    let closestIndex = 0;
-    let closestDistance = Infinity;
-    sections.forEach(function (section, index) {
-      const rect = section.getBoundingClientRect();
-      const sectionCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(sectionCenter - viewportCenter);
-      if (distance < closestDistance) { closestDistance = distance; closestIndex = index; }
+  function getClosestIndex() {
+    var viewportMid = window.innerHeight / 2;
+    var best = 0;
+    var bestDist = Infinity;
+    sections.forEach(function (s, i) {
+      var r = s.getBoundingClientRect();
+      var d = Math.abs((r.top + r.height / 2) - viewportMid);
+      if (d < bestDist) { bestDist = d; best = i; }
     });
-    return closestIndex;
+    return best;
   }
 
-  function scrollToSection(section) {
-    if (!section) return;
+  function goTo(index) {
+    if (index < 0 || index >= sections.length) return;
     isAutoScrolling = true;
+    currentIndex = index;
     lastSnapTime = Date.now();
-    const top = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+    var top = sections[index].getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
     window.scrollTo({ top: top, behavior: 'smooth' });
-    setTimeout(function () { isAutoScrolling = false; lastScrollY = window.scrollY; }, 850);
+    setTimeout(function () {
+      isAutoScrolling = false;
+      currentIndex = getClosestIndex();
+    }, COOLDOWN);
   }
 
-  function handleWheelOrTouch(direction) {
+  function handle(direction) {
     if (isAutoScrolling) return;
-    if (Date.now() - lastSnapTime < 900) return;
-    const currentIndex = getCurrentSectionIndex();
-    if (direction === 'down' && currentIndex < sections.length - 1) scrollToSection(sections[currentIndex + 1]);
-    if (direction === 'up' && currentIndex > 0) scrollToSection(sections[currentIndex - 1]);
+    if (Date.now() - lastSnapTime < COOLDOWN) return;
+    currentIndex = getClosestIndex();
+    if (direction === 'down') goTo(currentIndex + 1);
+    if (direction === 'up')   goTo(currentIndex - 1);
   }
 
-  window.addEventListener('wheel', function (event) {
+  window.addEventListener('touchstart', function (e) {
     if (window.innerWidth > 768) return;
-    if (Math.abs(event.deltaY) < 10) return;
-    const direction = event.deltaY > 0 ? 'down' : 'up';
-    handleWheelOrTouch(direction);
+    touchStartY = e.touches[0].clientY;
   }, { passive: true });
 
-  let touchStartY = 0;
-  window.addEventListener('touchstart', function (event) {
-    touchStartY = event.touches[0].clientY;
+  window.addEventListener('touchend', function (e) {
+    if (window.innerWidth > 768) return;
+    var diff = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) < TOUCH_THRESHOLD) return;
+    handle(diff > 0 ? 'down' : 'up');
   }, { passive: true });
 
-  window.addEventListener('touchend', function (event) {
+  window.addEventListener('wheel', function (e) {
     if (window.innerWidth > 768) return;
-    const touchEndY = event.changedTouches[0].clientY;
-    const diff = touchStartY - touchEndY;
-    if (Math.abs(diff) < 40) return;
-    const direction = diff > 0 ? 'down' : 'up';
-    handleWheelOrTouch(direction);
+    if (Math.abs(e.deltaY) < 20) return;
+    handle(e.deltaY > 0 ? 'down' : 'up');
   }, { passive: true });
 });
 </script>
