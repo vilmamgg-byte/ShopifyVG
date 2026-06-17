@@ -3748,6 +3748,13 @@ body:has(.shopify-policy__container) {
   font-weight: 600;
 }
 
+/* Subtítulos numerados formateados como <p><strong>solo texto</strong></p> */
+.shopify-policy__body p:has(> strong:only-child),
+.shopify-policy__body p:has(> strong:only-child) strong {
+  color: #d4af37 !important;
+  font-weight: 600;
+}
+
 .shopify-policy__body hr {
   border: none;
   border-top: 1px solid rgba(201,168,76,0.1);
