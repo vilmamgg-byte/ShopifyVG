@@ -268,7 +268,18 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- if policy -%}{{ 'ebook-landing.css' | asset_url | stylesheet_tag }}{%- endif -%}
+    {%- if request.path contains '/policies/' -%}
+      {{ 'ebook-landing.css' | asset_url | stylesheet_tag }}
+      <style>
+        #shopify-section-group-header-group,
+        .shopify-section-group--header-group,
+        sticky-header,
+        .skip-to-content-link { display: none !important; }
+        #shopify-section-group-footer-group,
+        .shopify-section-group--footer-group,
+        footer.footer { display: none !important; }
+      </style>
+    {%- endif -%}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -311,8 +322,8 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if policy %} policy-page{% endif %}">
-    {%- unless policy -%}
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}{% if request.path contains '/policies/' %} policy-page{% endif %}">
+    {%- unless request.path contains '/policies/' -%}
       <a class="skip-to-content-link button visually-hidden" href="#MainContent">
         {{ 'accessibility.skip_to_text' | t }}
       </a>
@@ -322,10 +333,10 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {%- unless policy -%}
+    {%- unless request.path contains '/policies/' -%}
       {% sections 'header-group' %}
     {%- endunless -%}
-    {%- if policy -%}
+    {%- if request.path contains '/policies/' -%}
       {%- render 'premium-header' -%}
     {%- endif -%}
 
@@ -333,10 +344,10 @@
       {{ content_for_layout }}
     </main>
 
-    {%- unless policy -%}
+    {%- unless request.path contains '/policies/' -%}
       {% sections 'footer-group' %}
     {%- endunless -%}
-    {%- if policy -%}
+    {%- if request.path contains '/policies/' -%}
       {%- assign policy_handle = request.path | remove: '/policies/' -%}
       {%- render 'premium-footer', policy_handle: policy_handle -%}
       {{ 'ebook-landing.js' | asset_url | script_tag }}
