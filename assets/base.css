@@ -3628,7 +3628,7 @@ body:has(.shopify-policy__container) {
 
 .shopify-policy__title {
   text-align: center;
-  padding: 72px 0 48px;
+  padding: 110px 0 48px;
   border-bottom: 1px solid rgba(201,168,76,0.12);
   margin-bottom: 56px;
 }
@@ -3781,7 +3781,7 @@ body:has(.shopify-policy__container) {
     padding: 0 20px 48px;
   }
   .shopify-policy__title {
-    padding: 48px 0 36px;
+    padding: 86px 0 36px;
     margin-bottom: 40px;
   }
   .shopify-policy__title h1 {
