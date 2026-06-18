@@ -1839,9 +1839,9 @@
   }
   /* Tilt + float combinados en .el-book-wrap (sin overflow:hidden ni transition:transform) */
   @keyframes el-mobile-float-tilt {
-    0%   { transform: perspective(1200px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
-    50%  { transform: perspective(1200px) translateY(-20px) rotateY(5.5deg)  rotateX(-1.2deg); }
-    100% { transform: perspective(1200px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
+    0%   { transform: perspective(600px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
+    50%  { transform: perspective(600px) translateY(-20px) rotateY(5.5deg)  rotateX(-1.2deg); }
+    100% { transform: perspective(600px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
   }
   .el-book-wrap {
     animation: el-mobile-float-tilt 6.5s ease-in-out infinite !important;
