@@ -163,8 +163,8 @@
     #vg-hero h1 { margin-bottom: 22px !important; }
     /* c) Párrafo justificado  d) 6mm margen derecho libre de nav dots */
     #vg-hero p.el-anim { text-align: justify !important; padding-right: 6mm !important; }
-    /* d) Quote+flecha: margin-top:auto los empuja al fondo */
-    #vg-hero > div:nth-child(3) { margin-top: auto !important; }
+    /* d) Quote+flecha: margin-top:auto los empuja al fondo; padding-top reducido sube texto+flecha sin mover la línea */
+    #vg-hero > div:nth-child(3) { margin-top: auto !important; padding-top: calc(24px - 2mm) !important; }
     /* Quote: +20%, una línea; firma en línea nueva */
     #vg-hero .el-quote-premium { font-size: 17px !important; white-space: nowrap !important; }
     #vg-hero .el-quote-premium span { display: block !important; margin-left: 0 !important; margin-top: 5px !important; }
