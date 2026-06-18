@@ -63,7 +63,8 @@
     transform: scale(1.6) !important;
   }
   @media (max-width: 768px) {
-    .fp-nav { display: none !important; }
+    .fp-nav { right: 14px; gap: 10px; }
+    .fp-dot { width: 6px; height: 6px; }
   }
   .el-cierre-footer {
     position: absolute;
@@ -121,146 +122,36 @@
     .vg-col-divider { display:none !important; }
   }
 
-  /* ── Flecha mobile vg-hero → vg-diferenciador (oculta en desktop) ── */
-  .vg-scroll-arrow { display: none; }
+  /* ── Mobile-only: ocultar por defecto en desktop ── */
+  .vg-scroll-arrow  { display: none; }
+  #vg-imagen-mobile { display: none; }
 
   @media (max-width: 768px) {
-    /* ─── Liberar el lock de scroll del JS ─── */
-    html, body {
-      overflow: auto !important;
-      height: auto !important;
-      max-height: none !important;
-    }
-    .el-page {
-      overflow: visible !important;
-      height: auto !important;
-    }
+    /* Activar slide image mobile */
+    #vg-imagen-mobile { display: block; }
 
-    /* Ambas secciones: sacar del flujo JS fixed, volver a flujo normal */
-    #vg-hero, #vg-diferenciador {
-      position: relative !important;
-      top: auto !important;
-      left: auto !important;
-      width: 100% !important;
-      height: auto !important;
-      min-height: 100svh !important;
-      opacity: 1 !important;
-      transform: none !important;
-      pointer-events: auto !important;
-      z-index: auto !important;
-      overflow: visible !important;
+    /* Hero: ocultar columna imagen + línea divisoria — solo texto */
+    #vg-hero .el-container:first-of-type > div.el-anim {
+      display: none !important;
     }
-
-    /* ── vg-hero: layout de columna única ── */
-    #vg-hero {
-      padding: 88px 24px 32px !important;
-      display: flex !important;
-      flex-direction: column !important;
-    }
-    /* Grid 46/54 → flex columna */
+    /* Hero: expandir columna texto a ancho completo */
     #vg-hero .el-container:first-of-type {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 20px !important;
-      flex: 0 !important;
-      align-items: stretch !important;
+      grid-template-columns: 1fr !important;
     }
-    /* Columna texto: quitar padding derecho */
     #vg-hero .el-container:first-of-type > div:first-child {
       padding-right: 0 !important;
-      justify-content: flex-start !important;
     }
-    /* Título */
-    #vg-hero h1 {
-      font-size: 34px !important;
-      margin-bottom: 12px !important;
-    }
-    /* Párrafo */
-    #vg-hero p.el-anim {
-      font-size: 14.5px !important;
-      line-height: 1.55 !important;
-    }
-    /* Columna imagen: quitar borde divisor y padding lateral */
-    #vg-hero .el-container:first-of-type > div.el-anim {
-      background: none !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      overflow: visible !important;
-      gap: 8px !important;
-    }
-    /* Subtítulo "La Visión del Libro" — quitar top:1cm */
-    #vg-hero .el-container:first-of-type > div.el-anim > div:first-child {
-      position: static !important;
-      top: auto !important;
-    }
-    /* Wrapper imagen */
-    #vg-hero .el-container:first-of-type > div.el-anim > div:last-child {
-      flex: none !important;
-      min-height: 0 !important;
-      height: auto !important;
-    }
-    /* Imagen sellos: sin recorte, con contain */
-    #vg-hero img {
-      height: auto !important;
-      clip-path: none !important;
-      max-height: 260px !important;
-      object-fit: contain !important;
-    }
-    /* Cita final: empuja hacia abajo con margin-top:auto */
-    #vg-hero .el-container:last-of-type {
-      margin-top: auto !important;
-      padding-top: 16px !important;
-    }
-    .el-quote-premium {
-      font-size: 13.5px !important;
-      line-height: 1.5 !important;
-      white-space: normal !important;
-    }
+    #vg-hero h1            { font-size: 34px !important; margin-bottom: 14px !important; }
+    #vg-hero p.el-anim     { font-size: 15.5px !important; line-height: 1.6 !important; }
+
     /* Flecha de navegación */
     .vg-scroll-arrow {
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      margin-top: 16px !important;
+      margin-top: 18px !important;
       text-decoration: none !important;
-    }
-
-    /* ── vg-diferenciador: columna única ── */
-    /* Zona contenido: de absolute a flujo normal */
-    #vg-diferenciador > div:first-child {
-      position: relative !important;
-      top: auto !important;
-      bottom: auto !important;
-      left: auto !important;
-      right: auto !important;
-      padding: 100px 24px 60px !important;
-      align-items: flex-start !important;
-      justify-content: flex-start !important;
-      overflow: visible !important;
-    }
-    /* Grid 1fr 1fr → columna única */
-    #vg-diferenciador .el-anim-repeat {
-      grid-template-columns: 1fr !important;
-      gap: 28px !important;
-    }
-    /* Quitar padding lateral de columnas */
-    #vg-diferenciador .el-anim-repeat > div:nth-child(2) {
-      padding: 0 !important;
-    }
-    #vg-diferenciador .el-anim-repeat > div:nth-child(3) {
-      padding: 0 !important;
-    }
-    /* Frase vg-diferenciador: permitir salto de línea */
-    #vg-diferenciador .vg-quote-refined {
-      white-space: normal !important;
-      font-size: 14px !important;
-    }
-    /* Footer: sacar de absolute */
-    #vg-diferenciador .el-cierre-footer {
-      position: relative !important;
-      bottom: auto !important;
-      left: auto !important;
-      right: auto !important;
+      cursor: pointer !important;
     }
   }
 
@@ -436,8 +327,8 @@
       </p>
     </div>
 
-    <!-- Flecha mobile: navegar a siguiente sección -->
-    <a href="#vg-diferenciador" class="vg-scroll-arrow" aria-label="Ver siguiente sección">
+    <!-- Flecha mobile: ir a slide siguiente (imagen) -->
+    <a onclick="window.vgGoNext&&window.vgGoNext();return false;" href="#" class="vg-scroll-arrow" aria-label="Ver imagen">
       <span class="el-arrow-down">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.58)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7"/>
@@ -445,6 +336,38 @@
       </span>
     </a>
 
+  </section>
+
+  <!-- ─── Slide mobile-only: imagen 6 pilares ─── -->
+  <section id="vg-imagen-mobile" style="background:var(--el-deep);overflow:hidden;">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:88px 28px 56px;">
+      <div style="text-align:center;flex-shrink:0;margin-bottom:22px;">
+        <p style="margin:0 0 5px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:21px;color:#c9a84c;letter-spacing:0.06em;text-transform:uppercase;text-shadow:0 0 28px rgba(201,168,76,0.38);">La Visión del Libro</p>
+        <p style="margin:0;font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:300;color:rgba(228,215,190,0.52);letter-spacing:0.16em;text-transform:uppercase;">6 pilares para construir una disciplina sostenible</p>
+      </div>
+      <div style="position:relative;width:100%;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;">
+        <div style="position:absolute;inset:-24px;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(201,168,76,0.12) 0%,transparent 68%);pointer-events:none;z-index:0;"></div>
+        <div style="position:absolute;top:-4px;left:-4px;width:16px;height:16px;border-top:1.5px solid rgba(201,168,76,0.65);border-left:1.5px solid rgba(201,168,76,0.65);z-index:2;pointer-events:none;"></div>
+        <div style="position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-top:1.5px solid rgba(201,168,76,0.65);border-right:1.5px solid rgba(201,168,76,0.65);z-index:2;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-4px;left:-4px;width:16px;height:16px;border-bottom:1.5px solid rgba(201,168,76,0.65);border-left:1.5px solid rgba(201,168,76,0.65);z-index:2;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-4px;right:-4px;width:16px;height:16px;border-bottom:1.5px solid rgba(201,168,76,0.65);border-right:1.5px solid rgba(201,168,76,0.65);z-index:2;pointer-events:none;"></div>
+        <img src="{{ 'SELLOS2A-ACT.png' | asset_url }}" alt="6 pilares de disciplina"
+             style="width:92%;height:100%;object-fit:contain;display:block;border-radius:8px;position:relative;z-index:1;
+                    border:1px solid rgba(201,168,76,0.20);
+                    box-shadow:0 0 40px rgba(201,168,76,0.14),0 20px 60px rgba(0,0,0,0.72);">
+      </div>
+      <div style="text-align:center;margin-top:18px;padding-top:13px;border-top:1px solid rgba(201,168,76,0.14);flex-shrink:0;">
+        <p class="el-quote-premium" style="font-size:13px;line-height:1.45;white-space:normal;margin:0;">
+          "La disciplina no es un impulso. Es una identidad."
+          <span style="font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.62);margin-left:8px;font-style:normal;">— Disciplina Imparable</span>
+        </p>
+      </div>
+      <a onclick="window.vgGoNext&&window.vgGoNext();return false;" href="#" class="vg-scroll-arrow" aria-label="Siguiente sección" style="margin-top:14px;">
+        <span class="el-arrow-down">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.58)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </span>
+      </a>
+    </div>
   </section>
 
   <!-- ─── Bloque: Editorial premium — segundo slide ─── v4 -->
@@ -533,7 +456,9 @@
 
 <script>
 (function(){
-  var SELECTORS = ['#vg-hero', '#vg-diferenciador'];
+  var SELECTORS = window.innerWidth <= 768
+    ? ['#vg-hero', '#vg-imagen-mobile', '#vg-diferenciador']
+    : ['#vg-hero', '#vg-diferenciador'];
   var DUR       = 850;
   var TRANS     = 'opacity ' + DUR + 'ms ease, transform ' + (DUR + 80) + 'ms cubic-bezier(0.22,1,0.36,1)';
   var IN_OFFSET  = 26;
@@ -572,10 +497,6 @@
   }
 
   function initSlides(){
-    if (window.innerWidth <= 768) {
-      slides.forEach(function(el){ activateAnims(el); });
-      return;
-    }
     slides.forEach(function(el, i){ applyState(el, i === 0, false); });
     activateAnims(slides[0]);
   }
@@ -585,7 +506,6 @@
   }
 
   function goTo(next){
-    if (window.innerWidth <= 768) return;
     if (busy || next === current || next < 0 || next >= slides.length) return;
     busy = true;
     var dir = next > current ? 1 : -1;
@@ -659,6 +579,8 @@
     if (e.key === 'ArrowDown' || e.key === 'PageDown'){ e.preventDefault(); goTo(current + 1); }
     if (e.key === 'ArrowUp'   || e.key === 'PageUp')  { e.preventDefault(); goTo(current - 1); }
   });
+
+  window.vgGoNext = function(){ goTo(current + 1); };
 
   initSlides();
 })();
