@@ -1043,9 +1043,18 @@
       margin-bottom: 0 !important;
       padding: 0 !important;
     }
-    /* Flecha scroll cue — centrada, debajo del manifesto ── */
+    /* Flecha scroll cue — autor: posición, opacidad y tamaño mejorados ── */
+    @keyframes el-scroll-cue-autor {
+      0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.58; }
+      50%       { transform: translateX(-50%) translateY(5px); opacity: 0.88; }
+    }
     .el-scroll-cue--autor {
-      bottom: 37px !important;
+      bottom: 47px !important;
+      animation: el-scroll-cue-autor 2.4s ease-in-out infinite !important;
+    }
+    .el-scroll-cue--autor svg {
+      width: 21px !important;
+      height: 13px !important;
     }
   }
 
