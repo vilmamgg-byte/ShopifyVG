@@ -44,6 +44,15 @@
     });
   }
 
+  const mobileClose = document.querySelector('.el-mobile-close');
+  if (mobileClose && mobileNav) {
+    mobileClose.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      mobileToggle?.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+
   /* ── Scroll-reveal via IntersectionObserver ── */
   const revealObserver = new IntersectionObserver(
     (entries) => {
