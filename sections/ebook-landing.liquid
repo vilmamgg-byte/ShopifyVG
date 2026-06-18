@@ -1215,7 +1215,7 @@
           </a>
         </div>
 
-        <p class="el-hero-scroll-hint" aria-hidden="true"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></p>
+        <button class="el-hero-scroll-hint" data-target=".el-cambio-wrap" aria-label="Ir a la siguiente sección"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></button>
 
       </div><!-- /hero-content -->
 
@@ -1269,7 +1269,7 @@
              class="el-cambio-img el-anim">
       </picture>
     </div>
-    <div class="el-scroll-cue-overlay" aria-hidden="true"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></div>
+    <button class="el-scroll-cue-overlay" data-target=".el-emocion-wrap" aria-label="Ir a la siguiente sección"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -1284,7 +1284,7 @@
              class="el-emocion-img el-anim">
       </picture>
     </div>
-    <div class="el-scroll-cue-overlay" aria-hidden="true"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></div>
+    <button class="el-scroll-cue-overlay" data-target=".el-section.el-section-alt" aria-label="Ir a la siguiente sección"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -1778,6 +1778,21 @@ document.addEventListener('DOMContentLoaded', function () {
     handle(e.deltaY > 0 ? 'down' : 'up');
   }, { passive: true });
 });
+</script>
+
+<script>
+(function(){
+  if (window.innerWidth > 768) return;
+  document.querySelectorAll('[data-target]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(btn.getAttribute('data-target'));
+      if (!target) return;
+      var top = target.getBoundingClientRect().top + window.scrollY - 62;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
 </script>
 
 {% schema %}

@@ -1910,7 +1910,13 @@
     margin-top: 10px !important;
     margin-bottom: 0 !important;
     color: var(--el-gold) !important;
-    pointer-events: none !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    padding: 8px 0 !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
     animation: el-scroll-cue 2.4s ease-in-out infinite !important;
   }
 
@@ -1928,7 +1934,13 @@
     align-items: center !important;
     justify-content: center !important;
     color: rgba(201, 168, 76, 0.72) !important;
-    pointer-events: none !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    padding: 8px !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
     z-index: 4 !important;
     animation: el-img-scroll-cue 2.4s ease-in-out infinite !important;
   }
