@@ -1947,6 +1947,7 @@
 
   .el-cambio-wrap  .el-scroll-cue-overlay { bottom: 10px !important; }
   .el-scroll-cue--emocion                 { bottom: 74px !important; }
+  .el-scroll-cue--autor                   { bottom: 24px !important; }
 
   .el-cta-section    { padding: 88px 24px; }
   .el-footer         { padding: 48px 24px 24px; }

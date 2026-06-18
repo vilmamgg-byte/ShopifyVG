@@ -947,7 +947,7 @@
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      padding: 56px 24px 48px !important;
+      padding: 36px 20px 32px !important;
       overflow: visible !important;
     }
     .el-section.el-section-alt > .el-container {
@@ -959,7 +959,7 @@
     .el-author-grid {
       display: grid !important;
       grid-template-columns: 1fr !important;
-      gap: 24px !important;
+      gap: 14px !important;
       width: 100% !important;
       margin: 0 auto !important;
     }
@@ -969,7 +969,7 @@
       transform: none !important;
     }
     .el-founder-card {
-      max-width: 180px !important;
+      max-width: 155px !important;
       margin: 0 auto !important;
     }
     .el-author-grid > div:last-child {
@@ -979,6 +979,30 @@
     .el-author-grid > div:last-child::before,
     .el-author-grid > div:last-child::after {
       display: none !important;
+    }
+    /* Compactar tipografía y eliminar transforms de desktop ── */
+    .el-author-bio {
+      font-size: 11.8px !important;
+      line-height: 1.65 !important;
+      margin-bottom: 8px !important;
+      transform: translateY(0) !important;
+    }
+    .el-author-name {
+      font-size: 28px !important;
+      margin-bottom: 12px !important;
+      transform: translateY(0) !important;
+    }
+    .el-section.el-section-alt .el-label {
+      margin-bottom: 8px !important;
+      transform: translateY(0) !important;
+    }
+    .el-manifesto-row {
+      grid-template-columns: 1fr !important;
+      margin-top: 12px !important;
+      padding-top: 12px !important;
+    }
+    .el-manifesto-row .el-manifesto-line {
+      text-align: center !important;
     }
   }
 
@@ -1335,6 +1359,7 @@
       </div>
 
     </div>
+    <button class="el-scroll-cue-overlay el-scroll-cue--autor" data-target="#el-cierre" aria-label="Ir a la siguiente sección"><svg width="18" height="11" viewBox="0 0 18 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l8 8 8-8"/></svg></button>
   </section>
 
   <!-- ══════════════════════════════════════
