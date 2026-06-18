@@ -1895,8 +1895,22 @@
     margin-top: 12px !important;
     gap: 12px !important;
   }
-  /* Scroll hint oculto en mobile */
-  .el-hero-scroll-hint { display: none !important; }
+  /* Scroll cue — chevron pulsante solo en mobile */
+  @keyframes el-scroll-cue {
+    0%, 100% { transform: translateY(0);   opacity: 0.35; }
+    50%       { transform: translateY(5px); opacity: 0.72; }
+  }
+  .el-hero-scroll-hint {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+    color: var(--el-gold) !important;
+    pointer-events: none !important;
+    animation: el-scroll-cue 2.4s ease-in-out infinite !important;
+  }
 
   .el-cta-section    { padding: 88px 24px; }
   .el-footer         { padding: 48px 24px 24px; }
