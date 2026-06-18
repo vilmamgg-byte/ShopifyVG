@@ -1834,7 +1834,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding-top: 34px !important;
+    padding-top: 50px !important;
   }
   /* Tilt + float combinados en .el-book-wrap (sin overflow:hidden ni transition:transform) */
   @keyframes el-mobile-float-tilt {
