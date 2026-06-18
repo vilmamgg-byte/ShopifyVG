@@ -391,43 +391,115 @@
 .el-mobile-toggle.active span:nth-child(2) { opacity: 0; }
 .el-mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Mobile nav overlay */
+/* Mobile nav overlay — premium editorial */
 .el-mobile-nav {
   position: fixed;
   inset: 0;
-  background: rgba(8,8,8,0.97);
-  backdrop-filter: blur(24px);
+  background: linear-gradient(180deg, rgba(5,5,5,0.99) 0%, rgba(10,9,8,0.99) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 2px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  padding: 80px 32px 48px;
+  border-top: 1px solid rgba(201,168,76,0.10);
+}
+
+/* Eyebrow marca — encabezado sutil */
+.el-mobile-nav::before {
+  content: 'DISCIPLINA IMPARABLE';
+  position: absolute;
+  top: 28px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.30em;
+  color: rgba(201,168,76,0.52);
+  text-transform: uppercase;
 }
 
 .el-mobile-nav.open {
   opacity: 1;
   pointer-events: all;
+  transform: translateY(0);
 }
 
+/* Links base */
 .el-mobile-nav a {
   text-decoration: none;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--el-gray);
-  padding: 12px 24px;
-  transition: color 0.2s ease;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.52);
+  padding: 7px 0;
+  letter-spacing: 0.03em;
+  transition: color 0.25s ease;
+  width: 100%;
+  text-align: center;
+}
+.el-mobile-nav a:hover { color: rgba(201,168,76,0.88); }
+
+/* Separador tras Inicio */
+.el-mobile-nav a:first-child {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 6px;
 }
 
-.el-mobile-nav a:hover { color: var(--el-white); }
+/* Método Imparable — categoría padre */
+.el-mobile-nav a:nth-child(2) {
+  color: rgba(255,255,255,0.82);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding-top: 12px;
+}
 
+/* Subitems — Visión General / Lo Que Aprenderás */
+.el-mobile-sub {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: rgba(201,168,76,0.52) !important;
+  letter-spacing: 0.08em !important;
+  padding: 3px 0 !important;
+}
+.el-mobile-sub:hover { color: rgba(201,168,76,0.85) !important; }
+
+/* Separador tras subitems (Beneficios = 5º hijo) */
+.el-mobile-nav a:nth-child(5) {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 6px;
+}
+
+/* CTA — Obtener ahora */
 .el-mobile-nav .el-nav-cta {
-  font-size: 16px !important;
-  padding: 14px 32px !important;
-  margin-top: 12px;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  padding: 13px 40px !important;
+  margin-top: 18px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+  border: 1px solid rgba(201,168,76,0.68) !important;
+  color: rgba(201,168,76,0.90) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 18px rgba(201,168,76,0.06) !important;
+  width: auto !important;
+}
+.el-mobile-nav .el-nav-cta:hover {
+  background: rgba(201,168,76,0.08) !important;
+  border-color: rgba(201,168,76,0.90) !important;
+  color: rgba(201,168,76,1) !important;
+  box-shadow: 0 0 28px rgba(201,168,76,0.14) !important;
 }
 
 /* ════════════════════════════════════════════
