@@ -525,7 +525,7 @@
   height: 6px;
   background: var(--el-gold);
   border-radius: 50%;
-  animation: el-pulse 2s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes el-pulse {
