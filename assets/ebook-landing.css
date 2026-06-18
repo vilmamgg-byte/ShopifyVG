@@ -432,6 +432,22 @@
   transform: translateX(0);
 }
 
+/* Glow ambiental dorado — derecha, apenas perceptible */
+.el-mobile-nav::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 62%;
+  background: radial-gradient(
+    ellipse at 100% 50%,
+    rgba(201,168,76,0.055) 0%,
+    rgba(201,168,76,0.024) 36%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Botón cerrar X */
 .el-mobile-close {
   position: absolute;
@@ -464,14 +480,33 @@
   width: 100%;
   text-align: left;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 .el-mobile-nav a:hover { color: rgba(201,168,76,0.85); }
 
-/* Separador tras Inicio */
+/* Micro-línea dorada a la izquierda — solo items principales */
+.el-mobile-nav a:not(.el-mobile-sub):not(.el-nav-cta)::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 1px;
+  background: rgba(201,168,76,0.36);
+  transition: width 0.22s ease, background 0.22s ease;
+}
+.el-mobile-nav a:not(.el-mobile-sub):not(.el-nav-cta):hover::before {
+  width: 14px;
+  background: rgba(201,168,76,0.68);
+}
+
+/* Separador tras Inicio — tinte dorado */
 .el-mobile-nav a:first-of-type {
   padding-bottom: 16px;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(201,168,76,0.10);
 }
 
 /* Método Imparable — categoría padre */
@@ -493,11 +528,11 @@
 }
 .el-mobile-sub:hover { color: rgba(201,168,76,0.82) !important; }
 
-/* Separador antes de Beneficios (5º <a>) */
+/* Separador antes de Beneficios (5º <a>) — tinte dorado */
 .el-mobile-nav a:nth-of-type(5) {
   padding-top: 16px;
   margin-top: 8px;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid rgba(201,168,76,0.10);
 }
 
 /* CTA — Obtener ahora */
