@@ -945,10 +945,11 @@
       min-height: 100svh !important;
       height: auto !important;
       display: flex !important;
-      align-items: center !important;
+      align-items: flex-start !important;
       justify-content: center !important;
-      padding: 28px 20px 24px !important;
+      padding: 72px 20px 56px !important;
       overflow: visible !important;
+      position: relative !important;
     }
     .el-section.el-section-alt > .el-container {
       width: 100% !important;
@@ -996,29 +997,53 @@
       margin-bottom: 8px !important;
       transform: translateY(0) !important;
     }
+    /* Manifesto row — divisor simétrico centrado ── */
     .el-manifesto-row {
       grid-template-columns: 1fr !important;
-      margin-top: 8px !important;
-      padding-top: 8px !important;
+      margin-top: 10px !important;
+      padding-top: 14px !important;
       justify-items: center !important;
+      position: relative !important;
     }
-    .el-manifesto-row .el-manifesto-line {
-      text-align: center !important;
-      font-size: 12px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
+    .el-manifesto-row::before {
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      width: 60% !important;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201,168,76,0.30) 20%,
+        rgba(201,168,76,0.72) 50%,
+        rgba(201,168,76,0.30) 80%,
+        transparent 100%
+      ) !important;
     }
-    /* Reset absolute positioning from desktop :first-child rule */
+    /* Manifesto line — reset absolute de desktop + estilo refinado ── */
+    .el-manifesto-row .el-manifesto-line,
     .el-manifesto-row .el-manifesto-line:first-child {
       position: static !important;
       left: auto !important;
       top: auto !important;
       transform: none !important;
       text-align: center !important;
-      font-size: 12px !important;
-      max-width: 88% !important;
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-style: italic !important;
+      font-weight: 300 !important;
+      font-size: 14px !important;
+      line-height: 1.55 !important;
+      letter-spacing: 0.02em !important;
+      color: rgba(235,215,160,0.90) !important;
+      max-width: 84% !important;
       margin-left: auto !important;
       margin-right: auto !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+    }
+    /* Flecha scroll cue — centrada, debajo del manifesto ── */
+    .el-scroll-cue--autor {
+      bottom: 18px !important;
     }
   }
 
