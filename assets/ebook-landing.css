@@ -1813,7 +1813,7 @@
   .el-text--desktop { display: none; }
   .el-text--mobile  { display: inline; }
 
-  .el-hero { padding: 64px 24px 20px; }
+  .el-hero { padding: 64px 24px 36px; }
 
   /* Disolver ambos contenedores: sus hijos pasan a ser items directos del grid */
   .el-hero-visual  { display: contents !important; }
@@ -1848,8 +1848,8 @@
   /* !important necesario para ganar al inline style width/height del libro */
   /* :not(.flipped) excluye el estado abierto — el JS necesita redimensionar allí */
   .el-book:not(.flipped) {
-    width: 200px !important;
-    height: 277px !important;
+    width: 212px !important;
+    height: 294px !important;
   }
 
   /* Fila 2 — • EDICION 2026 (col 1, izquierda) | ⚡ Acceso inmediato (col 2, derecha) */
@@ -1858,7 +1858,7 @@
     grid-row: 2 !important;
     justify-self: end !important;
     align-self: center !important;
-    margin-top: 14px !important;
+    margin-top: 20px !important;
     margin-bottom: 0 !important;
     width: fit-content !important;
   }
@@ -1868,7 +1868,7 @@
     display: flex !important;
     justify-content: flex-start !important;
     align-self: center !important;
-    margin-top: 14px !important;
+    margin-top: 20px !important;
     margin-bottom: 0 !important;
   }
   .el-trust-item {
@@ -1879,8 +1879,8 @@
   .el-hero-title {
     grid-column: 1 / -1 !important;
     grid-row: 3 !important;
-    margin-top: 16px !important;
-    margin-bottom: 22px !important;
+    margin-top: 20px !important;
+    margin-bottom: 26px !important;
     font-size: 26px !important;
     line-height: 1.1 !important;
   }
@@ -1892,7 +1892,8 @@
   .el-hero-actions {
     grid-column: 1 / -1 !important;
     grid-row: 5 !important;
-    margin-top: 10px !important;
+    margin-top: 12px !important;
+    gap: 12px !important;
   }
   /* Scroll hint oculto en mobile */
   .el-hero-scroll-hint { display: none !important; }
