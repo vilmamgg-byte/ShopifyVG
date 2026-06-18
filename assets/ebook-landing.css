@@ -1919,13 +1919,6 @@
     appearance: none !important;
     animation: el-scroll-cue 2.4s ease-in-out infinite !important;
   }
-  /* Pulso movido del badge-dot a la flecha del hero */
-  .el-badge-dot {
-    animation: none !important;
-  }
-  .el-hero-scroll-hint svg {
-    animation: el-pulse 2s ease-in-out infinite !important;
-  }
 
   /* Scroll cue overlay — superpuesto en secciones de imagen CAMBIO/EMOCION */
   @keyframes el-img-scroll-cue {
