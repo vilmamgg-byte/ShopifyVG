@@ -431,9 +431,10 @@
   width: 62%;
   background: radial-gradient(
     ellipse at 100% 50%,
-    rgba(201,168,76,0.055) 0%,
-    rgba(201,168,76,0.024) 36%,
-    transparent 68%
+    rgba(201,168,76,0.18) 0%,
+    rgba(201,168,76,0.09) 30%,
+    rgba(201,168,76,0.03) 58%,
+    transparent 72%
   );
   pointer-events: none;
   z-index: 0;
