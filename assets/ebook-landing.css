@@ -461,14 +461,17 @@
 
 /* Logo de marca en el menú móvil — oculto por defecto */
 .mobile-menu-logo { display: none; }
+.mobile-menu-brand { display: none; }
 
 /* Solo visible dentro del menú mobile */
 .el-mobile-nav .mobile-menu-logo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 18px auto 24px auto;
+  margin: 4px auto 22px auto;
+  gap: 11px;
   flex-shrink: 0;
 }
 .el-mobile-nav .mobile-menu-logo .el-logo-mark {
@@ -486,6 +489,18 @@
 .el-mobile-nav .mobile-menu-logo .el-logo-mark svg {
   width: 38px;
   height: 38px;
+}
+.el-mobile-nav .mobile-menu-brand {
+  display: block;
+  text-align: center;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(212,176,82,0.76);
+  line-height: 1;
+  margin: 0;
 }
 
 /* Links base — alineados a la izquierda */
