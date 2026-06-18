@@ -408,22 +408,13 @@
   pointer-events: none;
   transform: translateX(-14px);
   transition: opacity 0.38s ease, transform 0.38s ease;
-  padding: 88px 40px 60px 44px;
+  padding: 64px 40px 48px 44px;
   border-right: 1px solid rgba(201,168,76,0.06);
 }
 
-/* Eyebrow marca */
+/* Eyebrow marca — reemplazado por .el-mobile-brand en el DOM */
 .el-mobile-nav::before {
-  content: 'DISCIPLINA IMPARABLE';
-  position: absolute;
-  top: 26px;
-  left: 44px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.34em;
-  color: rgba(201,168,76,0.45);
-  text-transform: uppercase;
+  content: '';
 }
 
 .el-mobile-nav.open {
@@ -468,13 +459,57 @@
 }
 .el-mobile-close:hover { color: rgba(255,255,255,0.88); }
 
+/* Bloque de marca en el menú móvil */
+.el-mobile-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.el-mobile-brand-mark {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 100%);
+  box-shadow: 0 0 18px rgba(201,168,76,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.el-mobile-brand-mark::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(201,168,76,0.52);
+  background: rgba(201,168,76,0.12);
+  transform: rotate(45deg);
+}
+.el-mobile-brand-name {
+  font-family: 'Manrope', 'Inter', sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  color: rgba(255,255,255,0.62);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.9;
+}
+.el-mobile-brand-name em {
+  font-style: normal;
+  display: block;
+  color: rgba(201,168,76,0.58);
+}
+
 /* Links base — alineados a la izquierda */
 .el-mobile-nav a {
   text-decoration: none;
   font-size: 21px;
   font-weight: 500;
   color: rgba(255,255,255,0.48);
-  padding: 8px 0;
+  padding: 6px 0;
   letter-spacing: 0.02em;
   transition: color 0.22s ease;
   width: 100%;
@@ -504,8 +539,8 @@
 
 /* Separador tras Inicio — tinte dorado */
 .el-mobile-nav a:first-of-type {
-  padding-bottom: 16px;
-  margin-bottom: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 6px;
   border-bottom: 1px solid rgba(201,168,76,0.10);
 }
 
@@ -530,8 +565,8 @@
 
 /* Separador antes de Beneficios (5º <a>) — tinte dorado */
 .el-mobile-nav a:nth-of-type(5) {
-  padding-top: 16px;
-  margin-top: 8px;
+  padding-top: 12px;
+  margin-top: 6px;
   border-top: 1px solid rgba(201,168,76,0.10);
 }
 
@@ -540,7 +575,7 @@
   font-size: 10.5px !important;
   font-weight: 600 !important;
   padding: 13px 0 !important;
-  margin-top: 24px !important;
+  margin-top: 20px !important;
   letter-spacing: 0.18em !important;
   text-transform: uppercase !important;
   background: transparent !important;
