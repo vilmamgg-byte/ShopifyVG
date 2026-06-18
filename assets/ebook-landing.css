@@ -1824,7 +1824,7 @@
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     row-gap: 0 !important;
-    column-gap: 20px !important;
+    column-gap: 28px !important;
   }
 
   /* Fila 1 — libro: ancho completo, centrado + padding para animación float */
@@ -1834,7 +1834,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding-top: 20px !important;
+    padding-top: 34px !important;
   }
   /* !important necesario para ganar al inline style width/height del libro */
   /* :not(.flipped) excluye el estado abierto — el JS necesita redimensionar allí */
@@ -1861,6 +1861,9 @@
     align-self: center !important;
     margin-top: 14px !important;
     margin-bottom: 0 !important;
+  }
+  .el-trust-item {
+    color: var(--el-gray) !important;
   }
 
   /* Filas 3-5 — contenido: ancho completo */
