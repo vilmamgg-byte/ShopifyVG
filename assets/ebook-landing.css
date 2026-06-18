@@ -1917,7 +1917,7 @@
     padding: 8px 0 !important;
     -webkit-appearance: none !important;
     appearance: none !important;
-    animation: el-scroll-cue 2.4s ease-in-out infinite !important;
+    animation: none !important;
   }
 
   /* Scroll cue overlay — superpuesto en secciones de imagen CAMBIO/EMOCION */
