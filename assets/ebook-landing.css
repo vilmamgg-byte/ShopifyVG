@@ -459,48 +459,33 @@
 }
 .el-mobile-close:hover { color: rgba(255,255,255,0.88); }
 
-/* Bloque de marca en el menú móvil */
-.el-mobile-brand {
+/* Logo de marca en el menú móvil — oculto por defecto */
+.mobile-menu-logo { display: none; }
+
+/* Solo visible dentro del menú mobile */
+.el-mobile-nav .mobile-menu-logo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-  width: 100%;
-}
-.el-mobile-brand-mark {
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(201,168,76,0.28);
-  border-radius: 11px;
-  background: linear-gradient(145deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.03) 100%);
-  box-shadow: 0 0 18px rgba(201,168,76,0.08), inset 0 1px 0 rgba(255,255,255,0.04);
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 18px auto 24px auto;
+  flex-shrink: 0;
 }
-.el-mobile-brand-mark::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  border: 1px solid rgba(201,168,76,0.52);
-  background: rgba(201,168,76,0.12);
-  transform: rotate(45deg);
+.el-mobile-nav .mobile-menu-logo .el-logo-mark {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  box-shadow:
+    0 0 28px rgba(201,168,76,0.18),
+    0 2px 14px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.24);
+  cursor: default;
+  pointer-events: none;
 }
-.el-mobile-brand-name {
-  font-family: 'Manrope', 'Inter', sans-serif;
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: 0.30em;
-  color: rgba(255,255,255,0.62);
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.9;
-}
-.el-mobile-brand-name em {
-  font-style: normal;
-  display: block;
-  color: rgba(201,168,76,0.58);
+.el-mobile-nav .mobile-menu-logo .el-logo-mark svg {
+  width: 38px;
+  height: 38px;
 }
 
 /* Links base — alineados a la izquierda */
