@@ -157,6 +157,7 @@
     /* Hero: redistribuir espacio — centrar verticalmente, reducir vacío */
     #vg-hero { padding: 68px 22px 20px !important; justify-content: center !important; }
     #vg-hero > div:nth-child(2) { flex: 0 0 auto !important; }
+    #vg-hero > div:nth-child(2) > div:first-child { transform: translateY(-1cm) !important; }
     #vg-hero > div:nth-child(3) { margin-top: 32px !important; }
 
     /* Quote: +20%, una sola línea; guion en línea nueva */
@@ -182,6 +183,11 @@
     #vg-diferenciador .el-anim-repeat ul { gap: 10px !important; }
     #vg-diferenciador .vg-list-item { font-size: 13.5px !important; }
     #vg-diferenciador .el-anim-d2 { margin-top: 14px !important; padding-top: 12px !important; }
+    /* Margen derecho ~1cm para separar de nav dots */
+    #vg-diferenciador > div:first-child { padding-right: calc(1cm + 16px) !important; }
+    /* Texto justificado */
+    #vg-diferenciador .el-anim-repeat p,
+    #vg-diferenciador .vg-list-item { text-align: justify !important; }
   }
 
   /* ── Refinamiento premium: #vg-diferenciador ── */
