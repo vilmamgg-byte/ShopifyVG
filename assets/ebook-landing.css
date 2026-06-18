@@ -1836,18 +1836,20 @@
     align-items: center !important;
     padding-top: 34px !important;
   }
+  /* Tilt + float combinados en .el-book-wrap (sin overflow:hidden ni transition:transform) */
+  @keyframes el-mobile-float-tilt {
+    0%   { transform: perspective(1200px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
+    50%  { transform: perspective(1200px) translateY(-20px) rotateY(5.5deg)  rotateX(-1.2deg); }
+    100% { transform: perspective(1200px) translateY(0px)   rotateY(-5.5deg) rotateX(1.2deg); }
+  }
+  .el-book-wrap {
+    animation: el-mobile-float-tilt 6.5s ease-in-out infinite !important;
+  }
   /* !important necesario para ganar al inline style width/height del libro */
   /* :not(.flipped) excluye el estado abierto — el JS necesita redimensionar allí */
-  @keyframes el-mobile-tilt {
-    0%   { transform: perspective(800px) rotateY(-3deg) rotateX(1deg); }
-    50%  { transform: perspective(800px) rotateY(3deg)  rotateX(-1deg); }
-    100% { transform: perspective(800px) rotateY(-3deg) rotateX(1deg); }
-  }
   .el-book:not(.flipped) {
     width: 200px !important;
     height: 277px !important;
-    animation: el-mobile-tilt 6s ease-in-out infinite !important;
-    will-change: transform;
   }
 
   /* Fila 2 — • EDICION 2026 (col 1, izquierda) | ⚡ Acceso inmediato (col 2, derecha) */
