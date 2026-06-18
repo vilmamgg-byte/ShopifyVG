@@ -63,8 +63,7 @@
     transform: scale(1.6) !important;
   }
   @media (max-width: 768px) {
-    .fp-nav { right: 14px; gap: 10px; }
-    .fp-dot { width: 6px; height: 6px; }
+    .fp-nav { display: none !important; }
   }
   .el-cierre-footer {
     position: absolute;
@@ -120,6 +119,149 @@
     .el-cierre-footer { padding: 0 20px 16px; }
     .el-cierre-sep { margin: 0 7px; }
     .vg-col-divider { display:none !important; }
+  }
+
+  /* ── Flecha mobile vg-hero → vg-diferenciador (oculta en desktop) ── */
+  .vg-scroll-arrow { display: none; }
+
+  @media (max-width: 768px) {
+    /* ─── Liberar el lock de scroll del JS ─── */
+    html, body {
+      overflow: auto !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+    .el-page {
+      overflow: visible !important;
+      height: auto !important;
+    }
+
+    /* Ambas secciones: sacar del flujo JS fixed, volver a flujo normal */
+    #vg-hero, #vg-diferenciador {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 100svh !important;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+      z-index: auto !important;
+      overflow: visible !important;
+    }
+
+    /* ── vg-hero: layout de columna única ── */
+    #vg-hero {
+      padding: 88px 24px 32px !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    /* Grid 46/54 → flex columna */
+    #vg-hero .el-container:first-of-type {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+      flex: 0 !important;
+      align-items: stretch !important;
+    }
+    /* Columna texto: quitar padding derecho */
+    #vg-hero .el-container:first-of-type > div:first-child {
+      padding-right: 0 !important;
+      justify-content: flex-start !important;
+    }
+    /* Título */
+    #vg-hero h1 {
+      font-size: 34px !important;
+      margin-bottom: 12px !important;
+    }
+    /* Párrafo */
+    #vg-hero p.el-anim {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+    }
+    /* Columna imagen: quitar borde divisor y padding lateral */
+    #vg-hero .el-container:first-of-type > div.el-anim {
+      background: none !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      overflow: visible !important;
+      gap: 8px !important;
+    }
+    /* Subtítulo "La Visión del Libro" — quitar top:1cm */
+    #vg-hero .el-container:first-of-type > div.el-anim > div:first-child {
+      position: static !important;
+      top: auto !important;
+    }
+    /* Wrapper imagen */
+    #vg-hero .el-container:first-of-type > div.el-anim > div:last-child {
+      flex: none !important;
+      min-height: 0 !important;
+      height: auto !important;
+    }
+    /* Imagen sellos: sin recorte, con contain */
+    #vg-hero img {
+      height: auto !important;
+      clip-path: none !important;
+      max-height: 260px !important;
+      object-fit: contain !important;
+    }
+    /* Cita final: empuja hacia abajo con margin-top:auto */
+    #vg-hero .el-container:last-of-type {
+      margin-top: auto !important;
+      padding-top: 16px !important;
+    }
+    .el-quote-premium {
+      font-size: 13.5px !important;
+      line-height: 1.5 !important;
+      white-space: normal !important;
+    }
+    /* Flecha de navegación */
+    .vg-scroll-arrow {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin-top: 16px !important;
+      text-decoration: none !important;
+    }
+
+    /* ── vg-diferenciador: columna única ── */
+    /* Zona contenido: de absolute a flujo normal */
+    #vg-diferenciador > div:first-child {
+      position: relative !important;
+      top: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      padding: 100px 24px 60px !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      overflow: visible !important;
+    }
+    /* Grid 1fr 1fr → columna única */
+    #vg-diferenciador .el-anim-repeat {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+    /* Quitar padding lateral de columnas */
+    #vg-diferenciador .el-anim-repeat > div:nth-child(2) {
+      padding: 0 !important;
+    }
+    #vg-diferenciador .el-anim-repeat > div:nth-child(3) {
+      padding: 0 !important;
+    }
+    /* Frase vg-diferenciador: permitir salto de línea */
+    #vg-diferenciador .vg-quote-refined {
+      white-space: normal !important;
+      font-size: 14px !important;
+    }
+    /* Footer: sacar de absolute */
+    #vg-diferenciador .el-cierre-footer {
+      position: relative !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+    }
   }
 
   /* ── Refinamiento premium: #vg-diferenciador ── */
@@ -294,6 +436,15 @@
       </p>
     </div>
 
+    <!-- Flecha mobile: navegar a siguiente sección -->
+    <a href="#vg-diferenciador" class="vg-scroll-arrow" aria-label="Ver siguiente sección">
+      <span class="el-arrow-down">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.58)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </span>
+    </a>
+
   </section>
 
   <!-- ─── Bloque: Editorial premium — segundo slide ─── v4 -->
@@ -421,6 +572,10 @@
   }
 
   function initSlides(){
+    if (window.innerWidth <= 768) {
+      slides.forEach(function(el){ activateAnims(el); });
+      return;
+    }
     slides.forEach(function(el, i){ applyState(el, i === 0, false); });
     activateAnims(slides[0]);
   }
@@ -430,6 +585,7 @@
   }
 
   function goTo(next){
+    if (window.innerWidth <= 768) return;
     if (busy || next === current || next < 0 || next >= slides.length) return;
     busy = true;
     var dir = next > current ? 1 : -1;
