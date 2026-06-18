@@ -1824,7 +1824,7 @@
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     row-gap: 0 !important;
-    column-gap: 8px !important;
+    column-gap: 20px !important;
   }
 
   /* Fila 1 — libro: ancho completo, centrado + padding para animación float */
@@ -1868,12 +1868,16 @@
     grid-row: 3 !important;
     margin-top: 16px !important;
     margin-bottom: 12px !important;
+    font-size: 26px !important;
+    line-height: 1.1 !important;
   }
   .el-hero-sub {
     grid-column: 1 / -1 !important;
     grid-row: 4 !important;
     margin-top: 0 !important;
     margin-bottom: 10px !important;
+    font-size: 16px !important;
+    line-height: 1.45 !important;
   }
   .el-hero-actions {
     grid-column: 1 / -1 !important;
