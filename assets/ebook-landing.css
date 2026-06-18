@@ -1878,17 +1878,14 @@
     grid-column: 1 / -1 !important;
     grid-row: 3 !important;
     margin-top: 16px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 22px !important;
     font-size: 26px !important;
     line-height: 1.1 !important;
   }
   .el-hero-sub {
-    grid-column: 1 / -1 !important;
-    grid-row: 4 !important;
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-    font-size: 16px !important;
-    line-height: 1.45 !important;
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .el-hero-actions {
     grid-column: 1 / -1 !important;
