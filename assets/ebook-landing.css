@@ -567,7 +567,8 @@
 
 /* ── Mobile/Desktop text toggles ── */
 .el-text--mobile,
-.el-hero-scroll-hint { display: none; }
+.el-hero-scroll-hint,
+.el-scroll-cue-overlay { display: none; }
 
 /* Actions */
 .el-hero-actions {
@@ -1911,6 +1912,25 @@
     color: var(--el-gold) !important;
     pointer-events: none !important;
     animation: el-scroll-cue 2.4s ease-in-out infinite !important;
+  }
+
+  /* Scroll cue overlay — superpuesto en secciones de imagen CAMBIO/EMOCION */
+  @keyframes el-img-scroll-cue {
+    0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.38; }
+    50%       { transform: translateX(-50%) translateY(5px); opacity: 0.78; }
+  }
+  .el-scroll-cue-overlay {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(201, 168, 76, 0.72) !important;
+    pointer-events: none !important;
+    z-index: 4 !important;
+    animation: el-img-scroll-cue 2.4s ease-in-out infinite !important;
   }
 
   .el-cta-section    { padding: 88px 24px; }
