@@ -155,19 +155,40 @@
     }
 
     /* Hero mobile: título+párrafo arriba · quote+flecha fijados abajo */
-    #vg-hero { padding: 62px 22px calc(20px + 11mm) !important; justify-content: flex-start !important; }
+    #vg-hero { padding: 62px 22px calc(20px + 18mm) !important; justify-content: flex-start !important; }
     #vg-hero > div:nth-child(2) { flex: 0 0 auto !important; margin-top: 2cm !important; }
     /* a) Quitar transform anterior — layout flex-start ya lleva el título al top */
     #vg-hero > div:nth-child(2) > div:first-child { transform: none !important; }
     /* b) Separación sutil título → párrafo */
     #vg-hero h1 { margin-bottom: 22px !important; }
-    /* c) Párrafo justificado  d) 6mm margen derecho libre de nav dots */
+    /* Línea decorativa dorada sobre el título — acento editorial premium */
+    #vg-hero h1::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: linear-gradient(to right, rgba(201,168,76,0.70), rgba(201,168,76,0.15));
+      background-clip: border-box !important;
+      -webkit-background-clip: border-box !important;
+      margin-bottom: 12px;
+    }
+    /* c) Párrafo justificado  d) 8mm margen derecho libre de nav dots */
     #vg-hero p.el-anim { text-align: justify !important; padding-right: 8mm !important; }
     /* d) Quote+flecha: margin-top:auto los empuja al fondo; padding-top reducido sube texto+flecha sin mover la línea */
     #vg-hero > div:nth-child(3) { margin-top: auto !important; padding-top: calc(24px - 2mm) !important; }
     /* Quote: +20%, una línea; firma en línea nueva */
     #vg-hero .el-quote-premium { font-size: 17px !important; white-space: nowrap !important; }
     #vg-hero .el-quote-premium span { display: block !important; margin-left: 0 !important; margin-top: 5px !important; }
+    /* Glow dorado lateral derecho — profundidad visual muy sutil */
+    #vg-hero::after {
+      content: '';
+      position: absolute;
+      top: 15%; right: -8%;
+      width: 72%; height: 65%;
+      background: radial-gradient(ellipse 48% 52% at 92% 48%, rgba(201,168,76,0.055) 0%, rgba(201,168,76,0.02) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
   }
 
   /* ── Mobile-only: vg-dif-mobile-b (slide Diseñado para quienes) ── */
