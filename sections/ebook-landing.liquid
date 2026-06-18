@@ -1000,10 +1000,25 @@
       grid-template-columns: 1fr !important;
       margin-top: 8px !important;
       padding-top: 8px !important;
+      justify-items: center !important;
     }
     .el-manifesto-row .el-manifesto-line {
       text-align: center !important;
       font-size: 12px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    /* Reset absolute positioning from desktop :first-child rule */
+    .el-manifesto-row .el-manifesto-line:first-child {
+      position: static !important;
+      left: auto !important;
+      top: auto !important;
+      transform: none !important;
+      text-align: center !important;
+      font-size: 12px !important;
+      max-width: 88% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
   }
 
