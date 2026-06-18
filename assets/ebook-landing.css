@@ -585,6 +585,7 @@
 
 /* CTA — Obtener ahora */
 .el-mobile-nav .el-nav-cta {
+  align-self: center !important;
   font-size: 10.5px !important;
   font-weight: 600 !important;
   padding: 13px 0 !important;
