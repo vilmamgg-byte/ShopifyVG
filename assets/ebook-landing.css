@@ -1945,7 +1945,8 @@
     animation: el-img-scroll-cue 2.4s ease-in-out infinite !important;
   }
 
-  .el-cambio-wrap .el-scroll-cue-overlay { bottom: 10px !important; }
+  .el-cambio-wrap  .el-scroll-cue-overlay { bottom: 10px !important; }
+  .el-emocion-wrap .el-scroll-cue-overlay { bottom: 74px !important; }
 
   .el-cta-section    { padding: 88px 24px; }
   .el-footer         { padding: 48px 24px 24px; }
