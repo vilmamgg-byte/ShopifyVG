@@ -153,6 +153,15 @@
       text-decoration: none !important;
       cursor: pointer !important;
     }
+
+    /* Hero: redistribuir espacio — centrar verticalmente, reducir vacío */
+    #vg-hero { padding: 68px 22px 20px !important; justify-content: center !important; }
+    #vg-hero > div:nth-child(2) { flex: 0 0 auto !important; }
+    #vg-hero > div:nth-child(3) { margin-top: 32px !important; }
+
+    /* Quote: +20%, una sola línea; guion en línea nueva */
+    #vg-hero .el-quote-premium { font-size: 17px !important; white-space: nowrap !important; }
+    #vg-hero .el-quote-premium span { display: block !important; margin-left: 0 !important; margin-top: 5px !important; }
   }
 
   /* ── Mobile-only: vg-dif-mobile-b (slide Diseñado para quienes) ── */
