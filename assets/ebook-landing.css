@@ -1837,7 +1837,8 @@
     padding-top: 20px !important;
   }
   /* !important necesario para ganar al inline style width/height del libro */
-  .el-book {
+  /* :not(.flipped) excluye el estado abierto — el JS necesita redimensionar allí */
+  .el-book:not(.flipped) {
     width: 200px !important;
     height: 277px !important;
   }
