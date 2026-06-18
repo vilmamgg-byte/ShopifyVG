@@ -1838,9 +1838,16 @@
   }
   /* !important necesario para ganar al inline style width/height del libro */
   /* :not(.flipped) excluye el estado abierto — el JS necesita redimensionar allí */
+  @keyframes el-mobile-tilt {
+    0%   { transform: perspective(800px) rotateY(-3deg) rotateX(1deg); }
+    50%  { transform: perspective(800px) rotateY(3deg)  rotateX(-1deg); }
+    100% { transform: perspective(800px) rotateY(-3deg) rotateX(1deg); }
+  }
   .el-book:not(.flipped) {
     width: 200px !important;
     height: 277px !important;
+    animation: el-mobile-tilt 6s ease-in-out infinite !important;
+    will-change: transform;
   }
 
   /* Fila 2 — • EDICION 2026 (col 1, izquierda) | ⚡ Acceso inmediato (col 2, derecha) */
