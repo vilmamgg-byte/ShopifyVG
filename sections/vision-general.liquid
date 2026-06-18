@@ -131,14 +131,14 @@
     #vg-imagen-mobile { display: block; }
 
     /* Hero: ocultar columna imagen + línea divisoria — solo texto */
-    #vg-hero .el-container:first-of-type > div.el-anim {
+    #vg-hero > div:nth-child(2) > div:last-child {
       display: none !important;
     }
     /* Hero: expandir columna texto a ancho completo */
-    #vg-hero .el-container:first-of-type {
+    #vg-hero > div:nth-child(2) {
       grid-template-columns: 1fr !important;
     }
-    #vg-hero .el-container:first-of-type > div:first-child {
+    #vg-hero > div:nth-child(2) > div:first-child {
       padding-right: 0 !important;
     }
     #vg-hero h1            { font-size: 34px !important; margin-bottom: 14px !important; }
