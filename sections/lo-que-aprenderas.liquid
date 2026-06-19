@@ -324,15 +324,10 @@
     opacity: 0;
   }
   .lq-item--open .lq-body {
-    max-height: 88px;
-    overflow-y: auto;
+    max-height: 140px;
+    overflow: hidden;
     opacity: 1;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(212,175,55,0.22) transparent;
   }
-  .lq-item--open .lq-body::-webkit-scrollbar { width: 3px; }
-  .lq-item--open .lq-body::-webkit-scrollbar-track { background: transparent; }
-  .lq-item--open .lq-body::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.22); border-radius: 2px; }
   .lq-list {
     list-style: none;
     padding: 0 3px 12px 48px;
@@ -732,7 +727,7 @@
     </div>
 
     <!-- Acordeón: contenedor independiente, se expande solo hacia abajo -->
-    <div style="position:absolute;top:calc(10vh + 80px);bottom:calc(1.3cm + 128px);left:0;right:0;padding:0 22px;overflow:hidden;">
+    <div style="position:absolute;top:calc(10vh + 80px);bottom:calc(1.8cm + 68px);left:0;right:0;padding:0 22px;overflow:hidden;">
       <div style="width:100%;max-width:460px;margin:0 auto;">
 
         <!-- Acordeón (IDs mobile para no colisionar con desktop) -->
