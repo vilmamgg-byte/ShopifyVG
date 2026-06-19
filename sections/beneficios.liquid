@@ -393,14 +393,14 @@
     }
     .bn-layout::before { display: none; }
     .bn-anchor { overflow: visible; padding-right: 0; padding-top: 0; }
-    .bn-accordion { overflow-y: visible; justify-content: flex-start; }
+    .bn-accordion { overflow-y: visible; justify-content: flex-start; position: relative; top: -4mm; }
     .bn-cta-bottom { margin-top: 40px; padding-top: 0; }
     .el-cierre-footer { position: static; padding: 24px 0 0; margin-top: 48px; }
     .bn-section::after { display: none; }
   }
 
   @media (max-width: 768px) {
-    .bn-section { padding: calc(68px - 8mm + 1.5cm - 4mm) 20px 56px; }
+    .bn-section { padding: calc(68px - 8mm + 1.5cm) 20px 56px; }
     .bn-trigger { padding: 20px 0 20px 14px; gap: 14px; }
     .bn-body-inner { padding-left: 42px; }
     .bn-title { font-size: 15px; }
