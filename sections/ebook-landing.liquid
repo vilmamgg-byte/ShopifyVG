@@ -1050,15 +1050,6 @@
     }
   }
 
-  /* ── DESKTOP: bajar contenido 7mm (no afecta footer oculto) ───── */
-  @media (min-width: 769px) {
-    .el-hero                   { padding-top: calc(90px + 7mm) !important; }
-    .el-cambio-wrap            { padding-top: calc(48px + 7mm) !important; }
-    .el-emocion-wrap           { padding-top: 7mm !important; }
-    .el-section.el-section-alt { padding-top: 7mm !important; }
-    .el-cierre                 { padding-top: 7mm !important; }
-  }
-
 {%- endstyle -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1947,6 +1938,27 @@ document.addEventListener('DOMContentLoaded', function () {
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
+})();
+</script>
+
+<script>
+/* ── DESKTOP: bajar todo el contenido 7mm (~26px) ── */
+(function(){
+  if (window.innerWidth <= 768) return;
+  var SHIFT = 26; // 7mm en píxeles
+  function setTop(sel, base) {
+    var el = document.querySelector(sel);
+    if (el) el.style.setProperty('padding-top', (base + SHIFT) + 'px', 'important');
+  }
+  function setTopRaw(sel) {
+    var el = document.querySelector(sel);
+    if (el) el.style.setProperty('padding-top', SHIFT + 'px', 'important');
+  }
+  setTop('.el-hero', 90);
+  setTop('.el-cambio-wrap', 48);
+  setTopRaw('.el-emocion-wrap');
+  setTopRaw('.el-section.el-section-alt');
+  setTopRaw('.el-cierre');
 })();
 </script>
 
