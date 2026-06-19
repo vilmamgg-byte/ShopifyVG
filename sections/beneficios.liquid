@@ -400,7 +400,7 @@
   }
 
   @media (max-width: 768px) {
-    .bn-section { padding: calc(68px - 8mm + 1.5cm) 20px 100px; }
+    .bn-section { padding: calc(68px - 8mm + 1.5cm) 20px 80px; }
     .bn-trigger { padding: 20px 0 20px 14px; gap: 14px; }
     .bn-body-inner { padding-left: 42px; }
     .bn-title { font-size: 15px; }
@@ -408,15 +408,18 @@
     .bn-anchor-ctas { margin-top: 28px; }
     .el-cierre-footer { padding: 0 20px 16px; }
     .bn-cta-bottom {
-      position: fixed;
-      bottom: 22px;
-      left: 22px;
-      right: 22px;
-      z-index: 50;
-      margin-top: 0;
-      padding-top: 0;
-      display: flex;
-      justify-content: center;
+      position: fixed !important;
+      bottom: 22px !important;
+      left: 22px !important;
+      right: 22px !important;
+      z-index: 50 !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      display: flex !important;
+      justify-content: center !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
     }
     .bn-cta-bottom .el-btn-gold {
       width: 100% !important;
