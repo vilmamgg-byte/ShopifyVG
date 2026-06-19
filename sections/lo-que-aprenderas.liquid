@@ -903,8 +903,13 @@
     }
   }
 
+  function activateAnims(slide){
+    slide.querySelectorAll('.el-anim').forEach(function(el){ el.classList.add('visible'); });
+  }
+
   function initSlides(){
     slides.forEach(function(el, i){ applyState(el, i === 0, false); });
+    activateAnims(slides[0]);
   }
 
   function goTo(next){
@@ -933,6 +938,7 @@
       slides.forEach(function(el, i){ applyState(el, i === next, i < next); });
       current = next;
       updateDots();
+      activateAnims(slides[current]);
       busy = false;
     }, DUR + 120);
   }
