@@ -252,4 +252,27 @@
     });
   });
 
+  /* ── Active mobile nav item (page URL) ── */
+  (function () {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const links = document.querySelectorAll('.el-mobile-nav a:not(.el-nav-cta)');
+    let subActive = false;
+    links.forEach(link => {
+      if (!link.classList.contains('el-mobile-sub')) return;
+      try {
+        const lp = new URL(link.getAttribute('href'), location.origin).pathname.replace(/\/$/, '');
+        if (lp === path) { link.classList.add('el-nav-active'); subActive = true; }
+      } catch (_) {}
+    });
+    if (!subActive) {
+      links.forEach(link => {
+        if (link.classList.contains('el-mobile-sub')) return;
+        try {
+          const lp = new URL(link.getAttribute('href'), location.origin).pathname.replace(/\/$/, '') || '/';
+          if (lp === path) link.classList.add('el-nav-active');
+        } catch (_) {}
+      });
+    }
+  })();
+
 })();

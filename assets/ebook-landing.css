@@ -588,6 +588,27 @@
   letter-spacing: 0.02em !important;
 }
 
+/* ── Indicador de sección activa — solo menú mobile ── */
+.el-mobile-nav a:not(.el-mobile-sub):not(.el-nav-cta).el-nav-active {
+  color: rgba(255,255,255,0.92) !important;
+}
+.el-mobile-nav a:not(.el-mobile-sub):not(.el-nav-cta).el-nav-active::before {
+  content: '↳';
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: rgba(212,175,55,0.85);
+  font-size: 0.76em;
+  line-height: 1;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.el-mobile-nav a.el-mobile-sub.el-nav-active {
+  color: rgba(212,175,55,0.92) !important;
+  font-weight: 500 !important;
+}
+
 /* CTA — Obtener ahora */
 .el-mobile-nav .el-nav-cta {
   align-self: center !important;
