@@ -175,7 +175,7 @@
     /* c) Párrafo justificado  d) 8mm margen derecho libre de nav dots */
     #vg-hero p.el-anim { text-align: justify !important; padding-right: 8mm !important; }
     /* d) Quote+flecha: margin-top:auto los empuja al fondo; padding-top reducido sube texto+flecha sin mover la línea */
-    #vg-hero > div:nth-child(3) { margin-top: auto !important; padding-top: calc(24px - 2mm) !important; }
+    #vg-hero > div:nth-child(4) { margin-top: auto !important; padding-top: calc(24px - 2mm) !important; }
     /* Quote: +20%, una línea; firma en línea nueva */
     #vg-hero .el-quote-premium { font-size: 19.5px !important; white-space: nowrap !important; }
     #vg-hero .el-quote-premium span { display: block !important; margin-left: 0 !important; margin-top: 5px !important; }
@@ -188,6 +188,47 @@
       background: radial-gradient(ellipse 48% 52% at 92% 48%, rgba(201,168,76,0.055) 0%, rgba(201,168,76,0.02) 45%, transparent 70%);
       pointer-events: none;
       z-index: 1;
+    }
+  }
+
+  /* ── Mobile-only: detalle editorial central ── */
+  .mv-structure { display: none; }
+
+  @media (max-width: 768px) {
+    .mv-structure {
+      display: block;
+      position: relative;
+      z-index: 2;
+      margin: 36px 0 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: rgba(212,175,55,0.70);
+      padding-right: 8mm;
+    }
+    /* Línea dorada decorativa sobre el texto */
+    .mv-structure::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      margin-bottom: 11px;
+      background: linear-gradient(90deg, rgba(212,175,55,0.80) 0%, rgba(212,175,55,0) 100%);
+    }
+    /* Glow central muy sutil */
+    .mv-structure::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 38%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(212,175,55,0.11) 0%, rgba(212,175,55,0.03) 45%, transparent 70%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: -1;
     }
   }
 
@@ -380,6 +421,9 @@
       </div>
 
     </div>
+
+    <!-- Detalle editorial mobile-only: espacio central -->
+    <div class="mv-structure" aria-hidden="true">ESTRUCTURA DEL MÉTODO</div>
 
     <!-- CITA: una sola línea al fondo -->
     <div class="el-container" style="position:relative;z-index:2;margin-top:auto;padding-top:24px;text-align:center;border-top:1px solid rgba(201,168,76,0.15);">
