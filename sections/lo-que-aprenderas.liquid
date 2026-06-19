@@ -402,6 +402,15 @@
     html, body { overflow: hidden !important; height: 100vh !important; max-height: 100vh !important; }
     .el-page { overflow: hidden !important; height: 100vh !important; }
 
+    /* Forzar visibilidad de elementos animados — en slides fixed el observer no dispara */
+    .lq-section .el-anim,
+    .lq-section .el-hero-title,
+    .lq-section .lq-eyebrow {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
     /* Slide 1: sección principal — solo columna izquierda, pantalla completa */
     .lq-section {
       height: 100vh !important;
