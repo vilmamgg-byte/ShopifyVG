@@ -44,19 +44,19 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding-top: 94px;
-    padding-bottom: 74px; /* reserva espacio para el footer absoluto */
+    padding-bottom: 74px;
     box-sizing: border-box;
   }
 
-  /* Layout: ambas columnas se estiran al alto disponible */
+  /* Layout: ambas columnas alineadas al tope */
   .bn-layout {
     display: grid;
     grid-template-columns: 1fr 1.35fr;
     gap: 64px;
-    align-items: center;
-    height: 100%;
+    align-items: flex-start;
+    height: auto;
     min-height: 0;
     position: relative;
   }
@@ -87,9 +87,10 @@
   .bn-anchor {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     padding-right: 8px;
+    padding-top: 12px;
   }
 
   .bn-anchor .el-label {
@@ -171,7 +172,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-self: center;
+    align-self: flex-start;
+    width: 100%;
   }
 
   .bn-item {
@@ -291,6 +293,34 @@
 
   .bn-item.is-open .bn-desc { opacity: 1; transform: translateY(0); }
 
+  /* ── CTA centrado sobre el footer ── */
+  .bn-cta-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding-top: 32px;
+  }
+
+  .bn-cta-bottom .el-btn-gold {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    padding: 12px 40px !important;
+    border-radius: 2px !important;
+    background: transparent !important;
+    border: 1px solid rgba(201,168,76,0.80) !important;
+    color: var(--el-gold) !important;
+    box-shadow: none !important;
+    text-decoration: none;
+    transition: background 0.25s ease;
+    display: inline-block;
+  }
+
+  .bn-cta-bottom .el-btn-gold:hover {
+    background: rgba(201,168,76,0.07) !important;
+  }
+
   /* ── Footer — mismo estilo que las demás páginas ── */
   .el-cierre-footer {
     position: absolute;
@@ -362,9 +392,9 @@
       align-items: start;
     }
     .bn-layout::before { display: none; }
-    .bn-anchor { overflow: visible; padding-right: 0; }
+    .bn-anchor { overflow: visible; padding-right: 0; padding-top: 0; }
     .bn-accordion { overflow-y: visible; justify-content: flex-start; }
-    .bn-anchor-ctas { flex-direction: row; flex-wrap: wrap; }
+    .bn-cta-bottom { margin-top: 40px; padding-top: 0; }
     .el-cierre-footer { position: static; padding: 24px 0 0; margin-top: 48px; }
     .bn-section::after { display: none; }
   }
@@ -485,9 +515,6 @@
           <p class="bn-anchor-sub el-anim el-anim-d2">
             Un sistema práctico para construir disciplina, enfoque y constancia real.
           </p>
-          <div class="bn-anchor-ctas el-anim el-anim-d3">
-            <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
-          </div>
         </div>
 
         <!-- Columna derecha: acordeón contenido -->
@@ -547,6 +574,12 @@
 
         </div><!-- /bn-accordion -->
       </div><!-- /bn-layout -->
+
+      <!-- CTA centrado sobre el footer -->
+      <div class="bn-cta-bottom el-anim el-anim-d4">
+        <a href="/pages/shopifyvg" class="el-btn-gold">Obtener Ahora</a>
+      </div>
+
     </div><!-- /el-container -->
 
     <!-- Footer anclado al fondo — mismo estilo que las demás páginas -->
