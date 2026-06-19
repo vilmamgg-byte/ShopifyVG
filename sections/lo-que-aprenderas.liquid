@@ -106,7 +106,8 @@
     align-items: center;
     gap: 0;
     height: 100%;
-    transform: translateY(-1cm);
+    position: relative;
+    top: -38px;
   }
 
   .lq-col-left {
@@ -432,6 +433,8 @@
       flex-direction: column !important;
       min-height: 0 !important;
       transform: none !important;
+      position: static !important;
+      top: auto !important;
     }
     .lq-col-right { display: none !important; }
     .lq-col-left {
