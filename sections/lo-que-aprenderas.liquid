@@ -453,6 +453,8 @@
     .lq-intro { font-size: 13.5px !important; line-height: 1.72 !important; margin-bottom: 0 !important; text-align: justify !important; padding-right: 6mm !important; }
     .lq-benefits { gap: 7px !important; margin-bottom: 0 !important; }
     .lq-inspire { font-size: 12px !important; margin-bottom: 0 !important; }
+    /* Botón CTA: se traslada al slide 2 en mobile */
+    .lq-section .lq-cta-inline { display: none !important; }
 
     .lq-scroll-arrow {
       display: flex !important;
@@ -721,7 +723,7 @@
   <section id="lq-slide-acordeon" style="background:var(--el-deep);overflow:hidden;">
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;"></div>
 
-    <div style="position:absolute;top:calc(68px - 1.5cm);bottom:calc(56px + 1.5cm);left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 22px;overflow:hidden;">
+    <div style="position:absolute;top:calc(68px - 1.5cm);bottom:calc(1.3cm + 128px);left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 22px;overflow:hidden;">
       <div style="width:100%;max-width:460px;">
 
         <!-- Encabezado -->
@@ -819,6 +821,11 @@
 
         </div>
       </div>
+    </div>
+
+    <!-- CTA: sobre el footer -->
+    <div style="position:absolute;bottom:calc(1.3cm + 68px);left:0;right:0;display:flex;justify-content:center;padding:0 22px;z-index:4;">
+      <a href="/pages/shopifyvg" class="lq-cta-inline">OBTENER EL MÉTODO</a>
     </div>
 
     <!-- Footer -->
