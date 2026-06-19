@@ -364,6 +364,91 @@
     .lq-trigger { padding: 14px 3px; gap: 15px; }
     .lq-list { padding-left: 31px; }
   }
+
+  /* ── Animación flecha mobile ── */
+  @keyframes lq-nudge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+  .lq-scroll-arrow { display: none; }
+
+  /* ── Nav dots ── */
+  .fp-nav {
+    position: fixed;
+    right: 14px; top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex; flex-direction: column; gap: 10px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .fp-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+    padding: 0; display: block;
+  }
+  .fp-dot:hover { background: rgba(255,255,255,0.4); }
+  .fp-dot--active {
+    background: rgba(201,168,76,0.9) !important;
+    border-color: rgba(201,168,76,0.7) !important;
+    transform: scale(1.6) !important;
+  }
+
+  /* ── Slide 2 acordeón: oculto en desktop ── */
+  #lq-slide-acordeon { display: none; }
+
+  /* ── Mobile: sistema de slides ── */
+  @media (max-width: 768px) {
+    html, body { overflow: hidden !important; height: 100vh !important; max-height: 100vh !important; }
+    .el-page { overflow: hidden !important; height: 100vh !important; }
+
+    /* Slide 1: sección principal — solo columna izquierda, pantalla completa */
+    .lq-section {
+      height: 100vh !important;
+      padding: 68px 22px 0 !important;
+      overflow: hidden !important;
+      flex-direction: column !important;
+      box-sizing: border-box !important;
+      align-items: stretch !important;
+    }
+    .lq-wrap {
+      flex: 1 !important;
+      height: auto !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      min-height: 0 !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+    }
+    .lq-layout { grid-template-columns: 1fr !important; height: auto !important; }
+    .lq-col-right { display: none !important; }
+    .lq-col-left {
+      height: auto !important;
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+      border-right: none !important;
+      justify-content: flex-start !important;
+    }
+    .lq-footer-abs { display: none !important; }
+    .lq-intro { font-size: 13.5px !important; line-height: 1.75 !important; margin-bottom: 18px !important; text-align: justify !important; padding-right: 6mm !important; }
+    .lq-benefits { gap: 8px !important; margin-bottom: 18px !important; }
+    .lq-inspire { font-size: 12px !important; margin-bottom: 20px !important; }
+
+    .lq-scroll-arrow {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 12px 0 16px !important;
+      flex-shrink: 0 !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+    }
+
+    /* Slide 2: acordeón — visible en mobile */
+    #lq-slide-acordeon { display: block; }
+  }
 </style>
 
 <div class="el-page">
@@ -587,6 +672,13 @@
 
     </div>
 
+    <!-- Flecha mobile: ir a slide acordeón -->
+    <a onclick="window.lqGoNext&&window.lqGoNext();return false;" href="#" class="lq-scroll-arrow" aria-label="Ver módulos">
+      <span style="animation:lq-nudge 2.2s ease-in-out infinite;display:flex;align-items:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.58)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </span>
+    </a>
+
     <!-- Footer pegado al fondo -->
     <footer class="lq-footer-abs">
       <div class="el-cierre-footer-inner">
@@ -607,11 +699,135 @@
 
   </section>
 
+  <!-- ─── Slide mobile-only: 6 módulos del acordeón ─── -->
+  <section id="lq-slide-acordeon" style="background:var(--el-deep);overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+
+    <div style="position:absolute;top:68px;bottom:56px;left:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 22px;overflow:hidden;">
+      <div style="width:100%;max-width:460px;">
+
+        <!-- Encabezado -->
+        <div style="text-align:center;margin-bottom:22px;">
+          <span style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,168,76,0.60);display:block;margin-bottom:12px;">6 Módulos del Método</span>
+          <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,#e8c97a 30%,#f5e090 50%,#e8c97a 70%,transparent);box-shadow:0 0 8px rgba(232,201,122,0.45);margin:0 auto;" aria-hidden="true"></div>
+        </div>
+
+        <!-- Acordeón (IDs mobile para no colisionar con desktop) -->
+        <div class="lq-accordion" role="list">
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m1">
+              <span class="lq-num">01</span>
+              <span class="lq-name">La Raíz de la Disciplina</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m1" aria-hidden="true">
+              <ul class="lq-list">
+                <li>Por qué la motivación es temporal y la disciplina permanece.</li>
+                <li>Cómo construir una identidad alineada con tus objetivos.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m2">
+              <span class="lq-num">02</span>
+              <span class="lq-name">Vencer la Procrastinación</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m2" aria-hidden="true">
+              <ul class="lq-list">
+                <li>La causa real del aplazamiento y cómo corregirla desde la raíz.</li>
+                <li>Utiliza la regla de los 2 minutos para vencer la resistencia inicial.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m3">
+              <span class="lq-num">03</span>
+              <span class="lq-name">Hábitos que Perduran</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m3" aria-hidden="true">
+              <ul class="lq-list">
+                <li>Comprende el ciclo del hábito: señal, rutina y recompensa.</li>
+                <li>Diseña un entorno que facilite las acciones que quieres repetir.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m4">
+              <span class="lq-num">04</span>
+              <span class="lq-name">Mentalidad Imparable</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m4" aria-hidden="true">
+              <ul class="lq-list">
+                <li>El marco mental de atletas de élite y líderes de alto rendimiento.</li>
+                <li>Resiliencia: convierte cada fracaso en una oportunidad de crecimiento.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m5">
+              <span class="lq-num">05</span>
+              <span class="lq-name">Productividad de Alto Impacto</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m5" aria-hidden="true">
+              <ul class="lq-list">
+                <li>El principio 80/20 aplicado a tu vida personal y profesional.</li>
+                <li>Utiliza bloques de trabajo profundo para lograr más avances.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lq-item" role="listitem">
+            <button class="lq-trigger" aria-expanded="false" aria-controls="lq-body-m6">
+              <span class="lq-num">06</span>
+              <span class="lq-name">Del Conocimiento a la Acción</span>
+              <span class="lq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="lq-body" id="lq-body-m6" aria-hidden="true">
+              <ul class="lq-list">
+                <li>Implementa el sistema completo mediante una hoja de ruta clara.</li>
+                <li>Crea un plan sostenible para mantener los cambios a largo plazo.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="position:absolute;bottom:0;left:0;right:0;background:var(--el-deep);border-top:1px solid rgba(255,255,255,0.06);padding:0 20px 14px;z-index:3;opacity:0.70;">
+      <div class="el-cierre-footer-inner">
+        <nav class="el-cierre-nav" aria-label="Footer">
+          <a href="/#la-voz">Sobre la Autora</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/pages/contacto">Contacto</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/privacy-policy">Privacidad</a>
+          <span class="el-cierre-sep" aria-hidden="true">·</span>
+          <a href="/policies/terms-of-service">Términos</a>
+        </nav>
+        <p class="el-cierre-copy">© 2026 Disciplina Imparable</p>
+      </div>
+    </footer>
+  </section>
+
 </div>
 
 {{ 'ebook-landing.js' | asset_url | script_tag }}
 
 <script>
+/* ── Acordeón ── */
 (function(){
   var items = document.querySelectorAll('.lq-item');
   items.forEach(function(item){
@@ -634,6 +850,131 @@
       }
     });
   });
+})();
+
+/* ── Slides mobile ── */
+(function(){
+  if (window.innerWidth > 768) return;
+
+  var SELECTORS = ['.lq-section', '#lq-slide-acordeon'];
+  var DUR        = 850;
+  var TRANS      = 'opacity ' + DUR + 'ms ease, transform ' + (DUR + 80) + 'ms cubic-bezier(0.22,1,0.36,1)';
+  var IN_OFFSET  = 26;
+  var OUT_OFFSET = 18;
+  var SCALE_OFF  = 0.97;
+
+  var slides = [];
+  SELECTORS.forEach(function(sel){
+    var el = document.querySelector(sel);
+    if (el) slides.push(el);
+  });
+  if (slides.length < 2) return;
+
+  var current = 0;
+  var busy    = false;
+
+  function applyState(el, active, above){
+    el.style.transition    = 'none';
+    el.style.position      = 'fixed';
+    el.style.top           = '0';
+    el.style.left          = '0';
+    el.style.width         = '100vw';
+    el.style.height        = '100vh';
+    if (active) {
+      el.style.opacity       = '1';
+      el.style.transform     = 'translateY(0) scale(1)';
+      el.style.zIndex        = '10';
+      el.style.pointerEvents = 'auto';
+    } else {
+      var ty = above ? (-IN_OFFSET) : IN_OFFSET;
+      el.style.opacity       = '0';
+      el.style.transform     = 'translateY(' + ty + 'px) scale(' + SCALE_OFF + ')';
+      el.style.zIndex        = '5';
+      el.style.pointerEvents = 'none';
+    }
+  }
+
+  function initSlides(){
+    slides.forEach(function(el, i){ applyState(el, i === 0, false); });
+  }
+
+  function goTo(next){
+    if (busy || next === current || next < 0 || next >= slides.length) return;
+    busy = true;
+    var dir = next > current ? 1 : -1;
+    var cur = slides[current];
+    var nxt = slides[next];
+
+    nxt.style.transition    = 'none';
+    nxt.style.opacity       = '0';
+    nxt.style.transform     = 'translateY(' + (dir * IN_OFFSET) + 'px) scale(' + SCALE_OFF + ')';
+    nxt.style.zIndex        = '11';
+    nxt.style.pointerEvents = 'none';
+    cur.style.zIndex        = '10';
+    void nxt.offsetWidth;
+
+    nxt.style.transition = TRANS;
+    nxt.style.opacity    = '1';
+    nxt.style.transform  = 'translateY(0) scale(1)';
+    cur.style.transition = TRANS;
+    cur.style.opacity    = '0';
+    cur.style.transform  = 'translateY(' + (-dir * OUT_OFFSET) + 'px) scale(' + SCALE_OFF + ')';
+
+    setTimeout(function(){
+      slides.forEach(function(el, i){ applyState(el, i === next, i < next); });
+      current = next;
+      updateDots();
+      busy = false;
+    }, DUR + 120);
+  }
+
+  /* Nav dots */
+  var nav = document.createElement('nav');
+  nav.className = 'fp-nav';
+  nav.setAttribute('aria-label', 'Navegación');
+  slides.forEach(function(_, i){
+    var btn = document.createElement('button');
+    btn.className = 'fp-dot' + (i === 0 ? ' fp-dot--active' : '');
+    btn.setAttribute('aria-label', 'Sección ' + (i + 1));
+    btn.addEventListener('click', function(){ goTo(i); });
+    nav.appendChild(btn);
+  });
+  document.body.appendChild(nav);
+
+  function updateDots(){
+    nav.querySelectorAll('.fp-dot').forEach(function(btn, i){
+      btn.classList.toggle('fp-dot--active', i === current);
+    });
+  }
+
+  /* Wheel */
+  window.addEventListener('wheel', function(e){
+    if (busy){ e.preventDefault(); return; }
+    e.preventDefault();
+    if (e.deltaY > 3)  goTo(current + 1);
+    if (e.deltaY < -3) goTo(current - 1);
+  }, { passive: false });
+
+  /* Touch */
+  var ty0 = 0;
+  window.addEventListener('touchstart', function(e){ ty0 = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend', function(e){
+    if (busy) return;
+    var dy = ty0 - e.changedTouches[0].clientY;
+    if (dy > 40)  goTo(current + 1);
+    if (dy < -40) goTo(current - 1);
+  }, { passive: true });
+
+  /* Keyboard */
+  window.addEventListener('keydown', function(e){
+    if (busy) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown'){ e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp'   || e.key === 'PageUp')  { e.preventDefault(); goTo(current - 1); }
+  });
+
+  window.lqGoNext = function(){ goTo(current + 1); };
+
+  initSlides();
 })();
 </script>
 
