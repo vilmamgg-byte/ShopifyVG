@@ -577,11 +577,15 @@
 }
 .el-mobile-sub:hover { color: rgba(201,168,76,0.82) !important; }
 
-/* Separador antes de Beneficios (5º <a>) — tinte dorado */
+/* Beneficios — ítem principal (5º <a>): separador + reset explícito anti-cascada */
 .el-mobile-nav a:nth-of-type(5) {
-  padding-top: 12px;
-  margin-top: 6px;
-  border-top: 1px solid rgba(201,168,76,0.10);
+  padding: 12px 0 6px 0 !important;
+  margin-top: 6px !important;
+  border-top: 1px solid rgba(201,168,76,0.10) !important;
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  color: rgba(255,255,255,0.48) !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* CTA — Obtener ahora */
