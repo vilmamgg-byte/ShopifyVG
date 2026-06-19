@@ -405,36 +405,45 @@
     /* Slide 1: sección principal — solo columna izquierda, pantalla completa */
     .lq-section {
       height: 100vh !important;
-      padding: 68px 22px 0 !important;
+      padding: 0 22px !important;
       overflow: hidden !important;
       flex-direction: column !important;
       box-sizing: border-box !important;
       align-items: stretch !important;
     }
+    /* Encadenar flex:1 para que space-between funcione de borde a borde */
     .lq-wrap {
       flex: 1 !important;
-      height: auto !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
+      padding: 70px 0 6px !important;
       min-height: 0 !important;
       overflow: hidden !important;
       display: flex !important;
       flex-direction: column !important;
-      justify-content: center !important;
-    }
-    .lq-layout { grid-template-columns: 1fr !important; height: auto !important; }
-    .lq-col-right { display: none !important; }
-    .lq-col-left {
-      height: auto !important;
-      border-bottom: none !important;
-      padding-bottom: 0 !important;
-      border-right: none !important;
       justify-content: flex-start !important;
     }
+    .lq-layout {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      min-height: 0 !important;
+    }
+    .lq-col-right { display: none !important; }
+    .lq-col-left {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      border-bottom: none !important;
+      border-right: none !important;
+      padding: 0 !important;
+    }
     .lq-footer-abs { display: none !important; }
-    .lq-intro { font-size: 13.5px !important; line-height: 1.75 !important; margin-bottom: 18px !important; text-align: justify !important; padding-right: 6mm !important; }
-    .lq-benefits { gap: 8px !important; margin-bottom: 18px !important; }
-    .lq-inspire { font-size: 12px !important; margin-bottom: 20px !important; }
+    /* Márgenes a 0 — space-between distribuye el espacio */
+    .lq-eyebrow { margin-bottom: 0 !important; }
+    .lq-col-left h1 { margin-bottom: 0 !important; font-size: 30px !important; line-height: 1.18 !important; }
+    .lq-intro { font-size: 13.5px !important; line-height: 1.72 !important; margin-bottom: 0 !important; text-align: justify !important; padding-right: 6mm !important; }
+    .lq-benefits { gap: 7px !important; margin-bottom: 0 !important; }
+    .lq-inspire { font-size: 12px !important; margin-bottom: 0 !important; }
 
     .lq-scroll-arrow {
       display: flex !important;
