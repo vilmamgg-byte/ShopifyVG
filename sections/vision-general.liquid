@@ -273,8 +273,13 @@
     #vg-diferenciador .vg-list-item { text-align: justify !important; }
     /* Bajar botón 2mm */
     #vg-diferenciador .el-btn-gold { margin-top: 3mm !important; display: inline-block !important; }
-    /* Footer centrado respecto a la sección */
-    #vg-diferenciador .el-cierre-footer { left: 0 !important; right: 0 !important; text-align: center !important; }
+    /* Footer centrado respecto a la sección; bottom restaurado al valor original */
+    #vg-diferenciador .el-cierre-footer { left: 0 !important; right: 0 !important; text-align: center !important; bottom: 42px !important; }
+  }
+
+  /* ── Desktop: footer #vg-diferenciador bajado 1.2cm ── */
+  @media (min-width: 769px) {
+    #vg-diferenciador .el-cierre-footer { bottom: calc(42px - 1.2cm) !important; }
   }
 
   /* ── Refinamiento premium: #vg-diferenciador ── */
@@ -557,7 +562,7 @@
       </div>
     </div><!-- /zona contenido -->
 
-    <footer class="el-cierre-footer" style="bottom:42px;">
+    <footer class="el-cierre-footer">
       <div class="el-cierre-footer-inner">
         <nav class="el-cierre-nav" aria-label="Footer">
           <a href="/#la-voz">Sobre la Autora</a>
