@@ -224,6 +224,12 @@
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
+/* Desktop: sube boton Obtener ahora 1cm dentro del nav — .el-nav oculto en mobile */
+.el-nav .el-nav-cta {
+  position: relative;
+  top: -1cm;
+}
+
 .el-nav-cta:hover {
   background: var(--el-gold-bright) !important;
   transform: translateY(-1px) !important;
@@ -783,8 +789,6 @@
   flex-wrap: wrap;
   margin-top: auto;
   margin-bottom: 5px;
-  position: relative;
-  top: -2.5cm;
 }
 
 .el-btn-gold {
@@ -2005,7 +2009,6 @@
   .el-mobile-toggle  { display: flex; }
 
   .el-hero { padding: 80px 24px 32px; }
-  .el-hero-actions { top: 0; position: static; }
   .el-hero-container { grid-template-columns: 1fr; gap: 16px; }
   .el-hero-container::after { display: none; }
   .el-hero-visual    { order: -1; padding-top: 0; }
