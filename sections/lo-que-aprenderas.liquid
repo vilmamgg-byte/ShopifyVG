@@ -157,7 +157,7 @@
     margin-bottom: 22px;
   }
 
-  .lq-accordion { width: 100%; min-height: 0; overflow: hidden; }
+  .lq-accordion { width: 100%; min-height: 0; overflow: visible; }
 
   /* Eyebrow */
   .lq-eyebrow {
@@ -267,6 +267,7 @@
   }
   .lq-item {
     border-top: 1px solid rgba(201,168,76,0.14);
+    position: relative;
   }
   .lq-item:last-child {
     border-bottom: 1px solid rgba(201,168,76,0.14);
@@ -320,6 +321,12 @@
   .lq-item--open .lq-name { color: #c9a84c; }
   .lq-item--open .lq-icon { color: rgba(201,168,76,1); }
   .lq-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--el-deep);
+    z-index: 10;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
