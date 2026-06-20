@@ -1877,6 +1877,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var COOLDOWN = 900;
   var TOUCH_THRESHOLD = 35;
 
+  /* ── navigation dots (mobile) ──────────────────────────────── */
+  var mobileNav = document.createElement('nav');
+  mobileNav.className = 'fp-nav';
+  mobileNav.setAttribute('aria-label', 'Navegación');
+  sections.forEach(function (_, i) {
+    var btn = document.createElement('button');
+    btn.className = 'fp-dot' + (i === 0 ? ' fp-dot--active' : '');
+    btn.setAttribute('aria-label', 'Sección ' + (i + 1));
+    btn.addEventListener('click', function () { goTo(i); });
+    mobileNav.appendChild(btn);
+  });
+  document.body.appendChild(mobileNav);
+
+  function updateDots() {
+    mobileNav.querySelectorAll('.fp-dot').forEach(function (btn, i) {
+      btn.classList.toggle('fp-dot--active', i === currentIndex);
+    });
+  }
+
   function getClosestIndex() {
     var viewportMid = window.innerHeight / 2;
     var best = 0;
@@ -1896,9 +1915,11 @@ document.addEventListener('DOMContentLoaded', function () {
     lastSnapTime = Date.now();
     var top = sections[index].getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
     window.scrollTo({ top: top, behavior: 'smooth' });
+    updateDots();
     setTimeout(function () {
       isAutoScrolling = false;
       currentIndex = getClosestIndex();
+      updateDots();
     }, COOLDOWN);
   }
 
@@ -1909,6 +1930,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (direction === 'down') goTo(currentIndex + 1);
     if (direction === 'up')   goTo(currentIndex - 1);
   }
+
+  window.addEventListener('scroll', function () {
+    if (isAutoScrolling) return;
+    currentIndex = getClosestIndex();
+    updateDots();
+  }, { passive: true });
 
   window.addEventListener('touchstart', function (e) {
     if (window.innerWidth > 768) return;
