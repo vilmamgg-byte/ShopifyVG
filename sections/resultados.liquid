@@ -325,23 +325,37 @@
     .rs-title { font-size: clamp(24px, 6.8vw, 36px); }
 
     .rs-counters {
-      grid-template-columns: 1fr;
-      max-width: 260px;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 100%;
       gap: 0;
-      margin-bottom: 20px;
+      margin: 22px 0 18px;
     }
 
     .rs-counters::before,
-    .rs-counters::after { display: none; }
+    .rs-counters::after {
+      display: block;
+      top: 14%;
+      height: 72%;
+      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.18), transparent);
+    }
 
     .rs-stat {
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 10px 8px;
+      border-bottom: none;
     }
 
     .rs-stat:last-child { border-bottom: none; }
 
-    .rs-stat-num { font-size: clamp(44px, 10.5vw, 60px); }
+    .rs-stat-num {
+      font-size: clamp(36px, 10.5vw, 52px);
+      margin-bottom: 5px;
+    }
+
+    .rs-stat-lbl {
+      font-size: 9px;
+      line-height: 1.25;
+      letter-spacing: 0.18em;
+    }
 
     .rs-grid {
       grid-template-columns: 1fr;
