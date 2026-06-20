@@ -86,7 +86,7 @@
     max-width: none !important;
     display: block !important;
     object-position: center center !important;
-    transform: scale(1.1) translateY(2.8cm) !important;
+    transform: scale(1.1) translateY(1.5cm) !important;
     position: relative !important;
     z-index: 2 !important;
   }
@@ -195,7 +195,7 @@
     margin-right: 0 !important;
     padding-right: calc(3vw + 1cm) !important;
     max-width: 980px !important;
-    margin-top: calc(1.4cm + 2.8cm) !important;
+    margin-top: 1.4cm !important;
   }
   .el-author-grid {
     gap: 56px !important;
@@ -833,11 +833,6 @@
       overflow: visible !important;
     }
     .el-hero-content { padding-top: 2px !important; }
-    /* Reset top:2.8cm — solo aplica en desktop */
-    .el-hero-container,
-    .el-cambio-clip,
-    .el-emocion-clip,
-    .el-cierre-content { top: 0 !important; position: static !important; }
     /* Credentials row: badge se alinea al centro de su celda de grid */
     .el-badge { align-self: center !important; }
 
@@ -1327,7 +1322,7 @@
   <section class="el-hero" id="el-inicio">
     <div class="el-hero-lines" aria-hidden="true"></div>
 
-    <div class="el-hero-container" style="position:relative; top:2.8cm">
+    <div class="el-hero-container">
 
       <!-- LEFT: Copy -->
       <div class="el-hero-content">
@@ -1411,7 +1406,7 @@
        CAMBIO IMAGE
   ══════════════════════════════════════ -->
   <div class="el-cambio-wrap">
-    <div class="el-cambio-clip" style="position:relative; top:2.8cm">
+    <div class="el-cambio-clip">
       <picture>
         <source media="(max-width: 768px)" srcset="{{ 'CAMBIO_MOBILE.png' | asset_url }}">
         <img src="{{ 'CAMBIOS2.png' | asset_url }}"
@@ -1426,7 +1421,7 @@
        EMOCION IMAGE
   ══════════════════════════════════════ -->
   <div class="el-emocion-wrap">
-    <div class="el-emocion-clip" style="position:relative; top:2.8cm">
+    <div class="el-emocion-clip">
       <picture>
         <source media="(max-width: 768px)" srcset="{{ 'EMOCION_MOBILE.png' | asset_url }}">
         <img src="{{ 'EMOCION.png' | asset_url }}"
@@ -1495,7 +1490,7 @@
 
     <div class="el-cierre-ambient" aria-hidden="true"></div>
 
-    <div class="el-cierre-content" style="position:relative; top:2.8cm">
+    <div class="el-cierre-content">
       <p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
       <h2 class="el-cierre-headline el-anim el-anim-d2">
         La disciplina no transforma tu vida en un instante.<br>
@@ -1945,7 +1940,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 </script>
-
 
 {% schema %}
 {
