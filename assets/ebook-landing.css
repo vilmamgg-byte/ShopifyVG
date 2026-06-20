@@ -783,6 +783,8 @@
   flex-wrap: wrap;
   margin-top: auto;
   margin-bottom: 5px;
+  position: relative;
+  top: -2.5cm;
 }
 
 .el-btn-gold {
@@ -2003,6 +2005,7 @@
   .el-mobile-toggle  { display: flex; }
 
   .el-hero { padding: 80px 24px 32px; }
+  .el-hero-actions { top: 0; position: static; }
   .el-hero-container { grid-template-columns: 1fr; gap: 16px; }
   .el-hero-container::after { display: none; }
   .el-hero-visual    { order: -1; padding-top: 0; }
