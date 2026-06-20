@@ -137,9 +137,11 @@
 
   .lq-col-right {
     padding-left: 94px;
+    padding-top: calc(50vh - 215px);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
     min-height: 0;
     overflow: hidden;
@@ -157,7 +159,7 @@
     margin-bottom: 22px;
   }
 
-  .lq-accordion { width: 100%; min-height: 0; overflow: visible; }
+  .lq-accordion { width: 100%; min-height: 0; overflow: hidden; }
 
   /* Eyebrow */
   .lq-eyebrow {
@@ -262,7 +264,7 @@
       border-right: none; border-bottom: 1px solid rgba(201,168,76,0.14);
       height: auto;
     }
-    .lq-col-right { padding-left: 0; height: auto; }
+    .lq-col-right { padding-left: 0; padding-top: 0; height: auto; }
     .lq-footer-abs { position: static; border-top: 1px solid rgba(255,255,255,0.06); }
   }
   .lq-item {
@@ -321,12 +323,6 @@
   .lq-item--open .lq-name { color: #c9a84c; }
   .lq-item--open .lq-icon { color: rgba(201,168,76,1); }
   .lq-body {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    background: var(--el-deep);
-    z-index: 10;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
