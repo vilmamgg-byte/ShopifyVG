@@ -86,7 +86,7 @@
     max-width: none !important;
     display: block !important;
     object-position: center center !important;
-    transform: scale(1.1) translateY(1.5cm) !important;
+    transform: scale(1.1) translateY(2.8cm) !important;
     position: relative !important;
     z-index: 2 !important;
   }
@@ -195,7 +195,7 @@
     margin-right: 0 !important;
     padding-right: calc(3vw + 1cm) !important;
     max-width: 980px !important;
-    margin-top: calc(1.4cm + 1.5cm) !important;
+    margin-top: calc(1.4cm + 2.8cm) !important;
   }
   .el-author-grid {
     gap: 56px !important;
@@ -833,11 +833,12 @@
       overflow: visible !important;
     }
     .el-hero-content { padding-top: 2px !important; }
-    /* Reset top:1.5cm — solo aplica en desktop */
+    /* Reset top:2.8cm — solo aplica en desktop */
     .el-hero-container,
     .el-cambio-clip,
     .el-emocion-clip,
     .el-cierre-content { top: 0 !important; position: static !important; }
+    .el-hero-actions { top: 0 !important; position: static !important; }
     /* Credentials row: badge se alinea al centro de su celda de grid */
     .el-badge { align-self: center !important; }
 
@@ -1327,7 +1328,7 @@
   <section class="el-hero" id="el-inicio">
     <div class="el-hero-lines" aria-hidden="true"></div>
 
-    <div class="el-hero-container" style="position:relative; top:1.5cm">
+    <div class="el-hero-container" style="position:relative; top:2.8cm">
 
       <!-- LEFT: Copy -->
       <div class="el-hero-content">
@@ -1353,7 +1354,7 @@
         </p>
 
         <!-- BLOQUE 4: Botones -->
-        <div class="el-hero-actions" style="margin-top:16px;">
+        <div class="el-hero-actions" style="margin-top:16px; position:relative; top:-1.5cm;">
           <a href="/cart/add" class="el-btn-gold">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
             <span class="el-text--desktop">Descargar Ahora</span>
@@ -1411,7 +1412,7 @@
        CAMBIO IMAGE
   ══════════════════════════════════════ -->
   <div class="el-cambio-wrap">
-    <div class="el-cambio-clip" style="position:relative; top:1.5cm">
+    <div class="el-cambio-clip" style="position:relative; top:2.8cm">
       <picture>
         <source media="(max-width: 768px)" srcset="{{ 'CAMBIO_MOBILE.png' | asset_url }}">
         <img src="{{ 'CAMBIOS2.png' | asset_url }}"
@@ -1426,7 +1427,7 @@
        EMOCION IMAGE
   ══════════════════════════════════════ -->
   <div class="el-emocion-wrap">
-    <div class="el-emocion-clip" style="position:relative; top:1.5cm">
+    <div class="el-emocion-clip" style="position:relative; top:2.8cm">
       <picture>
         <source media="(max-width: 768px)" srcset="{{ 'EMOCION_MOBILE.png' | asset_url }}">
         <img src="{{ 'EMOCION.png' | asset_url }}"
@@ -1495,7 +1496,7 @@
 
     <div class="el-cierre-ambient" aria-hidden="true"></div>
 
-    <div class="el-cierre-content" style="position:relative; top:1.5cm">
+    <div class="el-cierre-content" style="position:relative; top:2.8cm">
       <p class="el-cierre-eyebrow el-anim">Disciplina Imparable</p>
       <h2 class="el-cierre-headline el-anim el-anim-d2">
         La disciplina no transforma tu vida en un instante.<br>
