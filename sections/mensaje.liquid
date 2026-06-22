@@ -526,8 +526,8 @@
                 autocapitalize="off"
                 aria-required="true"
                 {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}
-                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                placeholder="tu@correo.com"
+                value="{% if form.email %}{{ form.email }}{% endif %}"
+                placeholder="Tu correo electrónico"
               >
             </div>
 
