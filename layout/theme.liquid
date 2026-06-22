@@ -7,6 +7,16 @@
       <meta http-equiv="refresh" content="0;url=/">
       <script>window.location.replace('/');</script>
     {%- endif -%}
+    {%- if template.name == 'cart' -%}
+      <style>html,body{visibility:hidden!important;opacity:0!important;background:#000!important}</style>
+      {%- if cart.item_count > 0 -%}
+        <meta http-equiv="refresh" content="0;url=/checkout">
+        <script>window.location.replace('/checkout');</script>
+      {%- else -%}
+        <meta http-equiv="refresh" content="0;url=/">
+        <script>window.location.replace('/');</script>
+      {%- endif -%}
+    {%- endif -%}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
