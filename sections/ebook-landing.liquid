@@ -1058,6 +1058,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 
+{%- assign _prod = all_products['disciplina-imparable'] -%}
+{%- assign _buy_url = '/cart/' | append: _prod.variants.first.id | append: ':1' -%}
+
 <div class="el-page">
 
   <!-- ══════════════════════════════════════
@@ -1150,7 +1153,7 @@
     <a href="/pages/testimonios">Testimonios</a>
     <a href="/pages/faq">FAQ</a>
     <a href="/pages/contacto">Contacto</a>
-    <a href="/cart/add" class="el-nav-cta">Obtener ahora</a>
+    <a href="{{ _buy_url }}" class="el-nav-cta">Obtener ahora</a>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -1311,7 +1314,7 @@
       <a href="/pages/resultados">Resultados</a>
       <a href="/pages/testimonios">Testimonios</a>
       <a href="/pages/faq">FAQ</a>
-      <a href="/cart/add" class="el-nav-cta">Obtener ahora</a>
+      <a href="{{ _buy_url }}" class="el-nav-cta">Obtener ahora</a>
         </nav>
 
     <button class="el-mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -1352,7 +1355,7 @@
 
         <!-- BLOQUE 4: Botones -->
         <div class="el-hero-actions" style="margin-top:16px;">
-          <a href="/cart/add" class="el-btn-gold">
+          <a href="{{ _buy_url }}" class="el-btn-gold">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v14M5 9l7 7 7-7"/><path d="M3 21h18"/></svg>
             <span class="el-text--desktop">Descargar Ahora</span>
             <span class="el-text--mobile">Obtener el Método</span>
@@ -1499,7 +1502,7 @@
         La disciplina no transforma tu vida en un instante.<br>
         <em>La transforma en silencio, todos los días.</em>
       </h2>
-      <a href="/cart/add" class="el-cierre-btn el-anim el-anim-d3">OBTENER EL MÉTODO</a>
+      <a href="{{ _buy_url }}" class="el-cierre-btn el-anim el-anim-d3">OBTENER EL MÉTODO</a>
     </div>
 
     <footer class="el-cierre-footer">
