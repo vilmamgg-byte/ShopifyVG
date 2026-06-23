@@ -488,69 +488,113 @@
 
       </div>
 
-      <!-- Formulario -->
+      <!-- Formulario — Shopify Forms ID: 1044397 -->
       <div class="contacto-form-wrap el-anim el-anim-d2">
         {%- form 'contact', id: 'ContactFormPremium' -%}
 
-          {%- if form.posted_successfully? -%}
-            <div class="contacto-success" tabindex="-1" autofocus>
-              <strong>Mensaje enviado</strong>
-              Tu mensaje ha llegado. Te responderemos en un plazo de 24 a 48 horas hábiles.
-            </div>
+          <!-- Vincula este envío al Form ID 1044397 -->
+          <input type="hidden" name="contact[shopify_form_id]" value="1044397">
 
-          {%- else -%}
+          <!-- Mensaje de éxito premium (oculto hasta envío exitoso) -->
+          <div class="contacto-success" id="cf-success" style="display:none" tabindex="-1">
+            <strong>Mensaje recibido</strong>
+            Gracias por escribirnos. Hemos recibido tu consulta correctamente y te responderemos con claridad en un plazo de 24 a 48 horas hábiles.
+          </div>
 
-            {%- if form.errors -%}
-              <p class="contacto-error">
-                Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
-              </p>
-            {%- endif -%}
+          <!-- Error -->
+          <p class="contacto-error" id="cf-error" style="display:none">
+            Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
+          </p>
 
-            <div class="contacto-field">
-              <label for="ContactFormPremium-name">Nombre</label>
-              <input
-                type="text"
-                id="ContactFormPremium-name"
-                name="contact[Nombre]"
-                autocomplete="name"
-                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                placeholder="Tu nombre"
-              >
-            </div>
+          <div class="contacto-field" id="cf-field-name">
+            <label for="ContactFormPremium-name">Nombre</label>
+            <input
+              type="text"
+              id="ContactFormPremium-name"
+              name="contact[Nombre]"
+              autocomplete="name"
+              placeholder="Tu nombre"
+            >
+          </div>
 
-            <div class="contacto-field">
-              <label for="ContactFormPremium-email">Correo electrónico <span aria-hidden="true" style="color:rgba(201,168,76,0.5)">*</span></label>
-              <input
-                type="email"
-                id="ContactFormPremium-email"
-                name="contact[email]"
-                autocomplete="email"
-                spellcheck="false"
-                autocapitalize="off"
-                aria-required="true"
-                {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}
-                value="{% if form.email %}{{ form.email }}{% endif %}"
-                placeholder="Tu correo electrónico"
-              >
-            </div>
+          <div class="contacto-field" id="cf-field-email">
+            <label for="ContactFormPremium-email">Correo electrónico <span aria-hidden="true" style="color:rgba(201,168,76,0.5)">*</span></label>
+            <input
+              type="email"
+              id="ContactFormPremium-email"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              aria-required="true"
+              placeholder="Tu correo electrónico"
+            >
+          </div>
 
-            <div class="contacto-field">
-              <label for="ContactFormPremium-body">Mensaje</label>
-              <textarea
-                id="ContactFormPremium-body"
-                name="contact[Mensaje]"
-                placeholder="Cuéntanos en qué podemos ayudarte..."
-              >{{- form.body -}}</textarea>
-            </div>
+          <div class="contacto-field" id="cf-field-body">
+            <label for="ContactFormPremium-body">Mensaje</label>
+            <textarea
+              id="ContactFormPremium-body"
+              name="contact[Mensaje]"
+              placeholder="Cuéntanos en qué podemos ayudarte..."
+            ></textarea>
+          </div>
 
-            <button type="submit" class="contacto-btn">
-              Enviar mensaje
-            </button>
-
-          {%- endif -%}
+          <button type="submit" class="contacto-btn" id="cf-btn">
+            Enviar mensaje
+          </button>
 
         {%- endform -%}
       </div>
+
+      <script>
+      (function () {
+        var form = document.getElementById('ContactFormPremium');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var emailEl  = document.getElementById('ContactFormPremium-email');
+          var errorEl  = document.getElementById('cf-error');
+          var successEl = document.getElementById('cf-success');
+          var btn      = document.getElementById('cf-btn');
+
+          if (!emailEl || !emailEl.value.trim() || !emailEl.validity.valid) {
+            errorEl.style.display = 'block';
+            if (emailEl) emailEl.focus();
+            return;
+          }
+          errorEl.style.display = 'none';
+          btn.disabled = true;
+          btn.textContent = 'Enviando…';
+
+          fetch('/contact', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            body: new FormData(form)
+          })
+          .then(function (res) {
+            if (res.ok) {
+              ['cf-field-name', 'cf-field-email', 'cf-field-body'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+              });
+              btn.style.display = 'none';
+              successEl.style.display = 'block';
+              successEl.focus();
+            } else {
+              throw new Error(res.status);
+            }
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = 'Enviar mensaje';
+            errorEl.style.display = 'block';
+          });
+        });
+      })();
+      </script>
 
     </div>
 
