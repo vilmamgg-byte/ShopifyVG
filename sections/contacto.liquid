@@ -492,70 +492,90 @@
       <div class="contacto-form-wrap el-anim el-anim-d2">
         {%- form 'contact', id: 'ContactFormPremium' -%}
 
-          <!-- Mensaje de éxito premium -->
-          <div class="contacto-success" id="cf-success" style="display:none" tabindex="-1">
-            <strong>Mensaje recibido</strong>
-            Gracias por escribirnos. Hemos recibido tu consulta correctamente y te responderemos con claridad en un plazo de 24 a 48 horas hábiles.
-          </div>
+          {%- if form.posted_successfully? -%}
+            <div class="contacto-success" tabindex="-1" autofocus>
+              <strong>Mensaje recibido</strong>
+              Gracias por escribirnos. Hemos recibido tu consulta correctamente y te responderemos con claridad en un plazo de 24 a 48 horas hábiles.
+            </div>
 
-          <p class="contacto-error" id="cf-error" style="display:none">
-            Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
-          </p>
+          {%- else -%}
 
-          <div class="contacto-field" id="cf-field-name">
-            <label for="ContactFormPremium-name">Nombre</label>
-            <input
-              type="text"
-              id="ContactFormPremium-name"
-              name="contact[Nombre]"
-              autocomplete="name"
-              placeholder="Tu nombre"
-            >
-          </div>
+            <!-- Éxito vía Storefront API (JS lo activa cuando SF_TOKEN está configurado) -->
+            <div class="contacto-success" id="cf-success" style="display:none" tabindex="-1">
+              <strong>Mensaje recibido</strong>
+              Gracias por escribirnos. Hemos recibido tu consulta correctamente y te responderemos con claridad en un plazo de 24 a 48 horas hábiles.
+            </div>
 
-          <div class="contacto-field" id="cf-field-email">
-            <label for="ContactFormPremium-email">Correo electrónico <span aria-hidden="true" style="color:rgba(201,168,76,0.5)">*</span></label>
-            <input
-              type="email"
-              id="ContactFormPremium-email"
-              name="contact[email]"
-              autocomplete="email"
-              spellcheck="false"
-              autocapitalize="off"
-              aria-required="true"
-              placeholder="Tu correo electrónico"
-            >
-          </div>
+            {%- if form.errors -%}
+              <p class="contacto-error">
+                Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
+              </p>
+            {%- endif -%}
 
-          <div class="contacto-field" id="cf-field-body">
-            <label for="ContactFormPremium-body">Mensaje</label>
-            <textarea
-              id="ContactFormPremium-body"
-              name="contact[Mensaje]"
-              placeholder="Cuéntanos en qué podemos ayudarte..."
-            ></textarea>
-          </div>
+            <p class="contacto-error" id="cf-error" style="display:none">
+              Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
+            </p>
 
-          <button type="submit" class="contacto-btn" id="cf-btn">
-            Enviar mensaje
-          </button>
+            <div class="contacto-field" id="cf-field-name">
+              <label for="ContactFormPremium-name">Nombre</label>
+              <input
+                type="text"
+                id="ContactFormPremium-name"
+                name="contact[Nombre]"
+                autocomplete="name"
+                value="{% if form.name %}{{ form.name }}{% endif %}"
+                placeholder="Tu nombre"
+              >
+            </div>
+
+            <div class="contacto-field" id="cf-field-email">
+              <label for="ContactFormPremium-email">Correo electrónico <span aria-hidden="true" style="color:rgba(201,168,76,0.5)">*</span></label>
+              <input
+                type="email"
+                id="ContactFormPremium-email"
+                name="contact[email]"
+                autocomplete="email"
+                spellcheck="false"
+                autocapitalize="off"
+                aria-required="true"
+                {% if form.errors contains 'email' %}aria-invalid="true"{% endif %}
+                value="{% if form.email %}{{ form.email }}{% endif %}"
+                placeholder="Tu correo electrónico"
+              >
+            </div>
+
+            <div class="contacto-field" id="cf-field-body">
+              <label for="ContactFormPremium-body">Mensaje</label>
+              <textarea
+                id="ContactFormPremium-body"
+                name="contact[Mensaje]"
+                placeholder="Cuéntanos en qué podemos ayudarte..."
+              >{{- form.body -}}</textarea>
+            </div>
+
+            <button type="submit" class="contacto-btn" id="cf-btn">
+              Enviar mensaje
+            </button>
+
+          {%- endif -%}
 
         {%- endform -%}
       </div>
 
       <script>
       (function () {
-        // ── Shopify Forms — Storefront API ─────────────────────────────────────
-        // Para activar: Admin → Settings → Apps → Develop apps → Create app
-        //   → API credentials → Storefront API scopes
-        //   → marcar: unauthenticated_write_form_submissions
-        //   → Install → copiar "Storefront API access token" y pegarlo aquí:
+        // ── Shopify Forms Storefront API (opcional) ────────────────────────────
+        // Con SF_TOKEN vacío: el formulario funciona de forma nativa.
+        // Shopify envía el correo, recarga la página y muestra el éxito arriba.
+        // Para activar Flow: Admin → Settings → Apps → Develop apps → Create app
+        //   → Storefront API scopes → unauthenticated_write_form_submissions
+        //   → Install → pegar el token aquí:
         var SF_TOKEN = '';
-        //
-        // Claves de campo: Admin → Apps → Shopify Forms → tu form → cada campo
-        // Copia el "Field key" de cada uno y reemplaza los valores de abajo:
+        // Field keys del form en Shopify Forms admin (Form ID: 1044397):
         var SF_KEYS = { email: 'email', nombre: 'name', mensaje: 'message' };
-        // ───────────────────────────────────────────────────────────────────────
+        // ──────────────────────────────────────────────────────────────────────
+
+        if (!SF_TOKEN) return; // Sin token → envío nativo, Shopify maneja todo
 
         var FORM_GID = 'gid://shopify/FormDefinition/1044397';
         var form     = document.getElementById('ContactFormPremium');
@@ -572,88 +592,65 @@
           var btn       = document.getElementById('cf-btn');
 
           if (!emailEl || !emailEl.value.trim() || !emailEl.validity.valid) {
-            errorEl.style.display = 'block';
+            if (errorEl) errorEl.style.display = 'block';
             if (emailEl) emailEl.focus();
             return;
           }
 
-          errorEl.style.display = 'none';
-          btn.disabled = true;
-          btn.textContent = 'Enviando…';
+          if (errorEl) errorEl.style.display = 'none';
+          if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
 
           var email   = emailEl.value.trim();
           var nombre  = nombreEl  ? nombreEl.value.trim()  : '';
           var mensaje = mensajeEl ? mensajeEl.value.trim() : '';
 
           function showSuccess() {
-            ['cf-field-name','cf-field-email','cf-field-body'].forEach(function(id) {
-              var el = document.getElementById(id);
-              if (el) el.style.display = 'none';
+            form.querySelectorAll('.contacto-field, #cf-btn, #cf-error').forEach(function(el) {
+              el.style.display = 'none';
             });
-            btn.style.display = 'none';
-            successEl.style.display = 'block';
-            successEl.focus();
+            if (successEl) { successEl.style.display = 'block'; successEl.focus(); }
           }
 
           function resetBtn() {
-            btn.disabled = false;
-            btn.textContent = 'Enviar mensaje';
+            if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
           }
 
-          if (SF_TOKEN) {
-            // ── Shopify Forms Storefront API → crea metaobject → activa Flow ──
-            var mutation = [
-              'mutation {',
-              '  formSubmissionCreate(input: {',
-              '    formId: "' + FORM_GID + '",',
-              '    fields: [',
-              '      { key: "' + SF_KEYS.email   + '", value: ' + JSON.stringify(email)   + ' },',
-              '      { key: "' + SF_KEYS.nombre  + '", value: ' + JSON.stringify(nombre)  + ' },',
-              '      { key: "' + SF_KEYS.mensaje + '", value: ' + JSON.stringify(mensaje) + ' }',
-              '    ]',
-              '  }) {',
-              '    formSubmission { id }',
-              '    userErrors { code message }',
-              '  }',
-              '}'
-            ].join('\n');
+          var mutation = [
+            'mutation {',
+            '  formSubmissionCreate(input: {',
+            '    formId: "' + FORM_GID + '",',
+            '    fields: [',
+            '      { key: "' + SF_KEYS.email   + '", value: ' + JSON.stringify(email)   + ' },',
+            '      { key: "' + SF_KEYS.nombre  + '", value: ' + JSON.stringify(nombre)  + ' },',
+            '      { key: "' + SF_KEYS.mensaje + '", value: ' + JSON.stringify(mensaje) + ' }',
+            '    ]',
+            '  }) {',
+            '    formSubmission { id }',
+            '    userErrors { code message }',
+            '  }',
+            '}'
+          ].join('\n');
 
-            fetch('/api/2024-01/graphql.json', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Shopify-Storefront-Access-Token': SF_TOKEN
-              },
-              body: JSON.stringify({ query: mutation })
-            })
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-              var sf = data.data && data.data.formSubmissionCreate;
-              if (!sf || !sf.formSubmission || (sf.userErrors && sf.userErrors.length)) {
-                throw new Error((sf && sf.userErrors && sf.userErrors[0] && sf.userErrors[0].message) || 'SF error');
-              }
-              showSuccess();
-            })
-            .catch(function() {
-              resetBtn();
-              errorEl.style.display = 'block';
-            });
-
-          } else {
-            // ── Fallback: contacto nativo (email llega, pero Flow NO se activa) ──
-            fetch('/contact', {
-              method: 'POST',
-              headers: { 'X-Requested-With': 'XMLHttpRequest' },
-              body: new FormData(form)
-            })
-            .then(function(res) {
-              if (res.ok) { showSuccess(); } else { throw new Error(res.status); }
-            })
-            .catch(function() {
-              resetBtn();
-              errorEl.style.display = 'block';
-            });
-          }
+          fetch('/api/2024-01/graphql.json', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Shopify-Storefront-Access-Token': SF_TOKEN
+            },
+            body: JSON.stringify({ query: mutation })
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            var sf = data.data && data.data.formSubmissionCreate;
+            if (!sf || !sf.formSubmission || (sf.userErrors && sf.userErrors.length)) {
+              throw new Error((sf && sf.userErrors && sf.userErrors[0] && sf.userErrors[0].message) || 'SF error');
+            }
+            showSuccess();
+          })
+          .catch(function() {
+            resetBtn();
+            if (errorEl) errorEl.style.display = 'block';
+          });
         });
       })();
       </script>
