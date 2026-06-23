@@ -489,16 +489,12 @@
       <div class="contacto-form-wrap el-anim el-anim-d2">
         {%- form 'contact', id: 'ContactFormPremium' -%}
 
-          <!-- Vincula este envío al Form ID 1044397 -->
-          <input type="hidden" name="contact[shopify_form_id]" value="1044397">
-
-          <!-- Mensaje de éxito premium (oculto hasta envío exitoso) -->
+          <!-- Mensaje de éxito premium -->
           <div class="contacto-success" id="cf-success" style="display:none" tabindex="-1">
             <strong>Mensaje recibido</strong>
             Gracias por escribirnos. Hemos recibido tu consulta correctamente y te responderemos con claridad en un plazo de 24 a 48 horas hábiles.
           </div>
 
-          <!-- Error -->
           <p class="contacto-error" id="cf-error" style="display:none">
             Por favor revisa el campo de correo electrónico e inténtalo de nuevo.
           </p>
@@ -546,49 +542,115 @@
 
       <script>
       (function () {
-        var form = document.getElementById('ContactFormPremium');
+        // ── Shopify Forms — Storefront API ─────────────────────────────────────
+        // Para activar: Admin → Settings → Apps → Develop apps → Create app
+        //   → API credentials → Storefront API scopes
+        //   → marcar: unauthenticated_write_form_submissions
+        //   → Install → copiar "Storefront API access token" y pegarlo aquí:
+        var SF_TOKEN = '';
+        //
+        // Claves de campo: Admin → Apps → Shopify Forms → tu form → cada campo
+        // Copia el "Field key" de cada uno y reemplaza los valores de abajo:
+        var SF_KEYS = { email: 'email', nombre: 'name', mensaje: 'message' };
+        // ───────────────────────────────────────────────────────────────────────
+
+        var FORM_GID = 'gid://shopify/FormDefinition/1044397';
+        var form     = document.getElementById('ContactFormPremium');
         if (!form) return;
 
         form.addEventListener('submit', function (e) {
           e.preventDefault();
 
-          var emailEl  = document.getElementById('ContactFormPremium-email');
-          var errorEl  = document.getElementById('cf-error');
+          var emailEl   = document.getElementById('ContactFormPremium-email');
+          var nombreEl  = document.getElementById('ContactFormPremium-name');
+          var mensajeEl = document.getElementById('ContactFormPremium-body');
+          var errorEl   = document.getElementById('cf-error');
           var successEl = document.getElementById('cf-success');
-          var btn      = document.getElementById('cf-btn');
+          var btn       = document.getElementById('cf-btn');
 
           if (!emailEl || !emailEl.value.trim() || !emailEl.validity.valid) {
             errorEl.style.display = 'block';
             if (emailEl) emailEl.focus();
             return;
           }
+
           errorEl.style.display = 'none';
           btn.disabled = true;
           btn.textContent = 'Enviando…';
 
-          fetch('/contact', {
-            method: 'POST',
-            headers: { 'X-Requested-With': 'XMLHttpRequest' },
-            body: new FormData(form)
-          })
-          .then(function (res) {
-            if (res.ok) {
-              ['cf-field-name', 'cf-field-email', 'cf-field-body'].forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el) el.style.display = 'none';
-              });
-              btn.style.display = 'none';
-              successEl.style.display = 'block';
-              successEl.focus();
-            } else {
-              throw new Error(res.status);
-            }
-          })
-          .catch(function () {
+          var email   = emailEl.value.trim();
+          var nombre  = nombreEl  ? nombreEl.value.trim()  : '';
+          var mensaje = mensajeEl ? mensajeEl.value.trim() : '';
+
+          function showSuccess() {
+            ['cf-field-name','cf-field-email','cf-field-body'].forEach(function(id) {
+              var el = document.getElementById(id);
+              if (el) el.style.display = 'none';
+            });
+            btn.style.display = 'none';
+            successEl.style.display = 'block';
+            successEl.focus();
+          }
+
+          function resetBtn() {
             btn.disabled = false;
             btn.textContent = 'Enviar mensaje';
-            errorEl.style.display = 'block';
-          });
+          }
+
+          if (SF_TOKEN) {
+            // ── Shopify Forms Storefront API → crea metaobject → activa Flow ──
+            var mutation = [
+              'mutation {',
+              '  formSubmissionCreate(input: {',
+              '    formId: "' + FORM_GID + '",',
+              '    fields: [',
+              '      { key: "' + SF_KEYS.email   + '", value: ' + JSON.stringify(email)   + ' },',
+              '      { key: "' + SF_KEYS.nombre  + '", value: ' + JSON.stringify(nombre)  + ' },',
+              '      { key: "' + SF_KEYS.mensaje + '", value: ' + JSON.stringify(mensaje) + ' }',
+              '    ]',
+              '  }) {',
+              '    formSubmission { id }',
+              '    userErrors { code message }',
+              '  }',
+              '}'
+            ].join('\n');
+
+            fetch('/api/2024-01/graphql.json', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-Shopify-Storefront-Access-Token': SF_TOKEN
+              },
+              body: JSON.stringify({ query: mutation })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+              var sf = data.data && data.data.formSubmissionCreate;
+              if (!sf || !sf.formSubmission || (sf.userErrors && sf.userErrors.length)) {
+                throw new Error((sf && sf.userErrors && sf.userErrors[0] && sf.userErrors[0].message) || 'SF error');
+              }
+              showSuccess();
+            })
+            .catch(function() {
+              resetBtn();
+              errorEl.style.display = 'block';
+            });
+
+          } else {
+            // ── Fallback: contacto nativo (email llega, pero Flow NO se activa) ──
+            fetch('/contact', {
+              method: 'POST',
+              headers: { 'X-Requested-With': 'XMLHttpRequest' },
+              body: new FormData(form)
+            })
+            .then(function(res) {
+              if (res.ok) { showSuccess(); } else { throw new Error(res.status); }
+            })
+            .catch(function() {
+              resetBtn();
+              errorEl.style.display = 'block';
+            });
+          }
         });
       })();
       </script>
